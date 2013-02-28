@@ -1,4 +1,4 @@
-AB36PR2
+A0B36PR2
 =======
 
-Semestrální práce do předmětu AB36PR2
+Semestrální práce do předmětu A0B36PR2
