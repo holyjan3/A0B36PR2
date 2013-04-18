@@ -38,8 +38,7 @@ final public class DatabaseEventFuture extends Database{
            
         return DE;
     }
-    
-    
+      
     public void sortDate() {
         Collections.sort(Data,new CompareDate());
     }

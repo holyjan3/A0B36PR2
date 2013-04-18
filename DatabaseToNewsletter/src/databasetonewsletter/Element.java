@@ -12,6 +12,7 @@ package databasetonewsletter;
 final public class Element{
     protected DataElements[] DE;    
     protected String[] strings_of_elements; 
+   
 
     public Element(DataElements[] DE, String[] strings_of_elements) {
         this.DE = DE;
@@ -28,6 +29,8 @@ final public class Element{
     public String controlDatabaseElement(DataElements dl, String ss) {
         
         switch (dl) {
+            case PRINTED:
+                break;
             case DAY:
                 break;
             case MONTH:

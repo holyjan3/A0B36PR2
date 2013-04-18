@@ -9,6 +9,9 @@ package databasetonewsletter;
  * @author Majitel
  */
 public class ElementWindow {
+    
+    
+    
 
     public ElementWindow(Element El) {
         for (int i = 0; i < El.DE.length; i++) {
