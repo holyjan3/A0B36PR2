@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Majitel
@@ -14,6 +16,6 @@ public class DatabaseToNewsletter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        JFrame jf = new JFrameElements(DataElements.values());
     }
 }
