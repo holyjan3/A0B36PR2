@@ -19,7 +19,7 @@ public abstract class Database {
     protected HashMap<String,Element>DataHash;
     protected String name_database;
     protected DataElements[] DE;
-    private ElementsChanged elememtChan = new ElementsChanged();
+    private ElementsChanged elememtChan;
     
     public Database(String name_database) {
         
@@ -27,6 +27,7 @@ public abstract class Database {
         this.Data  = new LinkedList<Element>();
         this.DataHash = new HashMap<String,Element>();
         this.DE = findDataElements();
+        elememtChan = new ElementsChanged(name_database);
         
     }
     
@@ -106,9 +107,8 @@ public abstract class Database {
         try {
             
             outputstream = new ObjectOutputStream(new FileOutputStream(ss));            
-            for (int i = 0; i < this.Data.size(); i++) {
-                    outputstream.writeObject(Data);
-            }   
+            outputstream.writeObject(Data);
+         
         }catch (IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
