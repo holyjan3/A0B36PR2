@@ -10,11 +10,11 @@ import java.util.Comparator;
  *
  * @author Majitel
  */
-public class CompareName implements  Comparator<Element>{
+public class CompareString implements  Comparator<Element>{
 
     int order;
 
-    public CompareName(int order) {
+    public CompareString(int order) {
         super();
         this.order = order;
     }   

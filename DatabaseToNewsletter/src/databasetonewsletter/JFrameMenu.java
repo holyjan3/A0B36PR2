@@ -13,13 +13,11 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * @author Majitel
  */
 public class JFrameMenu extends JFrame{
-    JPanelElements jpanel;
-    DataElements[] DE;
-    JScrollPane scrollPane;
-    JPanel jpanelW;
-    public JFrameMenu(String title, DataElements[] DE) throws HeadlessException {
+    
+
+    public JFrameMenu(String title, Database database) throws HeadlessException {
         super(title);
-        this.DE = DE;
+
         
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
         setVisible(true);

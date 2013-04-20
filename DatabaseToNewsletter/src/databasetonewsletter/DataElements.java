@@ -10,31 +10,32 @@ package databasetonewsletter;
  * @author Majitel
  */
 public enum DataElements {
-    PRINTED(0),
-    HEAD(1),
-    DAY(2),
-    MONTH(3),
-    YEAR(4),
-    HOUR(5),
-    MINUTE(6),    
-    HEAD_LINK(7),
-    TOWN(8),
-    PLACE(9),
-    TEXT(10),
-    LINK1_TEXT(11),
-    LINK2_TEXT(12),
-    LINK3_TEXT(13),
-    LINK1(14),
-    LINK2(15),
-    LINK3(16),
-    NAME(-1),
-    MEDIUM(-1);
+    PRINTED(0,0),
+    HEAD(70,1),
+    DAY(2,2),
+    MONTH(2,3),
+    YEAR(0,4),
+    HOUR(0,5),
+    MINUTE(0,6),    
+    HEAD_LINK(0,7),
+    TOWN(20,8),
+    PLACE(0,9),
+    TEXT(0,10),
+    LINK1_TEXT(0,11),
+    LINK2_TEXT(0,12),
+    LINK3_TEXT(0,13),
+    LINK1(0,14),
+    LINK2(0,15),
+    LINK3(0,16),
+    NAME(20,-1),
+    MEDIUM(20,-1);
     
     final int ELEMENT_FUTURE;
-    
+    final int LINE_SIZE;
 
-    private DataElements(int ELEMENT_FUTURE) {
+    private DataElements(int LINE_SIZE,int ELEMENT_FUTURE) {
         this.ELEMENT_FUTURE = ELEMENT_FUTURE;
+        this.LINE_SIZE = LINE_SIZE;
     }
 
     

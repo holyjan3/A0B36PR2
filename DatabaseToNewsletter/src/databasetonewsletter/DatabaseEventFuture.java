@@ -37,19 +37,5 @@ final public class DatabaseEventFuture extends Database{
         }      
            
         return DE;
-    }
-      
-    public void sortDate() {
-        Collections.sort(Data,new CompareDate());
-    }
-    
-    public void sortHead() {
-        Collections.sort(Data, new CompareName(DataElements.HEAD.ELEMENT_FUTURE));
-    }
-    
-    public void sortTown() {
-        Collections.sort(Data,new CompareName(DataElements.TOWN.ELEMENT_FUTURE));
-    }
-
-    
+    }    
 }

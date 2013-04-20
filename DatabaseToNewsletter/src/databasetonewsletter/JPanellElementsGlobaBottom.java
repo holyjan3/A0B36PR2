@@ -16,19 +16,23 @@ public class JPanellElementsGlobaBottom extends JPanel{
 
     public JPanellElementsGlobaBottom() {
         GroupLayout layout = new GroupLayout(this);
-        GridLayout gr = new GridLayout(3, 1);
-        gr.setRows(20);
-        gr.setVgap(10);
+        GridLayout gr = new GridLayout(8, 1);
+        
+        gr.setVgap(40);
+     
         setLayout(gr);
         
         
         JCheckBox jbox;
-        jbox = new JCheckBox("vytisknout");
+        jbox = new JCheckBox("vytisknout",true);
+        
+        JButton remove = new JButton("odstanit udalost");
         JButton saveAll = new JButton("Ulozit vše");
         JButton replaceAll = new JButton("Obnovi vše");
         JButton deleteAll = new JButton("Vymazat vše");
         
-        
+        this.add(new JLabel());
+        this.add(remove);
         this.add(saveAll);            
         this.add(replaceAll);
         this.add(deleteAll);

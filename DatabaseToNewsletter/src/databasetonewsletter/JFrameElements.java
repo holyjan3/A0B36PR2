@@ -31,13 +31,15 @@ public class JFrameElements extends JFrame{
         
         Container con = getContentPane();  
         con.setLayout(bl);       
-        
+        bl.setHgap(40);
 
         scrollPane = new JScrollPane();
+        
         //scrollPane.setBounds(10, 101, 742, 276);
         scrollPane.setViewportView(jpanel); 
-        con.add(scrollPane, BorderLayout.CENTER);        
-        con.add(jpanelW,BorderLayout.WEST);
+        con.add(scrollPane, BorderLayout.CENTER);
+        
+        con.add(jpanelW,BorderLayout.EAST);
         
     }      
 }

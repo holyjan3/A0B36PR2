@@ -156,6 +156,19 @@ public abstract class Database {
                     
     }
     
+    public void sortDate() {
+        Collections.sort(Data,new CompareDate());
+    }
+    
+    public void sortString(int number) {
+        Collections.sort(Data, new CompareString(number));
+    }
+    
+    public void sortPrint(){
+        Collections.sort(Data,new ComparatorPrint());
+    }
+
+    
     abstract   public DataElements[] findDataElements();
     
 }
