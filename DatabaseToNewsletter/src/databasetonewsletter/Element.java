@@ -4,12 +4,14 @@
  */
 package databasetonewsletter;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Majitel
  */
-final public class Element{
+final public class Element implements  Serializable{
     protected DataElements[] DE;    
     protected String[] strings_of_elements; 
    
@@ -109,7 +111,9 @@ final public class Element{
         }
         return ss;
     }
+   
     
+    /*
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -119,6 +123,8 @@ final public class Element{
         }
         sb.append(this.strings_of_elements[this.strings_of_elements.length-1]);
         return sb.toString();
-    }    
+    }
+    * 
+    * /
     
 }
