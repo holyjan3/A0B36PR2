@@ -45,6 +45,8 @@ public class JPanelMenuLines extends JPanel{
                 case DAY:
                     break;
                 case MONTH:
+                    break;                    
+                case TOWN:                    
                     break;
                 case NAME:
                     break;

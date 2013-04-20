@@ -34,7 +34,7 @@ public class JFrameElements extends JFrame{
         
 
         scrollPane = new JScrollPane();
-        scrollPane.setBounds(10, 101, 742, 276);
+        //scrollPane.setBounds(10, 101, 742, 276);
         scrollPane.setViewportView(jpanel); 
         con.add(scrollPane, BorderLayout.CENTER);        
         con.add(jpanelW,BorderLayout.WEST);
