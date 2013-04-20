@@ -129,14 +129,22 @@ public class JFrameElements extends JFrame{
             text[i] = new JTextArea(jtext_height,80);
             
             
-            text[i].setWrapStyleWord(true);
-            text[i].setLineWrap(true);
+            
+            
+            
             save[i] = new JButtonWithNumber(i, "uložit");                 
             
             JLabel head = new JLabel(DE[i].name());
             
             item0.add(head);
-            item1.add(new JScrollPane(text[i]));          
+            if(jtext_height > 1){
+                text[i].setWrapStyleWord(true);
+                text[i].setLineWrap(true);
+                item1.add(new JScrollPane(text[i]));          
+            } else {
+            text[i].setLineWrap(true);
+            item1.add(text[i]); 
+            }
             item2.add(save[i]);
        
             panel.add(item0);

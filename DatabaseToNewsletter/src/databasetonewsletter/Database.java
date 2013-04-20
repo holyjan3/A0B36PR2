@@ -87,39 +87,73 @@ public abstract class Database {
     
     
     public  void readFromDatabase(){
+       ObjectInputStream inputstream = null;
+        String ss = name_database + ".txt";
         
+        try {
+            inputstream = new ObjectInputStream(new FileInputStream(ss));
+            Data = (List<Element>)inputstream.readObject();
+        } catch (IOException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public void writeToTemp(){
-        FileWriter fw = null;
+        ObjectOutputStream outputstream = null;
+        String ss = "temp_" + name_database + ".txt";
         try {
-            String ss = "temp_" + name_database + ".txt";
-            fw = new FileWriter(ss);
-            BufferedWriter bw = new BufferedWriter(fw);
+            
+            outputstream = new ObjectOutputStream(new FileOutputStream(ss));            
             for (int i = 0; i < this.Data.size(); i++) {
-                fw.write(Data.get(i).toString());
-                fw.write(System.lineSeparator());
-            }
-            fw.close();
-            tempToDatabase();
+                    outputstream.writeObject(Data);
+            }   
         }catch (IOException ex) {
             Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
-                fw.close();
+                outputstream.close();
+                tempToDatabase();
             } catch (IOException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    }    
+    } 
+    
     public  void tempToDatabase(){
-        String s1= "temp_" + name_database + ".txt";
-        String s2= name_database+".txt";
-        File f1 = new File(s1);
-        File f2 = new File(s2);
-        if(f2.delete()) {
-            f1.renameTo(f2);
-        }
+        
+            String s1= "temp_" + name_database + ".txt";
+            String s2= name_database+".txt";
+            BufferedInputStream inputStream= null;
+            BufferedOutputStream outputstream = null;
+            try {
+                inputStream = new BufferedInputStream(new FileInputStream(s1));
+            } catch (FileNotFoundException ex) { 
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                outputstream = new BufferedOutputStream(new FileOutputStream(s2));
+            } catch (FileNotFoundException ex) { 
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            int number = 1024;
+            byte[] bitarray = new byte[number];
+          
+            try {
+            while (inputStream.available()>0) {
+                int i = inputStream.read(bitarray);
+                outputstream.write(bitarray, 0, number);
+            }
+            } catch (IOException ex) {
+            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        
+            
+                    
     }
     
     abstract   public DataElements[] findDataElements();
