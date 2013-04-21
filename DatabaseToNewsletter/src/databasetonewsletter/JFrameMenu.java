@@ -40,9 +40,7 @@ public class JFrameMenu extends JFrame{
         
         con.add(menulButtonTop, BorderLayout.NORTH);
         con.add(scrollPane,BorderLayout.CENTER);
-        con.add(menulButtonBottom,BorderLayout.SOUTH);
-        
-        
+        con.add(menulButtonBottom,BorderLayout.SOUTH);        
         
         
         

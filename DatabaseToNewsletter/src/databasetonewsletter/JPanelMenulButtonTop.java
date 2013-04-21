@@ -23,9 +23,9 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         array[1] = 1;
         int j = 1;
         
-        comboBox.addItem(DataElement.PRINTED.name());
+        comboBox.addItem(DataElement.PRINTED.toString());
        
-        comboBox.addItem(DataElement.HEAD.name());        
+        comboBox.addItem(DataElement.HEAD.toString());        
         
         for (int i = 0; i < DE.length; i++) {
             switch ((DE[i])) {                
@@ -33,7 +33,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 case TOWN:
                 case NAME:
                 case MEDIUM:
-                    comboBox.addItem(DE[i].name()); 
+                    comboBox.addItem(DE[i].toString()); 
                     j++;                    
                     dataElementses[j]=DE[i];
                     array[j]=i;

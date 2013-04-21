@@ -14,15 +14,18 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class JFrameElement extends JFrame{
     JPanelElement jpanel;
-    Element element;
     JScrollPane scrollPane;
     JPanel jpanelW;
-    public JFrameElement(Element element) throws HeadlessException {
-        super("ahoj");
-        this.element = element;        
-        jpanel = new JPanelElement(element);
+    int number_of_element;
+    Database database;
+    public JFrameElement(Database database,int number_of_element) throws HeadlessException {
+        super(database.Data.get(number_of_element).DE[1].toString());
+        this.database = database;
+        this.number_of_element = number_of_element;
         
-        jpanelW = new JPanellElementGlobaBottom();
+        jpanel = new JPanelElement(database.Data.get(number_of_element));       
+        
+        jpanelW = new JPanellElementGlobaBottom(jpanel);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
         setVisible(true);
@@ -36,8 +39,8 @@ public class JFrameElement extends JFrame{
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(jpanel);
         
-        con.add(scrollPane, BorderLayout.CENTER);
         
+        con.add(scrollPane, BorderLayout.CENTER);        
         con.add(jpanelW,BorderLayout.EAST);
         
     }      

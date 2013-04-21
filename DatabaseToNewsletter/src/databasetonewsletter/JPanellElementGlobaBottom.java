@@ -13,10 +13,14 @@ import javax.swing.*;
  * @author Majitel
  */
 public class JPanellElementGlobaBottom extends JPanel{
-
-    public JPanellElementGlobaBottom() {
+    JPanelElement jPanelElement;
+    
+    public JPanellElementGlobaBottom(JPanelElement jPanelElement) {
+        this.jPanelElement = jPanelElement;
+        
+        
         GroupLayout layout = new GroupLayout(this);
-        GridLayout gr = new GridLayout(8, 1);
+        GridLayout gr = new GridLayout(8, 1);       
         
         gr.setVgap(40);
      
@@ -37,6 +41,10 @@ public class JPanellElementGlobaBottom extends JPanel{
         this.add(replaceAll);
         this.add(deleteAll);
         this.add(jbox);
+        
+        
     }
+    
+    
     
 }
