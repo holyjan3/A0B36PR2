@@ -4,7 +4,7 @@
  */
 package databasetonewsletter;
 
-import static databasetonewsletter.DataElements.*;
+import static databasetonewsletter.DataElement.*;
 import java.awt.*;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -17,7 +17,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
         
         
    
-public class JPanelElements extends JPanel{
+public class JPanelElement extends JPanel{
     
     JTextArea[] text;
     //JButton[] save;
@@ -29,13 +29,13 @@ public class JPanelElements extends JPanel{
         
    
 
-    JPanelElements(DataElements[] DE) {
+    JPanelElement(Element element) {
          //Ins.set(1, 1, 1, 1);
         
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         //Container kon = getContentPane();
-        text = new JTextArea[DE.length];        
+        text = new JTextArea[element.DE.length];        
         //save = new JButton[DE.length];
         
         
@@ -56,8 +56,8 @@ public class JPanelElements extends JPanel{
         this.add(panel);
         
         
-        for (int i = 1; i < DE.length; i++) {
-            switch (DE[i]) {
+        for (int i = 1; i < element.DE.length; i++) {
+            switch (element.DE[i]) {
                 case DAY:
                    jtext_height = 1;                             
                     break;
@@ -130,7 +130,7 @@ public class JPanelElements extends JPanel{
             JButton save = new JButtonWithNumber(i, "uložit");                 
             JButton replace  = new JButtonWithNumber(i, "obnovit");
             JButton delete  = new JButtonWithNumber(i, "vymazat");
-            JLabel head = new JLabel(DE[i].name());
+            JLabel head = new JLabel(element.DE[i].name());
             
             item0.add(head);
             if(jtext_height > 1){

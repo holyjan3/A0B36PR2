@@ -18,8 +18,9 @@ public abstract class Database {
     protected List<Element> Data;
     protected HashMap<String,Element>DataHash;
     protected String name_database;
-    protected DataElements[] DE;
+    protected DataElement[] DE;
     private ElementsChanged elememtChan;
+    private int number_of_element;
     
     public Database(String name_database) {
         
@@ -31,16 +32,20 @@ public abstract class Database {
         
     }
     
-     public void contensHead(String head){
+     public boolean contensHead(String head){
         if(DataHash.containsKey(head)) {
-            
+            return true;
+        } else {
+            return false;
         }
     }
     
     public void removeElement(String head) {
         DataHash.remove(head);
+       
         for (int i=0; i<Data.size();i++) {
             if(Data.get(i).strings_of_elements[1].compareTo(head) == 0) {
+               number_of_element--;
                Data.remove(i);
                break;
             }
@@ -58,6 +63,7 @@ public abstract class Database {
         this.elememtChan.insertElementsChanges(name_database);
         
     }
+    
     
     public void changeElements(String head,String ss,int position_string ){
         Element el = DataHash.get(head);
@@ -169,6 +175,6 @@ public abstract class Database {
     }
 
     
-    abstract   public DataElements[] findDataElements();
+    abstract   public DataElement[] findDataElements();
     
 }

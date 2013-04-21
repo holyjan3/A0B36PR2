@@ -9,7 +9,7 @@ package databasetonewsletter;
  *
  * @author Majitel
  */
-public enum DataElements {
+public enum DataElement {
     PRINTED(0,0),
     HEAD(70,1),
     DAY(2,2),
@@ -33,7 +33,7 @@ public enum DataElements {
     final int ELEMENT_FUTURE;
     final int LINE_SIZE;
 
-    private DataElements(int LINE_SIZE,int ELEMENT_FUTURE) {
+    private DataElement(int LINE_SIZE,int ELEMENT_FUTURE) {
         this.ELEMENT_FUTURE = ELEMENT_FUTURE;
         this.LINE_SIZE = LINE_SIZE;
     }

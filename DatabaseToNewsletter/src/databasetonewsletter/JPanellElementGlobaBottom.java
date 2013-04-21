@@ -12,9 +12,9 @@ import javax.swing.*;
  *
  * @author Majitel
  */
-public class JPanellElementsGlobaBottom extends JPanel{
+public class JPanellElementGlobaBottom extends JPanel{
 
-    public JPanellElementsGlobaBottom() {
+    public JPanellElementGlobaBottom() {
         GroupLayout layout = new GroupLayout(this);
         GridLayout gr = new GridLayout(8, 1);
         

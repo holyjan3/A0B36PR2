@@ -12,23 +12,32 @@ import java.io.Serializable;
  * @author Majitel
  */
 final public class Element implements  Serializable{
-    protected DataElements[] DE;    
+    protected DataElement[] DE;    
     protected String[] strings_of_elements; 
    
 
-    public Element(DataElements[] DE, String[] strings_of_elements) {
+    public Element(DataElement[] DE, String[] strings_of_elements) {
         this.DE = DE;
         this.strings_of_elements = contorlStringElement(strings_of_elements);
     }
     
     
-    public Element(DataElements[] DE, String strin_of_elements){
+    public Element(DataElement[] DE, String strin_of_elements){
         this.DE = DE;
         this.strings_of_elements  = parseString(strin_of_elements);
     }
+
+    public Element(DataElement[] DE) {
+        this.DE = DE;
+        strings_of_elements = new String[DE.length];
+        for (int i = 0; i < DE.length; i++) {
+            strings_of_elements[i] = "";
+        }
+    }
+    
     
      
-    public String controlDatabaseElement(DataElements dl, String ss) {
+    public String controlDatabaseElement(DataElement dl, String ss) {
         
         switch (dl) {
             case PRINTED:

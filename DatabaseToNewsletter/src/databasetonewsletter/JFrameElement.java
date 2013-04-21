@@ -12,17 +12,17 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  *
  * @author Majitel
  */
-public class JFrameElements extends JFrame{
-    JPanelElements jpanel;
-    DataElements[] DE;
+public class JFrameElement extends JFrame{
+    JPanelElement jpanel;
+    Element element;
     JScrollPane scrollPane;
     JPanel jpanelW;
-    public JFrameElements(String title, DataElements[] DE) throws HeadlessException {
-        super(title);
-        this.DE = DE;
-        jpanel = new JPanelElements(DE);
+    public JFrameElement(Element element) throws HeadlessException {
+        super("ahoj");
+        this.element = element;        
+        jpanel = new JPanelElement(element);
         
-        jpanelW = new JPanellElementsGlobaBottom();
+        jpanelW = new JPanellElementGlobaBottom();
         
         setDefaultCloseOperation(EXIT_ON_CLOSE); 
         setVisible(true);
@@ -34,9 +34,8 @@ public class JFrameElements extends JFrame{
         bl.setHgap(40);
 
         scrollPane = new JScrollPane();
+        scrollPane.setViewportView(jpanel);
         
-        //scrollPane.setBounds(10, 101, 742, 276);
-        scrollPane.setViewportView(jpanel); 
         con.add(scrollPane, BorderLayout.CENTER);
         
         con.add(jpanelW,BorderLayout.EAST);

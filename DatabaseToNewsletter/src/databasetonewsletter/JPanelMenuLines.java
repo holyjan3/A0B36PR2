@@ -14,13 +14,13 @@ public class JPanelMenuLines extends JPanel{
     Database database;
     protected int[] array;
     protected int length_array;
-    protected DataElements[] dataElementses;
+    protected DataElement[] dataElementses;
 
     public JPanelMenuLines(Database database) {
         this.database = database;  
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         array = new int[8];
-        dataElementses = new DataElements[8];
+        dataElementses = new DataElement[8];
         length_array=0;
         for (int i = 0; i < database.DE.length; i++) {
             switch ((database.DE[i])) {               
@@ -75,8 +75,8 @@ public class JPanelMenuLines extends JPanel{
               
               JLabel label;
               JButton jButton;
-              label= new JLabel(database.Data.get(numberLine).strings_of_elements[1].substring(0, DataElements.HEAD.LINE_SIZE));
-              label.setSize(DataElements.HEAD.LINE_SIZE, 1);
+              label= new JLabel(database.Data.get(numberLine).strings_of_elements[1].substring(0, DataElement.HEAD.LINE_SIZE));
+              label.setSize(DataElement.HEAD.LINE_SIZE, 1);
               
               for (int i = 0; i < length_array; i++) {
                    label= new JLabel(database.Data.get(numberLine).strings_of_elements[array[i]].substring(0,dataElementses[array[i]].LINE_SIZE));

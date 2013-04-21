@@ -21,16 +21,16 @@ final public class DatabaseEventFuture extends Database{
      *
      */
     @Override
-    public DataElements[] findDataElements(){
+    public DataElement[] findDataElements(){
         
         int i = 0;
-        for (DataElements de : DataElements.values()) {
+        for (DataElement de : DataElement.values()) {
             if(de.ELEMENT_FUTURE != -1){
                 i++;
             }
         }
-        this.DE = new DataElements[i];
-        for (DataElements de : DataElements.values()) {
+        this.DE = new DataElement[i];
+        for (DataElement de : DataElement.values()) {
             if(de.ELEMENT_FUTURE != -1){
                 DE[de.ELEMENT_FUTURE] = de;
             }
