@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -40,9 +39,9 @@ public class JPanelElement extends JPanel{
         add(panel);
         this.add(panel);
        
-        ActionButtonSave buttonSave = new ActionButtonSave();
-        ActionButtonDelete buttonDelete = new ActionButtonDelete();
-        ActionButtonRestore buttonRestore = new ActionButtonRestore();
+        //ActionButtonSave buttonSave = new ActionButtonSave();
+        //ActionButtonDelete buttonDelete = new ActionButtonDelete();
+        //ActionButtonRestore buttonRestore = new ActionButtonRestore();
         
         for (int i = 1; i < element.DE.length; i++) {
             switch (element.DE[i]) {
@@ -115,9 +114,9 @@ public class JPanelElement extends JPanel{
             JLabel head = new JLabel(element.DE[i].toString());
             
             
-            save.addActionListener(buttonSave);
-            restore.addActionListener(buttonRestore);
-            delete.addActionListener(buttonDelete);
+            // save.addActionListener(buttonSave);
+            // restore.addActionListener(buttonRestore);
+            //  delete.addActionListener(buttonDelete);
             
             item0.add(head);
             if(jtext_height > 1){
@@ -143,7 +142,7 @@ public class JPanelElement extends JPanel{
         
         
  }   
-
+/*
         class ActionButtonSave implements ActionListener {
 
         @Override
@@ -182,6 +181,6 @@ public class JPanelElement extends JPanel{
         }
             
      }
-
+*/
 
 }

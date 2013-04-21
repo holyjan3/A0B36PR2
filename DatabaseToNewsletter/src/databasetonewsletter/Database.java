@@ -16,32 +16,19 @@ import java.util.logging.Logger;
 
 public abstract class Database {
     protected List<Element> Data;
-    protected HashMap<String,Element>DataHash;
     protected String name_database;
     protected DataElement[] DE;
-    private ElementsChanged elememtChan;
     private int number_of_element;
     
     public Database(String name_database) {
         
         this.name_database = name_database;
         this.Data  = new LinkedList<Element>();
-        this.DataHash = new HashMap<String,Element>();
         this.DE = findDataElements();
-        elememtChan = new ElementsChanged(name_database);
         
     }
     
-     public boolean contensHead(String head){
-        if(DataHash.containsKey(head)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     public void removeElement(String head) {
-        DataHash.remove(head);
        
         for (int i=0; i<Data.size();i++) {
             if(Data.get(i).strings_of_elements[1].compareTo(head) == 0) {
@@ -50,38 +37,18 @@ public abstract class Database {
                break;
             }
         }
-        this.elememtChan.insetrElementsDelete(head);
     }
     
    
     
     public void addElement(String[] ss){
         Element el = new Element(DE, ss);
-        contensHead(el.strings_of_elements[1]);
-        Data.add(el);        
-        DataHash.put(el.strings_of_elements[1], el);
-        this.elememtChan.insertElementsChanges(name_database);
-        
+        Data.add(el);                
     }
     
     
     public void changeElements(String head,String ss,int position_string ){
-        Element el = DataHash.get(head);
-        if (position_string != 1) {            
-            el.strings_of_elements[position_string] = ss;
-            this.elememtChan.insertElementsChanges(head);
-        } else {
-           contensHead(ss);
-           for (int i=0; i<Data.size();i++) {
-            if(Data.get(i).strings_of_elements[1].compareTo(head) == 0) {
-                Data.get(i).strings_of_elements[1] = ss;
-                DataHash.remove(ss);
-                DataHash.put(ss, el);
-                break;
-            }
-           this.elememtChan.insertElementsChanges(head,ss);
-        }                      
-        }
+      
         
     } 
     
