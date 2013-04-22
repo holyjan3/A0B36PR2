@@ -21,7 +21,7 @@ final public class DatabaseEventFuture extends Database{
      *
      */
     @Override
-    public DataElement[] findDataElements(){
+    protected void findDataElements(){
         
         int i = 0;
         for (DataElement de : DataElement.values()) {
@@ -35,7 +35,5 @@ final public class DatabaseEventFuture extends Database{
                 DE[de.ELEMENT_FUTURE] = de;
             }
         }      
-           
-        return DE;
     }    
 }

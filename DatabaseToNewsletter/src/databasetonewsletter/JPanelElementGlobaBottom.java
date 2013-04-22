@@ -12,11 +12,11 @@ import javax.swing.*;
  *
  * @author Majitel
  */
-public class JPanellElementGlobaBottom extends JPanel{
-    JPanelElement jPanelElement;
+public class JPanelElementGlobaBottom extends JPanel{
+    Database database;
     
-    public JPanellElementGlobaBottom(JPanelElement jPanelElement) {
-        this.jPanelElement = jPanelElement;
+    public JPanelElementGlobaBottom(Database database) {
+        this.database = database;
         
         
         GroupLayout layout = new GroupLayout(this);

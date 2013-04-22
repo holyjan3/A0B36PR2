@@ -4,45 +4,42 @@
  */
 package databasetonewsletter;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Majitel
  */
 public class JPanelMenulButtonTop extends javax.swing.JPanel {
-
-    DataElement[] DE;
-    int[] array;
-    DataElement[] dataElementses;
+    protected String findInText="Vyhledat v Názvech";
+    ArrayList<Integer> array;
+    Database database;
+    JFrameMenu jFrameMenu;
     
-    public JPanelMenulButtonTop(DataElement[] DE) {
+    public JPanelMenulButtonTop(Database database,JFrameMenu jFrameMenu) {
+        this.jFrameMenu = jFrameMenu;
         initComponents();
-        this.DE = DE;
-        array = new int[6];
-        dataElementses = new DataElement[6];
-        array[0] = 0;
-        array[1] = 1;
+        this.database= database;
+        DataElement [] DE = database.DE;
+        array = new ArrayList<>(8);
+        array.add(0,0);
+        array.add(1, 1);
         int j = 1;
-        
-        comboBox.addItem(DataElement.PRINTED.toString());
        
+        
+        comboBox.addItem(DataElement.PRINTED.toString());       
         comboBox.addItem(DataElement.HEAD.toString());        
         
         for (int i = 0; i < DE.length; i++) {
-            switch ((DE[i])) {                
-                case DAY:                   
-                case TOWN:
-                case NAME:
-                case MEDIUM:
-                    comboBox.addItem(DE[i].toString()); 
-                    j++;                    
-                    dataElementses[j]=DE[i];
-                    array[j]=i;
-                    break;               
-            }
-            
+           if(DE[i].Sort()){
+                    comboBox.addItem(DE[i].toStringSort()); 
+                    j++;                   
+                    array.add(j, i);        
+            }           
         }
         
          comboBox.setSelectedIndex(1);
+        
     }
 
     /**
@@ -54,13 +51,28 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        javax.swing.JTextField jTextField2 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        importSQL = new javax.swing.JButton();
         comboBox = new javax.swing.JComboBox();
-        exportSQL = new javax.swing.JButton();
-        save = new javax.swing.JButton();
         arrange = new javax.swing.JButton();
         addElement = new javax.swing.JButton();
+        findButton = new javax.swing.JButton();
+        saveButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+
+        jTextField2.setText("Najít v názvu");
+        jTextField2.setToolTipText("");
+        jTextField2.setName(""); // NOI18N
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
         jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
@@ -70,31 +82,36 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         jSeparator1.setPreferredSize(new java.awt.Dimension(9, 10));
         jSeparator1.setRequestFocusEnabled(false);
 
-        importSQL.setText("nahrát z MySQL");
-        importSQL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                importSQLActionPerformed(evt);
-            }
-        });
-
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
             }
         });
 
-        exportSQL.setText("uložit do MySQL");
-        exportSQL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportSQLActionPerformed(evt);
-            }
-        });
-
-        save.setText("uložit");
-
         arrange.setText("seřadit");
 
         addElement.setText("přidej záznam");
+        addElement.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addElementMouseClicked(evt);
+            }
+        });
+
+        findButton.setText("najít");
+
+        saveButton.setText("uložit");
+
+        jTextField1.setText(this.findInText);
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
+        jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField1FocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,33 +125,28 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arrange)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(importSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(exportSQL)
-                .addGap(29, 29, 29)
-                .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(saveButton)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(exportSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(importSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(save, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(addElement, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(arrange, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(findButton)
+                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comboBox)
+                    .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,21 +154,36 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboBoxActionPerformed
 
-    private void importSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_importSQLActionPerformed
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_importSQLActionPerformed
+    }//GEN-LAST:event_jTextField2MouseClicked
 
-    private void exportSQLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportSQLActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_exportSQLActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
+        if(jTextField1.getText().equals("")){
+        this.jTextField1.setText(findInText);
+        }
+    }//GEN-LAST:event_jTextField1FocusLost
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        this.jTextField1.selectAll();
+    }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void addElementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addElementMouseClicked
+       JFrameElement jfe = new JFrameElement(database);
+      
+    }//GEN-LAST:event_addElementMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
     private javax.swing.JButton arrange;
     private javax.swing.JComboBox comboBox;
-    private javax.swing.JButton exportSQL;
-    private javax.swing.JButton importSQL;
+    private javax.swing.JButton findButton;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JButton save;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

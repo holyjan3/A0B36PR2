@@ -21,16 +21,19 @@ import javax.swing.*;
 public class JPanelElement extends JPanel{
     
     JTextArea[] text;
+    Database database;
+
+    
+   
     protected int jtext_height;
     protected int jtext_width;    
     protected Insets Ins = new Insets(10, 10, 20, 10);    
-    Element element;
-        
-        
-   
+    Element element;   
 
-    JPanelElement(Element element) {
+    JPanelElement(Database database,Element element) {
+        this.database = database;
         this.element = element;
+       
         
         text = new JTextArea[element.DE.length];        
         JPanel panel = new JPanel();
@@ -38,10 +41,10 @@ public class JPanelElement extends JPanel{
          
         add(panel);
         this.add(panel);
-       
-        //ActionButtonSave buttonSave = new ActionButtonSave();
-        //ActionButtonDelete buttonDelete = new ActionButtonDelete();
-        //ActionButtonRestore buttonRestore = new ActionButtonRestore();
+        
+        ActionButtonSave buttonSave = new ActionButtonSave();
+        ActionButtonDelete buttonDelete = new ActionButtonDelete();
+        ActionButtonRestore buttonRestore = new ActionButtonRestore();
         
         for (int i = 1; i < element.DE.length; i++) {
             switch (element.DE[i]) {
@@ -110,13 +113,13 @@ public class JPanelElement extends JPanel{
             
             JButton save = new JButtonWithNumber(i, "uložit");                 
             JButton restore  = new JButtonWithNumber(i, "obnovit");
-            JButton delete  = new JButtonWithNumber(i, "vymazat");
+            JButton delete  = new JButtonWithNumber(i, "vymazat text");
             JLabel head = new JLabel(element.DE[i].toString());
             
             
-            // save.addActionListener(buttonSave);
-            // restore.addActionListener(buttonRestore);
-            //  delete.addActionListener(buttonDelete);
+            save.addActionListener(buttonSave);
+            restore.addActionListener(buttonRestore);
+            delete.addActionListener(buttonDelete);
             
             item0.add(head);
             if(jtext_height > 1){
@@ -142,20 +145,19 @@ public class JPanelElement extends JPanel{
         
         
  }   
-/*
+    
         class ActionButtonSave implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
              int number = jbwn.number;
-            if(jbwn.number != 1){
-                element.strings_of_elements[jbwn.number] = text[number].getText();
-            } else {
-               if(!text[number].getText().equals(element.strings_of_elements[jbwn.number])){
+             element.strings_of_elements[jbwn.number] = text[number].getText();
+             
+             /*if(!text[number].getText().equals(element.strings_of_elements[jbwn.number])){
                    
-               }
-            }
+             }*/
+            
         }
             
         }
@@ -165,8 +167,7 @@ public class JPanelElement extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            text[jbwn.number].setText("");
-            
+            text[jbwn.number].setText("");            
         }
             
         }
@@ -176,11 +177,10 @@ public class JPanelElement extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);
-            
+            text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);            
         }
             
      }
-*/
+
 
 }

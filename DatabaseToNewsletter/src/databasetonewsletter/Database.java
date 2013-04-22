@@ -18,116 +18,45 @@ public abstract class Database {
     protected List<Element> Data;
     protected String name_database;
     protected DataElement[] DE;
-    private int number_of_element;
+    protected WorkDatabase nowWorkDatabase;
+    private WorkDatabase workDatabaseOffline;
+    private WorkDatabase workDatabaseOnline;
     
-    public Database(String name_database) {
-        
+    //private int number_of_element;
+    
+    public Database(String name_database) {        
         this.name_database = name_database;
         this.Data  = new LinkedList<Element>();
-        this.DE = findDataElements();
-        
+        findDataElements();
+        workDatabaseOffline = new WorkkDatabaseOffline(this);
+        workDatabaseOnline = new WorkDatabaseOnline(this);
+        nowWorkDatabase= workDatabaseOffline;
+    }
+
+    public void setWorkDatabaseOffline() {
+        this.nowWorkDatabase = workDatabaseOffline;
+    }
+
+    public void setWorkDatabaseOnline() {
+        this.nowWorkDatabase = workDatabaseOnline;
     }
     
-    public void removeElement(String head) {
-       
-        for (int i=0; i<Data.size();i++) {
-            if(Data.get(i).strings_of_elements[1].compareTo(head) == 0) {
-               number_of_element--;
-               Data.remove(i);
-               break;
-            }
+    public boolean isOnline(){
+        if(nowWorkDatabase.getClass() == workDatabaseOnline.getClass()){
+            return true;
+        } else {
+            return false;
         }
     }
     
-   
     
-    public void addElement(String[] ss){
-        Element el = new Element(DE, ss);
-        Data.add(el);                
-    }
-    
-    
-    public void changeElements(String head,String ss,int position_string ){
-      
-        
-    } 
     
     public void replaceElements(int i, int j){
         Element ob = Data.get(i);
         Data.add(i, Data.get(j));
         Data.add(j, ob);
-    }
-    
-    
-    
-    public  void readFromDatabase(){
-       ObjectInputStream inputstream = null;
-        String ss = name_database + ".txt";
-        
-        try {
-            inputstream = new ObjectInputStream(new FileInputStream(ss));
-            Data = (List<Element>)inputstream.readObject();
-        } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void writeToTemp(){
-        ObjectOutputStream outputstream = null;
-        String ss = "temp_" + name_database + ".txt";
-        try {
-            
-            outputstream = new ObjectOutputStream(new FileOutputStream(ss));            
-            outputstream.writeObject(Data);
-         
-        }catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                outputstream.close();
-                tempToDatabase();
-            } catch (IOException ex) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
     } 
     
-    public  void tempToDatabase(){
-        
-            String s1= "temp_" + name_database + ".txt";
-            String s2= name_database+".txt";
-            BufferedInputStream inputStream= null;
-            BufferedOutputStream outputstream = null;
-            try {
-                inputStream = new BufferedInputStream(new FileInputStream(s1));
-            } catch (FileNotFoundException ex) { 
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                outputstream = new BufferedOutputStream(new FileOutputStream(s2));
-            } catch (FileNotFoundException ex) { 
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            int number = 1024;
-            byte[] bitarray = new byte[number];
-          
-            try {
-            while (inputStream.available()>0) {
-                int i = inputStream.read(bitarray);
-                outputstream.write(bitarray, 0, number);
-            }
-            } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-        
-            
-                    
-    }
     
     public void sortDate() {
         Collections.sort(Data,new CompareDate());
@@ -142,6 +71,6 @@ public abstract class Database {
     }
 
     
-    abstract   public DataElement[] findDataElements();
+    abstract   protected void findDataElements();
     
 }
