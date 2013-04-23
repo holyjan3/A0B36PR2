@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import javax.swing.JRadioButton;
+
 /**
  *
  * @author Majitel
@@ -13,8 +15,10 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     /**
      * Creates new form JPanelMenulButtonBottom
      */
-    public JPanelMenulButtonBottom() {
+    JFrameMenu frameMenu;
+    public JPanelMenulButtonBottom(JFrameMenu frameMenu) {
         initComponents();
+        this.frameMenu = frameMenu;
     }
 
     /**
@@ -36,14 +40,39 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
         jButton4.setText("jButton1");
 
         selectCancel.setText("zrušit výběr");
+        selectCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectCancelActionPerformed(evt);
+            }
+        });
 
         delete.setText("smazat");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
 
         selectAll.setText("vybrat vše");
+        selectAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectAllActionPerformed(evt);
+            }
+        });
 
         eneblePrint.setText("přidat k tisku");
+        eneblePrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eneblePrintActionPerformed(evt);
+            }
+        });
 
         disablePrint.setText("odstranit z tisku");
+        disablePrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                disablePrintActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -75,6 +104,50 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void selectAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectAllActionPerformed
+        for (int i = 0; i < frameMenu.menuLines.jrb.size(); i++) {
+                JRadioButton button =frameMenu.menuLines.jrb.get(i);
+                button.setSelected(true);
+                button.revalidate();
+        }
+    }//GEN-LAST:event_selectAllActionPerformed
+
+    private void selectCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCancelActionPerformed
+        for (int i = 0; i < frameMenu.menuLines.jrb.size(); i++) {
+                JRadioButton button =frameMenu.menuLines.jrb.get(i);
+                button.setSelected(false);
+                button.revalidate();
+        }
+    }//GEN-LAST:event_selectCancelActionPerformed
+
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
+                if(button.isSelected()){                   
+                    frameMenu.database.nowWorkDatabase.removeElement(button.line.element);
+                }
+        }
+        frameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_deleteMouseClicked
+
+    private void eneblePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eneblePrintActionPerformed
+         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
+                if(button.isSelected()){                   
+                    button.line.element.setStringPrinted(true);
+                }
+        }
+        frameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_eneblePrintActionPerformed
+
+    private void disablePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disablePrintActionPerformed
+        for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
+                if(button.isSelected()){                   
+                    button.line.element.setStringPrinted(false);
+                }
+        }
+        frameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_disablePrintActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delete;
     private javax.swing.JButton disablePrint;

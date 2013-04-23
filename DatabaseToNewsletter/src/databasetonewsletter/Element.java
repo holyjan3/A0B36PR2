@@ -20,16 +20,24 @@ final public class Element implements  Serializable{
 
     public Element(DataElement[] DE,String[] strings_of_elements) {
         this.DE = DE;
-        this.strings_of_elements = contorlStringElement(strings_of_elements);
+        this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
         printed = Boolean.parseBoolean(strings_of_elements[0]);
     }
+    
+    
     
     public Element(DataElement[] DE) {
         this.DE = DE;
         strings_of_elements = new String[DE.length];
-        for (int i = 0; i < DE.length; i++) {
+        setPrinted(false);
+        for (int i = 1; i < DE.length; i++) {
             strings_of_elements[i] = "";
         }
+        
+    }
+    
+    public void setStringPrinted(boolean b){
+        strings_of_elements[0] = Boolean.toString(b);
     }
 
     public boolean isPrinted() {
@@ -52,51 +60,7 @@ final public class Element implements  Serializable{
     
     */
      
-    public static String controlDatabaseElement(DataElement dl, String ss) {
-        
-        switch (dl) {
-            case PRINTED:
-                break;
-            case DAY:
-                break;
-            case MONTH:
-                break;
-            case YEAR:
-                break;
-            case HOUR:
-                break;
-            case MINUTE:
-                break;
-            case HEAD:
-                break;
-            case HEAD_LINK:
-                break;
-            case TOWN:
-                break;
-            case PLACE:
-                break;
-            case TEXT:
-                break;
-            case LINK1_TEXT:
-                break;
-            case LINK2_TEXT:
-                break;
-            case LINK3_TEXT:
-                break;
-            case LINK1:
-                break;
-            case LINK2:
-                break;
-            case LINK3:
-                break;
-            case NAME:
-                break;
-            case MEDIUM:
-                break;          
-        }
-        return null;
-            
-    }
+
     
     public void setString_of_element(String ss,int i) {
            this.strings_of_elements[i] = ss;
@@ -115,15 +79,7 @@ final public class Element implements  Serializable{
         return ss;
     }
     */
-    public String[] contorlStringElement(String[] strings_of_elements) {
-        String ss[] = new String[DE.length];
-        for (int i = 0; i < DE.length; i++) {
-            if((strings_of_elements[i].compareTo("")!=0)){
-             ss[i] = controlDatabaseElement(DE[i], strings_of_elements[i]);
-            }         
-        }
-        return ss;
-    }
+    
    
     
     /*

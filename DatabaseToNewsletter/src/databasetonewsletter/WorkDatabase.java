@@ -10,7 +10,7 @@ package databasetonewsletter;
  */
 public interface WorkDatabase {
     void readFromDatabase();
-    void removeElement(int number_of_element);
+    void removeElement(Element element);
     void addElementt(Element element);    
     void saveDatabese();
     void setStringElement(int numberElement,int numberString,String ss);

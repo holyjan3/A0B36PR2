@@ -43,8 +43,8 @@ public class WorkkDatabaseOffline implements WorkDatabase{
     }
 
     @Override
-    public void removeElement(int number_of_element) {
-        database.Data.remove(number_of_element);
+    public void removeElement(Element element) {
+        database.Data.remove(element);
     }
 
     @Override

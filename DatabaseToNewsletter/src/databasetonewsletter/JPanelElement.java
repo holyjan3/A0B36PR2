@@ -8,6 +8,8 @@ import static databasetonewsletter.DataElement.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.*;
 
 /**
@@ -18,17 +20,17 @@ import javax.swing.*;
         
         
    
-public class JPanelElement extends JPanel{
-    
+public class JPanelElement extends JPanel{    
     JTextArea[] text;
-    Database database;
-
-    
+    Database database;    
    
     protected int jtext_height;
     protected int jtext_width;    
     protected Insets Ins = new Insets(10, 10, 20, 10);    
-    Element element;   
+    Element element;
+    
+    protected String deleteString = "";
+    protected int deleteNumberString = 0;
 
     JPanelElement(Database database,Element element) {
         this.database = database;
@@ -42,7 +44,7 @@ public class JPanelElement extends JPanel{
         add(panel);
         this.add(panel);
         
-        ActionButtonSave buttonSave = new ActionButtonSave();
+        ActionSave save = new ActionSave();
         ActionButtonDelete buttonDelete = new ActionButtonDelete();
         ActionButtonRestore buttonRestore = new ActionButtonRestore();
         
@@ -108,17 +110,20 @@ public class JPanelElement extends JPanel{
             JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));  
             
             
-            text[i] = new JTextArea(jtext_height,80);            
+            text[i] = new JTextAreaWithNumber(i,jtext_height,80);
+           
             
             
-            JButton save = new JButtonWithNumber(i, "uložit");                 
+            //JButton save = new JButtonWithNumber(i, "uložit");                 
             JButton restore  = new JButtonWithNumber(i, "obnovit");
             JButton delete  = new JButtonWithNumber(i, "vymazat text");
             JLabel head = new JLabel(element.DE[i].toString());
             
             
-            save.addActionListener(buttonSave);
+            text[i].addFocusListener((FocusListener) save);
+            
             restore.addActionListener(buttonRestore);
+           
             delete.addActionListener(buttonDelete);
             
             item0.add(head);
@@ -131,7 +136,7 @@ public class JPanelElement extends JPanel{
             item1.add(text[i]); 
             }
             
-            item2.add(save);
+            //item2.add(save);
             item2.add(restore);
             item2.add(delete);
        
@@ -146,19 +151,28 @@ public class JPanelElement extends JPanel{
         
  }   
     
-        class ActionButtonSave implements ActionListener {
+        class ActionSave implements FocusListener {
 
         @Override
-        public void actionPerformed(ActionEvent e) {
-            JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-             int number = jbwn.number;
-             element.strings_of_elements[jbwn.number] = text[number].getText();
-             
-             /*if(!text[number].getText().equals(element.strings_of_elements[jbwn.number])){
-                   
-             }*/
-            
+        public void focusGained(FocusEvent e) {
         }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+               JTextAreaWithNumber jtf = (JTextAreaWithNumber) e.getSource();
+               if(!jtf.getText().equals("")) {
+                   
+               deleteString = element.strings_of_elements[jtf.number];
+               deleteNumberString = jtf.number;
+               element.strings_of_elements[jtf.number] = jtf.getText();
+               
+               }
+               //System.out.println(e.getActionCommand());
+        }
+
+      
+
+        
             
         }
         
@@ -167,7 +181,10 @@ public class JPanelElement extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            text[jbwn.number].setText("");            
+            deleteString = text[jbwn.number].getText();
+            deleteNumberString = jbwn.number;
+            text[jbwn.number].setText(""); 
+            
         }
             
         }
@@ -177,7 +194,15 @@ public class JPanelElement extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);            
+            if((jbwn.number == deleteNumberString) && (!deleteString.equals("") )){
+                element.strings_of_elements[jbwn.number] = deleteString;
+            } else {                
+                deleteString = "";
+            }
+           
+            if(!element.strings_of_elements[jbwn.number].equals("")){
+            text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);
+            }
         }
             
      }

@@ -22,9 +22,9 @@ public class JFrameMenu extends JFrame{
     public JFrameMenu(Database database) throws HeadlessException {        
         super(database.name_database);
         this.database = database;
-        menulButtonTop = new JPanelMenulButtonTop(database,this);
+        menulButtonTop = new JPanelMenulButtonTop(this);
         menuLines = new JPanelMenuLines(database);
-        menulButtonBottom = new JPanelMenulButtonBottom();
+        menulButtonBottom = new JPanelMenulButtonBottom(this);
         
         
         setDefaultCloseOperation(EXIT_ON_CLOSE); 

@@ -33,7 +33,7 @@ public class WorkDatabaseOnline implements WorkDatabase{
     }
 
     @Override
-    public void removeElement(int number_of_element) {
+    public void removeElement(Element element) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

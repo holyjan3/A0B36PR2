@@ -11,8 +11,10 @@ import javax.swing.JRadioButton;
  * @author Majitel
  */
 public class JRadioButtonWithNumber extends JRadioButton{
-    int number;
-    public JRadioButtonWithNumber(int number) {
+    final int number;
+    JPanelMenuLines.JPanelMenuLine line;
+    public JRadioButtonWithNumber(int number,JPanelMenuLines.JPanelMenuLine line) {
+        this.line = line;
         this.number = number;
     }
     

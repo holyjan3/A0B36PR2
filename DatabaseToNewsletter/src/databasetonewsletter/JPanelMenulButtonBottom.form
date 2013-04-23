@@ -59,26 +59,41 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="zru&#x161;it v&#xfd;b&#x11b;r"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectCancelActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="delete">
       <Properties>
         <Property name="text" type="java.lang.String" value="smazat"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="selectAll">
       <Properties>
         <Property name="text" type="java.lang.String" value="vybrat v&#x161;e"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectAllActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="eneblePrint">
       <Properties>
         <Property name="text" type="java.lang.String" value="p&#x159;idat k tisku"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eneblePrintActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="disablePrint">
       <Properties>
         <Property name="text" type="java.lang.String" value="odstranit z tisku"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disablePrintActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

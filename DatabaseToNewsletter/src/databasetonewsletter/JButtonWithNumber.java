@@ -11,7 +11,7 @@ import javax.swing.JButton;
  * @author Majitel
  */
 public class JButtonWithNumber extends JButton{
-    int number;
+    final int number;
 
     public JButtonWithNumber(int number, String text) {
         super(text);

@@ -4,14 +4,71 @@
  */
 package databasetonewsletter;
 
+
 /**
  *
  * @author Majitel
  */
-public class ControlInsert {
+public class ControlElement {
 
    
-   static final int MAX_TEXT = 0;       
+   static final int MAX_TEXT = 0;
+   
+   
+       public static String controlDatabaseElement(DataElement dl, String ss) {
+        
+        switch (dl) {
+            case PRINTED:
+                break;
+            case DAY:
+                break;
+            case MONTH:
+                break;
+            case YEAR:
+                break;
+            case HOUR:
+                break;
+            case MINUTE:
+                break;
+            case HEAD:
+                break;
+            case HEAD_LINK:
+                break;
+            case TOWN:
+                break;
+            case PLACE:
+                break;
+            case TEXT:
+                break;
+            case LINK1_TEXT:
+                break;
+            case LINK2_TEXT:
+                break;
+            case LINK3_TEXT:
+                break;
+            case LINK1:
+                break;
+            case LINK2:
+                break;
+            case LINK3:
+                break;
+            case NAME:
+                break;
+            case MEDIUM:
+                break;          
+        }
+        return null;            
+    }
+       
+   public static String[] contorlStringElement(String[] strings_of_elements,DataElement[] DE) {
+        String ss[] = new String[DE.length];
+        for (int i = 0; i < DE.length; i++) {
+            if((strings_of_elements[i].compareTo("")!=0)){
+             ss[i] = controlDatabaseElement(DE[i], strings_of_elements[i]);
+            }        
+        }
+        return ss;
+    }
     
     
     public static String controlText(String ss){

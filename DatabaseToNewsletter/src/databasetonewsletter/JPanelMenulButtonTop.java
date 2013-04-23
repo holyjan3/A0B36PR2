@@ -16,10 +16,10 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     Database database;
     JFrameMenu jFrameMenu;
     
-    public JPanelMenulButtonTop(Database database,JFrameMenu jFrameMenu) {
+    public JPanelMenulButtonTop(JFrameMenu jFrameMenu) {
         this.jFrameMenu = jFrameMenu;
         initComponents();
-        this.database= database;
+        this.database= jFrameMenu.database;
         DataElement [] DE = database.DE;
         array = new ArrayList<>(8);
         array.add(0,0);
@@ -31,7 +31,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         comboBox.addItem(DataElement.HEAD.toString());        
         
         for (int i = 0; i < DE.length; i++) {
-           if(DE[i].Sort()){
+           if(DE[i].sort()){
                     comboBox.addItem(DE[i].toStringSort()); 
                     j++;                   
                     array.add(j, i);        
@@ -52,7 +52,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     private void initComponents() {
 
         javax.swing.JTextField jTextField2 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
         comboBox = new javax.swing.JComboBox();
         arrange = new javax.swing.JButton();
         addElement = new javax.swing.JButton();
@@ -74,14 +73,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
-        jSeparator1.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator1.setToolTipText("");
-        jSeparator1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSeparator1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jSeparator1.setPreferredSize(new java.awt.Dimension(9, 10));
-        jSeparator1.setRequestFocusEnabled(false);
-
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);
@@ -91,9 +82,9 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         arrange.setText("seřadit");
 
         addElement.setText("přidej záznam");
-        addElement.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addElementMouseClicked(evt);
+        addElement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addElementActionPerformed(evt);
             }
         });
 
@@ -124,9 +115,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arrange)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,7 +128,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(findButton)
                     .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(comboBox)
@@ -172,17 +160,15 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         this.jTextField1.selectAll();
     }//GEN-LAST:event_jTextField1MouseClicked
 
-    private void addElementMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addElementMouseClicked
-       JFrameElement jfe = new JFrameElement(database);
-      
-    }//GEN-LAST:event_addElementMouseClicked
+    private void addElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addElementActionPerformed
+        JFrameElement jfe = new JFrameElement(jFrameMenu.menuLines);
+    }//GEN-LAST:event_addElementActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
     private javax.swing.JButton arrange;
     private javax.swing.JComboBox comboBox;
     private javax.swing.JButton findButton;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

@@ -47,7 +47,7 @@ public enum DataElement {
         return super.toString();
     }
     
-    public boolean Sort(){
+    public boolean sort(){
         switch (this) {
             case PRINTED:   
             case DAY:
@@ -61,6 +61,16 @@ public enum DataElement {
             }
     }
     
-
+    public boolean controlLinks(){
+        switch (this) {
+            case LINK1:
+            case LINK2:
+            case LINK3:
+            case HEAD_LINK: 
+                return true;
+            default:
+                return false;
+        }
+    }
     
 }

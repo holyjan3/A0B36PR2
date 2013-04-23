@@ -4,8 +4,6 @@
  */
 package databasetonewsletter;
 
-import java.awt.Color;
-import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -18,7 +16,7 @@ public class JPanelMenuLines extends JPanel{
     protected ArrayList<Integer> array;
     protected int length_array;
     protected DataElement[] dataElementses;
-    
+    ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
     
 
 
@@ -29,7 +27,7 @@ public class JPanelMenuLines extends JPanel{
         dataElementses = new DataElement[8];
         length_array=0;
         for (int i = 0; i < database.DE.length; i++) {
-            if(database.DE[i].Sort()){
+            if(database.DE[i].sort()){
                     dataElementses[length_array] = database.DE[i];
                     array.add(length_array, i);
                     length_array++;
@@ -47,14 +45,13 @@ public class JPanelMenuLines extends JPanel{
   
     
     public void overWritePanel(){
-        this.removeAll();
-       
+       this.removeAll();       
        for (int i = 0; i < database.Data.size(); i++) {
            JPanel jp = new JPanelMenuLine(i);
-           add(jp).revalidate();
+           add(jp);
         }
-       
-       
+       this.revalidate();
+       this.repaint();
       }
     
     public void addLine(){
@@ -64,35 +61,36 @@ public class JPanelMenuLines extends JPanel{
    
     class JPanelMenuLine extends JPanel
     {
-        JRadioButton jrb;
-        JCheckBox checkBox; 
+        
+        JCheckBox checkBox;
+        Element element;
         public JPanelMenuLine(int numberLine) {
-              jrb = new JRadioButtonWithNumber(numberLine);
-              
+              jrb.add(numberLine,new JRadioButtonWithNumber(numberLine,this));
+              element = database.Data.get(numberLine);
               checkBox = new JCheckBox();
               checkBox.setFocusable(true);
               
               
-              /*
-              if(Boolean.parseBoolean(database.Data.get(numberLine).strings_of_elements[0])){
+              
+              if(Boolean.parseBoolean(element.strings_of_elements[0])){
                   checkBox.setSelected(true);
               } else {
                   checkBox.setSelected(false);
               }
-              */
               checkBox.setEnabled(false);
               
               JLabel label;
               JButton jButton;
               
-              label= new JLabel(database.Data.get(numberLine).strings_of_elements[1]);
-              label.setSize(DataElement.HEAD.LINE_SIZE, 1);              
+              label= new JLabel(element.strings_of_elements[1]);              
+              label.setSize(DataElement.HEAD.LINE_SIZE, 1);
+              
               for (int i = 0; i < length_array; i++) {
-                   label= new JLabel(database.Data.get(numberLine).strings_of_elements[array.get(i)]);
+                   label= new JLabel(element.strings_of_elements[array.get(i)]);
                    label.setSize(dataElementses[array.get(i)].LINE_SIZE, 1); 
               }        
               jButton = new JButtonWithNumber(numberLine, "upravit");
-              add(jrb);
+              add(jrb.get(numberLine));
               add(checkBox);
               add(jButton);           
               
