@@ -12,18 +12,19 @@ import javax.swing.*;
  * @author Majitel
  */
 public class JFrameElement extends JFrame{
+    
     JPanelElement jpanel;
     JScrollPane scrollPane;
     JPanel jpanelW;
     int number_of_element;
     Database database;
     Element element;
-    
+    boolean new_element;
     public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
         super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[1].toString());
         database = panelMenuLines.database;
         this.element = element;
-        
+        new_element = false;
         
         
         jpanel = new JPanelElement(database,element);    
@@ -52,6 +53,9 @@ public class JFrameElement extends JFrame{
         super("Nový záznam");
         this.database = panelMenuLines.database;
         element = new Element(database.DE);
+        new_element = true;
+        
+        //database.Data.add(element);
         jpanel = new JPanelElement(database,element);       
         
         jpanelW = new JPanelElementGlobaBottom(this,panelMenuLines);

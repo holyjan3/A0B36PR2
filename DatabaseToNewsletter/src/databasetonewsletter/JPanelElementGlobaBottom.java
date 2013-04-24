@@ -146,7 +146,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     }//GEN-LAST:event_replaceAllMouseClicked
 
     private void saveExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveExitActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_saveExitActionPerformed
 
     private void saveExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveExitMouseClicked

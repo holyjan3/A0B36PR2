@@ -134,6 +134,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
          for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
                     button.line.element.setStringPrinted(true);
+                    
                 }
         }
         frameMenu.menuLines.overWritePanel();

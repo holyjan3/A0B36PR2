@@ -5,7 +5,6 @@
 package databasetonewsletter;
 
 import java.util.ArrayList;
-
 /**
  *
  * @author Majitel
@@ -80,6 +79,11 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         });
 
         arrange.setText("seřadit");
+        arrange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrangeActionPerformed(evt);
+            }
+        });
 
         addElement.setText("přidej záznam");
         addElement.addActionListener(new java.awt.event.ActionListener() {
@@ -161,8 +165,22 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1MouseClicked
 
     private void addElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addElementActionPerformed
-        JFrameElement jfe = new JFrameElement(jFrameMenu.menuLines);
+        new JFrameElement(jFrameMenu.menuLines);
     }//GEN-LAST:event_addElementActionPerformed
+
+    private void arrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrangeActionPerformed
+        int i = comboBox.getSelectedIndex();
+        if(i==0){
+            jFrameMenu.database.sortPrint();
+        } else {
+            if(jFrameMenu.database.DE[i] == DataElement.DAY){
+               
+            } else {
+                 jFrameMenu.database.sortString(1);
+            }
+        }
+        jFrameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_arrangeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;

@@ -14,7 +14,6 @@ import javax.swing.*;
 public class JPanelMenuLines extends JPanel{
     Database database;
     protected ArrayList<Integer> array;
-    protected int length_array;
     protected DataElement[] dataElementses;
     ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
     
@@ -25,15 +24,16 @@ public class JPanelMenuLines extends JPanel{
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
         array = new ArrayList(8);
         dataElementses = new DataElement[8];
-        length_array=0;
-        for (int i = 0; i < database.DE.length; i++) {
+        int j = 0;
+        array.add(j,1);
+        for (int i = 1; i < database.DE.length; i++) {
             if(database.DE[i].sort()){
-                    dataElementses[length_array] = database.DE[i];
-                    array.add(length_array, i);
-                    length_array++;
-                    break;               
+                j++;    
+                array.add(j, i);
+                    
             }
-        }                             
+        }
+        int ddd = 0;
             
         
           for (int i = 0; i < database.Data.size();i++) {
@@ -45,7 +45,8 @@ public class JPanelMenuLines extends JPanel{
   
     
     public void overWritePanel(){
-       this.removeAll();       
+       this.removeAll();
+       this.jrb.clear();
        for (int i = 0; i < database.Data.size(); i++) {
            JPanel jp = new JPanelMenuLine(i);
            add(jp);
@@ -66,6 +67,7 @@ public class JPanelMenuLines extends JPanel{
         Element element;
         public JPanelMenuLine(int numberLine) {
               jrb.add(numberLine,new JRadioButtonWithNumber(numberLine,this));
+       
               element = database.Data.get(numberLine);
               checkBox = new JCheckBox();
               checkBox.setFocusable(true);
@@ -84,16 +86,19 @@ public class JPanelMenuLines extends JPanel{
               
               label= new JLabel(element.strings_of_elements[1]);              
               label.setSize(DataElement.HEAD.LINE_SIZE, 1);
+              add(jrb.get(numberLine));              
+              add(checkBox);
               
-              for (int i = 0; i < length_array; i++) {
+              
+              for (int i = 0; i < array.size(); i++) {
+                   System.out.println("nnn"+element.strings_of_elements[array.get(i)]+array.get(i));
                    label= new JLabel(element.strings_of_elements[array.get(i)]);
-                   label.setSize(dataElementses[array.get(i)].LINE_SIZE, 1); 
+                  // label.setSize(dataElementses[array.get(i)].LINE_SIZE, 1); 
+                   add(label);
               }        
               jButton = new JButtonWithNumber(numberLine, "upravit");
-              add(jrb.get(numberLine));
-              add(checkBox);
-              add(jButton);           
-              
+                      
+              add(jButton);  
               
         }      
    
