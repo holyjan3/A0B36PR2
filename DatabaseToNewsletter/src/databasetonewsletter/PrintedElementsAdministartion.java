@@ -26,6 +26,9 @@ public class PrintedElementsAdministartion {
         Collections.sort(printed_el);
         // tady to vybere nejvetsi poocet stringu
         int max_count_string=0;
+        // tady musi byt zacleneni udalost... 
+        
+        
         for (int i = 0; i < printed_el.size(); i++) {
             
         }

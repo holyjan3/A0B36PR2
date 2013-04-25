@@ -41,13 +41,15 @@
               <Component id="comboBox" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="arrange" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="110" max="32767" attributes="0"/>
-              <Component id="jTextField1" min="-2" pref="192" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="findButton" min="-2" pref="79" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Component id="jTextField1" min="-2" pref="192" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="findButton1" min="-2" pref="79" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="findExit" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Component id="saveButton" min="-2" pref="66" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,12 +58,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="findButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="saveButton" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="findExit" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="findButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="comboBox" alignment="0" max="32767" attributes="0"/>
-                  <Component id="arrange" alignment="0" max="32767" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Component id="arrange" alignment="3" max="32767" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" max="32767" attributes="0"/>
+                  </Group>
                   <Component id="addElement" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
@@ -95,10 +102,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addElementActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="findButton">
+    <Component class="javax.swing.JButton" name="findExit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="naj&#xed;t"/>
+        <Property name="text" type="java.lang.String" value="zru&#x161;it v&#xfd;b&#x11b;r"/>
+        <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findExitActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="findExitFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
@@ -114,6 +126,15 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField1MouseClicked"/>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusLost"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="findButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="naj&#xed;t"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="findButton1ActionPerformed"/>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="findButton1FocusLost"/>
       </Events>
     </Component>
   </SubComponents>

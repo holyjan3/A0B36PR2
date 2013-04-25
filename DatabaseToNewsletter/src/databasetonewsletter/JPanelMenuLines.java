@@ -55,6 +55,21 @@ public class JPanelMenuLines extends JPanel{
        this.repaint();
       }
     
+    public void find(String ss){
+       this.removeAll();
+       this.jrb.clear();
+       int j = 0;
+        for (int i = 0; i < database.Data.size(); i++) {
+            if(database.Data.get(i).strings_of_elements[1].toLowerCase().contains(ss)){
+                JPanel jp = new JPanelMenuLine(i);
+                j++;
+                add(jp);
+            }
+        }
+       this.revalidate();
+       this.repaint();
+    }
+    
     public void addLine(){
            add(new JPanelMenuLine(database.Data.size()));
     }
@@ -66,7 +81,8 @@ public class JPanelMenuLines extends JPanel{
         JCheckBox checkBox;
         Element element;
         public JPanelMenuLine(int numberLine) {
-              jrb.add(numberLine,new JRadioButtonWithNumber(numberLine,this));
+              JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,this);
+              jrb.add(jr);
        
               element = database.Data.get(numberLine);
               checkBox = new JCheckBox();
@@ -86,7 +102,7 @@ public class JPanelMenuLines extends JPanel{
               
               label= new JLabel(element.strings_of_elements[1]);              
               label.setSize(DataElement.HEAD.LINE_SIZE, 1);
-              add(jrb.get(numberLine));              
+              add(jr);              
               add(checkBox);
               
               

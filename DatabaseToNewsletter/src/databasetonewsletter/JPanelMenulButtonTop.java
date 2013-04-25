@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Majitel
  */
 public class JPanelMenulButtonTop extends javax.swing.JPanel {
-    protected String findInText="Vyhledat v Názvech";
+    private String findInText="Vyhledat v Názvech";
     ArrayList<Integer> array;
     Database database;
     JFrameMenu jFrameMenu;
@@ -54,9 +54,10 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         comboBox = new javax.swing.JComboBox();
         arrange = new javax.swing.JButton();
         addElement = new javax.swing.JButton();
-        findButton = new javax.swing.JButton();
+        findExit = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        findButton1 = new javax.swing.JButton();
 
         jTextField2.setText("Najít v názvu");
         jTextField2.setToolTipText("");
@@ -92,7 +93,18 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        findButton.setText("najít");
+        findExit.setText("zrušit výběr");
+        findExit.setActionCommand("");
+        findExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findExitActionPerformed(evt);
+            }
+        });
+        findExit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                findExitFocusLost(evt);
+            }
+        });
 
         saveButton.setText("uložit");
 
@@ -108,6 +120,18 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        findButton1.setText("najít");
+        findButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findButton1ActionPerformed(evt);
+            }
+        });
+        findButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                findButton1FocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -119,25 +143,30 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arrange)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(saveButton)
-                .addGap(19, 19, 19))
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(findButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(findExit)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(findButton)
-                    .addComponent(saveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(saveButton)
+                        .addComponent(findExit)
+                        .addComponent(findButton1))
                     .addComponent(comboBox)
-                    .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1))
+                    .addComponent(addElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -156,7 +185,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         if(jTextField1.getText().equals("")){
-        this.jTextField1.setText(findInText);
+            this.jTextField1.setText(findInText);
         }
     }//GEN-LAST:event_jTextField1FocusLost
 
@@ -182,11 +211,31 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_arrangeActionPerformed
 
+    private void findExitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_findExitFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findExitFocusLost
+
+    private void findButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButton1ActionPerformed
+        if(jTextField1.getText() != ""){            
+        jFrameMenu.menuLines.find(jTextField1.getText().toLowerCase());
+        }
+    }//GEN-LAST:event_findButton1ActionPerformed
+
+    private void findButton1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_findButton1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_findButton1FocusLost
+
+    private void findExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findExitActionPerformed
+       this.jTextField1.setText(findInText);
+       jFrameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_findExitActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
     private javax.swing.JButton arrange;
     private javax.swing.JComboBox comboBox;
-    private javax.swing.JButton findButton;
+    private javax.swing.JButton findButton1;
+    private javax.swing.JButton findExit;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

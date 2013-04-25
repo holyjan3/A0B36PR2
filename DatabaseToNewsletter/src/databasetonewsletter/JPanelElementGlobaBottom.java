@@ -150,6 +150,11 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     }//GEN-LAST:event_saveExitActionPerformed
 
     private void saveExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveExitMouseClicked
+        if(this.jCheckBox1.isSelected()){
+             panelElement.element.strings_of_elements[0] = Boolean.toString(true);
+        }else {
+            panelElement.element.strings_of_elements[0] = Boolean.toString(false);
+        }
         for (int i = 1; i < panelElement.text.length; i++) {            
            panelElement.element.strings_of_elements[i] = panelElement.text[i].getText();
         }
