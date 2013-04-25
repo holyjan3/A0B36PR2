@@ -16,8 +16,6 @@ public class DatabaseToNewsletter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Database database = new DatabaseEventFuture("ahoj");
-        JFrame jf = new JFrameMenu(database);
-        
+        JFrameMainMenu m = new JFrameMainMenu();
     }
 }

@@ -27,7 +27,7 @@ public class JFrameMenu extends JFrame{
         menulButtonBottom = new JPanelMenulButtonBottom(this);
         
         
-        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        
         setVisible(true);
         setSize(1000, 1000);
         BorderLayout bl = new BorderLayout();        

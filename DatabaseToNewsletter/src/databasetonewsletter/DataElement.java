@@ -21,6 +21,7 @@ public enum DataElement {
     TOWN        (20,8),
     PLACE       (0,9),
     TEXT        (0,10),
+    TEXT_LINK   (0,0),
     LINK1_TEXT  (0,11),
     LINK2_TEXT  (0,12),
     LINK3_TEXT  (0,13),
@@ -28,7 +29,8 @@ public enum DataElement {
     LINK2       (0,15),
     LINK3       (0,16),
     NAME        (20,-1),
-    MEDIUM      (20,-1);
+    MEDIUM      (20,-1),
+    TYPE        (10,-1);
     
     final int ELEMENT_FUTURE;
     final int LINE_SIZE;
@@ -49,7 +51,7 @@ public enum DataElement {
     
     public boolean sort(){
         switch (this) {
-            case PRINTED:   
+            //case PRINTED:   
             case DAY:
             case MONTH:                   
             case TOWN:

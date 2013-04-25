@@ -174,7 +174,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             jFrameMenu.database.sortPrint();
         } else {
             if(jFrameMenu.database.DE[i] == DataElement.DAY){
-               
+                jFrameMenu.database.sortDate();
             } else {
                  jFrameMenu.database.sortString(1);
             }

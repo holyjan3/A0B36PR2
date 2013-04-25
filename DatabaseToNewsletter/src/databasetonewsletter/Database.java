@@ -14,20 +14,26 @@ import java.util.logging.Logger;
  * @author Majitel
  */
 
-public abstract class Database {
+public class Database {
     protected List<Element> Data;
     protected String name_database;
+    protected String path;
     protected DataElement[] DE;
     protected WorkDatabase nowWorkDatabase;
     private WorkDatabase workDatabaseOffline;
     private WorkDatabase workDatabaseOnline;
+    protected final String name_file;
     
     //private int number_of_element;
     
-    public Database(String name_database) {        
-        this.name_database = name_database;
+    public Database(DataDatabase database) {        
+        this.name_database = database.name;
+        this.name_file = database.name();
+        this.path = database.path;
+        this.DE = database.dataElemen;
+        
         this.Data  = new LinkedList<Element>();
-        findDataElements();
+        
         workDatabaseOffline = new WorkkDatabaseOffline(this);
         workDatabaseOnline = new WorkDatabaseOnline(this);
         nowWorkDatabase= workDatabaseOffline;
@@ -70,7 +76,5 @@ public abstract class Database {
         Collections.sort(Data,new ComparatorPrint());
     }
 
-    
-    abstract   protected void findDataElements();
     
 }

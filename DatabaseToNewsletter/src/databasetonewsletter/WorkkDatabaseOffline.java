@@ -30,7 +30,7 @@ public class WorkkDatabaseOffline implements WorkDatabase{
     @Override
     public void readFromDatabase() {
         ObjectInputStream inputstream = null;
-        String ss = database.name_database + ".txt";
+        String ss = database.name_file + ".txt";
         
         try {
             inputstream = new ObjectInputStream(new FileInputStream(ss));
@@ -56,7 +56,7 @@ public class WorkkDatabaseOffline implements WorkDatabase{
     @Override
     public void saveDatabese() {
         ObjectOutputStream outputstream = null;
-        String ss = "temp_" + database.name_database + ".txt";
+        String ss = "temp_" + database.name_file + ".txt";
         try {
             
             outputstream = new ObjectOutputStream(new FileOutputStream(ss));            
@@ -78,8 +78,8 @@ public class WorkkDatabaseOffline implements WorkDatabase{
     
     public  void tempToDatabase(){
         
-            String s1= "temp_" + database.name_database + ".txt";
-            String s2= database.name_database+".txt";
+            String s1= "temp_" + database.name_file + ".txt";
+            String s2= database.name_file+".txt";
             BufferedInputStream inputStream= null;
             BufferedOutputStream outputstream = null;
             try {
