@@ -155,10 +155,18 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         }else {
             panelElement.element.strings_of_elements[0] = Boolean.toString(false);
         }
-        for (int i = 1; i < panelElement.text.length; i++) {            
-           panelElement.element.strings_of_elements[i] = panelElement.text[i].getText();
+        
+        for (int i = 1; i < this.panelElement.element.strings_of_elements.length; i++) {
+            panelElement.element.strings_of_elements[i] = panelElement.text[i].getText();
         }
-        panelElement.database.nowWorkDatabase.addElementt(panelElement.element);
+      
+        
+        if(frameElement.new_element){
+            panelElement.database.nowWorkDatabase.modifyElement(panelElement);
+            panelElement.database.nowWorkDatabase.addElementt(panelElement.element);
+        } else {
+            panelElement.database.nowWorkDatabase.modifyElement(panelElement);
+        }
         panelMenuLines.overWritePanel();
         frameElement.dispose();
         

@@ -42,6 +42,6 @@ public class JTextAreaWithNumber extends JTextArea{
         super(doc, text, rows, columns);
         this.number = number;
     }
-    
-   
+
+  
 }

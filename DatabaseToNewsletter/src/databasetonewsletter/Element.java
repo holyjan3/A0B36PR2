@@ -21,7 +21,7 @@ final public class Element implements  Serializable{
     
     public Element(DataElement[] DE,String[] strings_of_elements) {
         this.DE = DE;
-        this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
+        //this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
         printed = Boolean.parseBoolean(strings_of_elements[0]);
     }
     

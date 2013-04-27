@@ -93,7 +93,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        findExit.setText("zrušit výběr");
+        findExit.setText("zrušit hledání");
         findExit.setActionCommand("");
         findExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +117,11 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         jTextField1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField1FocusLost(evt);
+            }
+        });
+        jTextField1.addVetoableChangeListener(new java.beans.VetoableChangeListener() {
+            public void vetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {
+                jTextField1VetoableChange(evt);
             }
         });
 
@@ -149,7 +154,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addComponent(findButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(findExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -202,7 +207,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         if(i==0){
             jFrameMenu.database.sortPrint();
         } else {
-            if(jFrameMenu.database.DE[i] == DataElement.DAY){
+            if(jFrameMenu.database.DE[i] == DataElement.DATE){
                 jFrameMenu.database.sortDate();
             } else {
                  jFrameMenu.database.sortString(1);
@@ -229,6 +234,10 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
        this.jTextField1.setText(findInText);
        jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_findExitActionPerformed
+
+    private void jTextField1VetoableChange(java.beans.PropertyChangeEvent evt)throws java.beans.PropertyVetoException {//GEN-FIRST:event_jTextField1VetoableChange
+      
+    }//GEN-LAST:event_jTextField1VetoableChange
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;

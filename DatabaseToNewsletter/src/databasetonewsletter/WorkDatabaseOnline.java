@@ -38,10 +38,14 @@ public class WorkDatabaseOnline implements WorkDatabase{
     }
 
     @Override
-    public void setStringElement(int numberElement, int numberString, String ss) {
+    public void modifyElement(JPanelElement panelElement) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }   
+
+    @Override
+    public Element openElement(int number_element) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
     
 }

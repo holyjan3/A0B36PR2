@@ -15,47 +15,65 @@ public class CompareDate implements Comparator<Element>{
     @Override
     public int compare(Element o1, Element o2) {
         int i = 0;
-        int year2 = 0; int month2 = 0; int day2= 0; //int hour2= 0; int minute2 = 0;
-        int year1 = 0; int month1 = 0; int day1= 0;//int hour1 = 0; int minute1 = 0;
+        int year2 = 0; int month2 = 0; int day2= 0; int hour2= 0; int minute2 = 0;
+        int year1 = 0; int month1 = 0; int day1= 0; int hour1 = 0; int minute1 = 0;
         
-        try{
-        year1 = Integer.parseInt(o1.strings_of_elements[DataElement.YEAR.ordinal()]);
-        month1 = Integer.parseInt(o1.strings_of_elements[DataElement.MONTH.ordinal()]);
-        day1 = Integer.parseInt(o1.strings_of_elements[DataElement.DAY.ordinal()]);        
-        //hour1 = Integer.getInteger(o1.strings_of_elements[DataElement.HOUR.ordinal()]);       
-        //minute1 = Integer.getInteger(o1.strings_of_elements[DataElement.MINUTE.ordinal()]);
-        } catch(NumberFormatException ne){
-            return 1;
-        }
+        String[] ssD1 = o1.strings_of_elements[DataElement.DATE.ordinal()].split("[.]");
+        String[] ssD2 = o2.strings_of_elements[DataElement.DATE.ordinal()].split("[.]");
         
-        try{
-        year2 = Integer.parseInt(o2.strings_of_elements[DataElement.YEAR.ordinal()]);
-        month2 = Integer.parseInt(o2.strings_of_elements[DataElement.MONTH.ordinal()]);
-        day2 = Integer.parseInt(o2.strings_of_elements[DataElement.DAY.ordinal()]);
-        //hour2 = Integer.getInteger(o2.strings_of_elements[DataElement.HOUR.ordinal()]);
-        //minute2 = Integer.getInteger(o2.strings_of_elements[DataElement.MINUTE.ordinal()]);
-        } catch (NumberFormatException ne) {
+        String[] ssT1;
+        String[] ssT2;
+        
+        if(ssD1.length == 3){
+            day1 = Integer.parseInt(ssD1[0]);
+            month1 = Integer.parseInt(ssD1[1]);
+            year1 = Integer.parseInt(ssD1[2]);
+        } else {
             return -1;
         }
         
+        if(ssD2.length == 3){
+            day2 = Integer.parseInt(ssD2[0]);
+            month2 = Integer.parseInt(ssD2[1]);
+            year2 = Integer.parseInt(ssD2[2]);            
+        } else {
+            return 1;
+        }
+        
         if(year1 != year2) {
-            i = year1-year2; 
+            return year1-year2; 
         } else {
             if(month1 != month2){
-                i = month1- month2;
+                return month1- month2;
             } else {
                 if (day1 != day2) {
-                    i = day1-day2;
-                } /*else {
-                    if(hour1 != hour2){
-                        i = hour1-hour2;
-                    }else {
-                        i = minute1 - minute2;
+                    return day1-day2;
+                } else {
+                    ssT1 = o1.strings_of_elements[DataElement.TIME.ordinal()].split("[:]");
+                    ssT2 = o2.strings_of_elements[DataElement.TIME.ordinal()].split("[:]");                    
+                    if(ssD1.length == 2){
+                        hour1 = Integer.parseInt(ssT1[0]);
+                        minute1 = Integer.parseInt(ssT1[1]);
+                    } else {
+                        return -1;
+                    }        
+                    if(ssD2.length == 2){
+                        hour2 = Integer.parseInt(ssT2[0]);
+                        minute2 = Integer.parseInt(ssT2[1]);        
+                    } else {
+                        return 1;
                     }
-                }*/
+                     if(hour2!= hour1){
+                         return hour1- hour2;
+                     }else {
+                         return minute1-minute2;
+                     }   
+                       
+                   }     
+                   
+                }
             }
         }
-        return i;
+       
     }
     
-}

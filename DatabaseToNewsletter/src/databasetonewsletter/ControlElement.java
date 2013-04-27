@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import static databasetonewsletter.DataControl.URL;
+
 
 /**
  *
@@ -12,126 +14,104 @@ package databasetonewsletter;
 public class ControlElement {
 
    
-   static final int MAX_TEXT = 0;
-   
-   
-       public static String controlDatabaseElement(DataElement dl, String ss) {
-        
-        switch (dl) {
-            case PRINTED:
-                break;
-            case DAY:
-                break;
-            case MONTH:
-                break;
-            case YEAR:
-                break;
-            case HOUR:
-                break;
-            case MINUTE:
-                break;
-            case HEAD:
-                break;
-            case HEAD_LINK:
-                break;
-            case TOWN:
-                break;
-            case PLACE:
-                break;
-            case TEXT:
-                break;
-            case LINK1_TEXT:
-                break;
-            case LINK2_TEXT:
-                break;
-            case LINK3_TEXT:
-                break;
-            case LINK1:
-                break;
-            case LINK2:
-                break;
-            case LINK3:
-                break;
-            case NAME:
-                break;
-            case MEDIUM:
-                break;          
+       public static boolean controlDatabaseElement(DataElement DE, String ss) {
+        int i = 0;
+        boolean b = false;
+           switch ((DE.type)) {
+           case DATE:
+                    b = controlDate(ss);
+               break;
+           case TIME:
+                    b = controlTime(ss);
+               break;
+           case VARCHAR:
+                    b = contolVarChar(ss, DE.date_size);
+               break;
+           case URL:
+               break;
+           case TEXT:
+                    b = contolVarChar(ss, DE.date_size);
+               break;
+           default:
+               throw new AssertionError((DE.type).name());
+
         }
-        return null;            
+        return b;           
     }
        
-   public static String[] contorlStringElement(String[] strings_of_elements,DataElement[] DE) {
-        String ss[] = new String[DE.length];
-        for (int i = 0; i < DE.length; i++) {
-            if((strings_of_elements[i].compareTo("")!=0)){
-             ss[i] = controlDatabaseElement(DE[i], strings_of_elements[i]);
-            }        
+
+    public static String contorlDatabaseElementAndReplece(String strings_of_element,DataElement DE) {
+        int i = 0;
+        String parse ="";
+        switch (DE.type) {
+           case DATE:
+               if(controlDate(strings_of_element))
+                    return strings_of_element;
+                        else
+                    return "";
+           case TIME:
+               if(controlTime(strings_of_element))
+                    return strings_of_element;
+                        else
+               return "";
+           case VARCHAR:
+           case TEXT:               
+                if(contolVarChar(strings_of_element,DE.date_size))
+                    return strings_of_element;
+                        else
+                return strings_of_element.substring(0, DE.date_size);
+           case URL:
+               if(contolVarChar(strings_of_element,DE.date_size))
+                    return strings_of_element;
+                        else
+                    return "";
+           default:
+               throw new AssertionError(DE.type.name());
         }
-        return ss;
     }
     
-    
-    public static String controlText(String ss){
-            if(ss.length()<=MAX_TEXT){
-              return ss;  
-            } else {
-                return ss.substring(1, MAX_TEXT);
-            }
-        }
-    
-   public static String contolVarChar(String ss, int MAX_SIZE){
+   public static boolean contolVarChar(String ss, int MAX_SIZE){
        if(ss.length()<=MAX_SIZE) {
-           return ss;
+           return true;
        }else {
-           return ss.substring(0, MAX_SIZE);
+           return false;
        }
    }
    
-   public static String controlDay(String day){
-       int i_day = Integer.parseInt(day);
-        
-       if((0<i_day)&&(i_day<32)) {
-            return Integer.toString(i_day);
+   public static boolean controlDate(String date){
+      if (date.length()==10){
+       // odd2lovaccarkou
+       String ss[] = date.split("[.]");
+       int day = Integer.parseInt(ss[0]);
+       int month = Integer.parseInt(ss[1]);
+       int year = Integer.parseInt(ss[2]);
+       if((0<day)&&(day<32)&&(0<month)&&(month<13)&&(2000<year)&&(year<3000)){
+           return true;
        } else {
-           return null;
+           return false;
        }
+      } else {
+          return false;
+      }
    }
    
-   public static String controlMonth(String month){
-       int i_month = Integer.parseInt(month);
-        
-       if((0<i_month)&&(i_month<13)) {
-            return Integer.toString(i_month);
-       } else {
-           return null;
-       }
+   public static boolean controlURL(String URL){
+       return false;
    }
+
    
-   public static String controlYear(String year){
-       int i_year = Integer.parseInt(year);        
-       if((2000<i_year)&&(i_year<3000)) {
-            return Integer.toString(i_year);
+   public static boolean controlTime (String time){
+       if (time.length()==5){
+       String ss[] = time.split("[:]");
+       int hour = Integer.parseInt(ss[0]);
+       int minute = Integer.parseInt(ss[1]);
+       if((0<=hour)&&(hour<=24)&&(0<=minute)&&(minute<60)){
+           return true;
        } else {
-           return null;
+           return false;
        }
-   }
-   
-   
-   public static String controlHour (String hours){
-       int i_hours = Integer.parseInt(hours);
-       if ((0<=i_hours)&&(i_hours<=23)){
-           return Integer.toString(i_hours);
-       } else {
-           return null;
-       }
-   }
-   
-   public static String controlMinut(String minuts){
-       int i_minuts = Integer.parseInt(minuts);
-       if ((0<=i_minuts)&&(i_minuts<=59)){
-           return Integer.toString(i_minuts);
-       } else {
-           return null;
-       }
+      } else {
+          return false;
+      }
    }
 }

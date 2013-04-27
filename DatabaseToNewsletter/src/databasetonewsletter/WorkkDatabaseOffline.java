@@ -111,10 +111,18 @@ public class WorkkDatabaseOffline implements WorkDatabase{
     }
 
     @Override
-    public void setStringElement(int numberElement, int numberString, String ss) {
-        database.Data.get(numberElement).setString_of_element(ss, numberString);
+    public void modifyElement(JPanelElement panelElement) {
+        for (int i = 1; i < panelElement.text.length; i++) {
+            panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
+        }
     }
 
+    @Override
+    public Element openElement(int number_element) {
+        return database.Data.get(number_element);
+    }
+
+   
 
     
 }

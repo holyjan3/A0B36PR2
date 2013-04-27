@@ -47,7 +47,7 @@
               <Component id="findButton1" min="-2" pref="79" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="findExit" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <EmptySpace pref="13" max="32767" attributes="0"/>
               <Component id="saveButton" min="-2" pref="66" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -104,7 +104,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="findExit">
       <Properties>
-        <Property name="text" type="java.lang.String" value="zru&#x161;it v&#xfd;b&#x11b;r"/>
+        <Property name="text" type="java.lang.String" value="zru&#x161;it hled&#xe1;n&#xed;"/>
         <Property name="actionCommand" type="java.lang.String" value=""/>
       </Properties>
       <Events>
@@ -126,6 +126,7 @@
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTextField1MouseClicked"/>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTextField1FocusLost"/>
+        <EventHandler event="vetoableChange" listener="java.beans.VetoableChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jTextField1VetoableChange"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="findButton1">

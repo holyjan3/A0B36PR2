@@ -13,5 +13,6 @@ public interface WorkDatabase {
     void removeElement(Element element);
     void addElementt(Element element);    
     void saveDatabese();
-    void setStringElement(int numberElement,int numberString,String ss);
+    void modifyElement(JPanelElement element);
+    Element openElement(int number_element);
 }

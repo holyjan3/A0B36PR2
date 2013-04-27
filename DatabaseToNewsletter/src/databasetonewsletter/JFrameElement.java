@@ -20,6 +20,8 @@ public class JFrameElement extends JFrame{
     Database database;
     Element element;
     boolean new_element;
+    
+    
     public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
         super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[1].toString());
         database = panelMenuLines.database;
