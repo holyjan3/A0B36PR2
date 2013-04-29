@@ -29,7 +29,10 @@ public class JFrameMenu extends JFrame{
         
         
         setVisible(true);
-        setSize(1000, 1000);
+        
+        Dimension dim = this.getMaximumSize();
+        setSize(dim);
+        
         BorderLayout bl = new BorderLayout();        
         Container con = getContentPane();  
         con.setLayout(bl);
@@ -38,10 +41,20 @@ public class JFrameMenu extends JFrame{
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(menuLines);
         
+        
+        JPanel pane = new JPanel(new BorderLayout());
+       
+       
+  
+        
+        pane.add(menulButtonBottom,BorderLayout.WEST);
+        pane.add(new JPanelConection(this),BorderLayout.EAST);
+       
+        
         con.add(menulButtonTop, BorderLayout.NORTH);
         con.add(scrollPane,BorderLayout.CENTER);
-        con.add(menulButtonBottom,BorderLayout.SOUTH);        
-        
+        con.add(pane,BorderLayout.SOUTH);        
+
         
         
     }

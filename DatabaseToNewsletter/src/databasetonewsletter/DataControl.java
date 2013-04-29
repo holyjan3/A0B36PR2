@@ -14,7 +14,6 @@ public enum DataControl {
     BOOL("BOOL");
     
     final String mysqlType;
-    int MaxVarChar =10;
 
     private DataControl(String mysqlType) {
         this.mysqlType = mysqlType;

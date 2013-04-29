@@ -15,7 +15,9 @@ public class DatabaseToNewsletter {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        JFrameMainMenu m = new JFrameMainMenu();
+    public static void main(String[] args) {       
+       
+       JFrameStart.main(args);
+       
     }
 }

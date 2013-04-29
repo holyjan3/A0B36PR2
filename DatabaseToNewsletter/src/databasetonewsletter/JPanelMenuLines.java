@@ -6,6 +6,8 @@ package databasetonewsletter;
 
 import java.awt.Color;
 import java.awt.Component;
+import static java.awt.Component.LEFT_ALIGNMENT;
+import static java.awt.Component.TOP_ALIGNMENT;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +30,7 @@ public class JPanelMenuLines extends JPanel{
 
     public JPanelMenuLines(Database database) {
         this.database = database; 
-        BoxLayout box = new BoxLayout(this,BoxLayout.PAGE_AXIS);
+        BoxLayout box = new BoxLayout(this,BoxLayout.Y_AXIS);
         this.setLayout(box);
 
         array = new ArrayList(8);
@@ -58,10 +60,12 @@ public class JPanelMenuLines extends JPanel{
     public void overWritePanel(){
        this.removeAll();
        this.jrb.clear();
+       this.setBackground(Color.white);
        for (int i = 0; i < database.Data.size(); i++) {
            JPanel jp = new JPanelMenuLine(i);
            add(jp);
             jp.setAlignmentX(LEFT_ALIGNMENT);
+            
         }
        this.revalidate();
        this.repaint();
@@ -77,6 +81,8 @@ public class JPanelMenuLines extends JPanel{
                 j++;
                 add(jp);
                 jp.setAlignmentX(LEFT_ALIGNMENT);
+                
+
             }
         }
        this.revalidate();

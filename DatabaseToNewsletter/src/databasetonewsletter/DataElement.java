@@ -4,12 +4,14 @@
  */
 package databasetonewsletter;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Majitel
  */
-public enum DataElement {
+public enum DataElement{
     
     PRINTED     (0,0,DataControl.BOOL,1),
     HEAD        (70,1,DataControl.VARCHAR,Constants.MaxVarChar),

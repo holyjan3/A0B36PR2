@@ -8,18 +8,16 @@ package databasetonewsletter;
  *
  * @author Majitel
  */
-public class WorkDatabaseOnline implements WorkDatabase{
-    Database database;
+public class WorkDatabaseOnline extends WorkDatabase{
 
     public WorkDatabaseOnline(Database database) {
-        this.database = database;
+        super(database);
     }
     
     @Override
     public void readFromDatabase() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
    
 
     @Override
@@ -27,10 +25,7 @@ public class WorkDatabaseOnline implements WorkDatabase{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void saveDatabese() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
 
     @Override
     public void removeElement(Element element) {
@@ -44,6 +39,11 @@ public class WorkDatabaseOnline implements WorkDatabase{
 
     @Override
     public Element openElement(int number_element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    void saveDatabese() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -20,11 +20,10 @@ import java.util.logging.Logger;
  *
  * @author Majitel
  */
-public class WorkkDatabaseOffline implements WorkDatabase{
-    Database database;
+public class WorkDatabaseOffline extends WorkDatabase{    
 
-    public WorkkDatabaseOffline(Database database) {
-        this.database = database;
+    public WorkDatabaseOffline(Database database) {
+        super(database);
     }
     
     @Override
@@ -36,9 +35,9 @@ public class WorkkDatabaseOffline implements WorkDatabase{
             inputstream = new ObjectInputStream(new FileInputStream(ss));
             database.Data = (List<Element>)inputstream.readObject();
         } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -53,8 +52,23 @@ public class WorkkDatabaseOffline implements WorkDatabase{
         database.Data.add(el);
     }
 
+   
+    
+ 
+
     @Override
-    public void saveDatabese() {
+    public void modifyElement(JPanelElement panelElement) {
+        for (int i = 1; i < panelElement.text.length; i++) {
+            panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
+        }
+    }
+
+    @Override
+    public Element openElement(int number_element) {
+        return database.Data.get(number_element);
+    }
+
+   public void saveDatabese(){
         ObjectOutputStream outputstream = null;
         String ss = "temp_" + database.name_file + ".txt";
         try {
@@ -72,23 +86,21 @@ public class WorkkDatabaseOffline implements WorkDatabase{
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-    
     }
-    
-    
+       
     public  void tempToDatabase(){
         
             String s1= "temp_" + database.name_file + ".txt";
             String s2= database.name_file+".txt";
             BufferedInputStream inputStream= null;
-            BufferedOutputStream outputstream = null;
+            BufferedOutputStream outputStream = null;
             try {
                 inputStream = new BufferedInputStream(new FileInputStream(s1));
             } catch (FileNotFoundException ex) { 
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-                outputstream = new BufferedOutputStream(new FileOutputStream(s2));
+                outputStream = new BufferedOutputStream(new FileOutputStream(s2));
             } catch (FileNotFoundException ex) { 
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
@@ -100,26 +112,21 @@ public class WorkkDatabaseOffline implements WorkDatabase{
             try {
             while (inputStream.available()>0) {
                 int i = inputStream.read(bitarray);
-                outputstream.write(bitarray, 0, number);
+                outputStream.write(bitarray, 0, number);
             }
             } catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-        
+                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                try {
+                    outputStream.close();
+                    inputStream.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(WorkDatabaseOffline.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+            }
             
                     
-    }
-
-    @Override
-    public void modifyElement(JPanelElement panelElement) {
-        for (int i = 1; i < panelElement.text.length; i++) {
-            panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
-        }
-    }
-
-    @Override
-    public Element openElement(int number_element) {
-        return database.Data.get(number_element);
     }
 
    

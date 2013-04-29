@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  * @author Majitel
  */
 
-public class Database {
+public class Database{
     protected List<Element> Data;
     protected String name_database;
     protected String path;
@@ -34,7 +34,7 @@ public class Database {
         
         this.Data  = new LinkedList<Element>();
         
-        workDatabaseOffline = new WorkkDatabaseOffline(this);
+        workDatabaseOffline = new WorkDatabaseOffline(this);
         workDatabaseOnline = new WorkDatabaseOnline(this);
         nowWorkDatabase= workDatabaseOffline;
     }
@@ -53,6 +53,10 @@ public class Database {
         } else {
             return false;
         }
+    }
+    
+    public void saveToFile(){
+        workDatabaseOffline.saveDatabese();
     }
     
     

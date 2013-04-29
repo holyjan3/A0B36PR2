@@ -4,31 +4,39 @@
  */
 package databasetonewsletter;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.*;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
  * @author Majitel
  */
-public class JFrameMainMenu extends JFrame{
-ArrayList<Database> dataDatabases;   
-    
-    
-    public JFrameMainMenu() {
-       
-        setSize(800, 300);
-        setDefaultCloseOperation(EXIT_ON_CLOSE); 
-        dataDatabases  = new ArrayList<>(10);
-        for (DataDatabase dataDatabase : DataDatabase.values()) {
-            dataDatabases.add(new Database(dataDatabase));
-        }
+public class JFrameMainMenu extends JFrame {
+     JPanelConection jpc;
+    public JFrameMainMenu() {      
         
-        add(new JPanelDatabases(dataDatabases));
-         setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        BorderLayout bl = new BorderLayout();
+        jpc = new JPanelConection(this);
+        
+        
+        add(new JPanelMainMenuTop(),BorderLayout.NORTH);
+        add(new JPanelDatabases(WorkerDatabase.dataDatabases),BorderLayout.CENTER);
+        
+        add(jpc,BorderLayout.SOUTH);
+        setSize(700,500);
+        setVisible(true); 
+        
     
     
     }
+    @Override
+        public void revalidate(){
+        jpc.revalidate();
+
     
     
+     }
 }

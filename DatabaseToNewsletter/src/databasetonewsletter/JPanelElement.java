@@ -82,7 +82,7 @@ public class JPanelElement extends JPanel{
                     jtext_height = 1;
                     jtext_width = 80;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    url(text[i],element.strings_of_elements[i]);
+                   // url(text[i],element.strings_of_elements[i]);
                     break;
                 case TOWN:
                     jtext_height = 1;
@@ -123,19 +123,19 @@ public class JPanelElement extends JPanel{
                     jtext_height = 1;
                     jtext_width = 80;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    url(text[i],element.strings_of_elements[i]);
+                    //url(text[i],element.strings_of_elements[i]);
                     break;
                 case LINK2:
                     jtext_height = 1;
                     jtext_width = 80;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    url(text[i],element.strings_of_elements[i]);
+                    //url(text[i],element.strings_of_elements[i]);
                     break;
                 case LINK3:
                     jtext_height = 1;
                     jtext_width = 80;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    url(text[i],element.strings_of_elements[i]);
+                    //url(text[i],element.strings_of_elements[i]);
                     break;
                 case NAME:
                     jtext_height = 1;
@@ -153,7 +153,7 @@ public class JPanelElement extends JPanel{
                     jtext_height = 1;
                     jtext_width = 80;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    url(text[i],element.strings_of_elements[i]);
+                    //url(text[i],element.strings_of_elements[i]);
                     break;
                 case TYPE:
                     jtext_height = 1;
@@ -210,14 +210,14 @@ public class JPanelElement extends JPanel{
         
         
  }   
-    protected void url(JTextArea ta,String ss){
+   /* protected void url(JTextArea ta,String ss){
         if(ss.equals("")){
             ta.setText("http://");
             
         } else {
             ta.setText(ss);
         }
-    }
+    }*/
     
         class ActionSave implements FocusListener {
 
