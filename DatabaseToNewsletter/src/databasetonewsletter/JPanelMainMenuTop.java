@@ -4,19 +4,10 @@
  */
 package databasetonewsletter;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
 import java.io.*;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.plaf.basic.BasicComboBoxUI;
+
 
 /**
  *
@@ -27,8 +18,13 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     /**
      * Creates new form JPanelMainMenuTop
      */
+    
+    PrintedElementsAdministration printedElement;
     public JPanelMainMenuTop() {
         initComponents();
+        printedElement = new PrintedElementsAdministration();
+        this.printer.setEnabled(false);
+        this.preview.setEnabled(false);
     }
 
     /**
@@ -40,28 +36,28 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        preview = new javax.swing.JButton();
+        printer = new javax.swing.JButton();
+        make = new javax.swing.JButton();
 
-        jButton1.setText("náhled");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        preview.setText("náhled");
+        preview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                previewActionPerformed(evt);
             }
         });
 
-        jButton2.setText("tisk");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        printer.setText("tisk");
+        printer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                printerActionPerformed(evt);
             }
         });
 
-        jButton3.setText("zpracuj newsletter");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        make.setText("zpracuj newsletter");
+        make.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                makeActionPerformed(evt);
             }
         });
 
@@ -71,11 +67,11 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(preview, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(printer, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,19 +79,19 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(make, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton2)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(printer)
+                        .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void previewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_previewActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void printerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printerActionPerformed
       JFileChooser chooser = new JFileChooser(); 
       
       
@@ -115,7 +111,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
       int r = chooser.showSaveDialog(this);      
       
      
-      if (r == 0) {
+     while (r == 0) {
           
         String zipname = chooser.getSelectedFile().getPath();  
         File f = new File(zipname);
@@ -124,21 +120,37 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
             r = chooser.showSaveDialog(this);
             
+            
         }else {
             
+            
+            break;
         }  
         
         
       }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_printerActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
+        boolean b = true;
+        try {
+            //printedElement.printedElements(null);
+        } catch (Exception e) {
+            b = false;
+        }
+        if(b){
+           this.preview.setEnabled(true);
+           this.printer.setEnabled(true);
+           this.preview.revalidate();
+           this.printer.revalidate();
+        } else {
+          // vyskakovac9 okno ...   
+        }
+    }//GEN-LAST:event_makeActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton make;
+    private javax.swing.JButton preview;
+    private javax.swing.JButton printer;
     // End of variables declaration//GEN-END:variables
 }

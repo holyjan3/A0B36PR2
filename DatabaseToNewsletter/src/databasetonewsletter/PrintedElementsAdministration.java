@@ -19,7 +19,7 @@ public class PrintedElementsAdministration {
     private int global_start;
     private int global_end;
     
-    public void PrintedElementsAdministration(ArrayList<Database> databases) {
+    public void printedElements(ArrayList<Database> databases) {
         printed_el = new ArrayList<>(20);
         global_index = 0;
         
@@ -94,7 +94,7 @@ public class PrintedElementsAdministration {
              }
             }
         }
- 
+        
     
     }
     
