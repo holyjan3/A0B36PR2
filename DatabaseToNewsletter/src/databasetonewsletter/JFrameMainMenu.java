@@ -23,7 +23,7 @@ public class JFrameMainMenu extends JFrame {
         
         
         add(new JPanelMainMenuTop(),BorderLayout.NORTH);
-        add(new JPanelDatabases(WorkerDatabase.dataDatabases),BorderLayout.CENTER);
+        add(new JPanelDatabases(WorkerDatabase.dataDatabases,this),BorderLayout.CENTER);
         
         add(jpc,BorderLayout.SOUTH);
         setSize(700,500);
@@ -35,8 +35,11 @@ public class JFrameMainMenu extends JFrame {
     @Override
         public void revalidate(){
         jpc.revalidate();
+        super.revalidate();
 
     
     
      }
+    
+    
 }

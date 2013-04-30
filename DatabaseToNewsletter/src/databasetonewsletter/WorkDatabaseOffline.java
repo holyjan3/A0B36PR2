@@ -48,6 +48,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
 
     @Override
     public void addElementt(Element element) {
+        element.changed = true;
         Element el = element;
         database.Data.add(el);
     }
@@ -58,6 +59,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
 
     @Override
     public void modifyElement(JPanelElement panelElement) {
+        panelElement.element.changed = true;
         for (int i = 1; i < panelElement.text.length; i++) {
             panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
         }
@@ -113,6 +115,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
             while (inputStream.available()>0) {
                 int i = inputStream.read(bitarray);
                 outputStream.write(bitarray, 0, number);
+                
             }
             } catch (IOException ex) {
                 Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,6 +123,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
                 try {
                     outputStream.close();
                     inputStream.close();
+                    
                 } catch (IOException ex) {
                     Logger.getLogger(WorkDatabaseOffline.class.getName()).log(Level.SEVERE, null, ex);
                 }

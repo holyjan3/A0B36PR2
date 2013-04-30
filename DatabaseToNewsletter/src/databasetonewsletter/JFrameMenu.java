@@ -5,6 +5,9 @@
 package databasetonewsletter;
 
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -18,15 +21,19 @@ public class JFrameMenu extends JFrame{
     JPanelMenulButtonBottom menulButtonBottom;
     JPanelMenuLines menuLines;
     JScrollPane scrollPane;
+    JPanelConection conection;
+    JFrameMainMenu frameMainMenu;
        
-    public JFrameMenu(Database database) throws HeadlessException {        
+    public JFrameMenu(Database database,JFrameMainMenu frameMainMenu) throws HeadlessException {        
         super(database.name_database);
+        
+        this.frameMainMenu = frameMainMenu;
         this.database = database;
         menulButtonTop = new JPanelMenulButtonTop(this);
         menuLines = new JPanelMenuLines(database);
         menulButtonBottom = new JPanelMenulButtonBottom(this);
-        
-        
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+       
         
         setVisible(true);
         
@@ -41,14 +48,15 @@ public class JFrameMenu extends JFrame{
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(menuLines);
         
-        
+        addWindowListener(new Action());
         JPanel pane = new JPanel(new BorderLayout());
+        conection = new JPanelConection(this);
        
        
   
         
         pane.add(menulButtonBottom,BorderLayout.WEST);
-        pane.add(new JPanelConection(this),BorderLayout.EAST);
+        pane.add(conection,BorderLayout.EAST);
        
         
         con.add(menulButtonTop, BorderLayout.NORTH);
@@ -56,6 +64,56 @@ public class JFrameMenu extends JFrame{
         con.add(pane,BorderLayout.SOUTH);        
 
         
+       
+    }
+    
+    @Override
+    public void revalidate(){
+        conection.revalidate();
+        super.revalidate();
+        frameMainMenu.revalidate();
         
     }
+    class Action implements WindowListener{
+       
+        
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+           
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {          
+            database.nowWorkDatabase.saveDatabese();
+            frameMainMenu.setVisible(true);
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+           
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+           
+        }
+        
+    }
+ 
 }

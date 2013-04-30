@@ -58,7 +58,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         saveButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         findButton1 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
 
         jTextField2.setText("Najít v názvu");
         jTextField2.setToolTipText("");
@@ -143,13 +142,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,9 +159,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addComponent(findButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(findExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -181,8 +171,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(saveButton)
                         .addComponent(findExit)
-                        .addComponent(findButton1)
-                        .addComponent(jButton1))
+                        .addComponent(findButton1))
                     .addComponent(comboBox)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,17 +248,12 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         database.saveToFile();
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
     private javax.swing.JButton arrange;
     private javax.swing.JComboBox comboBox;
     private javax.swing.JButton findButton1;
     private javax.swing.JButton findExit;
-    private javax.swing.JButton jButton1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

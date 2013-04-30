@@ -9,31 +9,30 @@ package databasetonewsletter;
  * @author Majitel
  */
 public class PrintedElement implements Comparable<PrintedElement>{
-    StringBuilder code;
-    String[] path;
-    boolean overwrite;
+    private int number;
+    protected int count;
+    protected Database database;
 
-    public PrintedElement(StringBuilder code, String[] path, boolean overwrite) {
-        this.code = code;
-        this.path = path;
-        this.overwrite = overwrite;        
+    public PrintedElement(Database database) {
+             this.database = database;
+             number = database.database.number;
+             int c = 0;
+             for (int i = 0; i < database.Data.size(); i++) {
+                 if(database.Data.get(i).printed){
+                    c++; 
+                 }
+             }
+             count = c;
       
     }
+    
 
     @Override
     public int compareTo(PrintedElement o) {
-        
-        for (int i = 0; i < this.path.length; i++) {
-            if(i<o.path.length) {
-                if(o.path[i].equals(this.path[i])){                    
-                }else {
-                   return this.path[i].compareTo(o.path[i]);
-                }
-            } else {
-                return -1;
-            }
-        }
-        return 1;
+        return this.number - o.number;
     }
+
+   
+      
     
 }

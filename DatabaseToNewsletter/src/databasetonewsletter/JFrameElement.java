@@ -5,6 +5,8 @@
 package databasetonewsletter;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import javax.swing.*;
 
 /**
@@ -33,10 +35,11 @@ public class JFrameElement extends JFrame{
         
         jpanelW = new JPanelElementGlobaBottom(this,panelMenuLines);
         
-        //setDefaultCloseOperation(DISPOSE_ON_CLOSE); 
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
         setVisible(true);
         setSize(1000, 1000);
         BorderLayout bl = new BorderLayout();
+        addWindowListener(new Action());
         
         Container con = getContentPane();  
         con.setLayout(bl);       
@@ -58,13 +61,17 @@ public class JFrameElement extends JFrame{
         new_element = true;
         
         //database.Data.add(element);
-        jpanel = new JPanelElement(database,element);       
+        jpanel = new JPanelElement(database,element);    
         
         jpanelW = new JPanelElementGlobaBottom(this,panelMenuLines);
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
+        
          
         setVisible(true);
         setSize(1000, 1000);
         BorderLayout bl = new BorderLayout();
+        addWindowListener(new Action());
+        
         
         Container con = getContentPane();  
         con.setLayout(bl);       
@@ -75,5 +82,68 @@ public class JFrameElement extends JFrame{
         con.add(scrollPane, BorderLayout.CENTER);        
         con.add(jpanelW,BorderLayout.EAST);
         
-    }  
+    }
+    class Action implements WindowListener{
+       JPanelElementGlobaBottom globaBottom = (JPanelElementGlobaBottom) jpanelW;
+        
+
+        @Override
+        public void windowOpened(WindowEvent e) {
+           
+        }
+
+        @Override
+        public void windowClosing(WindowEvent e) {
+            
+             JOptionPane  frame = new JOptionPane();
+             Object[] options = {"uložit",
+                    "zahodit",
+                    "vráti se"};
+            int n = JOptionPane.showOptionDialog(frame,
+                 "Přejete si uložit záznam",
+                    "",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+             null,
+            options,
+            options[2]);
+            if(n==0){
+                globaBottom.save();
+            } else {
+                if(n==1){
+                    globaBottom.remove();
+                } else {                    
+                    setVisible(true);
+                }
+            } 
+                
+        }
+
+        @Override
+        public void windowClosed(WindowEvent e) {
+
+        }
+
+        @Override
+        public void windowIconified(WindowEvent e) {
+           
+        }
+
+        @Override
+        public void windowDeiconified(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowActivated(WindowEvent e) {
+            
+        }
+
+        @Override
+        public void windowDeactivated(WindowEvent e) {
+           
+        }
+        
+    }
+    
 }

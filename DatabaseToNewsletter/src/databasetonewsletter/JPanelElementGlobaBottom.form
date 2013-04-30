@@ -94,6 +94,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Odstanit ud&#xe1;lost"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="remove1MouseClicked"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

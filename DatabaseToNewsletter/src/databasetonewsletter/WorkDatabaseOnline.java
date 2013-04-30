@@ -12,17 +12,21 @@ public class WorkDatabaseOnline extends WorkDatabase{
 
     public WorkDatabaseOnline(Database database) {
         super(database);
+        // tady se vytvori string nebo pole stringu na prodavani veci do databaze.. 
     }
     
     @Override
     public void readFromDatabase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // koukne se jestli se lisi od databaze .. jestli ne nic nedela jestli ano yept8 se jestl ma ptrehrat databazi nebo nahrat vlastni databazi
+        // jestli ma prehrad prvky ... 
+        // ne to bude delat worker database... 
+        // tady poze se nahrajes databazi... 
     }
    
 
     @Override
     public void addElementt(Element element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // pridas element do databaze
     }
 
 
@@ -37,14 +41,22 @@ public class WorkDatabaseOnline extends WorkDatabase{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }   
 
-    @Override
-    public Element openElement(int number_element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     void saveDatabese() {
+        // tady posze ukoncis spravu tabulky.. 
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+   
+
+    @Override
+    Element openElement(int number_element) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    void rewriteDatabase(boolean All){
+        
     }
 
     

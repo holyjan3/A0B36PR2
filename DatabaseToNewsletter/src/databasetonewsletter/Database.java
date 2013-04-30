@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class Database{
     protected List<Element> Data;
     protected String name_database;
-    protected String path;
+    protected DataDatabase database;
     protected DataElement[] DE;
     protected WorkDatabase nowWorkDatabase;
     private WorkDatabase workDatabaseOffline;
@@ -29,7 +29,7 @@ public class Database{
     public Database(DataDatabase database) {        
         this.name_database = database.name;
         this.name_file = database.name();
-        this.path = database.path;
+        this.database = database;
         this.DE = database.dataElemen;
         
         this.Data  = new LinkedList<Element>();

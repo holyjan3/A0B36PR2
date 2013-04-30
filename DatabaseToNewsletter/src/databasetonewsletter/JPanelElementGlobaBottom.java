@@ -76,6 +76,11 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         });
 
         remove1.setText("Odstanit událost");
+        remove1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                remove1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,15 +154,17 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
       
     }//GEN-LAST:event_saveExitActionPerformed
 
-    private void saveExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveExitMouseClicked
-        if(this.jCheckBox1.isSelected()){
+    public void save(){
+         if(this.jCheckBox1.isSelected()){
              panelElement.element.strings_of_elements[0] = Boolean.toString(true);
         }else {
             panelElement.element.strings_of_elements[0] = Boolean.toString(false);
         }
         
+         
         for (int i = 1; i < this.panelElement.element.strings_of_elements.length; i++) {
             panelElement.element.strings_of_elements[i] = panelElement.text[i].getText();
+            
         }
       
         
@@ -167,10 +174,28 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         } else {
             panelElement.database.nowWorkDatabase.modifyElement(panelElement);
         }
+        
         panelMenuLines.overWritePanel();
         frameElement.dispose();
+    }
+    
+    private void saveExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveExitMouseClicked
+       save();
         
     }//GEN-LAST:event_saveExitMouseClicked
+    public void remove(){
+        if(panelElement.database.Data.contains(panelElement.element)){
+            panelElement.database.nowWorkDatabase.removeElement(panelElement.element);
+        } else {
+            panelMenuLines.overWritePanel();
+            frameElement.dispose();
+        }
+    } 
+    
+    
+    private void remove1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_remove1MouseClicked
+        remove();
+    }//GEN-LAST:event_remove1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteAll;

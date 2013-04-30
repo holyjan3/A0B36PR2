@@ -18,17 +18,20 @@ final public class Element implements  Serializable{
     protected String[] strings_of_elements;
     protected boolean printed; // nastavi jestli se bude tisknout
     protected boolean watch;
+    protected boolean changed;
     
     public Element(DataElement[] DE,String[] strings_of_elements) {
         this.DE = DE;
         //this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
+        changed = false;
         printed = Boolean.parseBoolean(strings_of_elements[0]);
     }
     
     
     
     public Element(DataElement[] DE) {
-        this.DE = DE;
+        this.DE = DE;        
+        changed = false;
         strings_of_elements = new String[DE.length];
         setPrinted(false);
         for (int i = 1; i < DE.length; i++) {

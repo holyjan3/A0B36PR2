@@ -17,7 +17,8 @@ public class DatabaseToNewsletter {
      */
     public static void main(String[] args) {       
        
-       JFrameStart.main(args);
+        JFrameStart.main(null);
+       //new JFrameMainMenu();
        
     }
 }

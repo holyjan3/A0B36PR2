@@ -16,11 +16,13 @@ import javax.swing.*;
  */
 public class JPanelDatabases extends JPanel implements ActionListener{
     ArrayList<Database> databases;
-
+    JFrameMainMenu frameMainMenu;
     
     
-    public JPanelDatabases(ArrayList<Database> databases) {
+    public JPanelDatabases(ArrayList<Database> databases,JFrameMainMenu frameMainMenu) {
         this.databases = databases;
+        this.frameMainMenu = frameMainMenu;
+        
         setLayout(new GridLayout(3, 4));
         for (int i = 0; i < databases.size(); i++) {
             JButton jb  = new JButtonWithNumber(i,databases.get(i).name_database);
@@ -33,7 +35,8 @@ public class JPanelDatabases extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButtonWithNumber jbwn = (JButtonWithNumber) e.getSource();
-        JFrameMenu jf = new JFrameMenu(databases.get(jbwn.number));
+        JFrameMenu jf = new JFrameMenu(databases.get(jbwn.number),frameMainMenu);
+        frameMainMenu.setVisible(false);
     }
     
     

@@ -60,7 +60,6 @@ public class JPanelMenuLines extends JPanel{
     public void overWritePanel(){
        this.removeAll();
        this.jrb.clear();
-       this.setBackground(Color.white);
        for (int i = 0; i < database.Data.size(); i++) {
            JPanel jp = new JPanelMenuLine(i);
            add(jp);
