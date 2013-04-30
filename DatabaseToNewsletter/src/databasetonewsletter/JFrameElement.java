@@ -31,6 +31,7 @@ public class JFrameElement extends JFrame{
         new_element = false;
         
         
+        
         jpanel = new JPanelElement(database,element);    
         
         jpanelW = new JPanelElementGlobaBottom(this,panelMenuLines);
@@ -38,6 +39,8 @@ public class JFrameElement extends JFrame{
         setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE );
         setVisible(true);
         setSize(1000, 1000);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
         BorderLayout bl = new BorderLayout();
         addWindowListener(new Action());
         
@@ -60,6 +63,7 @@ public class JFrameElement extends JFrame{
         element = new Element(database.DE);
         new_element = true;
         
+        
         //database.Data.add(element);
         jpanel = new JPanelElement(database,element);    
         
@@ -69,6 +73,7 @@ public class JFrameElement extends JFrame{
          
         setVisible(true);
         setSize(1000, 1000);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         BorderLayout bl = new BorderLayout();
         addWindowListener(new Action());
         

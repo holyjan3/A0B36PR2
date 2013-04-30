@@ -37,8 +37,10 @@ public class JFrameMenu extends JFrame{
         
         setVisible(true);
         
-        Dimension dim = this.getMaximumSize();
-        setSize(dim);
+        
+
+        setSize(1000,1000);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         BorderLayout bl = new BorderLayout();        
         Container con = getContentPane();  

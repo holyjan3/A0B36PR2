@@ -96,8 +96,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      JFileChooser chooser = new JFileChooser();
-      chooser.setApproveButtonText("save");
+      JFileChooser chooser = new JFileChooser(); 
       
       
       chooser.setFileFilter(new FileFilter() {
@@ -113,24 +112,23 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         }
       });
       
+      int r = chooser.showSaveDialog(this);      
       
-      int r = chooser.showOpenDialog(this);
-      
-      if (r == JFileChooser.APPROVE_OPTION) {
+     
+      if (r == 0) {
           
-        String zipname = chooser.getSelectedFile().getPath()+".html";
-        if(true){// jestli soubor exituje 
-            System.out.println(zipname);
+        String zipname = chooser.getSelectedFile().getPath();  
         File f = new File(zipname);
         
         if(f.exists()){
-            // tady t se yeptas jestli chces prepsat
+            
+            r = chooser.showSaveDialog(this);
+            
         }else {
-            // tady ulozis
-        }    
-           
+            
+        }  
         
-        }
+        
       }
     }//GEN-LAST:event_jButton2ActionPerformed
 
