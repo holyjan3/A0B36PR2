@@ -4,93 +4,169 @@
  */
 package databasetonewsletter;
 
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  *
  * @author Majitel
  */
 public class PrintedElementsAdministration {
-    ArrayList<PrintedElement> printed_el;
-    protected StringBuilder stringBuilder;
-    protected int actual_postion;
-    private int global_index;
-    private int global_start;
-    private int global_end;
     
-    public void printedElements(ArrayList<Database> databases) {
-        printed_el = new ArrayList<>(20);
-        global_index = 0;
+    private static StringBuilder stringBuilder;
+    private static int global_start;
+    private static int global_end;
+    private static int[] count;
+    private static ArrayList<Database> databases;
+    protected static String file_temp_name = "newslettertemplate.html";
+    protected static String file_source = "";
+    
+    public static void printElement(ArrayList<Database> databases1) throws IOException{
+        databases = databases1;
+        readFile();
+        countElement();
+        copyElement();
+        insertElements();
+        saveTempfile();
+    }
+    
+    public static void saveFile(String saveFile) throws IOException{
+        String s1= file_temp_name;
+        String s2= saveFile;
+        BufferedReader inputRead= null;
+        BufferedWriter outputRead= null;        
+        inputRead = new BufferedReader(new FileReader(file_temp_name));
+        File f = new File(saveFile);
+        outputRead = new BufferedWriter(new FileWriter(f,false));
+        String line = null;
+        while((line=inputRead.readLine()) != null){
+            outputRead.append(line);
+        }            
+        inputRead.close();
+        outputRead.close();        
         
-        for (int i = 0; i < databases.size(); i++) {
-            printed_el.add(new PrintedElement(databases.get(i)));
-        }     
-        Collections.sort(printed_el);
+    }
+    
+    public static void previewCode() throws IOException {
+        File f = new File(file_temp_name);
+        String url = "file://localhost/"+ f.getAbsolutePath().replace(File.separatorChar, '/');
+        java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
+    }
+    
+    
+    private static void readFile() throws IOException{
+        String ss= file_source;
+        BufferedReader input = new BufferedReader(new FileReader(ss));        
         stringBuilder = new StringBuilder();
-        actual_postion = 0;
-        
-        
-        boolean b = true;
-        while(b){
-            stringBuilder = stringBuilder.append("");
+        String line = null;
+        while((line = input.readLine()) != null){
+            stringBuilder.append(ss);
+            stringBuilder.append(System.getProperty("line_separatot"));            
         }
+        input.close();
         
-        int start_read;
-        int end_read;
-        String copyString = null;
-        for (int i = 0; i < printed_el.size(); i++) {
-            if(printed_el.get(i).count != 0){
-                getTarge(Integer.toString(i));
+    }
+    
+    
+    
+    private static void saveTempfile() throws IOException{
+        FileWriter fileWriter = new FileWriter(file_temp_name);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+        bufferedWriter.write(stringBuilder.toString());
+        bufferedWriter.close();
+    }
+    
+    
+    private static void countElement(){
+        int c = 0;
+        count = new int[databases.size()]; 
+        for (int i = 0; i < databases.size(); i++) {
+            c=0;
+             for (int j = 0; j < databases.get(i).Data.size() && ((j < DataDatabase.values()[i].max)|| (DataDatabase.values()[i].max ==0)); j++) {
+                 if(databases.get(i).Data.get(j).printed){
+                    c++; 
+                 }
+                 count[i]=c;
+             }
+        } 
+    }
+    
+    
+  private static void copyElement(){
+        // rozmonožení předdefinovaných prvkú
+        int start=0;
+        int start_read =0;
+        int end_read =0;
+         
+        for (int i = 0; i < databases.size(); i++) {
+            if(count[i] != 0 ){
+                getTarge(Integer.toString(i),start);
                 start_read = global_start;
-                getTarge(Integer.toString(i));
+                start = global_end+1;
+                getTarge(Integer.toString(i),start);
                 end_read = global_end;
-                copyString = stringBuilder.substring(start_read, end_read);
-                stringBuilder.insert(actual_postion, System.getProperty("line.separator") + copyString);
-                actual_postion = 2*actual_postion-start_read;
+                int addsubstring = global_end-global_start;
+                String copyString = stringBuilder.substring(start_read, end_read);
+                start = end_read+1;
+                // vloží šablony
+                for (int j = 1; j <count[i]; j++) {       
+                    stringBuilder.insert(start, System.getProperty("line.separator") + copyString);
+                    start = start+addsubstring + System.getProperty("line.separator").length();
+                }                
             } else {
-                getTarge(Integer.toString(i));
+                getTarge(Integer.toString(i),start);
                 start_read = global_start;
-                getTarge(Integer.toString(i));
+                start = global_end+1;
+                getTarge(Integer.toString(i),start);
                 end_read = global_end;
                 stringBuilder.delete(start_read, end_read);
-                actual_postion = start_read;
+                start = start_read;
             }
             
         }
+    }
+    
+    
+    private static void insertElements() {
+        
+        int start = 0;       
         String [] ss;
         String write = "";
         
-        for (int i = 0; i < printed_el.size(); i++) {
-            for (int j = 0; j <= printed_el.get(i).database.Data.size() ; j++) {
-                if(printed_el.get(i).database.Data.get(j).printed){
-                for (int k = 1; k < printed_el.get(i).database.DE.length; k++) {
-                  if((!"".equals(printed_el.get(i).database.Data.get(j).strings_of_elements[k]))){
-                    switch (printed_el.get(i).database.DE[k].type) {
+        for (int i = 0; i < databases.size(); i++) {
+            for (int j = 0; j < databases.get(i).Data.size() && j<count[i]; j++) {
+                if(databases.get(i).Data.get(j).printed){
+                getTarge(Integer.toString(i), start);
+                start = global_end+1;
+                for (int k = 1; k < databases.get(i).DE.length; k++) {
+                  if((!"".equals(databases.get(i).Data.get(j).strings_of_elements[k]))){
+                    switch (databases.get(i).DE[k].type) {
                         case DATE:                
-                            ss = printed_el.get(i).database.Data.get(j).strings_of_elements[k].split("[.]");
-                            write = Integer.toString(Integer.parseInt(ss[0])) + "." + Integer.toString(Integer.parseInt(ss[1]));
-                            insertText(write,printed_el.get(i).database.DE[k]);
+                            ss = databases.get(i).Data.get(j).strings_of_elements[k].split("[.]");
+                            write = Integer.toString(Integer.parseInt(ss[0])) + "." + Integer.toString(Integer.parseInt(ss[1]));                            
+                            insertNumber(write,databases.get(i).DE[k],start);
                             break;
                         case TIME:
-                            ss = printed_el.get(i).database.Data.get(j).strings_of_elements[k].split("[:]");
+                            ss = databases.get(i).Data.get(j).strings_of_elements[k].split("[:]");
                             write = Integer.toString(Integer.parseInt(ss[0])) + ":" + Integer.toString(Integer.parseInt(ss[1]));
-                            insertText(write,printed_el.get(i).database.DE[k]);
+                            insertNumber(write,databases.get(i).DE[k],start);
                             break;
                         case URL:
-                            insertURL(write,printed_el.get(i).database.DE[k]);
+                            insertURL(write,databases.get(i).DE[k],start);
                             break;
-                        case TEXT:
-                            insertText(write,printed_el.get(i).database.DE[k]);
+                        case TEXT:             
+                            insertText(write,databases.get(i).DE[k],start);
                             break;
                         case VARCHAR:
-                            insertText(write,printed_el.get(i).database.DE[k]);
+                            insertText(write,databases.get(i).DE[k],start);
                             break;
                         
                         }
                     }
                     
                 }
+               getTarge(Integer.toString(i), start);
+               start = global_end+1;
              }
             }
         }
@@ -98,85 +174,85 @@ public class PrintedElementsAdministration {
     
     }
     
-    public void getTarge(String target) {
-        char ch = ' ';
-        String ss = null; 
-        int index = global_index;
+    
+
+    
+    private static void getTarge(String target,int start) {
+        int index = start;
         int save_index=0;
-        while(ch != '<'){
-           
-        if(ch == '!') {
+        int i=0;
+        StringBuilder sc = new StringBuilder(10);
+        StringBuilder scn = new StringBuilder(2);
+        int length = stringBuilder.length();
+        while(i<length){
+        if(stringBuilder.charAt(i) == '<'){
+            i++;
+        if(i<length && stringBuilder.charAt(i)  == '!') {
             save_index = index-1;
-              if(ch == '-'){                        
-                  if(ch == '-'){
-                       while(true){
-                         while(ch != '-') {
-                               
+            i++;            
+              if(i<length && stringBuilder.charAt(i)  == '-'){
+                  i++;
+                  if(stringBuilder.charAt(i)  == '-'){
+                      i++;
+                       while(i<length){
+                         while(i<length && stringBuilder.charAt(i) != '-') {
+                            sc.append(stringBuilder.charAt(i));
+                            i++;    
                          }
-                         if(ch == '-'){
-                              if(ch == '>'){
-                                  if(ss.equals(target)){
+                         i++;
+                         scn.append('-');
+                         if(i<length && stringBuilder.charAt(i)== '-'){
+                             scn.append('-');
+                             if(i<length && stringBuilder.charAt(i)== '>'){
+                                  if(sc.toString().equals(target)){
                                       global_start = save_index;
                                       global_end = index;
                                       return;
+                                  } else {
+                                      sc.delete(0, sc.capacity());
+                                      scn.delete(0, scn.capacity());
                                   }
                                     
                               }                                
                          }
+                        sc.append(scn); 
                       }
                     }                    
                }
-        }
+             }
+          } else {
+          i++;  
+          }
         }
         global_start = -1;
         global_end = -1;
             
-     }
+     } 
     
-    
-    
-    
-    public void insertText(String insertString,DataElement DE){
-        getTarge(DE.name());
+    private static void insertNumber(String insertString,DataElement DE,int start){
+        getTarge(DE.name(),start);
         stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start, insertString);
+        stringBuilder.insert(global_start,insertString);    
+    }
+    
+    
+    private static void insertText(String insertString,DataElement DE,int start){
+        getTarge(DE.name(),start);
+        stringBuilder.delete(global_start, global_end);
+        String ss = HtmlEscape.escapeTextArea(insertString);
+        stringBuilder.insert(global_start,ss);
        
     }
     
-    public void insertURL(String insertString,DataElement DE){
-        getTarge(DE.name());
+    private static void insertURL(String insertString,DataElement DE,int start){
+        getTarge(DE.name(),start);
         stringBuilder.delete(global_start, global_end);
         stringBuilder.insert(global_start, "<a href="+ insertString + ">" );
         
-        getTarge(DE.name());
+        getTarge(DE.name(),start);
         stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start,"</a>");
-        
-    }
-    
-    
-    class PrintedElement implements Comparable<PrintedElement>{
-    private int number;
-    protected int count;
-    protected Database database;
+        stringBuilder.insert(global_start,"</a>");      
+    }    
 
-    public PrintedElement(Database database) {
-             this.database = database;
-             number = database.database.number;
-             int c = 0;
-             for (int i = 0; i < database.Data.size(); i++) {
-                 if(database.Data.get(i).printed){
-                    c++; 
-                 }
-             }
-             count = c;
-      
-    }
-    
-
-    @Override
-    public int compareTo(PrintedElement o) {
-        return this.number - o.number;
-    }
    }
-}
+

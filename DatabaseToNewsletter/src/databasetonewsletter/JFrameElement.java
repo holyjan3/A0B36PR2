@@ -61,8 +61,7 @@ public class JFrameElement extends JFrame{
         super("Nový záznam");
         this.database = panelMenuLines.database;
         element = new Element(database.DE);
-        new_element = true;
-        
+        new_element = true;        
         
         //database.Data.add(element);
         jpanel = new JPanelElement(database,element);    
@@ -102,7 +101,7 @@ public class JFrameElement extends JFrame{
             
              JOptionPane  frame = new JOptionPane();
              Object[] options = {"uložit",
-                    "zahodit",
+                    "zahodit změny",
                     "vráti se"};
             int n = JOptionPane.showOptionDialog(frame,
                  "Přejete si uložit záznam",
@@ -116,7 +115,7 @@ public class JFrameElement extends JFrame{
                 globaBottom.save();
             } else {
                 if(n==1){
-                    globaBottom.remove();
+                    dispose();
                 } else {                    
                     setVisible(true);
                 }

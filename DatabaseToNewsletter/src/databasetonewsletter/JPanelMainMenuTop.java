@@ -6,6 +6,7 @@ package databasetonewsletter;
 
 import java.io.*;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 
 
@@ -23,8 +24,8 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     public JPanelMainMenuTop() {
         initComponents();
         printedElement = new PrintedElementsAdministration();
-        this.printer.setEnabled(false);
-        this.preview.setEnabled(false);
+        //this.printer.setEnabled(false);
+        //this.preview.setEnabled(false);
     }
 
     /**
@@ -54,7 +55,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             }
         });
 
-        make.setText("zpracuj newsletter");
+        make.setText("spracuj newsletter");
         make.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 makeActionPerformed(evt);
@@ -88,7 +89,12 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void previewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewActionPerformed
-        // TODO add your handling code here:
+       try {
+           PrintedElementsAdministration.previewCode();
+       }
+       catch (java.io.IOException e) {
+           
+       }
     }//GEN-LAST:event_previewActionPerformed
 
     private void printerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printerActionPerformed
@@ -107,26 +113,27 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
           return "HTML Files";
         }
       });
-      
-      int r = chooser.showSaveDialog(this);      
+    int r = chooser.showSaveDialog(this);  
       
      
-     while (r == 0) {
-          
+     while (r == 0) {          
         String zipname = chooser.getSelectedFile().getPath();  
         File f = new File(zipname);
         
         if(f.exists()){
+            int n = JOptionPane.showConfirmDialog(null, "Přejete si přepsat existující soubor ?", "",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            System.out.println(n);
+            if(n == 0){ 
+                break;
+            }
+            else {
+                r = chooser.showSaveDialog(this);
+            }
             
-            r = chooser.showSaveDialog(this);
-            
-            
-        }else {
-            
-            
-            break;
-        }  
-        
+        }else {                        
+                break;
+        }       
         
       }
     }//GEN-LAST:event_printerActionPerformed

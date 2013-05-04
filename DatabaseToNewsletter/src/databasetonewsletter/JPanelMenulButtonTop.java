@@ -22,7 +22,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         DataElement [] DE = database.DE;
         array = new ArrayList<>(8);
         array.add(0,0);
-        array.add(1, 1);
+        array.addAll(jFrameMenu.array);
         int j = 1;
        
         
@@ -32,8 +32,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         for (int i = 0; i < DE.length; i++) {
            if(DE[i].sort()){
                     comboBox.addItem(DE[i].toStringSort()); 
-                    j++;                   
-                    array.add(j, i);        
+                    
             }           
         }
         
@@ -211,12 +210,8 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         int i = comboBox.getSelectedIndex();
         if(i==0){
             jFrameMenu.database.sortPrint();
-        } else {
-            if(jFrameMenu.database.DE[i] == DataElement.DATE){
-                jFrameMenu.database.sortDate();
-            } else {
-                 jFrameMenu.database.sortString(1);
-            }
+        } else {      
+                 jFrameMenu.database.sortString(array.get(i));            
         }
         jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_arrangeActionPerformed

@@ -29,7 +29,7 @@ public class CompareDate implements Comparator<Element>{
             month1 = Integer.parseInt(ssD1[1]);
             year1 = Integer.parseInt(ssD1[2]);
         } else {
-            return -1;
+            return 1;
         }
         
         if(ssD2.length == 3){
@@ -37,7 +37,7 @@ public class CompareDate implements Comparator<Element>{
             month2 = Integer.parseInt(ssD2[1]);
             year2 = Integer.parseInt(ssD2[2]);            
         } else {
-            return 1;
+            return -1;
         }
         
         if(year1 != year2) {

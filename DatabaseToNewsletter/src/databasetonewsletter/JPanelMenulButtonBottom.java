@@ -124,7 +124,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
          for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
-                    frameMenu.database.nowWorkDatabase.removeElement(button.line.element);
+                    frameMenu.database.nowWorkDatabase.removeElement(button.element);
                 }
         }
         frameMenu.menuLines.overWritePanel();
@@ -133,7 +133,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private void eneblePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eneblePrintActionPerformed
          for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
-                    button.line.element.setStringPrinted(true);
+                    button.element.setStringPrinted(true);
                     
                 }
         }
@@ -143,7 +143,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private void disablePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disablePrintActionPerformed
         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
-                    button.line.element.setStringPrinted(false);
+                    button.element.setStringPrinted(false);
                 }
         }
         frameMenu.menuLines.overWritePanel();

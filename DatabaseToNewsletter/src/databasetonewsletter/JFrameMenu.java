@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.ArrayList;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -23,14 +24,16 @@ public class JFrameMenu extends JFrame{
     JScrollPane scrollPane;
     JPanelConection conection;
     JFrameMainMenu frameMainMenu;
+    protected ArrayList<Integer> array;
        
     public JFrameMenu(Database database,JFrameMainMenu frameMainMenu) throws HeadlessException {        
         super(database.name_database);
         
         this.frameMainMenu = frameMainMenu;
         this.database = database;
+        this.watch();
         menulButtonTop = new JPanelMenulButtonTop(this);
-        menuLines = new JPanelMenuLines(database);
+        menuLines = new JPanelMenuLines(this);
         menulButtonBottom = new JPanelMenulButtonBottom(this);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
        
@@ -67,6 +70,19 @@ public class JFrameMenu extends JFrame{
 
         
        
+    }
+    
+    public void watch(){
+        int j = 0;
+        array = new ArrayList(8);
+        array.add(j,1);
+        for (int i = 1; i < database.DE.length; i++) {
+            if(database.DE[i].sort()){
+                j++;    
+                array.add(j, i);
+        
+            }
+        }
     }
     
     @Override

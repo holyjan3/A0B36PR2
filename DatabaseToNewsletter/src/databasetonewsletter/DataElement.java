@@ -13,33 +13,33 @@ import java.io.Serializable;
  */
 public enum DataElement{
     
-    PRINTED     (0,0,DataControl.BOOL,1),
-    HEAD        (70,1,DataControl.VARCHAR,Constants.MaxVarChar),
-    DATE        (2,2,DataControl.DATE, 10),
-    TIME        (0,5,DataControl.TIME,  5),   
-    HEAD_LINK   (0,7,DataControl.VARCHAR,Constants.MaxVarChar),
-    TOWN        (20,8,DataControl.VARCHAR,Constants.MaxVarChar),
-    PLACE       (0,9,DataControl.VARCHAR,Constants.MaxVarChar),
-    TEXT        (0,10,DataControl.VARCHAR,Constants.MaxVarChar),
-    TEXT_LINK   (0,0,DataControl.VARCHAR,Constants.MaxVarChar),
-    LINK1_TEXT  (0,11,DataControl.VARCHAR,Constants.MaxVarChar),
-    LINK2_TEXT  (0,12,DataControl.VARCHAR, Constants.MaxVarChar),
-    LINK3_TEXT  (0,13,DataControl.VARCHAR, Constants.MaxVarChar),
-    LINK1       (0,14,DataControl.VARCHAR, Constants.MaxVarChar),
-    LINK2       (0,15,DataControl.VARCHAR, Constants.MaxVarChar),
-    LINK3       (0,16,DataControl.VARCHAR, Constants.MaxVarChar),
-    NAME        (20,-1,DataControl.VARCHAR, Constants.MaxVarChar),
-    MEDIUM      (20,-1,DataControl.VARCHAR, Constants.MaxVarChar),
-    TYPE        (10,-1,DataControl.VARCHAR, Constants.MaxVarChar);    
+    PRINTED     (0,DataControl.BOOL,1),
+    HEAD        (700,DataControl.VARCHAR,Constants.MaxVarChar),
+    DATE        (100,DataControl.DATE, 10),
+    TIME        (0,DataControl.TIME,  5),   
+    HEAD_LINK   (0,DataControl.VARCHAR,Constants.MaxVarChar),
+    TOWN        (200,DataControl.VARCHAR,Constants.MaxVarChar),
+    PLACE       (0,DataControl.VARCHAR,Constants.MaxVarChar),
+    TEXT        (800,DataControl.VARCHAR,Constants.MaxVarChar),
+    TEXT_LINK   (0,DataControl.VARCHAR,Constants.MaxVarChar),
+    LINK1_TEXT  (0,DataControl.VARCHAR,Constants.MaxVarChar),
+    LINK2_TEXT  (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    LINK3_TEXT  (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    LINK1       (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    LINK2       (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    LINK3       (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    NAME        (200,DataControl.VARCHAR, Constants.MaxVarChar),
+    MEDIUM      (200,DataControl.VARCHAR, Constants.MaxVarChar),
+    TYPE        (80,DataControl.VARCHAR, Constants.MaxVarChar);    
     
 
-    final int ELEMENT_FUTURE;
+
     final int LINE_SIZE;
     final int date_size;
     DataControl type;
     
-    private DataElement(int LINE_SIZE,int ELEMENT_FUTURE, DataControl type,int date_size) {
-        this.ELEMENT_FUTURE = ELEMENT_FUTURE;
+    private DataElement(int LINE_SIZE, DataControl type,int date_size) {
+  
         this.LINE_SIZE = LINE_SIZE;
         this.type = type;
         this.date_size = date_size;
