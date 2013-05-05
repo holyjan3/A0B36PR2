@@ -210,8 +210,13 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         int i = comboBox.getSelectedIndex();
         if(i==0){
             jFrameMenu.database.sortPrint();
-        } else {      
-                 jFrameMenu.database.sortString(array.get(i));            
+        } else {
+            if(jFrameMenu.database.DE[array.get(i)] == DataElement.DATE){
+                jFrameMenu.database.sortDate(array.get(i));
+            } else {                
+                 jFrameMenu.database.sortString(array.get(i)); 
+            }
+                            
         }
         jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_arrangeActionPerformed

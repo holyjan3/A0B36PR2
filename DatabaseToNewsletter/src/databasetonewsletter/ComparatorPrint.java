@@ -21,9 +21,9 @@ public class ComparatorPrint implements Comparator<Element>{
             return 0;
         } else {
             if(b1){
-                return -1;
-            } else {
                 return 1;
+            } else {
+                return -1;
             }
         }
     

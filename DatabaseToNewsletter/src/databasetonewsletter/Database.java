@@ -68,8 +68,9 @@ public class Database{
     } 
     
     
-    public void sortDate() {
-        Collections.sort(Data,new CompareDate());
+    public void sortDate(int i){
+        
+        Collections.sort(Data,new CompareDate(i));
     }
     
     public void sortString(int number) {

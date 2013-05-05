@@ -5,6 +5,7 @@
 package databasetonewsletter;
 
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -165,7 +166,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
       
     }//GEN-LAST:event_saveExitActionPerformed
 
-    public void save(){
+    public void saveElement(){
          if(this.jCheckBox1.isSelected()){
              panelElement.element.strings_of_elements[0] = Boolean.toString(true);
         }else {
@@ -188,6 +189,40 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         
         panelMenuLines.overWritePanel();
         frameElement.dispose();
+    }
+    
+    public void save(){
+        if(checkData()){
+            saveElement();
+        } 
+            
+    }
+    
+    
+    public boolean checkData(){
+        for (int i = 1; i < this.frameElement.jpanel.jLabelsError.length; i++) {
+            if(this.frameElement.jpanel.jLabelsError[i].isVisible()){
+                JOptionPane  frame = new JOptionPane();
+                Object[] options = {"uložit",
+                    "vráti se"};
+             int n = JOptionPane.showOptionDialog(frame,
+                 "Dojde ke strátě dat jelikož některá data nejsou správně zadána",
+                    "",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE,
+                 null,
+                options,
+                options[1]);
+            
+            if(n == 0){
+                return true;
+            } else {
+                return false;
+            }
+          }
+            
+        }
+        return true;
     }
     
     private void saveExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveExitMouseClicked

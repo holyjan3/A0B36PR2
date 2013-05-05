@@ -23,12 +23,12 @@ public class CompareString implements  Comparator<Element>{
     public int compare(Element o1, Element o2) {
         if(!o1.strings_of_elements[order].equals("")){
             if(!o2.strings_of_elements[order].equals("")) {
-                return o1.strings_of_elements[order].compareTo(o2.strings_of_elements[order]);
+                return -o1.strings_of_elements[order].compareTo(o2.strings_of_elements[order]);
             } else {
-                return -1;
+                return 1;
             }
         } else {
-            return 1;
+            return -1;
         }
     }
     

@@ -40,13 +40,6 @@ public class WorkDatabaseOnline extends WorkDatabase{
     public void modifyElement(JPanelElement panelElement) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }   
-
-
-    @Override
-    void saveDatabese() {
-        // tady posze ukoncis spravu tabulky.. 
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
    
 

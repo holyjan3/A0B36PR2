@@ -26,7 +26,7 @@ import javax.swing.event.AncestorListener;
    
 public class JPanelElement extends JPanel{    
     JTextArea[] text;
-    JLabel [] jLabelsEror;
+    JLabel [] jLabelsError;
     Database database;    
    
     protected int jtext_height;
@@ -43,7 +43,7 @@ public class JPanelElement extends JPanel{
        
         
         text = new JTextArea[element.DE.length];  
-        jLabelsEror = new JLabel[element.DE.length];
+        jLabelsError = new JLabel[element.DE.length];
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
          
@@ -172,9 +172,11 @@ public class JPanelElement extends JPanel{
             //JButton save = new JButtonWithNumber(i, "uložit");                 
             JButton restore  = new JButtonWithNumber(i, "obnovit");
             JButton delete  = new JButtonWithNumber(i, "vymazat text");
-            jLabelsEror[i] = new JLabel("chyba ve vstupnim retezci");
-            jLabelsEror[i].setVisible(false);
-            jLabelsEror[i].setBackground(Color.red);
+            jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
+            jLabelsError[i].setVisible(false);
+            jLabelsError[i].setBackground(Color.red);
+            jLabelsError[i].setOpaque(true);
+            jLabelsError[i].setForeground(Color.white);
            
             
             
@@ -197,7 +199,7 @@ public class JPanelElement extends JPanel{
             //item2.add(save);
             item2.add(restore);
             item2.add(delete);
-            item2.add(jLabelsEror[i]);
+            item2.add(jLabelsError[i]);
        
             panel.add(item0);
             panel.add(item1);
@@ -232,12 +234,12 @@ public class JPanelElement extends JPanel{
                if(!jtf.getText().equals("")) {
                    int i = jtf.number;
                     if(ControlElement.controlDatabaseElement(element.DE[i], jtf.getText())){                        
-                        jLabelsEror[i].setVisible(false);
+                        jLabelsError[i].setVisible(false);
                         deleteString = element.strings_of_elements[i];
                         deleteNumberString = i;
                         element.strings_of_elements[i] = jtf.getText();
                     } else {
-                        jLabelsEror[i].setVisible(true);
+                        jLabelsError[i].setVisible(true);
                     }
                }
         }       

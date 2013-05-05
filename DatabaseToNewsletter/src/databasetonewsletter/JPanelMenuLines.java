@@ -24,7 +24,9 @@ public class JPanelMenuLines extends JPanel{
     Database database;
     double height = 30;   
     protected ArrayList<Integer> array;
-   
+    TableLayout tableLayout;
+    double[][] ds;
+   JPanel jp;
     ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
       
 
@@ -41,7 +43,7 @@ public class JPanelMenuLines extends JPanel{
         
         array = frameMenu.array;
         int j = array.size();
-        double[][] ds =  new double[2][j+3];
+        ds =  new double[2][j+3];
         
         ds[0][0]= 30;
         ds[1][0]= height;
@@ -56,61 +58,78 @@ public class JPanelMenuLines extends JPanel{
           ds[1][i]= height;   
         }
         
-       
+       jp = new JPanel();
         
-        TableLayout tableLayout = new TableLayout(ds);
-       
-        
-        setLayout(tableLayout);
-        
+       tableLayout = new TableLayout(ds);        
+       jp.setLayout(tableLayout);
+       this.setLayout(new FlowLayout(FlowLayout.LEFT) );
     
             
         
          for (int i = 0; i < database.Data.size();i++) {
-            JPanelMenuLine(i);
-         }
-                
+            
+            JPanelMenuLine(i,i);
+         } 
+           add(jp);
+           
         } 
         
   
     
     public void overWritePanel(){
-       this.removeAll();
+       //this.removeAll();
        this.jrb.clear();
+       this.removeAll();
+       jp = new JPanel();
+        
+       tableLayout = new TableLayout(ds);     
+        
+       jp.setLayout(tableLayout);
+        
+       //tableLayout = new TableLayout(ds);
        for (int i = 0; i < database.Data.size(); i++) {
-           JPanelMenuLine(i);
+         System.out.println("velikost" +i);
+           JPanelMenuLine(i,i);
         }
+       add(jp);
        this.revalidate();
        this.repaint();
+ 
       }
     
     public void find(String ss){
-       this.removeAll();
        this.jrb.clear();
+       this.removeAll();
+       jp = new JPanel();        
+       tableLayout = new TableLayout(ds);       
+       jp.setLayout(tableLayout);
        int j = 0;
         for (int i = 0; i < database.Data.size(); i++) {
             if(database.Data.get(i).strings_of_elements[1].toLowerCase().contains(ss)){
-               JPanelMenuLine(i);
+               JPanelMenuLine(i,i);
                 j++;     
             }
         }
+       add(jp);
        this.revalidate();
        this.repaint();
     }
     
     public void addLine(){
-          JPanelMenuLine(database.Data.size());
+        int i = database.Data.size();
+        System.out.println(i);
+       JPanelMenuLine(i,i);
     }
     
    
-   public void JPanelMenuLine(int numberLine) 
+   public void JPanelMenuLine(int numberLine, int numberElement) 
     {
         
         JCheckBox checkBox;
         Element element;
         JButton jButton;
         JLabel label;
-        Border paddingBorder = BorderFactory.createEmptyBorder(10,10,10,10);
+        Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         
         element = database.Data.get(numberLine);
@@ -139,12 +158,14 @@ public class JPanelMenuLines extends JPanel{
         UIManager.put("checkBox.focus",Color.RED);
        
               
-       
-        add(jr,"0, "+Integer.toString(numberLine));  
+        System.out.println("add line "+ numberLine);
+    
+        tableLayout.insertRow (0, TableLayout.MINIMUM);
         
-        add(checkBox,"1, "+Integer.toString(numberLine));
-        add(jButton,"2, "+Integer.toString(numberLine));
-          
+        jp.add(jr,"0, 1");       
+        jp.add(checkBox,"1, 1");
+        jp.add(jButton,"2, 1");
+        
      for (int i = 0; i < array.size(); i++) {
            //System.out.println("nnn"+element.strings_of_elements[array.get(i)]+array.get(i));
            label= new JLabel(element.strings_of_elements[array.get(i)]);
@@ -159,13 +180,12 @@ public class JPanelMenuLines extends JPanel{
            label.setOpaque(true);
            
            
-           label.setBorder(BorderFactory.createCompoundBorder(border,paddingBorder));
+           label.setBorder(BorderFactory.createCompoundBorder(border,paddingBorder));          
+           jp.add(label,Integer.toString(i+3)+", 1");
+
            
-           
-           add(label,Integer.toString(i+3)+", "+ Integer.toString(numberLine));
      }       
-             
-              
+       
   }      
    
     
