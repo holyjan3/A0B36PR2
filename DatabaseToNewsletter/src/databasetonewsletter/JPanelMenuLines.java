@@ -114,14 +114,14 @@ public class JPanelMenuLines extends JPanel{
        this.revalidate();
        this.repaint();
     }
-    
+   /* 
     public void addLine(){
         int i = database.Data.size();
         System.out.println(i);
        JPanelMenuLine(i,i);
     }
     
-   
+   */
    public void JPanelMenuLine(int numberLine, int numberElement) 
     {
         
@@ -136,7 +136,7 @@ public class JPanelMenuLines extends JPanel{
         
         JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,element);
         jrb.add(jr);       
-        ActionModify acl = new ActionModify();
+        JPanelMenuLines.ActionModify acl = new JPanelMenuLines.ActionModify();
         checkBox = new JCheckBox();
         checkBox.setFocusable(true);
         jButton = new JButtonWithNumber(numberLine, "upravit");
@@ -184,7 +184,8 @@ public class JPanelMenuLines extends JPanel{
            jp.add(label,Integer.toString(i+3)+", 1");
 
            
-     }       
+     } 
+     int i = 0;
        
   }      
    

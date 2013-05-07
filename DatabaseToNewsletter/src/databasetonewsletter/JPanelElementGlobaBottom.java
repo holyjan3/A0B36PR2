@@ -24,6 +24,8 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         this.frameElement = frameElement;
         this.panelElement = frameElement.jpanel;
         this.panelMenuLines = panelMenuLines;
+        this.jCheckBox1.setSelected(panelElement.element.printed);
+        
         
     }
 
@@ -129,36 +131,29 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        
         JCheckBox box = (JCheckBox) evt.getSource();
-         panelElement.element.strings_of_elements[0] = Boolean.toString(!Boolean.parseBoolean(panelElement.element.strings_of_elements[0]));
+        panelElement.element.setStringPrinted(box.isSelected());
+         
+         
          System.out.println(box.isSelected());
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void deleteAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAllMouseClicked
        
-        if(!panelElement.deleteString.equals("")){
-            panelElement.element.strings_of_elements[panelElement.deleteNumberString] = panelElement.deleteString;
-            panelElement.deleteString = "";
-        }
+     
         for (int i = 1; i < panelElement.text.length; i++) {
             
             panelElement.text[i].setText("");
-            System.out.println(i);
         }
+  
     }//GEN-LAST:event_deleteAllMouseClicked
 
     private void replaceAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_replaceAllMouseClicked
        
         for (int i = 1; i < panelElement.text.length; i++) {
-           
-            
-            if((i != panelElement.deleteNumberString) || panelElement.deleteString.equals("")) {
             panelElement.text[i].setText(panelElement.element.strings_of_elements[i]);
-            } else {
-                    panelElement.text[i].setText(panelElement.deleteString);
-                    panelElement.deleteString = "";
-            }
-            
+ 
         }
     }//GEN-LAST:event_replaceAllMouseClicked
 

@@ -5,8 +5,12 @@
 package databasetonewsletter;
 
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.filechooser.FileFilter;
 
 
@@ -24,9 +28,23 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     public JPanelMainMenuTop() {
         initComponents();
         printedElement = new PrintedElementsAdministration();
+        GlobalSave.getText();
+        this.heading.setText(GlobalSave.HEADING);
+        this.footer.setText(GlobalSave.FOOTER);
+        
         //this.printer.setEnabled(false);
         //this.preview.setEnabled(false);
     }
+
+    public String getFooter() {
+        return footer.getText();
+    }
+
+    public String getHeading() {
+        return heading.getText();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,6 +58,12 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         preview = new javax.swing.JButton();
         printer = new javax.swing.JButton();
         make = new javax.swing.JButton();
+        heading = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        footer = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
 
         preview.setText("náhled");
         preview.addActionListener(new java.awt.event.ActionListener() {
@@ -62,29 +86,76 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             }
         });
 
+        heading.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                headingActionPerformed(evt);
+            }
+        });
+        heading.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                headingFocusLost(evt);
+            }
+        });
+
+        footer.setColumns(15);
+        footer.setLineWrap(true);
+        footer.setRows(2);
+        footer.setWrapStyleWord(true);
+        footer.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                footerFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(footer);
+
+        label1.setText("záhlaví");
+
+        label2.setText("zápatí");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(preview, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(printer, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(preview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(make, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(printer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(printer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(preview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(make, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(printer)
-                        .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
+                .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -123,15 +194,27 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         if(f.exists()){
             int n = JOptionPane.showConfirmDialog(null, "Přejete si přepsat existující soubor ?", "",
             JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-            System.out.println(n);
+            
             if(n == 0){ 
-                break;
+                try {
+                    PrintedElementsAdministration.saveFile(zipname);
+                    break;
+                } catch (IOException ex) {
+                    Logger.getLogger(JPanelMainMenuTop.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
             else {
                 r = chooser.showSaveDialog(this);
             }
             
-        }else {                        
+        }else {    
+             try {
+                    PrintedElementsAdministration.saveFile(zipname);
+                    break;
+                } catch (IOException ex) {
+                    Logger.getLogger(JPanelMainMenuTop.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 break;
         }       
         
@@ -141,21 +224,37 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
         boolean b = true;
         try {
-            //printedElement.printedElements(null);
+            PrintedElementsAdministration.printElement(WorkerDatabase.dataDatabases);
+            PrintedElementsAdministration.insertText(this.heading.getText(), "HEADING", 0);
+            PrintedElementsAdministration.insertText(this.footer.getText(), "FOOTER", 0);
+            PrintedElementsAdministration.saveInsert();
         } catch (Exception e) {
-            b = false;
+            System.out.println("chyba");
         }
-        if(b){
-           this.preview.setEnabled(true);
-           this.printer.setEnabled(true);
-           this.preview.revalidate();
-           this.printer.revalidate();
-        } else {
-          // vyskakovac9 okno ...   
-        }
+        
     }//GEN-LAST:event_makeActionPerformed
 
+    private void headingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_headingActionPerformed
+
+    private void headingFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_headingFocusLost
+        GlobalSave.HEADING = this.heading.getText();
+        System.out.println(GlobalSave.HEADING);
+    }//GEN-LAST:event_headingFocusLost
+
+    private void footerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_footerFocusLost
+         GlobalSave.FOOTER = this.footer.getText();
+        
+    }//GEN-LAST:event_footerFocusLost
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea footer;
+    private javax.swing.JTextField heading;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
     private javax.swing.JButton make;
     private javax.swing.JButton preview;
     private javax.swing.JButton printer;

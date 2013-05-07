@@ -5,7 +5,6 @@
 package databasetonewsletter;
 
 import java.util.Comparator;
-import javax.lang.model.util.Elements;
 
 /**
  *

@@ -34,13 +34,13 @@ public class JPanelElement extends JPanel{
     protected Insets Ins = new Insets(10, 10, 20, 10);    
     Element element;
     
-    protected String deleteString = "";
-    protected int deleteNumberString = 0;
 
     JPanelElement(Database database,Element element) {
         this.database = database;
         this.element = element;
-       
+        
+        final int minwidth = 20;
+        final int maxwidth = 60;
         
         text = new JTextArea[element.DE.length];  
         jLabelsError = new JLabel[element.DE.length];
@@ -56,109 +56,124 @@ public class JPanelElement extends JPanel{
         
        
         for (int i = 1; i < element.DE.length; i++) {
+            JButton restore  = new JButtonWithNumber(i, "obnovit");
+            JButton delete  = new JButtonWithNumber(i, "vymazat text");
+            jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
+            jLabelsError[i].setVisible(false);
+            if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
+                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
+            }
+            
             switch (element.DE[i]) {
          
                 case DATE:
                     jtext_height = 1;
-                    jtext_width = 10;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     text[i].addKeyListener(new ActionDate());
                     break;
                 case TIME:
                     jtext_height = 1;
-                    jtext_width = 10;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     text[i].addKeyListener(new ActionTime());
                     break;
                 case HEAD:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case HEAD_LINK:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                    text[i].setText(element.strings_of_elements[i]);
                    // url(text[i],element.strings_of_elements[i]);
                     break;
                 case TOWN:
                     jtext_height = 1;
-                    jtext_width = 10;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case PLACE:
-                    jtext_height = 1;
+                    jtext_height = 3;
+                     jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case TEXT:
                     jtext_height =10;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case LINK1_TEXT:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case LINK2_TEXT:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case LINK3_TEXT:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case LINK1:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                    text[i].setText(element.strings_of_elements[i]);
                     //url(text[i],element.strings_of_elements[i]);
                     break;
                 case LINK2:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                     text[i].setText(element.strings_of_elements[i]);
                     //url(text[i],element.strings_of_elements[i]);
                     break;
                 case LINK3:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                    text[i].setText(element.strings_of_elements[i]);
                     //url(text[i],element.strings_of_elements[i]);
                     break;
                 case NAME:
                     jtext_height = 1;
-                    jtext_width = 10;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                 case MEDIUM:
                     jtext_height = 1;
-                    jtext_width = 10;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     break;
                case TEXT_LINK:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = maxwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                    text[i].setText(element.strings_of_elements[i]);
                     //url(text[i],element.strings_of_elements[i]);
                     break;
                 case TYPE:
                     jtext_height = 1;
-                    jtext_width = 80;
+                    jtext_width = minwidth;
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
+                    text[i].setText(element.strings_of_elements[i]);
                     break;
             }
             JPanel item0 = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -170,10 +185,8 @@ public class JPanelElement extends JPanel{
             
             
             //JButton save = new JButtonWithNumber(i, "uložit");                 
-            JButton restore  = new JButtonWithNumber(i, "obnovit");
-            JButton delete  = new JButtonWithNumber(i, "vymazat text");
-            jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
-            jLabelsError[i].setVisible(false);
+            
+            
             jLabelsError[i].setBackground(Color.red);
             jLabelsError[i].setOpaque(true);
             jLabelsError[i].setForeground(Color.white);
@@ -211,15 +224,21 @@ public class JPanelElement extends JPanel{
         JFormattedTextField field = new JFormattedTextField();
         
         
- }   
-   /* protected void url(JTextArea ta,String ss){
-        if(ss.equals("")){
-            ta.setText("http://");
+ 
+  }
+    
+    public void numberLine(String SS, int width){
+        if(SS.length() < width) {
             
-        } else {
-            ta.setText(ss);
-        }
-    }*/
+        }else {
+            for (int i = width; i >= 0; i--) {
+                if(SS.charAt(i) == ' ' ){
+                    
+                }
+            }
+        }        
+    }
+
     
         class ActionSave implements FocusListener {
 
@@ -235,9 +254,6 @@ public class JPanelElement extends JPanel{
                    int i = jtf.number;
                     if(ControlElement.controlDatabaseElement(element.DE[i], jtf.getText())){                        
                         jLabelsError[i].setVisible(false);
-                        deleteString = element.strings_of_elements[i];
-                        deleteNumberString = i;
-                        element.strings_of_elements[i] = jtf.getText();
                     } else {
                         jLabelsError[i].setVisible(true);
                     }
@@ -251,8 +267,6 @@ public class JPanelElement extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            deleteString = text[jbwn.number].getText();
-            deleteNumberString = jbwn.number;
             text[jbwn.number].setText(""); 
             
         }
@@ -263,13 +277,7 @@ public class JPanelElement extends JPanel{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            if((jbwn.number == deleteNumberString) && (!deleteString.equals("") )){
-                element.strings_of_elements[jbwn.number] = deleteString;
-            } else {                
-                deleteString = "";
-            }
-           
+            JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();           
             if(!element.strings_of_elements[jbwn.number].equals("")){
             text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);
             }

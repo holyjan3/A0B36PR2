@@ -5,6 +5,8 @@
 package databasetonewsletter;
 
 import static databasetonewsletter.DataControl.URL;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 /**
@@ -28,6 +30,7 @@ public class ControlElement {
                     b = contolVarChar(ss, DE.date_size);
                break;
            case URL:
+                b = controlURL(ss, DE.date_size);
                break;
            case TEXT:
                     b = contolVarChar(ss, DE.date_size);
@@ -95,9 +98,27 @@ public class ControlElement {
       }
    }
    
-   public static boolean controlURL(String URL){
+   public static boolean controlURL(String URLString , int MAX_SIZE){
+       if (!contolVarChar(URLString, MAX_SIZE))
+           return false;
+  
+    try {
+      HttpURLConnection.setFollowRedirects(false);
+      // note : you may also need
+      
+      HttpURLConnection con =
+         (HttpURLConnection) new URL(URLString).openConnection();
+      con.setRequestMethod("HEAD");
+      return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
+    }
+    catch (Exception e) {
+       //e.printStackTrace();
        return false;
-   }
+    
+  }  
+  }
+       
+ 
 
    
    public static boolean controlTime (String time){

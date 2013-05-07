@@ -36,6 +36,8 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
         selectAll = new javax.swing.JButton();
         eneblePrint = new javax.swing.JButton();
         disablePrint = new javax.swing.JButton();
+        selectToNotPrinted = new javax.swing.JButton();
+        selectToPrinted = new javax.swing.JButton();
 
         jButton4.setText("jButton1");
 
@@ -74,34 +76,56 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
+        selectToNotPrinted.setText("<html>vybrat </br> k nevytištění</html>");
+        selectToNotPrinted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectToNotPrintedActionPerformed(evt);
+            }
+        });
+
+        selectToPrinted.setText("<html>vybrat</br> k vytištění</html>");
+        selectToPrinted.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectToPrintedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(selectAll, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(selectAll, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addComponent(selectToPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectToNotPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(selectCancel)
+                .addGap(85, 85, 85)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(78, 78, 78)
                 .addComponent(eneblePrint)
-                .addGap(30, 30, 30)
+                .addGap(39, 39, 39)
                 .addComponent(disablePrint)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(disablePrint, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eneblePrint, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(selectAll, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(disablePrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(eneblePrint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(delete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(selectToPrinted)
+                            .addComponent(selectToNotPrinted))
+                        .addComponent(selectAll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(selectCancel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -149,6 +173,28 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
         frameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_disablePrintActionPerformed
 
+    private void selectToNotPrintedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectToNotPrintedActionPerformed
+         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
+                if(!button.element.isPrinted()){                   
+                    button.setSelected(true);
+                    button.revalidate();
+                }
+        } 
+        
+         
+    }//GEN-LAST:event_selectToNotPrintedActionPerformed
+
+    private void selectToPrintedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectToPrintedActionPerformed
+        
+        for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
+                if(button.element.isPrinted()){                   
+                    button.setSelected(true);
+                    button.revalidate();
+                }
+        } 
+   
+    }//GEN-LAST:event_selectToPrintedActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delete;
     private javax.swing.JButton disablePrint;
@@ -156,5 +202,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton selectAll;
     private javax.swing.JButton selectCancel;
+    private javax.swing.JButton selectToNotPrinted;
+    private javax.swing.JButton selectToPrinted;
     // End of variables declaration//GEN-END:variables
 }

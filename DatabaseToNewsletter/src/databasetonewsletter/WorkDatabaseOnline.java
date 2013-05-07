@@ -17,16 +17,19 @@ public class WorkDatabaseOnline extends WorkDatabase{
     
     @Override
     public void readFromDatabase() {
-        // koukne se jestli se lisi od databaze .. jestli ne nic nedela jestli ano yept8 se jestl ma ptrehrat databazi nebo nahrat vlastni databazi
-        // jestli ma prehrad prvky ... 
-        // ne to bude delat worker database... 
-        // tady poze se nahrajes databazi... 
+      
+        // zkonroluje jestli je databáze zamklá jesli neni pokračuje, jinak zdělí uživateli že z  databází někdo pracuje
+        // koukne se na posledne se na čas poslední úprvi daatabáze,  
+        //jestli ne nic nedela jestli ano nahraje databázi a zepta se které prvky si přeje nahradit ... 
+        // nahradí prvky
+ 
     }
    
 
     @Override
     public void addElementt(Element element) {
         // pridas element do databaze
+        //
     }
 
 
@@ -48,8 +51,10 @@ public class WorkDatabaseOnline extends WorkDatabase{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    void rewriteDatabase(boolean All){
-        
+
+    @Override
+    void saveDatabese() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -25,31 +25,41 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="selectAll" min="-2" pref="109" max="-2" attributes="0"/>
+              <Component id="selectAll" min="-2" pref="94" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="selectCancel" min="-2" pref="103" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="selectToPrinted" min="-2" pref="81" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="selectToNotPrinted" min="-2" pref="80" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="selectCancel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Component id="delete" min="-2" pref="89" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
               <Component id="eneblePrint" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="disablePrint" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="disablePrint" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="eneblePrint" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="delete" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="selectCancel" min="-2" pref="34" max="-2" attributes="0"/>
-                  <Component id="selectAll" min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="disablePrint" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="eneblePrint" alignment="0" max="32767" attributes="0"/>
+                      <Component id="delete" alignment="0" max="32767" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="selectToPrinted" alignment="3" max="32767" attributes="0"/>
+                          <Component id="selectToNotPrinted" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="selectAll" alignment="0" max="32767" attributes="0"/>
+                      <Component id="selectCancel" alignment="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="14" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,6 +103,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="disablePrintActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="selectToNotPrinted">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat &lt;/br&gt; k nevyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectToNotPrintedActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="selectToPrinted">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat&lt;/br&gt; k vyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selectToPrintedActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
