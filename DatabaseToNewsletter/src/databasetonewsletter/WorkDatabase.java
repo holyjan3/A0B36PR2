@@ -20,10 +20,36 @@ import java.util.logging.Logger;
  */
 public abstract class WorkDatabase {
     Database database;
+    ReadFromDatabase rfd;
+    SaveDatabese sd;
     public WorkDatabase(Database database) {
         this.database = database;
+        rfd = new ReadFromDatabase();
+        sd = new SaveDatabese();
+
     }
-    abstract void readFromDatabase();
+    public class ReadFromDatabase implements Runnable{        
+        @Override
+        public void run() {
+            readFromDatabase();
+        }
+        
+    
+    }
+    
+    public class SaveDatabese implements Runnable{
+
+        @Override
+        public void run() {
+           saveDatabese();
+        }
+        
+    }
+    
+    abstract void readFromDatabase(); 
+    
+    
+    
     abstract void removeElement(Element element);
     abstract void addElementt(Element element);
     abstract void modifyElement(JPanelElement element);
@@ -94,5 +120,7 @@ public abstract class WorkDatabase {
   
     
 }
+
+  
 
 }

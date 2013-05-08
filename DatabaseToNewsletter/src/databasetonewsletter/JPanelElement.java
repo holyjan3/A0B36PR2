@@ -58,7 +58,7 @@ public class JPanelElement extends JPanel{
       
         
        
-        for (int i = 1; i < element.DE.length; i++) {
+        for (int i = 0; i < element.DE.length; i++) {
            
             
             
@@ -305,16 +305,12 @@ class ActionDate implements KeyListener {
                 }
             }
           jtawn.setText(ss.toString()); 
+        
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            
-        }
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-           JTextAreaWithNumber jtawn = (JTextAreaWithNumber) e.getSource();
+            JTextAreaWithNumber jtawn = (JTextAreaWithNumber) e.getSource();
                 StringBuilder ss = new StringBuilder(jtawn.getText()); 
                 int a= ss.length();
                 if(a>0){
@@ -324,6 +320,20 @@ class ActionDate implements KeyListener {
                 
                  } 
                 }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            JTextAreaWithNumber jtawn = (JTextAreaWithNumber) e.getSource();
+                StringBuilder ss = new StringBuilder(jtawn.getText()); 
+                int a= ss.length();
+                if(a>0){
+                    
+                 if(!Character.isDigit(ss.charAt(ss.length()-1))){
+                    jtawn.setText(ss.deleteCharAt(ss.length()-1).toString());
+                
+                 } 
+             }
         }
 
            
@@ -349,6 +359,16 @@ class ActionDate implements KeyListener {
 
         @Override
         public void keyPressed(KeyEvent e) {
+            JTextAreaWithNumber jtawn = (JTextAreaWithNumber) e.getSource();
+                StringBuilder ss = new StringBuilder(jtawn.getText()); 
+                int a= ss.length();
+                if((a>0)){
+                    
+                 if(!Character.isDigit(ss.charAt(ss.length()-1))){
+                    jtawn.setText(ss.deleteCharAt(ss.length()-1).toString());
+                
+                 } 
+                }
             
         }
 

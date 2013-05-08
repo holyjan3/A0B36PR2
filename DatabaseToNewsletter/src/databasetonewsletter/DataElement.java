@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 public enum DataElement{
     
-    PRINTED     (0,DataControl.BOOL,1),
     HEAD        (700,DataControl.VARCHAR,Constants.MaxVarChar),
     DATE        (100,DataControl.DATE, 10),
     TIME        (0,DataControl.TIME,  5),   

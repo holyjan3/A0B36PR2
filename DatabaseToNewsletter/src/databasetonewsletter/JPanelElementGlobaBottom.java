@@ -1,5 +1,5 @@
-/*//GEN-FIRST:event_saveExitMouseClicked
- * To change this template, choose Tools | Templates//GEN-LAST:event_saveExitMouseClicked
+/*                                      
+ * To change this template, choose Tools | Templates                                     
  * and open the template in the editor.
  */
 package databasetonewsletter;
@@ -24,7 +24,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         this.frameElement = frameElement;
         this.panelElement = frameElement.jpanel;
         this.panelMenuLines = panelMenuLines;
-        this.jCheckBox1.setSelected(panelElement.element.printed);
+        this.jCheckBox1.setSelected(panelElement.element.isPrinted());
         
         
     }
@@ -139,7 +139,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     private void deleteAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAllMouseClicked
        
      
-        for (int i = 1; i < panelElement.text.length; i++) {
+        for (int i = 0; i < panelElement.text.length; i++) {
             
             panelElement.text[i].setText("");
         }
@@ -148,7 +148,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
 
     private void replaceAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_replaceAllMouseClicked
        
-        for (int i = 1; i < panelElement.text.length; i++) {
+        for (int i = 0; i < panelElement.text.length; i++) {
             panelElement.text[i].setText(panelElement.element.strings_of_elements[i]);
  
         }
@@ -160,13 +160,13 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
 
     public void saveElement(){
          if(this.jCheckBox1.isSelected()){
-             panelElement.element.strings_of_elements[0] = Boolean.toString(true);
+             panelElement.element.setStringPrinted(true);
         }else {
-            panelElement.element.strings_of_elements[0] = Boolean.toString(false);
+            panelElement.element.setStringPrinted(false);
         }
         
          
-        for (int i = 1; i < this.panelElement.element.strings_of_elements.length; i++) {
+        for (int i = 0; i < this.panelElement.element.strings_of_elements.length; i++) {
             panelElement.element.strings_of_elements[i] = panelElement.text[i].getText();
             
         }
@@ -192,7 +192,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     
     
     public boolean checkData(){
-        for (int i = 1; i < this.frameElement.jpanel.jLabelsError.length; i++) {
+        for (int i = 0; i < this.frameElement.jpanel.jLabelsError.length; i++) {
             if(this.frameElement.jpanel.jLabelsError[i].isVisible()){
                 JOptionPane  frame = new JOptionPane();
                 Object[] options = {"uložit",

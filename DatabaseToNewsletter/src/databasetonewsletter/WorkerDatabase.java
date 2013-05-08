@@ -8,6 +8,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,17 +19,18 @@ import java.util.logging.Logger;
  * @author Majitel
  */
 public class WorkerDatabase {
-   static ArrayList<Database> dataDatabases = WorkerDatabase() ;
+   static ArrayList<Database> dataDatabases ;
    public static boolean online = false;
-   public static String unicateKey = "UNICATEKEY";
+   public static final String unicateKey = "UNICATEKEY";
+   public static final String printed = "PRINTED";
    public static Connection conection =null;
    
-   private static ArrayList<Database> WorkerDatabase() {
+    public static void WorkerDatabase() {
         dataDatabases  = new ArrayList<>(10);
         for (DataDatabase dataDatabase : DataDatabase.values()) {
             dataDatabases.add(new Database(dataDatabase));
         }
-        return(dataDatabases);
+        
     }
 
   
@@ -42,6 +46,53 @@ public class WorkerDatabase {
        } catch (SQLException ex) {
            Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
        }    
+    }
+    
+    public static void conectDatabaseAll() {
+//            Thread[] th = new Thread[dataDatabases.size()];
+        int i = 0;
+        boolean bb = true;
+//            for (Database database : dataDatabases) {
+//                th[i] = new Thread(database.nowWorkDatabase.rfd);
+//                th[i].start();
+//
+//                i++;
+//            }
+        boolean finshed = false;
+        int k = 0;
+        ExecutorService es = Executors.newCachedThreadPool(); 
+        for(Database database : dataDatabases) 
+            es.execute(database.nowWorkDatabase.rfd); 
+            es.shutdown();
+       while(!finshed){
+        try {
+            k++;
+            System.out.println(k);
+            finshed = es.awaitTermination(1, TimeUnit.SECONDS);
+       } catch (InterruptedException ex) {
+           Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
+      
+        
+    }
+    
+    public static void disconectDatabasesAll(){
+          boolean finshed = false;
+        int k = 0;
+        ExecutorService es = Executors.newCachedThreadPool(); 
+        for(Database database : dataDatabases) 
+            es.execute(database.nowWorkDatabase.sd); 
+            es.shutdown();
+       while(!finshed){
+        try {
+            k++;
+            System.out.println(k);
+            finshed = es.awaitTermination(1, TimeUnit.SECONDS);
+       } catch (InterruptedException ex) {
+           Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       }
     }
     
     public static void conectOfflineDatabase(){

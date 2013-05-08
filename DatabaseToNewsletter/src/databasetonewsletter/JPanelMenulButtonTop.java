@@ -1,5 +1,5 @@
-/*//GEN-FIRST:event_comboBoxActionPerformed
- * To change this template, choose Tools | Templates//GEN-LAST:event_comboBoxActionPerformed
+/*                                         
+ * To change this template, choose Tools | Templates                                        
  * and open the template in the editor.
  */
 package databasetonewsletter;
@@ -26,7 +26,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         int j = 1;
        
         
-        comboBox.addItem(DataElement.PRINTED.toString());       
+        comboBox.addItem("Vyštěno");       
         comboBox.addItem(DataElement.HEAD.toString());        
         
         for (int i = 0; i < DE.length; i++) {

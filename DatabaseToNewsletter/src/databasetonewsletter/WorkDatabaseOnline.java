@@ -46,6 +46,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
         LinkedList <Element> list= new LinkedList<>();
        
         int key = 0;
+        boolean printed = false;
         try{
             stmt = conection.createStatement();
             
@@ -54,12 +55,21 @@ public class WorkDatabaseOnline extends WorkDatabase{
             
             while(rs.next()){
                 key = rs.getInt(WorkerDatabase.unicateKey);
+                printed = rs.getBoolean(WorkerDatabase.printed);
                 for (int i = 0; i < 0; i++) {
-                    ss[i] = rs.getNString(database.DE[i].toString());
-                    
+                    ss[i] = rs.getNString(database.DE[i].toString());                    
                 }
-               list.add(new Element(database.DE, ss));
+                
+                Element el = new Element(database.DE, ss);
+                el.setStringPrinted(printed);
+                el.key = key;
+                list.add(el);
+               
             }
+            Database d1 = new Database(database.database);
+            Database d2 = new Database(database.database);
+            
+            
             
             /// porovnaní
            

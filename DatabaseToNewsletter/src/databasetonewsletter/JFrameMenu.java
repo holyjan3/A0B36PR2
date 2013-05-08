@@ -75,10 +75,10 @@ public class JFrameMenu extends JFrame{
     public void watch(){
         int j = 0;
         array = new ArrayList(8);
-        array.add(j,1);
+        array.add(j,0);
  
         
-        for (int i = 1; i < database.DE.length; i++) {
+        for (int i = 0; i < database.DE.length; i++) {
             if(database.DE[i].sort()){
                 j++;    
                 array.add(j, i);

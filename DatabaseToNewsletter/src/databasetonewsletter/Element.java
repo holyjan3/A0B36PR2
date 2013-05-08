@@ -24,7 +24,7 @@ final public class Element implements  Serializable{
         this.DE = DE;
         //this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
         changed = false;
-        printed = Boolean.parseBoolean(strings_of_elements[0]);
+        printed = false;
     }
     
     
@@ -33,15 +33,21 @@ final public class Element implements  Serializable{
         this.DE = DE;        
         changed = false;
         strings_of_elements = new String[DE.length];
-        printed = Boolean.parseBoolean(strings_of_elements[0]);
-        for (int i = 1; i < DE.length; i++) {
+        for (int i = 0; i < DE.length; i++) {
             strings_of_elements[i] = "";
         }
         
     }
     
+    public Element(DataElement[] DE,int a){
+        this(DE);
+        strings_of_elements[0]= Test.ss;
+        
+    }
+    
+    
+    
     public void setStringPrinted(boolean b){
-        strings_of_elements[0] = Boolean.toString(b);
         this.printed = b;
     }
     

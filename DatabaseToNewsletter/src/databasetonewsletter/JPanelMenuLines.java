@@ -106,7 +106,7 @@ public class JPanelMenuLines extends JPanel{
        jp.setLayout(tableLayout);
        int j = 0;
         for (int i = 0; i < database.Data.size(); i++) {
-            if(database.Data.get(i).strings_of_elements[1].toLowerCase().contains(ss)){
+            if(database.Data.get(i).strings_of_elements[0].toLowerCase().contains(ss)){
                JPanelMenuLine(i);
                 j++;     
             }
@@ -170,7 +170,7 @@ public class JPanelMenuLines extends JPanel{
         jButton = new JButtonWithNumber(numberLine, "upravit");
         jButton.addActionListener(acl);        
         
-        if(Boolean.parseBoolean(element.strings_of_elements[0])){
+        if(element.isPrinted()){
             checkBox.setSelected(true);
             checkBox.setBackground(Color.green);
             checkBox.setOpaque(true);

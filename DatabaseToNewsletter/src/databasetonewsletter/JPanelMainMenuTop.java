@@ -27,7 +27,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     PrintedElementsAdministration printedElement;
     public JPanelMainMenuTop() {
         initComponents();
-        printedElement = new PrintedElementsAdministration();
+       
         GlobalSave.getText();
         this.heading.setText(GlobalSave.HEADING);
         this.footer.setText(GlobalSave.FOOTER);
@@ -224,10 +224,13 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
         boolean b = true;
         try {
-            PrintedElementsAdministration.printElement(WorkerDatabase.dataDatabases);
-            PrintedElementsAdministration.insertText(this.heading.getText(), "HEADING", 0);
-            PrintedElementsAdministration.insertText(this.footer.getText(), "FOOTER", 0);
-            PrintedElementsAdministration.saveInsert();
+            WorkerDatabase.conectDatabaseAll();
+            PrintedElementsAdministration pea = new PrintedElementsAdministration(WorkerDatabase.dataDatabases);
+            pea.insertText(this.heading.getText(), "HEADING", 0);
+            pea.insertText(this.footer.getText(), "FOOTER", 0);
+            pea.saveTempfile();
+            WorkerDatabase.disconectDatabasesAll();
+           
         } catch (Exception e) {
             System.out.println("chyba");
         }

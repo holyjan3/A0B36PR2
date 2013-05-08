@@ -23,6 +23,7 @@ public class JPanelConection extends javax.swing.JPanel {
         initComponents();
         this.container = container;
         setT();
+        this.setVisible(false);
     }
     
     public void setT(){

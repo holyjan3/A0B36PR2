@@ -26,6 +26,8 @@ public class WorkDatabaseOffline extends WorkDatabase{
         super(database);
     }
     
+    
+    
     @Override
     public void readFromDatabase() {
         ObjectInputStream inputstream = null;

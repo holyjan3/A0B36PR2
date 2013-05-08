@@ -82,12 +82,22 @@ public class ControlElement {
    }
    
    public static boolean controlDate(String date){
+       
       if (date.length()==10){
        // odd2lovaccarkou
        String ss[] = date.split("[.]");
-       int day = Integer.parseInt(ss[0]);
-       int month = Integer.parseInt(ss[1]);
-       int year = Integer.parseInt(ss[2]);
+       int day = 0; 
+       int month = 0;
+       int year = 0;
+       if(ss.length != 3)
+           return false;
+       try{
+       day = Integer.parseInt(ss[0]);
+       month = Integer.parseInt(ss[1]);
+       year = Integer.parseInt(ss[2]);
+       } catch (NumberFormatException e){
+            return false;
+       }
        if((0<day)&&(day<32)&&(0<month)&&(month<13)&&(2000<year)&&(year<3000)){
            return true;
        } else {
@@ -124,8 +134,16 @@ public class ControlElement {
    public static boolean controlTime (String time){
        if (time.length()==5){
        String ss[] = time.split("[:]");
-       int hour = Integer.parseInt(ss[0]);
-       int minute = Integer.parseInt(ss[1]);
+       int hour = 0;
+       int minute = 0;
+       if(ss.length != 2)
+           return false;
+       try{
+       hour = Integer.parseInt(ss[0]);
+       minute = Integer.parseInt(ss[1]);
+       } catch (NumberFormatException e){
+            return false;
+       }
        if((0<=hour)&&(hour<=24)&&(0<=minute)&&(minute<60)){
            return true;
        } else {

@@ -21,9 +21,20 @@ public class DatabaseToNewsletter {
      */
     public static void main(String[] args) {       
         
+        WorkerDatabase.WorkerDatabase();
+       /* for (Database database : WorkerDatabase.dataDatabases) {
+            for (int i = 0; i < 1000; i++) {
+                database.Data.add(new Element(database.DE, 1));
+            }
+        }
         
+        for (Database database : WorkerDatabase.dataDatabases) {
+            database.saveToFile();
+        }
+        */
         
         try {
+            
            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.");
             /*
             PrintedElementsAdministration.readFile();
@@ -31,8 +42,8 @@ public class DatabaseToNewsletter {
             PrintedElementsAdministration.copyElement();
             PrintedElementsAdministration.saveTempfile();
             */
-           JFrameStart.main(null);
-           //new JFrameMainMenu();
+           //JFrameStart.main(null);
+           new JFrameMainMenu();
         } catch (Exception ex) {
             Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
         }
