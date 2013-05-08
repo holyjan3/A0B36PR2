@@ -209,9 +209,7 @@ public class JPanelElement extends JPanel{
     
     public JPanel addButton(int i){
         JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));   
-         if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
-                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
-         }
+         
          JButton restore  = new JButtonWithNumber(i, "obnovit");
          JButton delete  = new JButtonWithNumber(i, "vymazat text");          
          restore.addActionListener(buttonRestore);
@@ -221,6 +219,10 @@ public class JPanelElement extends JPanel{
          jLabelsError[i].setBackground(Color.red);
          jLabelsError[i].setOpaque(true);
          jLabelsError[i].setForeground(Color.white);  
+         
+         if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
+                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
+         }
          text[i].addFocusListener(save);
          item2.add(restore);
          item2.add(delete);

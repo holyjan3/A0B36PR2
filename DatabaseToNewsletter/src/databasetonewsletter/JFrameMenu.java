@@ -76,6 +76,8 @@ public class JFrameMenu extends JFrame{
         int j = 0;
         array = new ArrayList(8);
         array.add(j,1);
+ 
+        
         for (int i = 1; i < database.DE.length; i++) {
             if(database.DE[i].sort()){
                 j++;    

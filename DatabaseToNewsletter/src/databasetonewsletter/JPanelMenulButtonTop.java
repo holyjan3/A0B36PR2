@@ -1,5 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
+/*//GEN-FIRST:event_comboBoxActionPerformed
+ * To change this template, choose Tools | Templates//GEN-LAST:event_comboBoxActionPerformed
  * and open the template in the editor.
  */
 package databasetonewsletter;

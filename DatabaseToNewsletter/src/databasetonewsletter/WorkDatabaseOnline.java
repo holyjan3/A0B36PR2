@@ -5,6 +5,7 @@
 package databasetonewsletter;
 
 import java.sql.*;
+import java.util.*;
 /**
  *
  * @author Majitel
@@ -39,10 +40,30 @@ public class WorkDatabaseOnline extends WorkDatabase{
     @Override
     public void readFromDatabase() {
         Statement stmt = null;
-        String ss = "LOCK TABLES" + database.name_file + "READ";
+        String sLock= "LOCK TABLES" + database.name_file + "READ";
+        String sRead="SELECT * FROM "+database.name_file; 
+        String ss[] = new String[database.DE.length];
+        LinkedList <Element> list= new LinkedList<>();
+       
+        int key = 0;
         try{
             stmt = conection.createStatement();
-            stmt.execute(ss);
+            
+            stmt.execute(sLock);
+            ResultSet rs = stmt.executeQuery(sRead);
+            
+            while(rs.next()){
+                key = rs.getInt(WorkerDatabase.unicateKey);
+                for (int i = 0; i < 0; i++) {
+                    ss[i] = rs.getNString(database.DE[i].toString());
+                    
+                }
+               list.add(new Element(database.DE, ss));
+            }
+            
+            /// porovnaní
+           
+             
            
         
         

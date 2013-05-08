@@ -25,7 +25,7 @@ public class JFrameElement extends JFrame{
     
     
     public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
-        super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[1].toString());
+        super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[0].toString());
         database = panelMenuLines.database;
         this.element = element;
         new_element = false;
