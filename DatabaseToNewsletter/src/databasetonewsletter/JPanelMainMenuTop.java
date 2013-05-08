@@ -72,7 +72,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             }
         });
 
-        printer.setText("tisk");
+        printer.setText("uložit do html souboru");
         printer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 printerActionPerformed(evt);

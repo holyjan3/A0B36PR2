@@ -20,7 +20,7 @@ public enum DataDatabase {
         Declaration("Prohlášeni",5,0,true,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TYPE}),
         Petition("Petični stánky",6,3,true,new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
         Plan("Plánuje se",7,3,true,new DataElement[] {DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
-        PlanAdvertisement("Na čem se pracuje",8,1,false, new DataElement[]{DataElement.TEXT, DataElement.TEXT_LINK}),
+        PlanAdvertisement("Na čem se pracuje",8,1,false, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
         PlanInRegion("Na čem se pracuje v regionech",9,4,true, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
         Article("Členove napsali",10,0,true,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.NAME,DataElement.MEDIUM});
                 
