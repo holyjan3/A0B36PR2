@@ -37,7 +37,7 @@ public class JFrameMainMenu extends JFrame {
             java.util.logging.Logger.getLogger(JFrameStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
-        setDefaultCloseOperation(EXIT_ON_CLOSE); 
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
         menuTop = new JPanelMainMenuTop();
         jpc = new JPanelConection(this);
@@ -48,7 +48,7 @@ public class JFrameMainMenu extends JFrame {
         add(new JPanelDatabases(WorkerDatabase.dataDatabases,this),BorderLayout.CENTER);
         
         add(jpc,BorderLayout.SOUTH);
-        setSize(700,500);
+        setSize(900,600);
         setVisible(true); 
         
     
@@ -76,7 +76,27 @@ public class JFrameMainMenu extends JFrame {
         public void windowClosing(WindowEvent e) {
             GlobalSave.FOOTER = menuTop1.getFooter();
             GlobalSave.HEADING = menuTop1.getHeading();
-            GlobalSave.saveText();
+            if(GlobalSave.saveText()) {
+                
+               System.exit(0);
+            }else {
+                JOptionPane  frame = new JOptionPane();
+             Object[] options = {"zahodit ",
+                    "vráti se"};
+            int n = JOptionPane.showOptionDialog(frame,
+                 "Nezdařilo se uložení přejete si přesto zavřít okno data budou zničena",
+                    "",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                options,
+                options[1]);
+                if(n==0){
+                System.exit(0);
+         
+                
+            }
+            }
         }
 
         @Override

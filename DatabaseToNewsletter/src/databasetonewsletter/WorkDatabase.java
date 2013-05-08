@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -58,8 +59,9 @@ public abstract class WorkDatabase {
         return database.Data.get(number_element);
     }
     
-    public void saveDatabese(){
+    public boolean  saveDatabese(){
         ObjectOutputStream outputstream = null;
+        boolean bb = true;
         String ss = "temp_" + database.name_file + ".txt";
         try {
             
@@ -67,60 +69,54 @@ public abstract class WorkDatabase {
             outputstream.writeObject(database.Data);
          
         }catch (IOException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+            bb = false;
+            
         } finally {
             try {
                 outputstream.close();
                 tempToDatabase();
             } catch (IOException ex) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+                bb = false;
+               
+            } finally {
+                if (bb) {
+                return bb;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Nepodařilo se uloži soubor, nejspíše je použván jiným pogramem", "", JOptionPane.ERROR_MESSAGE);    
+                    return bb;
+               }
             }
         }
     }
        
-    public  void tempToDatabase(){
+    public  void tempToDatabase() throws FileNotFoundException, IOException{
         
             String s1= "temp_" + database.name_file + ".txt";
             String s2= database.name_file+".txt";
             BufferedInputStream inputStream= null;
             BufferedOutputStream outputStream = null;
-            try {
-                inputStream = new BufferedInputStream(new FileInputStream(s1));
-            } catch (FileNotFoundException ex) { 
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                outputStream = new BufferedOutputStream(new FileOutputStream(s2));
-            } catch (FileNotFoundException ex) { 
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            }
+       
+           inputStream = new BufferedInputStream(new FileInputStream(s1));
+           outputStream = new BufferedOutputStream(new FileOutputStream(s2));
+            
+           
+           
             int number = 1024;
             byte[] bitarray = new byte[number];
           
-            try {
+   
             while (inputStream.available()>0) {
                 int i = inputStream.read(bitarray);
                 outputStream.write(bitarray, 0, number);
                 
             }
-            } catch (IOException ex) {
-                Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                try {
-                    outputStream.close();
-                    inputStream.close();
+         
+          outputStream.close();
+          inputStream.close();
                     
-                } catch (IOException ex) {
-                    Logger.getLogger(WorkDatabaseOffline.class.getName()).log(Level.SEVERE, null, ex);
-                }
+               
                 
-            }
+     }
   
     
-}
-
-  
-
 }

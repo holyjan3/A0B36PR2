@@ -70,8 +70,8 @@ public class WorkDatabaseOffline extends WorkDatabase{
 
    
     @Override
-   public void saveDatabese(){
-        super.saveDatabese();
+   public boolean saveDatabese(){
+        return super.saveDatabese();
    }
        
   

@@ -7,18 +7,21 @@ package databasetonewsletter;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Majitel
  */
-public class GlobalSave implements  Serializable {
+public class GlobalSave {
     static String HEADING = "";
     static String FOOTER = "";
     static String separator = "###################";
     private static String nameFile ="globalsave.txt";
     public static void getText() {
         BufferedReader bis = null;
+        File f = new File(nameFile);
+        if(f.exists()){
         try {
             bis = new BufferedReader(new FileReader(nameFile));
             HEADING = read(bis);
@@ -27,7 +30,7 @@ public class GlobalSave implements  Serializable {
         } catch (IOException ex) {
             Logger.getLogger(GlobalSave.class.getName()).log(Level.SEVERE, null, ex);
         } 
-        
+       }
         
         
     }
@@ -51,24 +54,38 @@ public class GlobalSave implements  Serializable {
         bw.write(System.getProperty("line.separator"));
         
     }
-    public static void saveText(){
-            File f = new File(nameFile);
-            if(f.exists())
-                f.delete();
-            BufferedWriter bw = null;
+    public static boolean saveText(){
+       File f = null;
+       boolean bb = true;
+        BufferedWriter bw = null;
         try {
-            bw = new BufferedWriter(new FileWriter(f,true));
+        f= new File(nameFile);
+            if(f.exists())
+                f.delete();           
+                bw = new BufferedWriter(new FileWriter(nameFile, true));
             save(bw,HEADING);
             save(bw,FOOTER);
         } catch (IOException ex) {
-            Logger.getLogger(GlobalSave.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
+            bb = false;
+        }       
+        finally {
                 try {
                     bw.close();
-                } catch (IOException ex) {
-                    Logger.getLogger(GlobalSave.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                } catch (IOException | NullPointerException e) {
+                    bb = false;
+                } finally {
+                    if(bb){
+                      return true; 
+                    }
+                    else {
+                     JOptionPane.showMessageDialog(null, "Nepodařilo se uloži soubor, nejspíše je použván jiným programem", "", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                    } 
+                    
+               }
         }
+        
+        
            
     }   
     

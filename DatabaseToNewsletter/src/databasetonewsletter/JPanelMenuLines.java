@@ -89,7 +89,7 @@ public class JPanelMenuLines extends JPanel{
         
        //tableLayout = new TableLayout(ds);
        for (int i = 0; i < database.Data.size(); i++) {
-         System.out.println("velikost" +i);
+       
            JPanelMenuLine(i);
         }
        add(jp);
@@ -194,7 +194,7 @@ public class JPanelMenuLines extends JPanel{
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbw = (JButtonWithNumber) e.getSource();
-            System.out.println(jbw.number);
+          
             int a = 0;
             Element el = database1.nowWorkDatabase.openElement(jbw.number);
             new JFrameElement(JPanelMenuLines.this, el);

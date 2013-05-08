@@ -131,9 +131,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         
         JCheckBox box = (JCheckBox) evt.getSource();
         panelElement.element.setStringPrinted(box.isSelected());
-         
-         
-         System.out.println(box.isSelected());
+      
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     private void deleteAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteAllMouseClicked

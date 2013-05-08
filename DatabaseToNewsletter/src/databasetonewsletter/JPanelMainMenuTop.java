@@ -164,7 +164,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
            PrintedElementsAdministration.previewCode();
        }
        catch (java.io.IOException e) {
-           
+            JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_previewActionPerformed
 
@@ -200,7 +200,8 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                     PrintedElementsAdministration.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
-                    Logger.getLogger(JPanelMainMenuTop.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
+                    break;
                 }
             }
             else {
@@ -212,7 +213,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                     PrintedElementsAdministration.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
-                    Logger.getLogger(JPanelMainMenuTop.class.getName()).log(Level.SEVERE, null, ex);
+                   JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
                 }
                 
                 break;
@@ -232,9 +233,10 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             WorkerDatabase.disconectDatabasesAll();
            
         } catch (Exception e) {
-            System.out.println("chyba");
+             
+         JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
+            
         }
-        
     }//GEN-LAST:event_makeActionPerformed
 
     private void headingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headingActionPerformed
@@ -243,7 +245,6 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
 
     private void headingFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_headingFocusLost
         GlobalSave.HEADING = this.heading.getText();
-        System.out.println(GlobalSave.HEADING);
     }//GEN-LAST:event_headingFocusLost
 
     private void footerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_footerFocusLost

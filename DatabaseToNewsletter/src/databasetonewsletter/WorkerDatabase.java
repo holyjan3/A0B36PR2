@@ -59,15 +59,13 @@ public class WorkerDatabase {
 //                i++;
 //            }
         boolean finshed = false;
-        int k = 0;
         ExecutorService es = Executors.newCachedThreadPool(); 
         for(Database database : dataDatabases) 
             es.execute(database.nowWorkDatabase.rfd); 
             es.shutdown();
        while(!finshed){
         try {
-            k++;
-            System.out.println(k);
+           
             finshed = es.awaitTermination(1, TimeUnit.SECONDS);
        } catch (InterruptedException ex) {
            Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,15 +77,13 @@ public class WorkerDatabase {
     
     public static void disconectDatabasesAll(){
           boolean finshed = false;
-        int k = 0;
         ExecutorService es = Executors.newCachedThreadPool(); 
         for(Database database : dataDatabases) 
             es.execute(database.nowWorkDatabase.sd); 
             es.shutdown();
        while(!finshed){
         try {
-            k++;
-            System.out.println(k);
+   
             finshed = es.awaitTermination(1, TimeUnit.SECONDS);
        } catch (InterruptedException ex) {
            Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);

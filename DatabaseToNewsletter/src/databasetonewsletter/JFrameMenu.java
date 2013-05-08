@@ -35,7 +35,7 @@ public class JFrameMenu extends JFrame{
         menulButtonTop = new JPanelMenulButtonTop(this);
         menuLines = new JPanelMenuLines(database,array);
         menulButtonBottom = new JPanelMenulButtonBottom(this);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
        
         
         setVisible(true);
@@ -104,9 +104,32 @@ public class JFrameMenu extends JFrame{
         }
 
         @Override
-        public void windowClosing(WindowEvent e) {          
-            database.nowWorkDatabase.saveDatabese();
-            frameMainMenu.setVisible(true);
+        public void windowClosing(WindowEvent e) { 
+            
+            if(database.nowWorkDatabase.saveDatabese()){
+                
+                dispose();
+                frameMainMenu.setVisible(true);
+            }else {
+             
+                JOptionPane  frame = new JOptionPane();
+             Object[] options = {"zahodit ",
+                    "vráti se"};
+            int n = JOptionPane.showOptionDialog(frame,
+                 "Nezdařilo se uložení přejete si přesto zavřít okno data budou zničena",
+                    "",
+                JOptionPane.YES_NO_CANCEL_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+             null,
+            options,
+            options[1]);
+            if(n==0){
+              dispose();
+              frameMainMenu.setVisible(true);
+                
+            }
+            }
+            
         }
 
         @Override

@@ -117,12 +117,13 @@ public class WorkDatabaseOnline extends WorkDatabase{
     
 
     @Override
-    public void saveDatabese() {
+    public boolean saveDatabese() {
         super.saveDatabese();
         // odpojí se od databáze
-        // odemknout databázi
-        
+        // odemknout databázi        
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
+        
     }
 
     

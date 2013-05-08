@@ -25,8 +25,8 @@ public class PrintedElementsAdministration {
     private Multiply[] multiply;
     private Thread[] threads;
     private ArrayList<Database> databases;
-    protected static String file_temp_name = "aaaa.html" ;
-    protected static String file_source = "aaa.txt";
+    protected static String file_temp_name = "temp.html" ;
+    protected static String file_source = "newslettertemplate.txt";
     
     
     public PrintedElementsAdministration(ArrayList<Database> databases) throws IOException{
@@ -242,7 +242,7 @@ public class PrintedElementsAdministration {
                 }
                getTarge(Integer.toString(number), start);
                start = global_end;
-              System.out.println("aaa");
+              
                 }
         }
         
@@ -368,110 +368,7 @@ public class PrintedElementsAdministration {
         }
         /**/
     }
-//    
-//    
-//  public static void copyElement(){
-//        // rozmonožení předdefinovaných prvkú
-//        int start=0;
-//        int start_read =0;
-//        int end_read =0;
-//         
-//        for (int i = 0; i < count.length; i++) {
-//            if(count[i] != 0 ){
-//                getTarge(Integer.toString(i),start);
-//                start_read = global_start;
-//                start = global_end;
-//                getTarge(Integer.toString(i),start);
-//                end_read = global_end;
-//                
-//                
-//                int addsubstring = global_end-global_start;
-//                String copyString = stringBuilder.substring(start_read, end_read);
-//                start = end_read+1;
-//                // vloží šablony
-//                for (int j = 1; j <count[i]; j++) {       
-//                    stringBuilder.insert(start, System.getProperty("line.separator") + copyString);
-//                    start = start+addsubstring + System.getProperty("line.separator").length();
-//                }                
-//            } else {
-//                
-//                while(true){
-//                    start=0;
-//                    getTarge(Integer.toString(i)+"D",start);
-//                    start_read = global_start;
-//                    start = global_end;
-//                    if(global_end == -1)
-//                        break;
-//                    getTarge(Integer.toString(i)+"D",start);
-//                    end_read = global_end;
-//                    stringBuilder.delete(start_read, end_read);
-//                }
-//               global_start = 0;
-//               global_end = 0;
-//               start = 0;
-//               
-//            }
-//            
-//        }
-//    }
-//    
-//    
-//    private static void insertElements() {
-//          
-//        int start = 0;
-//        int c;
-//        String [] ss;
-//        String write = "";
-//        
-//        
-//        
-//        for (int i = 0; i < databases.size(); i++) {
-//            c = 0;
-//            for (int j = databases.get(i).Data.size()-1; j >=0  && c<count[i]; j--) {
-//                if(databases.get(i).Data.get(j).printed){
-//                    c++;
-//                    getTarge(Integer.toString(i), start);
-//                    start = global_end;
-//                    for (int k = 0; k < databases.get(i).DE.length; k++) {
-//                        if((!"".equals(databases.get(i).Data.get(j).strings_of_elements[k]))){
-//                            switch (databases.get(i).DE[k].type) {
-//                                case DATE:                
-//                                ss = databases.get(i).Data.get(j).strings_of_elements[k].split("[.]");
-//                                write = Integer.toString(Integer.parseInt(ss[0])) + "." + Integer.toString(Integer.parseInt(ss[1]));                            
-//                                insertNumber(write,databases.get(i).DE[k].name(),start);
-//                                break;
-//                            case TIME:
-//                                ss = databases.get(i).Data.get(j).strings_of_elements[k].split("[:]");
-//                                write = Integer.toString(Integer.parseInt(ss[0])) + ":" + ss[1];
-//                                insertNumber(write,databases.get(i).DE[k].name(),start);
-//                                break;
-//                            case URL:
-//                                insertURL(databases.get(i).Data.get(j).strings_of_elements[k],databases.get(i).DE[k].name(),start);
-//                                break;
-//                            case TEXT:             
-//                                insertText(databases.get(i).Data.get(j).strings_of_elements[k],databases.get(i).DE[k].name(),start);
-//                                break;
-//                            case VARCHAR:
-//                                insertText(databases.get(i).Data.get(j).strings_of_elements[k],databases.get(i).DE[k].name(),start);
-//                                break;
-//                        
-//                        }
-//                    }
-//                    
-//                }
-//               getTarge(Integer.toString(i), start);
-//               start = global_end;
-//              System.out.println("aaa");
-//                }
-//            }
-//        }
-//        
-//    
-//    }
-//    
-//    
-//
-//    
+
     private void getTarge(String target,int start) {
     
         int save_index=0;
