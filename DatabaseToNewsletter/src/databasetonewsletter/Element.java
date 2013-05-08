@@ -17,8 +17,8 @@ final public class Element implements  Serializable{
     protected DataElement[] DE;    
     protected String[] strings_of_elements;
     protected boolean printed; // nastavi jestli se bude tisknout
-    protected boolean watch;
     protected boolean changed;
+    protected int key = 0;
     
     public Element(DataElement[] DE,String[] strings_of_elements) {
         this.DE = DE;

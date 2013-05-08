@@ -28,10 +28,10 @@
                           <Component id="label1" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="41" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="preview" alignment="1" min="-2" pref="144" max="-2" attributes="0"/>
-                          <Component id="make" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
-                          <Component id="printer" alignment="1" min="-2" pref="146" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="printer" alignment="1" pref="146" max="32767" attributes="0"/>
+                          <Component id="preview" alignment="1" max="32767" attributes="0"/>
+                          <Component id="make" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>

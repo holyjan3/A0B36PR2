@@ -33,7 +33,7 @@ public class JFrameMenu extends JFrame{
         this.database = database;
         this.watch();
         menulButtonTop = new JPanelMenulButtonTop(this);
-        menuLines = new JPanelMenuLines(this);
+        menuLines = new JPanelMenuLines(database,array);
         menulButtonBottom = new JPanelMenulButtonBottom(this);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
        

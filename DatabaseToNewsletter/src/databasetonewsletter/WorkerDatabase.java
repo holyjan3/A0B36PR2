@@ -18,7 +18,9 @@ import java.util.logging.Logger;
 public class WorkerDatabase {
    static ArrayList<Database> dataDatabases = WorkerDatabase() ;
    public static boolean online = false;
-
+   public static String unicateKey = "UNICATEKEY";
+   public static Connection conection =null;
+   
    private static ArrayList<Database> WorkerDatabase() {
         dataDatabases  = new ArrayList<>(10);
         for (DataDatabase dataDatabase : DataDatabase.values()) {
@@ -31,7 +33,7 @@ public class WorkerDatabase {
     
     public static void conectOnlineDatabase(String name, String password){
          try {
-           Connection con = DriverManager.getConnection(
+            conection=DriverManager.getConnection(
                            "jdbc:mysql://localhost:3306/employee_record","root","");
            
            setOnlineDatabase();
@@ -44,30 +46,31 @@ public class WorkerDatabase {
     
     public static void conectOfflineDatabase(){
         setOfflineDatabase();
-        getDateFromDatabase();       
+        //getDateFromDatabase();       
     
     }
     
     
     public static void setOnlineDatabase(){
-           online = true;      
+      for (Database database : dataDatabases) {
+            database.setWorkDatabaseOnline();            
+      }
+      
+      
     }
+    
+   
     
     public static void setOfflineDatabase(){
         for (Database database : dataDatabases) {
             database.setWorkDatabaseOffline();
         }
     }
-    
-    public static void getDateFromDatabase(){        
-          for (Database database : dataDatabases) {
-            database.nowWorkDatabase.readFromDatabase();
-        }
-    }
+
     
     public static void saveDatabase(){
         for (Database database : dataDatabases) {
-            database.nowWorkDatabase.saveDatabese();
+            database.saveToFile();
         }
     }
     

@@ -162,7 +162,7 @@ public class PrintedElementsAdministration {
         
         for (int i = 0; i < databases.size(); i++) {
             c = 0;
-            for (int j = 0; j < databases.get(i).Data.size() && c<count[i]; j++) {
+            for (int j = databases.get(i).Data.size()-1; j >=0  && c<count[i]; j--) {
                 if(databases.get(i).Data.get(j).printed){
                     c++;
                     getTarge(Integer.toString(i), start);

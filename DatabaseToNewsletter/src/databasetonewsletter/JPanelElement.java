@@ -34,6 +34,11 @@ public class JPanelElement extends JPanel{
     protected Insets Ins = new Insets(10, 10, 20, 10);    
     Element element;
     
+    private ActionSave save = new ActionSave();
+    private ActionButtonDelete buttonDelete = new ActionButtonDelete();
+    private ActionButtonRestore buttonRestore = new ActionButtonRestore();
+    
+    
 
     JPanelElement(Database database,Element element) {
         this.database = database;
@@ -50,19 +55,12 @@ public class JPanelElement extends JPanel{
         add(panel);
         this.add(panel);
         
-        ActionSave save = new ActionSave();
-        ActionButtonDelete buttonDelete = new ActionButtonDelete();
-        ActionButtonRestore buttonRestore = new ActionButtonRestore();
+      
         
        
         for (int i = 1; i < element.DE.length; i++) {
-            JButton restore  = new JButtonWithNumber(i, "obnovit");
-            JButton delete  = new JButtonWithNumber(i, "vymazat text");
-            jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
-            jLabelsError[i].setVisible(false);
-            if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
-                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
-            }
+           
+            
             
             switch (element.DE[i]) {
          
@@ -178,26 +176,10 @@ public class JPanelElement extends JPanel{
             }
             JPanel item0 = new JPanel(new FlowLayout(FlowLayout.LEFT));
             JPanel item1 = new JPanel(new FlowLayout(FlowLayout.LEFT));            
-            JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));           
+            JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));     
             
-            
-             JLabel head = new JLabel(element.DE[i].toString());
-            
-            
-            //JButton save = new JButtonWithNumber(i, "uložit");                 
-            
-            
-            jLabelsError[i].setBackground(Color.red);
-            jLabelsError[i].setOpaque(true);
-            jLabelsError[i].setForeground(Color.white);
+            JLabel head = new JLabel(element.DE[i].toString());            
            
-            
-            
-            text[i].addFocusListener(save);
-            
-            restore.addActionListener(buttonRestore);
-           
-            delete.addActionListener(buttonDelete);
             
             item0.add(head);
             if(jtext_height > 1){
@@ -210,9 +192,7 @@ public class JPanelElement extends JPanel{
             }
             
             //item2.add(save);
-            item2.add(restore);
-            item2.add(delete);
-            item2.add(jLabelsError[i]);
+            item2 = addButton(i);
        
             panel.add(item0);
             panel.add(item1);
@@ -226,6 +206,28 @@ public class JPanelElement extends JPanel{
         
  
   }
+    
+    public JPanel addButton(int i){
+        JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));   
+         if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
+                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
+         }
+         JButton restore  = new JButtonWithNumber(i, "obnovit");
+         JButton delete  = new JButtonWithNumber(i, "vymazat text");          
+         restore.addActionListener(buttonRestore);
+         delete.addActionListener(buttonDelete);
+         jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
+         jLabelsError[i].setVisible(false);
+         jLabelsError[i].setBackground(Color.red);
+         jLabelsError[i].setOpaque(true);
+         jLabelsError[i].setForeground(Color.white);  
+         text[i].addFocusListener(save);
+         item2.add(restore);
+         item2.add(delete);
+         item2.add(jLabelsError[i]);
+         return item2;
+        
+    }
     
     public void numberLine(String SS, int width){
         if(SS.length() < width) {
