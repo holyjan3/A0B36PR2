@@ -24,7 +24,7 @@ Thread thread;
         while(true){
         ControlElement.getInetAderes();
             try {
-                thread.sleep(100);
+                thread.sleep(1000);
             } catch (InterruptedException ex) {
                 thread.start();
             }

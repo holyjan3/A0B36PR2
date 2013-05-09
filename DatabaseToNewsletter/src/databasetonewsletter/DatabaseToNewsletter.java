@@ -21,31 +21,10 @@ public class DatabaseToNewsletter {
      */
     public static void main(String[] args) {       
         
-        WorkerDatabase.WorkerDatabase();
-       /* for (Database database : WorkerDatabase.dataDatabases) {
-            for (int i = 0; i < 1000; i++) {
-                database.Data.add(new Element(database.DE, 1));
-            }
-        }
-        
-        for (Database database : WorkerDatabase.dataDatabases) {
-            database.saveToFile();
-        }
-        */
+        WorkerDatabase.WorkerDatabase();     
         
         try {
             
-           //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.");
-            /*
-            PrintedElementsAdministration.readFile();
-            PrintedElementsAdministration.countElement();
-            PrintedElementsAdministration.copyElement();
-            PrintedElementsAdministration.saveTempfile();
-            */
-           //JFrameStart.main(null);
-            
-            //boolean bb = ControlElement.getInetAderes();
-            //System.out.println(bb);
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
