@@ -191,7 +191,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     
     public boolean checkData(){
         for (int i = 0; i < this.frameElement.jpanel.jLabelsError.length; i++) {
-            if(this.frameElement.jpanel.jLabelsError[i].isVisible()){
+            if(this.frameElement.jpanel.jLabelsError[i].isVisible() && this.frameElement.jpanel.jLabelsError[i].getText().equals(this.frameElement.jpanel.ss1)){
                 JOptionPane  frame = new JOptionPane();
                 Object[] options = {"uložit",
                     "vráti se"};

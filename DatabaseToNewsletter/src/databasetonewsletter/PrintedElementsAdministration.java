@@ -29,7 +29,7 @@ public class PrintedElementsAdministration {
     protected static String file_source = "newslettertemplate.txt";
     
     
-    public PrintedElementsAdministration(ArrayList<Database> databases) throws IOException{
+    public PrintedElementsAdministration(ArrayList<Database> databases) throws IOException, InterruptedException{
         this.databases = databases;
 
         multiply = new Multiply[databases.size()];
@@ -51,7 +51,7 @@ public class PrintedElementsAdministration {
                 end_read = global_end;                
                 multiply[i] = new  Multiply(databases.get(i), stringBuilder.subSequence(start_read, end_read), i, count[i]);
                 es.execute(multiply[i]);
-                es.shutdown();     
+                   
                 stringBuilder.delete(start_read, end_read);
                 String ss = "<!--"+Integer.toString(i)+"-->"; 
                 stringBuilder.insert(start_read, ss);
@@ -79,18 +79,16 @@ public class PrintedElementsAdministration {
             
         }
         
+        es.shutdown(); 
         while(!finshed){        
-            try {
                 finshed = es.awaitTermination(1, TimeUnit.SECONDS);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(PrintedElementsAdministration.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         }
         for(int i = databases.size()-1; i>=0 ; i--){
             if(count[i]!=0){
                  getTarge(Integer.toString(i),0);
                  int s =global_end;      
-            stringBuilder.insert(s,multiply[i].stringBuilder);
+            stringBuilder.insert(s,multiply[i].stringBuilder1);
             }
             
         }
@@ -152,186 +150,7 @@ public class PrintedElementsAdministration {
         bufferedWriter.close();
     }
     
-    class Multiply implements Runnable{
-        Database database;
-        StringBuilder stringBuilder;
-        int number;
-        int count;
-        int global_start = 0;
-        int global_end = 0;
 
-        public Multiply( Database database, CharSequence charSequence, int number,int count) {
-            this.database = database;
-            this.stringBuilder = new StringBuilder(charSequence);
-            this.number = number;
-            this.count = count;
-        }
-        
-
-        @Override
-        public void run() {
-            copyElement();
-            insertElements();
-        }
-     
-        
-        
-      
-        
-   
-    
-    
-  public  void copyElement(){
-        // rozmonožení předdefinovaných prvkú
-        int start=0;
-        int start_read =0;
-        int end_read =0;
-      
-         
-        for (int i = 0; i < count; i++) {
-                int addsubstring = stringBuilder.length();
-                String copyString = stringBuilder.substring(start_read, addsubstring);
-                for (int j = 1; j <count; j++) {       
-                    stringBuilder.insert(start, System.getProperty("line.separator") + copyString);
-                    addsubstring = addsubstring + System.getProperty("line.separator").length();
-                }                
-            
-        }
-    }
-    
-    
-    private  void insertElements() {
-          
-        int start = 0;
-        int c;
-        String [] ss;
-        String write = "";
-        //int i = number;
-       c = 0;
-            for (int j = database.Data.size()-1; j >=0  && c<count; j--) {
-                if(database.Data.get(j).printed){
-                    c++;
-                    getTarge(Integer.toString(number), start);
-                    start = global_end;
-                    for (int k = 0; k < database.DE.length; k++) {
-                        if((!"".equals(database.Data.get(j).strings_of_elements[k]))){
-                            switch (database.DE[k].type) {
-                                case DATE:                
-                                ss = database.Data.get(j).strings_of_elements[k].split("[.]");
-                                write = Integer.toString(Integer.parseInt(ss[0])) + "." + Integer.toString(Integer.parseInt(ss[1]));                            
-                                insertNumber(write,database.DE[k].name(),start);
-                                break;
-                            case TIME:
-                                ss = database.Data.get(j).strings_of_elements[k].split("[:]");
-                                write = Integer.toString(Integer.parseInt(ss[0])) + ":" + ss[1];
-                                insertNumber(write,database.DE[k].name(),start);
-                                break;
-                            case URL:
-                                insertURL(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
-                                break;
-                            case TEXT:             
-                                insertText(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
-                                break;
-                            case VARCHAR:
-                                insertText(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
-                                break;
-                        
-                        }
-                    }
-                    
-                }
-               getTarge(Integer.toString(number), start);
-               start = global_end;
-              
-                }
-        }
-        
-    
-    }
-    
-    
-
-    
-    private void getTarge(String target,int start) {
-    
-        int save_index=0;
-        int i=start;
-        StringBuilder sc = new StringBuilder(10);
-        StringBuilder scn = new StringBuilder(2);
-        int length = stringBuilder.length();
-        while(i<length){
-        if(stringBuilder.charAt(i) == '<'){
-            i++;
-        if(i<length && stringBuilder.charAt(i)  == '!') {
-            save_index = i-1;
-            i++;            
-              if(i<length && stringBuilder.charAt(i)  == '-'){
-                  i++;
-                  if(stringBuilder.charAt(i)  == '-'){
-                      i++;
-                       while(i<length){
-                         while(i<length && stringBuilder.charAt(i) != '-') {
-                            sc.append(stringBuilder.charAt(i));
-                            i++;    
-                         }
-                         i++;
-                         scn.append('-');
-                         if(i<length && stringBuilder.charAt(i)== '-'){
-                             i++;
-                             scn.append('-');
-                             if(i<length && stringBuilder.charAt(i)== '>'){
-                                  if(sc.toString().equals(target)){
-                                      global_start = save_index;
-                                      global_end = i+1;
-                                      return;
-                                  } else {
-                                      sc.delete(0, sc.capacity());
-                                      scn.delete(0, scn.capacity());
-                                      break;
-                                  }
-                                    
-                              }                                
-                         }
-                        sc.append(scn); 
-                      }
-                    }                    
-               }
-             }
-          } else {
-          i++;  
-          }
-        }
-        global_start = -1;
-        global_end = -1;
-            
-     } 
-    
-   public void insertNumber(String insertString,String name,int start){
-        getTarge(name,start);
-        stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start,insertString);    
-    }
-    
-    
-   public  void insertText(String insertString,String name,int start){
-        getTarge(name,start);
-        stringBuilder.delete(global_start, global_end);
-        insertString = HtmlEscape.escape(insertString);
-        stringBuilder.insert(global_start,insertString);
-       
-    }
-    
-    public void insertURL(String insertString,String name,int start){
-        getTarge(name,start);
-        stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start, "<a href="+ insertString + ">" );
-        
-        getTarge(name,start);
-        stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start,"</a>");      
-    }    
-        
-  }      
         
         
         

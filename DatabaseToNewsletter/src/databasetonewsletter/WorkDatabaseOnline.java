@@ -57,7 +57,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
                 key = rs.getInt(WorkerDatabase.unicateKey);
                 printed = rs.getBoolean(WorkerDatabase.printed);
                 for (int i = 0; i < 0; i++) {
-                    ss[i] = rs.getNString(database.DE[i].toString());                    
+                    ss[i] = rs.getNString(database.DE[i].name());                    
                 }
                 
                 Element el = new Element(database.DE, ss);

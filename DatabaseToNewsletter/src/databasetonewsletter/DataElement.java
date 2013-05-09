@@ -47,12 +47,68 @@ public enum DataElement{
 
     @Override
     public String toString() {
-        return super.toString(); //To change body of generated methods, choose Tools | Templates.
+       switch (this) {
+            case HEAD:
+                return "Nadpis";                
+            case DATE:
+                return "Datum";                
+            case TIME:
+                return "Čas";                
+            case HEAD_LINK:
+               return "Odkaz nadpisu";
+            case TOWN:
+                return "Město/Vesnice";
+            case PLACE:
+                return "Místo";
+            case TEXT:
+                return "Popis";                
+            case TEXT_LINK:
+                return "Popis Odkazu";
+            case LINK1_TEXT:
+               return "Popis odkazu 1";
+            case LINK2_TEXT:
+                return "Popis odkazu 2";
+            case LINK3_TEXT:
+                return "Popis odkazu 3";
+            case LINK1:
+                return "odkaz 1";
+            case LINK2:
+                return "odkaz 2";
+            case LINK3:
+                return "odkaz 3";
+            case NAME:
+                return "Jméno";
+            case MEDIUM:
+                return "Médium";
+            case TYPE:
+                return "Typ události";
+            default:
+                throw new AssertionError(this.name());
+        }
     }
     
-    public String toStringSort() {
-        return super.toString();
+    public String toStringSort() {        
+     switch (this) {               
+            case DATE:
+                return "Datumu";
+                        
+          
+            case TOWN:
+                return "Místa";
+      
+            case NAME:
+                return "Jména";
+            case MEDIUM:
+                return "Média";
+            case TYPE:
+                return "Typ události";
+            default:
+                throw new AssertionError(this.name());
+        }
+        
     }
+     
+     
     
     public boolean sort(){
         switch (this) {
@@ -61,6 +117,7 @@ public enum DataElement{
             case TOWN:
             case NAME:
             case MEDIUM:
+            case TYPE:
                 return true;               
             default:
                 return false;

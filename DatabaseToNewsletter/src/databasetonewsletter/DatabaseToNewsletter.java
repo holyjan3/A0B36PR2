@@ -43,6 +43,13 @@ public class DatabaseToNewsletter {
             PrintedElementsAdministration.saveTempfile();
             */
            //JFrameStart.main(null);
+            
+            //boolean bb = ControlElement.getInetAderes();
+            //System.out.println(bb);
+           Thread th= null;
+           th= new Thread(new ControlConection(th));
+           th.start();
+            
            new JFrameMainMenu();
         } catch (Exception ex) {
             Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);

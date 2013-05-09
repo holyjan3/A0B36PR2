@@ -35,14 +35,22 @@ public class JPanelElement extends JPanel{
     Element element;
     
     private ActionSave save = new ActionSave();
+    private IfChanged ifChanged = new IfChanged();    
     private ActionButtonDelete buttonDelete = new ActionButtonDelete();
     private ActionButtonRestore buttonRestore = new ActionButtonRestore();
-    
+    private boolean changed;
+    private boolean conected;
+    protected boolean wrong;
+    protected String ss1= "chyba ve vstupnim retezci";
+    private String ss2= "nepodařilo se připojit k intenetu adresa nebyla ověřena";
     
 
     JPanelElement(Database database,Element element) {
         this.database = database;
         this.element = element;
+        this.changed = false;
+        conected = ControlElement.conected;
+        wrong = false;
         
         final int minwidth = 20;
         final int maxwidth = 60;
@@ -206,6 +214,10 @@ public class JPanelElement extends JPanel{
         
  
   }
+
+    public boolean isChanged() {
+        return changed;
+    }
     
     public JPanel addButton(int i){
         JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));   
@@ -214,16 +226,17 @@ public class JPanelElement extends JPanel{
          JButton delete  = new JButtonWithNumber(i, "vymazat text");          
          restore.addActionListener(buttonRestore);
          delete.addActionListener(buttonDelete);
-         jLabelsError[i] = new JLabel("chyba ve vstupnim retezci");
+         jLabelsError[i] = new JLabel(ss1);
          jLabelsError[i].setVisible(false);
          jLabelsError[i].setBackground(Color.red);
          jLabelsError[i].setOpaque(true);
          jLabelsError[i].setForeground(Color.white);  
          
-         if(element.DE[i].type == DataControl.URL && !"".equals(element.strings_of_elements[i]) ){
-                jLabelsError[i].setVisible(!ControlElement.controlURL(element.strings_of_elements[i],element.DE[i].date_size));
+         if( (element.DE[i].type == DataControl.URL)&& !"".equals(element.strings_of_elements[i])){
+               this.controlUrl(text[i], i);
          }
          text[i].addFocusListener(save);
+         text[i].addKeyListener(ifChanged);
          item2.add(restore);
          item2.add(delete);
          item2.add(jLabelsError[i]);
@@ -242,6 +255,26 @@ public class JPanelElement extends JPanel{
             }
         }        
     }
+    
+    public void controlUrl(JTextArea area,int i){
+        jLabelsError[i].setVisible(false);
+       if(ControlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
+        if(conected){
+            Thread thread = new Thread(new ControlWebSide(ss1,jLabelsError[i],area.getText()));
+            thread.start();
+        } else {
+          jLabelsError[i].setBackground(Color.orange);
+          jLabelsError[i].setForeground(Color.black);
+          jLabelsError[i].setText(ss2);
+          jLabelsError[i].setVisible(true);
+           
+        }
+       } else {
+          jLabelsError[i].setForeground(Color.white);
+          jLabelsError[i].setText(ss1);
+          jLabelsError[i].setVisible(true);
+       }
+    }
 
     
         class ActionSave implements FocusListener {
@@ -256,15 +289,18 @@ public class JPanelElement extends JPanel{
                JTextAreaWithNumber jtf = (JTextAreaWithNumber) e.getSource();
                if(!jtf.getText().equals("")) {
                    int i = jtf.number;
-                    if(ControlElement.controlDatabaseElement(element.DE[i], jtf.getText())){                        
-                        jLabelsError[i].setVisible(false);
-                    } else {
-                        jLabelsError[i].setVisible(true);
+                    if(element.DE[i].type == DataControl.URL){
+                        controlUrl(jtf,i);
+                     } else {
+                         boolean bb = ControlElement.controlDatabaseElement(element.DE[i], jtf.getText());
+                         jLabelsError[i].setVisible(!bb);
+                        
                     }
-               }
+                    
+               } 
+           }
         }       
             
-        }
         
         class ActionButtonDelete implements ActionListener {
 
@@ -386,7 +422,31 @@ class ActionDate implements KeyListener {
                 }
         }
 
-           
+        }       
             
+        
+        
+        class IfChanged implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+           
+        
         }
-}
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            changed = true;
+            removeKeyListener(this);
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            changed = true;
+            removeKeyListener(this);
+        }
+
+        }       
+                 
+   }
+       

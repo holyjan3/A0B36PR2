@@ -48,7 +48,7 @@ public class WorkerDatabase {
        }    
     }
     
-    public static void conectDatabaseAll() {
+    public static void conectDatabaseAll() throws InterruptedException {
 //            Thread[] th = new Thread[dataDatabases.size()];
         int i = 0;
         boolean bb = true;
@@ -64,30 +64,22 @@ public class WorkerDatabase {
             es.execute(database.nowWorkDatabase.rfd); 
             es.shutdown();
        while(!finshed){
-        try {
            
             finshed = es.awaitTermination(1, TimeUnit.SECONDS);
-       } catch (InterruptedException ex) {
-           Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
-       }
+      
        }
       
         
     }
     
-    public static void disconectDatabasesAll(){
+    public static void disconectDatabasesAll() throws InterruptedException{
           boolean finshed = false;
         ExecutorService es = Executors.newCachedThreadPool(); 
         for(Database database : dataDatabases) 
             es.execute(database.nowWorkDatabase.sd); 
             es.shutdown();
-       while(!finshed){
-        try {
-   
+       while(!finshed){  
             finshed = es.awaitTermination(1, TimeUnit.SECONDS);
-       } catch (InterruptedException ex) {
-           Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
-       }
        }
     }
     

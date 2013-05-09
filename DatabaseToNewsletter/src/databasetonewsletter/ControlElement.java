@@ -5,8 +5,10 @@
 package databasetonewsletter;
 
 import static databasetonewsletter.DataControl.URL;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.IOException;
+import java.net.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -15,7 +17,25 @@ import java.net.URL;
  */
 public class ControlElement {
 
-   
+       private static  InetAddress inetAddress;
+       public  static boolean conected = false; 
+       
+       public synchronized static boolean getInetAderes() {
+           
+           boolean bb;
+           try {
+               inetAddress = InetAddress.getLocalHost();
+               bb = inetAddress.isReachable(2000);
+               conected = bb;
+               return bb;
+           } catch (IOException ex) {
+               conected = false;
+               return false;
+           }
+       }
+       
+       
+       
        public static boolean controlDatabaseElement(DataElement DE, String ss) {
         int i = 0;
         boolean b = false;
@@ -28,9 +48,6 @@ public class ControlElement {
                break;
            case VARCHAR:
                     b = contolVarChar(ss, DE.date_size);
-               break;
-           case URL:
-                b = controlURL(ss, DE.date_size);
                break;
            case TEXT:
                     b = contolVarChar(ss, DE.date_size);
@@ -107,26 +124,9 @@ public class ControlElement {
           return false;
       }
    }
-   
-   public static boolean controlURL(String URLString , int MAX_SIZE){
-       if (!contolVarChar(URLString, MAX_SIZE))
-           return false;
   
-    try {
-      HttpURLConnection.setFollowRedirects(false);
-      // note : you may also need
-      
-      HttpURLConnection con =
-         (HttpURLConnection) new URL(URLString).openConnection();
-      con.setRequestMethod("HEAD");
-      return (con.getResponseCode() == HttpURLConnection.HTTP_OK);
-    }
-    catch (Exception e) {
-       //e.printStackTrace();
-       return false;
-    
-  }  
-  }
+   
+   
        
  
 

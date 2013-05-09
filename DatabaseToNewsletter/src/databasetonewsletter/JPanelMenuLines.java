@@ -196,6 +196,7 @@ public class JPanelMenuLines extends JPanel{
             JButtonWithNumber jbw = (JButtonWithNumber) e.getSource();
           
             int a = 0;
+            
             Element el = database1.nowWorkDatabase.openElement(jbw.number);
             new JFrameElement(JPanelMenuLines.this, el);
             

@@ -99,8 +99,9 @@ public class JFrameElement extends JFrame{
         @Override
         public void windowClosing(WindowEvent e) {
             
-             JOptionPane  frame = new JOptionPane();
-             Object[] options = {"uložit",
+           if(jpanel.isChanged()){ 
+           JOptionPane  frame = new JOptionPane();
+           Object[] options = {"uložit",
                     "zahodit změny",
                     "vráti se"};
             int n = JOptionPane.showOptionDialog(frame,
@@ -120,6 +121,9 @@ public class JFrameElement extends JFrame{
                     setVisible(true);
                 }
             } 
+           } else {
+               dispose();
+           }
                 
         }
 

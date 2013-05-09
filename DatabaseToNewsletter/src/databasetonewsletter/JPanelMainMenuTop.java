@@ -233,7 +233,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             WorkerDatabase.disconectDatabasesAll();
            
         } catch (Exception e) {
-             
+            System.out.println(e.getCause());   
          JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
             
         }

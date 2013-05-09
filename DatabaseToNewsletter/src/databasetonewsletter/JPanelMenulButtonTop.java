@@ -27,7 +27,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
        
         
         comboBox.addItem("Vyštěno");       
-        comboBox.addItem(DataElement.HEAD.toString());        
+        comboBox.addItem("Nadpisu");        
         
         for (int i = 0; i < DE.length; i++) {
            if(DE[i].sort()){
