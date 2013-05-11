@@ -10,8 +10,7 @@ public enum DataControl {
     TIME("TIME"),
     VARCHAR("VARCHAR"),
     URL("VARCHAR"),
-    TEXT("TEXT"),
-    BOOL("BOOL");
+    TEXT("TEXT");
     
     final String mysqlType;
 

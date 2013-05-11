@@ -152,8 +152,8 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 13, Short.MAX_VALUE)
                 .addGap(18, 18, 18))
         );
@@ -225,12 +225,11 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
         boolean b = true;
         try {
-            WorkerDatabase.conectDatabaseAll();
+            
             PrintedElementsAdministration pea = new PrintedElementsAdministration(WorkerDatabase.dataDatabases);
             pea.insertText(this.heading.getText(), "HEADING", 0);
             pea.insertText(this.footer.getText(), "FOOTER", 0);
             pea.saveTempfile();
-            WorkerDatabase.disconectDatabasesAll();
            
         } catch (Exception e) {
             System.out.println(e.getCause());   

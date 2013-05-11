@@ -4,7 +4,20 @@
  */
 package databasetonewsletter;
 
-import java.awt.Container;
+import com.toedter.calendar.JCalendar;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.text.SimpleDateFormat;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
 /**
  *
@@ -15,36 +28,160 @@ public class JPanelConection extends javax.swing.JPanel {
     /**
      * Creates new form JPanelConection
      */
-    
-    
-    Container container;
-    
-    public JPanelConection(Container container) {
+    JPanelMenuLines jPanelMenuLines;
+    String ss ="Vyber všechny záznami";
+    public JPanelConection(JPanelMenuLines jPanelMenuLines) {
         initComponents();
-        this.container = container;
-        setT();
-        this.setVisible(false);
+        this.jPanelMenuLines = jPanelMenuLines;
+        if(WorkerDatabase.date == null){
+            jLabel1.setText(ss);
+        } else {
+            SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
+            jLabel1.setText( "Záznamy od data "+formatDate.format(WorkerDatabase.date).toString());
+        }
+        
+   
+    
+    
     }
     
-    public void setT(){
-        if(WorkerDatabase.online) {
-            this.conection.setText("přejít do režimu offline");
-            //this.refresh.setVisible(true);
-        } else {
-            this.conection.setText("přejít do režimu online");
-            //this.refresh.setVisible(false);
+    class DATE extends JFrame{
+        JButton close;
+        JButton every_time;
+        JButton choose_date;
+        
+        com.toedter.calendar.JCalendar cal;
+        
+        
+        DATE(){
+        close = new JButton("zavřít");
+        every_time = new JButton("všechny záznami");
+        choose_date = new JButton("vyber datum");
+    
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+        Dimension dim = new Dimension(500, 300);
+        setSize(dim);
+        setMaximumSize(dim);
+        setResizable(false);
+        cal= new JCalendar();
+        cal.setSize(dim);
+        
+        
+        addWindowListener(new WindowListener() {
+
+            @Override
+            public void windowOpened(WindowEvent e) {
+                            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                jButton1.setEnabled(true);
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+               
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+                           }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+               
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+                
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+                
+            }
+        });
+        
+        close.addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                jButton1.setEnabled(true);
+            }
+        });
+        
+         every_time.addActionListener( new ActionListener() {
+           
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                WorkerDatabase.date = null;
+                if(jPanelMenuLines != null){
+                   
+                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase();
+                    jPanelMenuLines.overWritePanel();
+                    
+                    
+                }
+                 jLabel1.setText(ss);
+                 jButton1.setEnabled(true);
+                 dispose();
+            
+            }
+        });
+         
+         
+         choose_date.addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                WorkerDatabase.date = cal.getDate();
+                WorkerDatabase.date.setHours(0);
+                WorkerDatabase.date.setMinutes(0);
+                WorkerDatabase.date.setSeconds(0);
+                
+                if(jPanelMenuLines != null){
+                 
+                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase();
+                    jPanelMenuLines.overWritePanel();
+                } else {
+                    
+                }
+                
+                
+                
+                
+                jLabel1.setText(WorkerDatabase.date.toString());
+                SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
+                jLabel1.setText( "Od data "+formatDate.format(WorkerDatabase.date).toString());
+                dispose();
+                jButton1.setEnabled(true);
+            }
+            
+            });
+        
+        
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+        int x = (int) rect.getMaxX() - getWidth();
+        int y = (int) rect.getMaxY() - getHeight();
+        setLocation(x, y);
+        setVisible(true);
+          
+        
+        this.revalidate();
+        setVisible(true);
+        
+        
+        add(cal);
+        add(choose_date);
+        add(every_time);
+        add(close);
+
         }
     }
-    @Override
-    public void  revalidate(){       
-        
-        if((conection != null )){
-        setT();
-        }  
-        //super.repaint();
-        super.revalidate();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,13 +191,16 @@ public class JPanelConection extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        conection = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        conection.setText("přejít do režimu online");
-        conection.setToolTipText("");
-        conection.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("vybrat všechny záznamy");
+
+        jButton1.setText("Zvolit datum");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                conectionActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -69,34 +209,33 @@ public class JPanelConection extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addComponent(conection, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(20, 20, 20)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(conection, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(jButton1))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void conectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectionActionPerformed
-        if(WorkerDatabase.online) {
-            WorkerDatabase.saveDatabase();
-            WorkerDatabase.setOfflineDatabase();
-            WorkerDatabase.online = false;
-            revalidate();
-            repaint();
-        } else {
-           JFrameConect conect = new JFrameConect(container);
-            
-        }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new DATE();
+        jButton1.setEnabled(false);
         
-    }//GEN-LAST:event_conectionActionPerformed
+            
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton conection;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

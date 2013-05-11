@@ -16,10 +16,12 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  * @author Majitel
  */
 public class JFrameMainMenu extends JFrame {
+   
      JPanelConection jpc;
      JPanelMainMenuTop menuTop;
-    public JFrameMainMenu() {      
-        
+    public JFrameMainMenu() {   
+        super("Newsletter maker");
+         
        try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -37,10 +39,11 @@ public class JFrameMainMenu extends JFrame {
             java.util.logging.Logger.getLogger(JFrameStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
+       
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
         menuTop = new JPanelMainMenuTop();
-        jpc = new JPanelConection(this);
+        jpc = new JPanelConection(null);
         
         this.addWindowListener(new Action());
         

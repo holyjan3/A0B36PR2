@@ -4,6 +4,7 @@
  */
 package databasetonewsletter;
 
+import java.util.ArrayList;
 import javax.swing.JRadioButton;
 
 /**
@@ -15,10 +16,31 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     /**
      * Creates new form JPanelMenulButtonBottom
      */
-    JFrameMenu frameMenu;
-    public JPanelMenulButtonBottom(JFrameMenu frameMenu) {
+    ArrayList<Integer> array;
+    JPanelMenu frameMenu;
+    public JPanelMenulButtonBottom(JPanelMenu frameMenu) {
         initComponents();
         this.frameMenu = frameMenu;
+        
+        
+        
+        array = new ArrayList<>(8);
+        array.add(0,0);
+        array.addAll(frameMenu.array);
+        int j = 1;
+      
+      
+        comboBox.addItem("Vyštěno");       
+        comboBox.addItem("Nadpisu");        
+        
+        for (int i = 0; i < frameMenu.database.DE.length; i++) {
+           if(frameMenu.database.DE[i].sort()){
+                    comboBox.addItem(frameMenu.database.DE[i].toStringSort()); 
+                    
+            }           
+        }
+        
+        comboBox.setSelectedIndex(1);
     }
 
     /**
@@ -32,12 +54,13 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
 
         jButton4 = new javax.swing.JButton();
         selectCancel = new javax.swing.JButton();
-        delete = new javax.swing.JButton();
         selectAll = new javax.swing.JButton();
         eneblePrint = new javax.swing.JButton();
         disablePrint = new javax.swing.JButton();
         selectToNotPrinted = new javax.swing.JButton();
         selectToPrinted = new javax.swing.JButton();
+        comboBox = new javax.swing.JComboBox();
+        arrange = new javax.swing.JButton();
 
         jButton4.setText("jButton1");
 
@@ -45,13 +68,6 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
         selectCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectCancelActionPerformed(evt);
-            }
-        });
-
-        delete.setText("smazat");
-        delete.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
             }
         });
 
@@ -90,6 +106,19 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+
+        arrange.setText("seřadit");
+        arrange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrangeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -97,17 +126,19 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(selectAll, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selectToPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selectToNotPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addComponent(selectToNotPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectToPrinted, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(selectCancel)
-                .addGap(85, 85, 85)
-                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addGap(31, 31, 31)
+                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(arrange)
+                .addGap(18, 18, 18)
                 .addComponent(eneblePrint)
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(disablePrint)
                 .addContainerGap())
         );
@@ -115,17 +146,17 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(disablePrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(eneblePrint, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(delete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(selectToPrinted)
-                            .addComponent(selectToNotPrinted))
-                        .addComponent(selectAll, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(selectCancel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(selectAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(selectToNotPrinted)
+                        .addComponent(selectToPrinted)
+                        .addComponent(selectCancel)
+                        .addComponent(eneblePrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(disablePrint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -144,15 +175,6 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
                 button.revalidate();
         }
     }//GEN-LAST:event_selectCancelActionPerformed
-
-    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
-                if(button.isSelected()){                   
-                    frameMenu.database.nowWorkDatabase.removeElement(button.element);
-                }
-        }
-        frameMenu.menuLines.overWritePanel();
-    }//GEN-LAST:event_deleteMouseClicked
 
     private void eneblePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eneblePrintActionPerformed
          for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
@@ -195,8 +217,28 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
    
     }//GEN-LAST:event_selectToPrintedActionPerformed
 
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void arrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrangeActionPerformed
+        int i = comboBox.getSelectedIndex();
+        if(i==0){
+            frameMenu.database.sortPrint();
+        } else {
+            if(frameMenu.database.DE[array.get(i)] == DataElement.DATE){
+                frameMenu.database.sortDate(array.get(i));
+            } else {
+                frameMenu.database.sortString(array.get(i));
+            }
+
+        }
+        frameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_arrangeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton delete;
+    private javax.swing.JButton arrange;
+    private javax.swing.JComboBox comboBox;
     private javax.swing.JButton disablePrint;
     private javax.swing.JButton eneblePrint;
     private javax.swing.JButton jButton4;

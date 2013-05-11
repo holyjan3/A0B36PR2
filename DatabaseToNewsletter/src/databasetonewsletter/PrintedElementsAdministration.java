@@ -11,6 +11,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -123,7 +124,12 @@ public class PrintedElementsAdministration {
     
     public static void previewCode() throws IOException {
         File f = new File(file_temp_name);
+       
         String url = "file://localhost/"+ f.getAbsolutePath().replace(File.separatorChar, '/');
+        if(url.contains(" ")){
+        JOptionPane.showMessageDialog(null,"Náhled nebude zobrazen cesta obsahuje bílé znaky \n"
+                + url,"", JOptionPane.ERROR_MESSAGE);
+        }
         java.awt.Desktop.getDesktop().browse(java.net.URI.create(url));
     }
     

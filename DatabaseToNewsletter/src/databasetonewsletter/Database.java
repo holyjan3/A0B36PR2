@@ -20,45 +20,24 @@ public class Database{
     protected DataDatabase database;
     protected DataElement[] DE;
     protected WorkDatabase nowWorkDatabase;
-    private WorkDatabase workDatabaseOffline;
     private WorkDatabase workDatabaseOnline;
     protected final String name_file;
-    
-    //private int number_of_element;
+    protected int id_database;
     
     public Database(DataDatabase database) {        
         this.name_database = database.name;
         this.name_file = database.name();
         this.database = database;
         this.DE = database.dataElemen;
+        this.id_database = WorkerDatabase.getKeyDatabases(name_file);
         
         this.Data  = new LinkedList<Element>();
-        
-        workDatabaseOffline = new WorkDatabaseOffline(this);
         workDatabaseOnline = new WorkDatabaseOnline(this);
-        nowWorkDatabase= workDatabaseOffline;
+        
+        
+        nowWorkDatabase=  workDatabaseOnline;
     }
-
-    public void setWorkDatabaseOffline() {
-        this.nowWorkDatabase = workDatabaseOffline;
-    }
-
-    public void setWorkDatabaseOnline() {
-        this.nowWorkDatabase = workDatabaseOnline;
-    }
-    
-    public boolean isOnline(){
-        if(nowWorkDatabase.getClass() == workDatabaseOnline.getClass()){
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    public void saveToFile(){
-        workDatabaseOffline.saveDatabese();
-    }
-    
+   
     
     
     public void replaceElements(int i, int j){

@@ -4,10 +4,16 @@
  */
 package databasetonewsletter;
 
+
 import java.io.IOException;
+import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -19,20 +25,34 @@ public class DatabaseToNewsletter {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {       
+    public static void main(String[] args)  {       
         
-        WorkerDatabase.WorkerDatabase();     
+           
         
-        try {
+        
+        WorkerDatabase.conectOnlineDatabase(null, null);
+        WorkerDatabase.WorkerDatabase();  
+        
+//        while(true){
+//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//            Calendar cal = Calendar.getInstance();
+//            System.out.println(dateFormat.format(cal.getTime()));
+//        }
+        
+         try {
             
-           Thread th= null;
-           th= new Thread(new ControlConection(th));
-           th.start();
             
-           new JFrameMainMenu();
-        } catch (Exception ex) {
-            Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
+            
+            
+           //Thread th= null;
+           //th= new Thread(new ControlConection(th));
+           //th.start();
+           
+           //new JFrameMainMenu();
+            new JFrameMenuAll();
+         } catch (Exception ex) {
+             JOptionPane.showMessageDialog(null, ex.toString(), "", JOptionPane.ERROR_MESSAGE);
+            
         }
-       
     }
 }

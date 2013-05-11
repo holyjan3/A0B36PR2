@@ -25,6 +25,7 @@ final public class Element implements  Serializable{
         //this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
         changed = false;
         printed = false;
+        this.strings_of_elements = strings_of_elements;
     }
     
     

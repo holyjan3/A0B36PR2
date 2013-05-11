@@ -5,39 +5,27 @@
 package databasetonewsletter;
 
 import java.util.ArrayList;
+import java.util.Date;
+import net.sourceforge.jcalendarbutton.*;
 /**
  *
  * @author Majitel
  */
 public class JPanelMenulButtonTop extends javax.swing.JPanel {
     private String findInText="Vyhledat v Názvech";
-    ArrayList<Integer> array;
+  
     Database database;
-    JFrameMenu jFrameMenu;
+    JPanelMenu jFrameMenu;
+  
     
-    public JPanelMenulButtonTop(JFrameMenu jFrameMenu) {
+    public JPanelMenulButtonTop(JPanelMenu jFrameMenu) {
         this.jFrameMenu = jFrameMenu;
         initComponents();
         this.database= jFrameMenu.database;
-        DataElement [] DE = database.DE;
-        array = new ArrayList<>(8);
-        array.add(0,0);
-        array.addAll(jFrameMenu.array);
-        int j = 1;
+
+      
+      
        
-        
-        comboBox.addItem("Vyštěno");       
-        comboBox.addItem("Nadpisu");        
-        
-        for (int i = 0; i < DE.length; i++) {
-           if(DE[i].sort()){
-                    comboBox.addItem(DE[i].toStringSort()); 
-                    
-            }           
-        }
-        
-         comboBox.setSelectedIndex(1);
-        
     }
 
     /**
@@ -50,13 +38,11 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     private void initComponents() {
 
         javax.swing.JTextField jTextField2 = new javax.swing.JTextField();
-        comboBox = new javax.swing.JComboBox();
-        arrange = new javax.swing.JButton();
         addElement = new javax.swing.JButton();
         findExit = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         findButton1 = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
 
         jTextField2.setText("Najít v názvu");
         jTextField2.setToolTipText("");
@@ -69,19 +55,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
-            }
-        });
-
-        comboBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxActionPerformed(evt);
-            }
-        });
-
-        arrange.setText("seřadit");
-        arrange.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                arrangeActionPerformed(evt);
             }
         });
 
@@ -102,13 +75,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
         findExit.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 findExitFocusLost(evt);
-            }
-        });
-
-        saveButton.setText("uložit");
-        saveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveButtonActionPerformed(evt);
             }
         });
 
@@ -141,6 +107,13 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        delete.setText("smazat");
+        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,41 +121,29 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(addElement, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(arrange)
-                .addGap(33, 33, 33)
+                .addGap(30, 30, 30)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(findButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(findExit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(72, 72, 72)
+                .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(saveButton)
-                        .addComponent(findExit)
-                        .addComponent(findButton1))
-                    .addComponent(comboBox)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(arrange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1))
-                    .addComponent(addElement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addElement)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findButton1)
+                    .addComponent(findExit)
+                    .addComponent(delete))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboBoxActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
         // TODO add your handling code here:
@@ -205,21 +166,6 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
     private void addElementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addElementActionPerformed
         new JFrameElement(jFrameMenu.menuLines);
     }//GEN-LAST:event_addElementActionPerformed
-
-    private void arrangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrangeActionPerformed
-        int i = comboBox.getSelectedIndex();
-        if(i==0){
-            jFrameMenu.database.sortPrint();
-        } else {
-            if(jFrameMenu.database.DE[array.get(i)] == DataElement.DATE){
-                jFrameMenu.database.sortDate(array.get(i));
-            } else {                
-                 jFrameMenu.database.sortString(array.get(i)); 
-            }
-                            
-        }
-        jFrameMenu.menuLines.overWritePanel();
-    }//GEN-LAST:event_arrangeActionPerformed
 
     private void findExitFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_findExitFocusLost
         // TODO add your handling code here:
@@ -244,17 +190,20 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
       
     }//GEN-LAST:event_jTextField1VetoableChange
 
-    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        database.saveToFile();
-    }//GEN-LAST:event_saveButtonActionPerformed
+    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
+        for (JRadioButtonWithNumber button  :jFrameMenu.menuLines.jrb) {
+            if(button.isSelected()){
+                jFrameMenu.database.nowWorkDatabase.removeElement(button.element);
+            }
+        }
+//        jFrameMenu.menuLines.overWritePanel();
+    }//GEN-LAST:event_deleteMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
-    private javax.swing.JButton arrange;
-    private javax.swing.JComboBox comboBox;
+    private javax.swing.JButton delete;
     private javax.swing.JButton findButton1;
     private javax.swing.JButton findExit;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
 }

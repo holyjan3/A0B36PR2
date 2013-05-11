@@ -61,9 +61,9 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
-                  <Component id="make" min="-2" pref="104" max="-2" attributes="0"/>
+                  <Component id="make" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jSeparator1" pref="13" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
           </Group>

@@ -26,7 +26,7 @@ Thread thread;
             try {
                 thread.sleep(1000);
             } catch (InterruptedException ex) {
-                thread.start();
+                //thread.start();
             }
        } 
     }

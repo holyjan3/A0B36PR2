@@ -63,17 +63,12 @@ public class WorkDatabaseOffline extends WorkDatabase{
     @Override
     public void modifyElement(JPanelElement panelElement) {
         panelElement.element.changed = true;
-        for (int i = 1; i < panelElement.text.length; i++) {
+        for (int i = 0; i < panelElement.text.length; i++) {
             panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
         }
     }
 
    
-    @Override
-   public boolean saveDatabese(){
-        return super.saveDatabese();
-   }
-       
-  
-    
+
+ 
 }

@@ -72,7 +72,7 @@ package databasetonewsletter;
                     getTarge(Integer.toString(number), start);
                     start = global_end;
                     for (int k = 0; k < database.DE.length; k++) {
-                        if((!"".equals(database.Data.get(j).strings_of_elements[k]))){
+                        if((!"".equals(database.Data.get(j).strings_of_elements[k]))&&database.Data.get(j).strings_of_elements[k]!=null ){
                             switch (database.DE[k].type) {
                                 case DATE:                
                                 ss = database.Data.get(j).strings_of_elements[k].split("[.]");

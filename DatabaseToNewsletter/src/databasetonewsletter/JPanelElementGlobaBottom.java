@@ -171,10 +171,12 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
       
         
         if(frameElement.new_element){
-            panelElement.database.nowWorkDatabase.modifyElement(panelElement);
+           
             panelElement.database.nowWorkDatabase.addElementt(panelElement.element);
         } else {
             panelElement.database.nowWorkDatabase.modifyElement(panelElement);
+            
+             
         }
         
         panelMenuLines.overWritePanel();

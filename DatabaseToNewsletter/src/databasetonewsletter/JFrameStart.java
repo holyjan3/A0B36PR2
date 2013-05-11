@@ -85,7 +85,7 @@ public class JFrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_onlineActionPerformed
 
     private void offlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offlineActionPerformed
-        WorkerDatabase.conectOfflineDatabase();
+        //WorkerDatabase.conectOfflineDatabase();
         this.dispose();
         new JFrameMainMenu();
         

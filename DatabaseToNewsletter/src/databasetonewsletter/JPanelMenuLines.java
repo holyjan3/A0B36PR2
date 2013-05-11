@@ -51,6 +51,7 @@ public class JPanelMenuLines extends JPanel{
             
             JPanelMenuLine(i);
          } 
+         JPanelDEScription();
            add(jp);
            
         }
@@ -93,6 +94,7 @@ public class JPanelMenuLines extends JPanel{
            JPanelMenuLine(i);
         }
        add(jp);
+       JPanelDEScription();
        this.revalidate();
        this.repaint();
  
@@ -112,6 +114,7 @@ public class JPanelMenuLines extends JPanel{
             }
         }
        add(jp);
+        JPanelDEScription();
        this.revalidate();
        this.repaint();
     }
@@ -123,6 +126,34 @@ public class JPanelMenuLines extends JPanel{
     }
     
    */
+    
+  public void JPanelDEScription(){
+      
+      tableLayout.insertRow (0, TableLayout.MINIMUM);
+        
+        Element element;
+        JLabel label;
+        Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        
+      ;
+        
+        
+     for (int i = 0; i < array.size(); i++) {
+           //System.out.println("nnn"+element.strings_of_elements[array.get(i)]+array.get(i));
+           label= new JLabel(database.DE[array.get(i)].toString());
+                   
+           
+              
+           jp.add(label,Integer.toString(i+3)+", 1");
+
+           
+     } 
+     int i = 0;
+      
+  } 
+    
+    
    public void JPanelMenuLine(int numberLine) 
     {
         tableLayout.insertRow (0, TableLayout.MINIMUM);

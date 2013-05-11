@@ -15,21 +15,21 @@ public enum DataElement{
     
     HEAD        (700,DataControl.VARCHAR,Constants.MaxVarChar),
     DATE        (100,DataControl.DATE, 10),
-    TIME        (0,DataControl.TIME,  5),   
+    TIME        (0,DataControl.TIME,  8),   
     HEAD_LINK   (0,DataControl.URL,Constants.MaxVarChar),
-    TOWN        (200,DataControl.VARCHAR,Constants.MaxVarChar),
-    PLACE       (0,DataControl.VARCHAR,Constants.MaxVarChar),
+    TOWN        (200,DataControl.VARCHAR,35),
+    PLACE       (0,DataControl.VARCHAR,100),
     TEXT        (800,DataControl.VARCHAR,Constants.MaxVarChar),
     TEXT_LINK   (0,DataControl.URL,Constants.MaxVarChar),
-    LINK1_TEXT  (0,DataControl.VARCHAR,Constants.MaxVarChar),
-    LINK2_TEXT  (0,DataControl.VARCHAR, Constants.MaxVarChar),
-    LINK3_TEXT  (0,DataControl.VARCHAR, Constants.MaxVarChar),
+    LINK1_TEXT  (0,DataControl.VARCHAR,30),
+    LINK2_TEXT  (0,DataControl.VARCHAR, 30),
+    LINK3_TEXT  (0,DataControl.VARCHAR, 30),
     LINK1       (0,DataControl.URL, Constants.MaxVarChar),
     LINK2       (0,DataControl.URL, Constants.MaxVarChar),
     LINK3       (0,DataControl.URL, Constants.MaxVarChar),
-    NAME        (200,DataControl.VARCHAR, Constants.MaxVarChar),
-    MEDIUM      (200,DataControl.VARCHAR, Constants.MaxVarChar),
-    TYPE        (80,DataControl.VARCHAR, Constants.MaxVarChar);    
+    NAME        (200,DataControl.VARCHAR, 30),
+    MEDIUM      (200,DataControl.VARCHAR, 30),
+    TYPE        (80,DataControl.VARCHAR, 30);    
     
 
 
@@ -136,8 +136,8 @@ public enum DataElement{
         }
     }
     static class  Constants {
-        static int MaxVarChar = 65535;
-        static int MaxText = 65535;
+        static int MaxVarChar = 32700;
+        
         
     }
     
