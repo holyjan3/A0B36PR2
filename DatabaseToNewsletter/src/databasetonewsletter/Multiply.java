@@ -46,15 +46,15 @@ package databasetonewsletter;
         int end_read =0;
       
          
-        for (int i = 0; i < count; i++) {
+  
                 int addsubstring = stringBuilder1.length();
                 String copyString = stringBuilder1.substring(start_read, addsubstring);
                 for (int j = 1; j <count; j++) {       
                     stringBuilder1.insert(start, System.getProperty("line.separator") + copyString);
                     addsubstring = addsubstring + System.getProperty("line.separator").length();
                 }                
-            
-        }
+
+                
     }
     
     
@@ -67,7 +67,7 @@ package databasetonewsletter;
         //int i = number;
        c = 0;
             for (int j = database.Data.size()-1; j >=0  && c<count; j--) {
-                if(database.Data.get(j).printed){
+                if(database.Data.get(j).isPrinted()){
                     c++;
                     getTarge(Integer.toString(number), start);
                     start = global_end;

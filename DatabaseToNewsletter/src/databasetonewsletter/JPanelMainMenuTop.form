@@ -21,13 +21,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSeparator1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="409" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="label2" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                          <Component id="heading" min="-2" pref="406" max="-2" attributes="0"/>
                           <Component id="label1" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="522" max="32767" attributes="0"/>
+                          <Component id="heading" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <EmptySpace pref="136" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="printer" alignment="1" pref="146" max="32767" attributes="0"/>
                           <Component id="preview" alignment="1" max="32767" attributes="0"/>
@@ -59,9 +59,9 @@
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
-                  <Component id="make" min="-2" pref="38" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" pref="92" max="32767" attributes="0"/>
+                  <Component id="make" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jSeparator1" pref="13" max="32767" attributes="0"/>

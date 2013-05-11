@@ -37,13 +37,10 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;T&#xa;&lt;br /&gt;&#xa;I&#xa;&lt;br/&gt;&#xa;S&#xa;&lt;br /&gt;&#xa;K&#xa;&#xa;&lt;/html&gt;"/>
-        <Property name="alignmentX" type="float" value="0.5"/>
-        <Property name="alignmentY" type="float" value="0.0"/>
-        <Property name="autoscrolls" type="boolean" value="true"/>
         <Property name="hideActionText" type="boolean" value="true"/>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="margin" type="java.awt.Insets" editor="org.netbeans.beaninfo.editors.InsetsEditor">
-          <Insets value="[0, 5, 0, 5]"/>
+          <Insets value="[0, 0, 0, 0]"/>
         </Property>
       </Properties>
       <Events>

@@ -185,7 +185,7 @@ public class PrintedElementsAdministration {
         for (int i = 0; i < databases.size(); i++) {
             c=0;
              for (int j = 0; j < databases.get(i).Data.size() && ((j < DataDatabase.values()[i].max)|| (DataDatabase.values()[i].max ==0)); j++) {
-                 if(databases.get(i).Data.get(j).printed){
+                 if(databases.get(i).Data.get(j).isPrinted()){
                     c++; 
                  }
                  count[i]=c;

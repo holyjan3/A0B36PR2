@@ -19,13 +19,14 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     JPanelElement panelElement;
     JFrameElement frameElement;
     JPanelMenuLines panelMenuLines;
+    Boolean check;
     public JPanelElementGlobaBottom(JFrameElement  frameElement, JPanelMenuLines panelMenuLines) {
         initComponents();
         this.frameElement = frameElement;
         this.panelElement = frameElement.jpanel;
         this.panelMenuLines = panelMenuLines;
         this.jCheckBox1.setSelected(panelElement.element.isPrinted());
-        
+        check = panelElement.element.isPrinted();
         
     }
 
@@ -130,7 +131,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         
         JCheckBox box = (JCheckBox) evt.getSource();
-        panelElement.element.setStringPrinted(box.isSelected());
+        check = box.isSelected();
       
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
@@ -173,9 +174,10 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         if(frameElement.new_element){
            
             panelElement.database.nowWorkDatabase.addElementt(panelElement.element);
+            
         } else {
             panelElement.database.nowWorkDatabase.modifyElement(panelElement);
-            
+            panelElement.element.setStringPrinted(this.jCheckBox1.isSelected(), panelElement.element.key);
              
         }
         
@@ -227,6 +229,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         } else {
             panelMenuLines.overWritePanel();
             frameElement.dispose();
+            
         }
     } 
     

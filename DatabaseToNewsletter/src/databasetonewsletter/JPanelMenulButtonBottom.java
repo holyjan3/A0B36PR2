@@ -179,7 +179,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private void eneblePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eneblePrintActionPerformed
          for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
-                    button.element.setStringPrinted(true);
+                    button.element.setStringPrinted(true,button.element.key);
                     
                 }
         }
@@ -189,7 +189,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
     private void disablePrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disablePrintActionPerformed
         for (JRadioButtonWithNumber button  :frameMenu.menuLines.jrb) {
                 if(button.isSelected()){                   
-                    button.element.setStringPrinted(false);
+                    button.element.setStringPrinted(false,button.element.key);
                 }
         }
         frameMenu.menuLines.overWritePanel();

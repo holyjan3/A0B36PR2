@@ -5,10 +5,12 @@
 package databasetonewsletter;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  *
@@ -22,7 +24,6 @@ JScrollPane scrollPane;
         JPanel jp = new JPanel(new BorderLayout());
         menus = new JPanelMenuPrinted[WorkerDatabase.dataDatabases.size()];
        
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         
          panel =new JPanel(new GridBagLayout());
          GridBagConstraints c = new GridBagConstraints();
@@ -42,15 +43,21 @@ JScrollPane scrollPane;
             
             WorkerDatabase.dataDatabases.get(i).nowWorkDatabase.readFromDatabase();
             menus[i]= new JPanelMenuPrinted(WorkerDatabase.dataDatabases.get(i));
+            panel.setBackground(Color.black);
+            l.setForeground(Color.white);
+            panel.setOpaque(true);
             
             panel.add(menus[i],c);
+            Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
+            Border border = BorderFactory.createLineBorder(Color.BLACK);
+            menus[i].setBorder(BorderFactory.createCompoundBorder(border,paddingBorder)); 
         
         
         }  
     scrollPane.setViewportView(panel);
     
     jp.add(scrollPane,BorderLayout.CENTER);
-    jp.add(new JPanelMenlRight(),BorderLayout.EAST);
+    jp.add(new JPanelMenulRight(this),BorderLayout.EAST);
     add(jp);
     
        setSize(1000,1000);

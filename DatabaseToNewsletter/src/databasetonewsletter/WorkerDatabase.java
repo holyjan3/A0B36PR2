@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -32,7 +34,8 @@ public class WorkerDatabase {
    public static java.util.Date date;
    public static String head = "";
    public static String foot = "";
-   
+   public static java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();
+  
    
    
    

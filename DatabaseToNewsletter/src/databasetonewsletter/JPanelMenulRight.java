@@ -10,13 +10,15 @@ import javax.swing.JOptionPane;
  *
  * @author Majitel
  */
-public class JPanelMenlRight extends javax.swing.JPanel {
+public class JPanelMenulRight extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPanelMenlRight
+     * Creates new form JPanelMenulRight
      */
-    public JPanelMenlRight() {
+    JFrameMenuAll frameMenuAll;
+    public JPanelMenulRight( JFrameMenuAll frameMenuAll) {
         initComponents();
+         this.frameMenuAll = frameMenuAll;
     }
 
     /**
@@ -31,12 +33,9 @@ public class JPanelMenlRight extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         jButton1.setText("<html>\nT\n<br />\nI\n<br/>\nS\n<br />\nK\n\n</html>");
-        jButton1.setAlignmentX(0.5F);
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setAutoscrolls(true);
         jButton1.setHideActionText(true);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jButton1.setMargin(new java.awt.Insets(0, 5, 0, 5));
+        jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -68,10 +67,10 @@ public class JPanelMenlRight extends javax.swing.JPanel {
             pea.insertText(WorkerDatabase.head, "HEADING", 0);
             pea.insertText(WorkerDatabase.foot, "FOOTER", 0);
             pea.saveTempfile();
-           
+            frameMenuAll.dispose();
         } catch (Exception e) {
             System.out.println(e.getCause());   
-         JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -5,6 +5,7 @@
 package databasetonewsletter;
 
 import com.toedter.calendar.JCalendar;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GraphicsDevice;
@@ -18,6 +19,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
 
 /**
  *
@@ -57,14 +59,24 @@ public class JPanelConection extends javax.swing.JPanel {
         close = new JButton("zavřít");
         every_time = new JButton("všechny záznami");
         choose_date = new JButton("vyber datum");
-    
-        setLayout(new FlowLayout(FlowLayout.LEFT));
+        
+        
+        
+        setLayout(new BorderLayout());
+         
+        JPanel jPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        
+        
+       
         Dimension dim = new Dimension(500, 300);
         setSize(dim);
         setMaximumSize(dim);
         setResizable(false);
+        
         cal= new JCalendar();
         cal.setSize(dim);
+       setAlwaysOnTop( true );
+       
         
         
         addWindowListener(new WindowListener() {
@@ -175,10 +187,11 @@ public class JPanelConection extends javax.swing.JPanel {
         setVisible(true);
         
         
-        add(cal);
-        add(choose_date);
-        add(every_time);
-        add(close);
+        add(cal,BorderLayout.CENTER);
+        jPanel.add(choose_date);
+        jPanel.add(every_time);
+        jPanel.add(close);
+        add(jPanel,BorderLayout.SOUTH);
 
         }
     }

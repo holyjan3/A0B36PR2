@@ -14,8 +14,8 @@ public class ComparatorPrint implements Comparator<Element>{
 
     @Override
     public int compare(Element o1, Element o2) {
-        boolean b1 = o1.printed;
-        boolean b2 = o2.printed;
+        boolean b1 = o1.isPrinted();
+        boolean b2 = o2.isPrinted();
         if(b1 == b2) {
             return 0;
         } else {

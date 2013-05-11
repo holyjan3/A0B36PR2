@@ -113,10 +113,8 @@ public class WorkDatabaseOnline extends WorkDatabase{
                     
                 }
                 
-                Element el = new Element(database.DE, ss);
+                Element el = new Element(database.DE, ss , key);
               
-                el.setStringPrinted(printed);
-                el.key = key;
                 database.Data.add(el);
                 
             }
@@ -145,9 +143,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
     @Override
     public void addElementt(Element element) {
         
-         Element el = element;
-         database.Data.add(el);
-         Boolean bb = false;
+         
        
          Statement stmt = null;
         
@@ -162,7 +158,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
             if(!element.strings_of_elements[i].equals("")){
                 
                 
-                bb = true;
+                
                 sb1.append(element.DE[i].name()+", ");                
                 sb2.append("'"+element.strings_of_elements[i]+"'"+", ");         
                    
@@ -185,9 +181,11 @@ public class WorkDatabaseOnline extends WorkDatabase{
           
            ResultSet res = stmt.getGeneratedKeys();
            res.next();
-         
-           
+          
            element.key = res.getInt(1);
+           element.setStringPrinted(element.isPrinted(), element.key);
+           database.Data.add(element);
+           
         } catch (SQLException ex) {
             Logger.getLogger(WorkDatabaseOnline.class.getName()).log(Level.SEVERE, null, ex);
         }

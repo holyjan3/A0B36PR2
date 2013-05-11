@@ -44,12 +44,12 @@ public class DatabaseToNewsletter {
             
             
             
-           //Thread th= null;
-           //th= new Thread(new ControlConection(th));
-           //th.start();
+           Thread th= null;
+           th= new Thread(new ControlConection(th));
+           th.start();
            
-           //new JFrameMainMenu();
-            new JFrameMenuAll();
+          new JFrameMainMenu();
+           // new JFrameMenuAll();
          } catch (Exception ex) {
              JOptionPane.showMessageDialog(null, ex.toString(), "", JOptionPane.ERROR_MESSAGE);
             

@@ -232,7 +232,7 @@ public class JPanelElement extends JPanel{
          jLabelsError[i].setOpaque(true);
          jLabelsError[i].setForeground(Color.white);  
          
-         if( (element.DE[i].type == DataControl.URL)&& !"".equals(element.strings_of_elements[i])){
+         if( (element.DE[i].type == DataControl.URL)&& (element.strings_of_elements[i]!= null && !"".equals(element.strings_of_elements[i]) )){
                this.controlUrl(text[i], i);
          }
          text[i].addFocusListener(save);

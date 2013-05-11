@@ -16,23 +16,37 @@ final public class Element implements  Serializable{
     
     protected DataElement[] DE;    
     protected String[] strings_of_elements;
-    protected boolean printed; // nastavi jestli se bude tisknout
+    private boolean printed; // nastavi jestli se bude tisknout
     protected boolean changed;
     protected int key = 0;
     
     public Element(DataElement[] DE,String[] strings_of_elements) {
         this.DE = DE;
-        //this.strings_of_elements = ControlElement.contorlStringElement(strings_of_elements, DE);
         changed = false;
         printed = false;
         this.strings_of_elements = strings_of_elements;
     }
-    
+    public Element(DataElement[] DE,String[] strings_of_elements , int i) {
+        this.DE = DE;
+        changed = false;
+        printed = false;
+        key = i;
+        
+        this.strings_of_elements = strings_of_elements;
+        
+        if(WorkerDatabase.printedHashMap.containsKey(i)){
+            printed = WorkerDatabase.printedHashMap.get(i);
+        }else {
+            WorkerDatabase.printedHashMap.put(i, false);
+            
+        }
+    }
     
     
     public Element(DataElement[] DE) {
         this.DE = DE;        
         changed = false;
+        printed = false;
         strings_of_elements = new String[DE.length];
         for (int i = 0; i < DE.length; i++) {
             strings_of_elements[i] = "";
@@ -40,22 +54,27 @@ final public class Element implements  Serializable{
         
     }
     
-    public Element(DataElement[] DE,int a){
-        this(DE);
-        strings_of_elements[0]= Test.ss;
-        
+//    public Element(DataElement[] DE,int a){
+//        this(DE);
+//        strings_of_elements[0]= Test.ss;
+//        
+//    }
+    
+    
+    
+   public void setStringPrinted(boolean b){
+    this.printed = b;
     }
     
-    
-    
-    public void setStringPrinted(boolean b){
+    public void setStringPrinted(boolean b,int i){
         this.printed = b;
+        WorkerDatabase.printedHashMap.put(i, b);        
     }
-    
-    
 
     public boolean isPrinted() {
+        
         return printed;
+        
     }
 
     
