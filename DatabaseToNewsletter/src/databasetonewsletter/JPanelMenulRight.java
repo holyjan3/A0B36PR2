@@ -32,7 +32,7 @@ public class JPanelMenulRight extends javax.swing.JPanel {
 
         jButton1 = new javax.swing.JButton();
 
-        jButton1.setText("<html>\nT\n<br />\nI\n<br/>\nS\n<br />\nK\n\n</html>");
+        jButton1.setText("<html><p style=\"text-align: center;\">\nT\n<br />\nI\n<br/>\nS\n<br />\nK\n</p>\n</html>");
         jButton1.setHideActionText(true);
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jButton1.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -49,7 +49,7 @@ public class JPanelMenulRight extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

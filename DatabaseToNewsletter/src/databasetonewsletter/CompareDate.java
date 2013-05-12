@@ -25,11 +25,27 @@ public class CompareDate implements Comparator<Element>{
         int year1 = 0; int month1 = 0; int day1= 0; int hour1 = 0; int minute1 = 0;
         
                 
+        if(o1.strings_of_elements[compare] == null){
+            return -1;
+        } 
+        
+        if(o2.strings_of_elements[compare] == null){
+            return 1;
+        }
+        
+        
+        
+        
+        
+        
+        
         String[] ssD1 = o1.strings_of_elements[compare].split("[.]");
         String[] ssD2 = o2.strings_of_elements[compare].split("[.]");
         
         String[] ssT1;
         String[] ssT2;
+        
+       
         
         if(ssD1.length == 3){
             day1 = Integer.parseInt(ssD1[0]);
@@ -56,6 +72,13 @@ public class CompareDate implements Comparator<Element>{
                 if (day1 != day2) {
                     return -day1+day2;
                 } else {
+                    if(o1.strings_of_elements[compare+1] == null ){
+                       return  -1;
+                    } 
+                    
+                     if(o2.strings_of_elements[compare+1] == null ){
+                       return  1;
+                    } 
                     ssT1 = o1.strings_of_elements[compare+1].split("[:]");
                     ssT2 = o2.strings_of_elements[compare+1].split("[:]");                    
                     if(ssD1.length == 2){

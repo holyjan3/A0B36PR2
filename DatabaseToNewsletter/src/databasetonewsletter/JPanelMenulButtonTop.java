@@ -65,7 +65,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        findExit.setBackground(new java.awt.Color(192, 192, 242));
+        findExit.setBackground(new java.awt.Color(175, 175, 255));
         findExit.setForeground(new java.awt.Color(255, 0, 0));
         findExit.setText("zrušit hledání");
         findExit.setActionCommand("");
@@ -98,7 +98,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
-        findButton1.setBackground(new java.awt.Color(192, 192, 242));
+        findButton1.setBackground(new java.awt.Color(175, 175, 255));
         findButton1.setText("najít");
         findButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

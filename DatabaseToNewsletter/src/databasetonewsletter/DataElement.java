@@ -29,7 +29,7 @@ public enum DataElement{
     LINK3       (0,DataControl.URL, Constants.MaxVarChar),
     NAME        (200,DataControl.VARCHAR, 30),
     MEDIUM      (200,DataControl.VARCHAR, 30),
-    TYPE        (80,DataControl.VARCHAR, 30);    
+    TYPE        (200,DataControl.VARCHAR, 30);    
     
 
 

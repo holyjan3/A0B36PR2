@@ -81,7 +81,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        eneblePrint.setBackground(new java.awt.Color(255, 204, 204));
+        eneblePrint.setBackground(new java.awt.Color(255, 255, 102));
         eneblePrint.setText("přidat k tisku");
         eneblePrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        disablePrint.setBackground(new java.awt.Color(255, 204, 204));
+        disablePrint.setBackground(new java.awt.Color(255, 255, 102));
         disablePrint.setForeground(new java.awt.Color(255, 0, 0));
         disablePrint.setText("odstranit z tisku");
         disablePrint.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        arrange.setBackground(new java.awt.Color(192, 192, 242));
+        arrange.setBackground(new java.awt.Color(175, 175, 255));
         arrange.setText("seřadit");
         arrange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

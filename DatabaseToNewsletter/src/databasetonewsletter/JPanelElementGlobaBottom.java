@@ -47,6 +47,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         remove1 = new javax.swing.JButton();
         saveNot = new javax.swing.JButton();
 
+        saveExit.setBackground(java.awt.Color.green);
         saveExit.setText("Uložit a zavřít");
         saveExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -80,13 +81,21 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
             }
         });
 
+        remove1.setBackground(java.awt.Color.red);
+        remove1.setForeground(new java.awt.Color(255, 255, 255));
         remove1.setText("Odstanit událost");
         remove1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 remove1MouseClicked(evt);
             }
         });
+        remove1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                remove1ActionPerformed(evt);
+            }
+        });
 
+        saveNot.setBackground(java.awt.Color.yellow);
         saveNot.setText("zahodit změny");
         saveNot.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,6 +250,10 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
     private void saveNotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveNotActionPerformed
         frameElement.dispose();
     }//GEN-LAST:event_saveNotActionPerformed
+
+    private void remove1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remove1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_remove1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteAll;

@@ -6,6 +6,7 @@ package databasetonewsletter;
 
 import com.toedter.calendar.JCalendar;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GraphicsDevice;
@@ -60,6 +61,15 @@ public class JPanelCalendar extends javax.swing.JPanel {
         every_time = new JButton("všechny záznami");
         choose_date = new JButton("vyber datum");
         
+        close.setForeground(Color.white);
+        choose_date.setBackground(Color.green);
+        choose_date.setOpaque(true);
+        
+        every_time.setBackground(Color.yellow);
+        every_time.setOpaque(true);
+        
+        close.setBackground(Color.red);
+        close.setOpaque(true);
         
         
         setLayout(new BorderLayout());
@@ -207,11 +217,11 @@ public class JPanelCalendar extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        jLabel1.setBackground(new java.awt.Color(255, 204, 153));
+        jLabel1.setBackground(new java.awt.Color(255, 153, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("vybrat všechny záznamy");
 
-        jButton1.setBackground(new java.awt.Color(255, 204, 153));
+        jButton1.setBackground(new java.awt.Color(255, 153, 255));
         jButton1.setText("Zvolit datum");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
