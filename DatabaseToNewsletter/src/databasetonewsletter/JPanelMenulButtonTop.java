@@ -6,7 +6,6 @@ package databasetonewsletter;
 
 import java.util.ArrayList;
 import java.util.Date;
-import net.sourceforge.jcalendarbutton.*;
 /**
  *
  * @author Majitel
@@ -58,6 +57,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        addElement.setBackground(new java.awt.Color(102, 255, 102));
         addElement.setText("přidej záznam");
         addElement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,6 +65,8 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        findExit.setBackground(new java.awt.Color(192, 192, 242));
+        findExit.setForeground(new java.awt.Color(255, 0, 0));
         findExit.setText("zrušit hledání");
         findExit.setActionCommand("");
         findExit.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +80,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setBackground(new java.awt.Color(204, 204, 255));
         jTextField1.setText(this.findInText);
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -95,6 +98,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        findButton1.setBackground(new java.awt.Color(192, 192, 242));
         findButton1.setText("najít");
         findButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +111,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
             }
         });
 
+        delete.setBackground(new java.awt.Color(255, 153, 153));
         delete.setText("smazat");
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -127,9 +132,9 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 .addComponent(findButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(findExit)
-                .addGap(72, 72, 72)
+                .addGap(127, 127, 127)
                 .addComponent(delete, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +201,7 @@ public class JPanelMenulButtonTop extends javax.swing.JPanel {
                 jFrameMenu.database.nowWorkDatabase.removeElement(button.element);
             }
         }
-//        jFrameMenu.menuLines.overWritePanel();
+           jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_deleteMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

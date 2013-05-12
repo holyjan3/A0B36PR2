@@ -22,7 +22,7 @@ public class JPanelMenu extends JPanel{
     JPanelMenulButtonBottom menulButtonBottom;
     JPanelMenuLines menuLines;
     JScrollPane scrollPane;
-    JPanelConection conection;
+    JPanelCalendar conection;
     JFrameMainMenu frameMainMenu;
     protected ArrayList<Integer> array;
        
@@ -54,7 +54,7 @@ public class JPanelMenu extends JPanel{
         
         //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         JPanel pane = new JPanel(new BorderLayout());
-        conection = new JPanelConection(menuLines);
+        conection = new JPanelCalendar(menuLines);
        
        
      

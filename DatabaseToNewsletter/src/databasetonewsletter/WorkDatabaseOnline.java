@@ -4,11 +4,13 @@
  */
 package databasetonewsletter;
 
+import com.sun.org.apache.bcel.internal.generic.GOTO;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Majitel
@@ -49,9 +51,9 @@ public class WorkDatabaseOnline extends WorkDatabase{
         }
         
         database.Data.clear();
-        if(date != null) System.out.println(date.toString());
-        else 
-            System.out.println("null");
+//        if(date != null) System.out.println(date.toString());
+//        else 
+//            System.out.println("null");
         read = false;
         
         SimpleDateFormat chooseDate = new SimpleDateFormat("yyyy-MM-dd 00:00:00.000");
@@ -75,19 +77,14 @@ public class WorkDatabaseOnline extends WorkDatabase{
         String[] ss;   
         int key = 0;
         boolean printed = false;
-        try{
+         SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
+         SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm");
+        
+         while(true){
+         try{
+            
             stmt = conection.createStatement();
-            ResultSet rs = stmt.executeQuery(sRead);
-            
-            SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
-            SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm");
-           
-            java.util.Date date = null;
-    
-            
-
-       
-            
+            ResultSet rs = stmt.executeQuery(sRead); 
             
            while(rs.next()){
                 key = rs.getInt(WorkerDatabase.unicateKey);
@@ -113,19 +110,20 @@ public class WorkDatabaseOnline extends WorkDatabase{
                     
                 }
                 
-                Element el = new Element(database.DE, ss , key);
-              
+                Element el = new Element(database.DE, ss , key);              
                 database.Data.add(el);
                 
             }
-           
+            return;
        }
-        catch(SQLException ex) {
-        System.out.println("SQL Exception caught + ex.getMessage()");
-       
-        }
- 
+     catch(SQLException ex) {
+        connect();
+        conection = WorkerDatabase.conection;
     }
+   }
+ 
+  }
+    
     public boolean equalsDates(java.util.Date d1, java.util.Date  d2){
         if((d1 == null && d2 == null )){
             return true;            
@@ -171,11 +169,11 @@ public class WorkDatabaseOnline extends WorkDatabase{
          
          sb1.append(")");
          sb2.append(")");
+         String sql = "INSERT INTO " + sb1.toString() + " VALUES " + sb2.toString(); 
          
          
-         try {            
-            
-           String sql = "INSERT INTO " + sb1.toString() + " VALUES " + sb2.toString();
+         while(true){
+         try {  
            stmt = conection.createStatement();
            stmt.execute(sql,Statement.RETURN_GENERATED_KEYS);
           
@@ -185,11 +183,13 @@ public class WorkDatabaseOnline extends WorkDatabase{
            element.key = res.getInt(1);
            element.setStringPrinted(element.isPrinted(), element.key);
            database.Data.add(element);
-           
+           return;
         } catch (SQLException ex) {
-            Logger.getLogger(WorkDatabaseOnline.class.getName()).log(Level.SEVERE, null, ex);
+           connect();
+           conection = WorkerDatabase.conection;
+           
         }
-        
+      } 
     }
   
 
@@ -201,12 +201,17 @@ public class WorkDatabaseOnline extends WorkDatabase{
         String sql = "DELETE FROM APP."+  WorkerDatabase.nameTable + " WHERE "+
                     WorkerDatabase.unicateKey + " = " + Integer.toString(element.key);
         PreparedStatement statement = null;
+        
+        while(true){
         try {
             statement = conection.prepareStatement(sql);
-            database.Data.remove(element);
             statement.execute(); 
+            database.Data.remove(element);
+            return;
         } catch (SQLException ex) {
-            Logger.getLogger(WorkDatabaseOnline.class.getName()).log(Level.SEVERE, null, ex);
+            connect();
+            conection = WorkerDatabase.conection;
+        }
         }
     }
 
@@ -216,7 +221,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
         
         panelElement.element.changed = true;
         for (int i = 0; i < panelElement.text.length; i++) {
-            panelElement.element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
+            element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
         }      
         
         
@@ -233,14 +238,38 @@ public class WorkDatabaseOnline extends WorkDatabase{
         sb.append("TIME_LAST_CHANGED=CURRENT_TIMESTAMP");
         String sql = "UPDATE APP."+  WorkerDatabase.nameTable +" SET "+ sb.toString()+" WHERE "+
                     WorkerDatabase.unicateKey + "=" + Integer.toString(element.key);
+       while(true){
         try {
             PreparedStatement statement = conection.prepareStatement(sql);
             statement.execute();
+            return;
         } catch (SQLException ex) {
-            Logger.getLogger(WorkDatabaseOnline.class.getName()).log(Level.SEVERE, null, ex);
+            connect();
+            conection = WorkerDatabase.conection;
         }
+       }
     }   
     
+    
+    public void connect(){
+        boolean bb = true;
+        while(bb){    
+        JOptionPane  frame = new JOptionPane();
+           Object[] options = {"Ukončit program",
+                    "Obnovit spojení",};
+            int n = JOptionPane.showOptionDialog(frame,
+                 "Spadlo připojení s databází",
+                    "",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+             null,
+            options,
+            options[1]);
+            if (n==0)
+                System.exit(1);
+            bb = !WorkerDatabase.conectOnlineDatabase();
+        }
+    }
     
 
 

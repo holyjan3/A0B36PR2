@@ -60,7 +60,7 @@
                       <Component id="arrange" alignment="3" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,6 +68,12 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="selectCancel">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="ff" red="66" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="zru&#x161;it v&#xfd;b&#x11b;r"/>
       </Properties>
       <Events>
@@ -76,6 +82,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="selectAll">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="ff" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="vybrat v&#x161;e"/>
       </Properties>
       <Events>
@@ -84,6 +93,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="eneblePrint">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="p&#x159;idat k tisku"/>
       </Properties>
       <Events>
@@ -92,6 +104,12 @@
     </Component>
     <Component class="javax.swing.JButton" name="disablePrint">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="cc" green="cc" red="ff" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="odstranit z tisku"/>
       </Properties>
       <Events>
@@ -100,6 +118,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="selectToNotPrinted">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="ff" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat &lt;/br&gt; k nevyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
       </Properties>
       <Events>
@@ -108,6 +129,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="selectToPrinted">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="ff" red="66" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat&lt;/br&gt; k vyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
       </Properties>
       <Events>
@@ -116,6 +140,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="comboBox">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="c0" red="c0" type="rgb"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
@@ -126,6 +153,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="arrange">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f2" green="c0" red="c0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="se&#x159;adit"/>
       </Properties>
       <Events>

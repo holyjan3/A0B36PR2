@@ -81,7 +81,7 @@ public class JFrameStart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void onlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_onlineActionPerformed
-        new JFrameConect(this);        
+             
     }//GEN-LAST:event_onlineActionPerformed
 
     private void offlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offlineActionPerformed

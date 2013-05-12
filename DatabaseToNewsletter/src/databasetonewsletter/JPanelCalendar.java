@@ -25,14 +25,14 @@ import javax.swing.JPanel;
  *
  * @author Majitel
  */
-public class JPanelConection extends javax.swing.JPanel {
+public class JPanelCalendar extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPanelConection
+     * Creates new form JPanelCalendar
      */
     JPanelMenuLines jPanelMenuLines;
     String ss ="Vyber všechny záznami";
-    public JPanelConection(JPanelMenuLines jPanelMenuLines) {
+    public JPanelCalendar(JPanelMenuLines jPanelMenuLines) {
         initComponents();
         this.jPanelMenuLines = jPanelMenuLines;
         if(WorkerDatabase.date == null){
@@ -42,7 +42,7 @@ public class JPanelConection extends javax.swing.JPanel {
             jLabel1.setText( "Záznamy od data "+formatDate.format(WorkerDatabase.date).toString());
         }
         
-   
+    jLabel1.setOpaque(true);
     
     
     }
@@ -207,9 +207,11 @@ public class JPanelConection extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
+        jLabel1.setBackground(new java.awt.Color(255, 204, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("vybrat všechny záznamy");
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 153));
         jButton1.setText("Zvolit datum");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

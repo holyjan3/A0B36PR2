@@ -18,6 +18,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -35,6 +36,9 @@ public class WorkerDatabase {
    public static String head = "";
    public static String foot = "";
    public static java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();
+   public static String url;
+   public static String name;
+   public static String password;
   
    
    
@@ -65,24 +69,27 @@ public class WorkerDatabase {
 
   
     
-    public static void conectOnlineDatabase(String name, String password){
-        String url = "jdbc:derby://localhost:1527/Newsletters";
+    public static boolean conectOnlineDatabase(){
+       
+        
+      
+ 
+
         Connection conn = null;
         try {
-          
+           
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-            conn = DriverManager.getConnection(url,"root","root");
+            conn = DriverManager.getConnection(url,name,password);
+//             String url = "jdbc:derby://localhost:1527/Newsletters";
+//            Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+//            conn = DriverManager.getConnection(url,"root","root");            
+            WorkerDatabase.conection = conn;
+            return true;
              
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(DatabaseToNewsletter.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException | InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
+            return false;
         }        
-       WorkerDatabase.conection = conn;
+      
     }
     
 //    public static void conectDatabaseAll() throws InterruptedException {

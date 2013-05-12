@@ -22,7 +22,7 @@ public final class JFrameMenu extends JFrame{
     JPanelMenulButtonBottom menulButtonBottom;
     JPanelMenuLines menuLines;
     JScrollPane scrollPane;
-    JPanelConection conection;
+    JPanelCalendar conection;
     JFrameMainMenu frameMainMenu;
     protected ArrayList<Integer> array;
        

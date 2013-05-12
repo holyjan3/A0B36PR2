@@ -25,34 +25,36 @@ public class DatabaseToNewsletter {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args)  {       
-        
-           
+    public static void main(String[] args)  {  
         
         
-        WorkerDatabase.conectOnlineDatabase(null, null);
-        WorkerDatabase.WorkerDatabase();  
-        
-//        while(true){
-//            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-//            Calendar cal = Calendar.getInstance();
-//            System.out.println(dateFormat.format(cal.getTime()));
-//        }
-        
-         try {
-            
-            
-            
-            
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
-           
-          new JFrameMainMenu();
-           // new JFrameMenuAll();
-         } catch (Exception ex) {
-             JOptionPane.showMessageDialog(null, ex.toString(), "", JOptionPane.ERROR_MESSAGE);
-            
-        }
+        
+          JFrameConect.main(null);
+        
+        
+       // WorkerDatabase.conectOnlineDatabase(null, null);
+//        WorkerDatabase.WorkerDatabase();  
+//        
+////        while(true){
+////            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+////            Calendar cal = Calendar.getInstance();
+////            System.out.println(dateFormat.format(cal.getTime()));
+////        }
+//        
+//         try {
+//            
+//            
+//            
+
+//           
+//          new JFrameMainMenu();
+//           // new JFrameMenuAll();
+//         } catch (Exception ex) {
+//             JOptionPane.showMessageDialog(null, ex.toString(), "", JOptionPane.ERROR_MESSAGE);
+//            
+//        }
     }
 }

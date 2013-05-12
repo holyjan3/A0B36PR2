@@ -17,7 +17,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
  */
 public class JFrameMainMenu extends JFrame {
    
-     JPanelConection jpc;
+     JPanelCalendar jpc;
      JPanelMainMenuTop menuTop;
     public JFrameMainMenu() {   
         super("Newsletter maker");
@@ -43,7 +43,7 @@ public class JFrameMainMenu extends JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
         menuTop = new JPanelMainMenuTop();
-        jpc = new JPanelConection(null);
+        jpc = new JPanelCalendar(null);
         
         this.addWindowListener(new Action());
         

@@ -69,7 +69,7 @@ public class JPanelMenulRight extends javax.swing.JPanel {
             pea.saveTempfile();
             frameMenuAll.dispose();
         } catch (Exception e) {
-            System.out.println(e.getCause());   
+            //System.out.println(e.getCause());   
             JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
             
         }

@@ -20,7 +20,6 @@ public class Database{
     protected DataDatabase database;
     protected DataElement[] DE;
     protected WorkDatabase nowWorkDatabase;
-    private WorkDatabase workDatabaseOnline;
     protected final String name_file;
     protected int id_database;
     
@@ -32,10 +31,10 @@ public class Database{
         this.id_database = WorkerDatabase.getKeyDatabases(name_file);
         
         this.Data  = new LinkedList<Element>();
-        workDatabaseOnline = new WorkDatabaseOnline(this);
+        nowWorkDatabase = new WorkDatabaseOnline(this);
         
         
-        nowWorkDatabase=  workDatabaseOnline;
+         
     }
    
     
