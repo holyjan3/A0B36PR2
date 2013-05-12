@@ -9,6 +9,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -25,10 +26,9 @@ public class JPanelMenu extends JPanel{
     JPanelCalendar conection;
     JFrameMainMenu frameMainMenu;
     protected ArrayList<Integer> array;
-       
+    
     public JPanelMenu(Database database){
-        
-  
+       
         this.database = database;
         
         

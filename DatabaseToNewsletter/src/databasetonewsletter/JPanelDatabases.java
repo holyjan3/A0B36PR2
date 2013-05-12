@@ -35,7 +35,12 @@ public class JPanelDatabases extends JPanel implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButtonWithNumber jbwn = (JButtonWithNumber) e.getSource();
-        databases.get(jbwn.number).nowWorkDatabase.readFromDatabase();
+        if(frameMainMenu.jpc.cal == null){
+            databases.get(jbwn.number).nowWorkDatabase.readFromDatabase(null);
+        } else {
+            databases.get(jbwn.number).nowWorkDatabase.readFromDatabase(frameMainMenu.jpc.cal.getDate());
+        }
+        
         JFrameMenu jf = new JFrameMenu(databases.get(jbwn.number),frameMainMenu);
     }
     

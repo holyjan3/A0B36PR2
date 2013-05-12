@@ -54,7 +54,7 @@ public class GlobalSave {
         bw.write(System.getProperty("line.separator"));
         
     }
-    public static boolean saveText(){
+    public static void saveText() throws IOException{
        File f = null;
        boolean bb = true;
         BufferedWriter bw = null;
@@ -73,16 +73,11 @@ public class GlobalSave {
                     bw.close();
                 } catch (IOException | NullPointerException e) {
                     bb = false;
-                } finally {
-                    if(bb){
-                      return true; 
-                    }
-                    else {
-                     JOptionPane.showMessageDialog(null, "Nepodařilo se uloži soubor, nejspíše je použván jiným programem", "", JOptionPane.ERROR_MESSAGE);
-                    return false;
-                    } 
+                    throw e;
+                
+                }
                     
-               }
+               
         }
         
         

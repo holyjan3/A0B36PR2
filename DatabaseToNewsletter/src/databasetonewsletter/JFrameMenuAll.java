@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.Date;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -20,7 +21,9 @@ public class JFrameMenuAll extends JFrame{
 JPanelMenuPrinted[] menus;
 JPanel panel;
 JScrollPane scrollPane;
-    public JFrameMenuAll() {
+Date date;
+    public JFrameMenuAll(Date date) {
+        this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
         menus = new JPanelMenuPrinted[WorkerDatabase.dataDatabases.size()];
        
@@ -41,7 +44,7 @@ JScrollPane scrollPane;
             JLabel l= new JLabel(WorkerDatabase.dataDatabases.get(i).name_database);
             panel.add(l,c);
             
-            WorkerDatabase.dataDatabases.get(i).nowWorkDatabase.readFromDatabase();
+            WorkerDatabase.dataDatabases.get(i).nowWorkDatabase.readFromDatabase(date);
             menus[i]= new JPanelMenuPrinted(WorkerDatabase.dataDatabases.get(i));
             panel.setBackground(Color.black);
             l.setForeground(Color.white);

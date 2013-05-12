@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -31,32 +32,42 @@ public class JPanelCalendar extends javax.swing.JPanel {
     /**
      * Creates new form JPanelCalendar
      */
+    
+    com.toedter.calendar.JCalendar cal;
     JPanelMenuLines jPanelMenuLines;
     String ss ="Vyber všechny záznami";
     public JPanelCalendar(JPanelMenuLines jPanelMenuLines) {
+       
         initComponents();
         this.jPanelMenuLines = jPanelMenuLines;
+        
+        if(jPanelMenuLines !=null){
+         cal = new JCalendar();
         if(WorkerDatabase.date == null){
             jLabel1.setText(ss);
         } else {
             SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
             jLabel1.setText( "Záznamy od data "+formatDate.format(WorkerDatabase.date).toString());
         }
-        
+        } else {
+            cal = null;
+        }
     jLabel1.setOpaque(true);
     
     
     }
     
     class DATE extends JFrame{
+       
         JButton close;
         JButton every_time;
         JButton choose_date;
         
-        com.toedter.calendar.JCalendar cal;
+        
         
         
         DATE(){
+           
         close = new JButton("zavřít");
         every_time = new JButton("všechny záznami");
         choose_date = new JButton("vyber datum");
@@ -138,13 +149,16 @@ public class JPanelCalendar extends javax.swing.JPanel {
            
             @Override
             public void actionPerformed(ActionEvent e) {
-                WorkerDatabase.date = null;
+                //WorkerDatabase.date = null;
+                cal = null;
                 if(jPanelMenuLines != null){
                    
-                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase();
+                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(null);
                     jPanelMenuLines.overWritePanel();
                     
                     
+                } else {
+                    WorkerDatabase.date = null;
                 }
                  jLabel1.setText(ss);
                  jButton1.setEnabled(true);
@@ -158,25 +172,27 @@ public class JPanelCalendar extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                WorkerDatabase.date = cal.getDate();
-                WorkerDatabase.date.setHours(0);
-                WorkerDatabase.date.setMinutes(0);
-                WorkerDatabase.date.setSeconds(0);
+             
+                Date d = cal.getDate();
+                d.setHours(0);
+                d.setMinutes(0);
+                d.setSeconds(0);
+              
                 
                 if(jPanelMenuLines != null){
                  
-                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase();
+                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(d);
                     jPanelMenuLines.overWritePanel();
                 } else {
-                    
+                    WorkerDatabase.date = d;                    
                 }
                 
                 
                 
                 
-                jLabel1.setText(WorkerDatabase.date.toString());
+                jLabel1.setText(d.toString());
                 SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
-                jLabel1.setText( "Od data "+formatDate.format(WorkerDatabase.date).toString());
+                jLabel1.setText( "Od data "+formatDate.format(d).toString());
                 dispose();
                 jButton1.setEnabled(true);
             }

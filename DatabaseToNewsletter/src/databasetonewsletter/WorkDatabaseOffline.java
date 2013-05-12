@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +30,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
     
     
     @Override
-    public void readFromDatabase() {
+    public void readFromDatabase(Date d) {
         ObjectInputStream inputstream = null;
         String ss = database.name_file + ".txt";
         

@@ -5,8 +5,10 @@
 package databasetonewsletter;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
@@ -42,14 +44,17 @@ public class JFrameMainMenu extends JFrame {
        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
-        menuTop = new JPanelMainMenuTop();
+       
         jpc = new JPanelCalendar(null);
+         
+       
         
         this.addWindowListener(new Action());
-        
+         menuTop = new JPanelMainMenuTop(jpc);
         add(menuTop,BorderLayout.NORTH);
         add(new JPanelDatabases(WorkerDatabase.dataDatabases,this),BorderLayout.CENTER);
-        
+        jpc.setLayout(new FlowLayout(FlowLayout.RIGHT));
+       
         add(jpc,BorderLayout.SOUTH);
         setSize(900,600);
         setVisible(true); 
@@ -68,7 +73,7 @@ public class JFrameMainMenu extends JFrame {
      }
     
     class Action implements WindowListener {
-        JPanelMainMenuTop menuTop1 = menuTop;
+        
         
         @Override
         public void windowOpened(WindowEvent e) {
@@ -77,12 +82,12 @@ public class JFrameMainMenu extends JFrame {
 
         @Override
         public void windowClosing(WindowEvent e) {
-            GlobalSave.FOOTER = menuTop1.getFooter();
-            GlobalSave.HEADING = menuTop1.getHeading();
-            if(GlobalSave.saveText()) {
-                
-               System.exit(0);
-            }else {
+            GlobalSave.FOOTER = menuTop.getFooter();
+            GlobalSave.HEADING = menuTop.getHeading();
+            try {
+                 GlobalSave.saveText();
+                  System.exit(0);
+            } catch  (IOException | NullPointerException ee){
                 JOptionPane  frame = new JOptionPane();
              Object[] options = {"zahodit ",
                     "vráti se"};
@@ -96,10 +101,9 @@ public class JFrameMainMenu extends JFrame {
                 options[1]);
                 if(n==0){
                 System.exit(0);
-         
+            }
                 
-            }
-            }
+            }    
         }
 
         @Override

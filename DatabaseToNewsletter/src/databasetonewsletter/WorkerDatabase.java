@@ -32,7 +32,7 @@ public class WorkerDatabase {
    public static String nameTable = "NEWSLETTERDATAS";
    public static String DateChanged = "DATECHANGED";
    public static Connection conection =null;
-   public static java.util.Date date;
+   public static java.util.Date date =null;
    public static String head = "";
    public static String foot = "";
    public static java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();

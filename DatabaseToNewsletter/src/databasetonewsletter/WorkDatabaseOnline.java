@@ -34,17 +34,17 @@ public class WorkDatabaseOnline extends WorkDatabase{
     
     
     @Override
-    public void readFromDatabase() {
+    public void readFromDatabase(java.util.Date d) {
           
         
-       if(!read && equalsDates(date,WorkerDatabase.date )){
+       if(!read && equalsDates(date,d)){
            
           return; 
        }
        
        
-        if(WorkerDatabase.date != null){
-            date = (java.util.Date) WorkerDatabase.date.clone();
+        if(d!= null){
+            date = (java.util.Date) d.clone();
             
         } else {
             date = null;
@@ -70,7 +70,7 @@ public class WorkDatabaseOnline extends WorkDatabase{
         
         if( date != null){
            sRead = "SELECT APP."+WorkerDatabase.nameTable+".* FROM "+ "APP."+WorkerDatabase.nameTable+" WHERE ID_DATABASES="
-                   +Integer.toString(database.id_database) + " AND TIME_LAST_CHANGED >= '" + chooseDate.format(WorkerDatabase.date).toString()+"'"; 
+                   +Integer.toString(database.id_database) + " AND TIME_LAST_CHANGED >= '" + chooseDate.format(d).toString()+"'"; 
         }else {
             sRead = "SELECT APP."+WorkerDatabase.nameTable+".* FROM "+ "APP."+WorkerDatabase.nameTable+" WHERE ID_DATABASES="+Integer.toString(database.id_database); 
         }

@@ -4,7 +4,9 @@
  */
 package databasetonewsletter;
 
+import com.toedter.calendar.JCalendar;
 import java.io.*;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -23,10 +25,11 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     /**
      * Creates new form JPanelMainMenuTop
      */
-    
+    JPanelCalendar calendar;
     PrintedElementsAdministration printedElement;
-    public JPanelMainMenuTop() {
+    public JPanelMainMenuTop(JPanelCalendar calendar) {
         initComponents();
+        this.calendar = calendar;
        
         GlobalSave.getText();
         this.heading.setText(GlobalSave.HEADING);
@@ -227,7 +230,15 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
             WorkerDatabase.head = this.heading.getText();
             WorkerDatabase.foot = this.footer.getText();
-            new JFrameMenuAll();
+             
+            if(calendar.cal == null){
+                
+               
+            new JFrameMenuAll(null);
+            } else {
+                
+                new JFrameMenuAll(calendar.cal.getDate());
+            }
                     
       
     }//GEN-LAST:event_makeActionPerformed
