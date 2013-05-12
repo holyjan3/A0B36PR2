@@ -4,8 +4,6 @@
  */
 package databasetonewsletter;
 
-import java.io.Serializable;
-
 
 /**
  *

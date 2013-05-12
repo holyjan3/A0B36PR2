@@ -4,8 +4,7 @@
  */
 package databasetonewsletter;
 
-import static databasetonewsletter.ControlElement.conected;
-import static databasetonewsletter.ControlElement.contolVarChar;
+
 import java.awt.Color;
 import java.net.HttpURLConnection;
 import java.net.URL;

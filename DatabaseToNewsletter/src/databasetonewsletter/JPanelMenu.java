@@ -4,14 +4,13 @@
  */
 package databasetonewsletter;
 
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.BorderLayout;
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.*;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+
+
 
 /**
  *

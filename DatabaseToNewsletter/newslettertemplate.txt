@@ -88,7 +88,7 @@ and open the template in the editor.
 <!--7D-->
 								<!--9D--><div>Na čem se pracuje v regionech</div>
 <!--9D-->
-								<!--10D--><div>Skrz klávesnice našich pisatelů</div>
+								<!--10D--><div>Skrz klávesnice našich</div><div>pisatelů</div>
 <!--10D-->
 				
 						</div>
@@ -134,7 +134,7 @@ and open the template in the editor.
 </h5>
 					</div>
 					<div class="pozvankaSocialTlacitko3" style="height: 33px; background-color: rgb(174, 38, 0); border-top-color: white; border-top-width: 2px; border-top-style: solid; padding-top: 5px; border-bottom-right-radius: 15px; color: #FFFFFF;">
-						<h5 style="margin: 0px; border: 3px solid rgb(174,38,0); padding-top: 2px; border-bottom-right-radius: 15px;">  <!--LINK3--><span style="color: white; text-decoration: underline;"><!--LINK3_TEXT--></span><!--LINK1-->
+						<h5 style="margin: 0px; border: 3px solid rgb(174,38,0); padding-top: 2px; border-bottom-right-radius: 15px;">  <!--LINK3--><span style="color: white; text-decoration: underline;"><!--LINK3_TEXT--></span><!--LINK3-->
 </h5>
 					</div>
 </td>
@@ -342,7 +342,7 @@ and open the template in the editor.
   					
 					</td>
 					<td class="clenNapsalMedium" style="background-color: rgb(174, 38, 0); color: #FFFFFF; text-align: center; width: 180px; height: 20px; border-bottom-style: solid; border-bottom-width: 4px; border-bottom-color: rgb(200, 200, 200); border-top-width: 4px; border-top-style: solid; border-top-color: rgb(200, 200, 200);" bgcolor="rgb(174, 38, 0)" align="center">
-						<h5 style="margin: 0px; padding-top: 2px;"><!--NAME--></h5>
+						<h5 style="margin: 0px; padding-top: 2px;"><!--MEDIUM--></h5>
 					</td>				
 				</tr>
 <!--10-->

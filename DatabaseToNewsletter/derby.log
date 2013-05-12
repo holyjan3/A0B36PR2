@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sun May 12 14:47:39 CEST 2013:
+ Zavádění serveru Derby verze The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-013e-98c8-3d27-0000068286d8
+v adresáři databáze C:\Users\Majitel\Documents\NetBeansProjects\A0B36PR2\DatabaseToNewsletter\Newsletters sun.misc.Launcher$AppClassLoader@99c873d 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_17-b02
+user.dir=C:\Users\Majitel\Documents\NetBeansProjects\A0B36PR2\DatabaseToNewsletter
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=null
+Byl spuštěn zavaděč třídy databáze - derby.database.classpath=''

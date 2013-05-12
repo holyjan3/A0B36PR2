@@ -10,15 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 
 /**
  *
@@ -79,10 +73,7 @@ public class WorkerDatabase {
         try {
            
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-            conn = DriverManager.getConnection(url,name,password);
-//             String url = "jdbc:derby://localhost:1527/Newsletters";
-//            Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-//            conn = DriverManager.getConnection(url,"root","root");            
+            conn = DriverManager.getConnection(url,name,password);          
             WorkerDatabase.conection = conn;
             return true;
              
@@ -91,30 +82,7 @@ public class WorkerDatabase {
         }        
       
     }
-    
-//    public static void conectDatabaseAll() throws InterruptedException {
-//            Thread[] th = new Thread[dataDatabases.size()];
-//        int i = 0;
-//        boolean bb = true;
-//            for (Database database : dataDatabases) {
-//                th[i] = new Thread(database.nowWorkDatabase.rfd);
-//                th[i].start();
-//
-//                i++;
-//            }
-//        boolean finshed = false;
-//        ExecutorService es = Executors.newCachedThreadPool(); 
-//        for(Database database : dataDatabases) 
-//            es.execute(database.nowWorkDatabase.rfd); 
-//            es.shutdown();
-//       while(!finshed){
-//           
-//            finshed = es.awaitTermination(1, TimeUnit.SECONDS);
-//      
-//       }
-//      
-//        
-//    }
+
     
     
     

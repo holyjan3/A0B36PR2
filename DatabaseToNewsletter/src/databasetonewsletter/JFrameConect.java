@@ -4,14 +4,10 @@
  */
 package databasetonewsletter;
 
-import static databasetonewsletter.PrintedElementsAdministration.file_temp_name;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author Majitel
@@ -37,7 +33,7 @@ public class JFrameConect extends javax.swing.JFrame {
         name = "root";
         password = "root";
         
-        
+        setVisible(true);
         setResizable(false);
         this.nameText.setText(name);
         this.jPasswordField1.setText(password);
@@ -185,9 +181,9 @@ public class JFrameConect extends javax.swing.JFrame {
             WorkerDatabase.conection = conn;
             
           WorkerDatabase.WorkerDatabase();
-          Thread th= null;
-          th= new Thread(new ControlConection(th));
-          th.start();
+//          Thread th= null;
+//          th= new Thread(new ControlConection(th));
+//          th.start();
           
           
           
@@ -202,7 +198,9 @@ public class JFrameConect extends javax.swing.JFrame {
              
         } catch (SQLException | InstantiationException | ClassNotFoundException | IllegalAccessException ex) {
             this.conect.setVisible(true);
-        }        
+        }  catch (Exception e){
+            int i = 0;
+        }      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

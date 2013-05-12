@@ -7,8 +7,6 @@ package databasetonewsletter;
 import static databasetonewsletter.DataControl.URL;
 import java.io.IOException;
 import java.net.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**

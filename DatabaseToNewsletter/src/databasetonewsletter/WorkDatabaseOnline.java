@@ -4,12 +4,8 @@
  */
 package databasetonewsletter;
 
-import com.sun.org.apache.bcel.internal.generic.GOTO;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
