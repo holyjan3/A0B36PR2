@@ -86,7 +86,10 @@ public class WorkerDatabase {
         try {
            
             Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-            conn = DriverManager.getConnection(url,name,password);          
+            conn = DriverManager.getConnection(url,name,password);    
+//            String url = "jdbc:derby://localhost:1527/Newsletters";
+//            Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+//            conn = DriverManager.getConnection(url,"root","root");
             WorkerDatabase.conection = conn;
             return true;
              

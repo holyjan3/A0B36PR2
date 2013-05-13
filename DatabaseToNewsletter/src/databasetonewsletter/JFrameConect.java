@@ -189,8 +189,6 @@ setLocation(x, y);
          conn = DriverManager.getConnection(fullurl,nameText.getText(),jPasswordField1.getText());
          
 //             String url = "jdbc:derby://localhost:1527/Newsletters";
-//            //Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
-//            //conn = DriverManager.getConnection(url,name,password);
 //            Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
 //            conn = DriverManager.getConnection(url,"root","root");
           

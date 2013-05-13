@@ -6,6 +6,8 @@ package databasetonewsletter;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -197,12 +199,13 @@ public class WorkDatabaseOnline extends WorkDatabase{
         String sql = "DELETE FROM APP."+  WorkerDatabase.nameTable + " WHERE "+
                     WorkerDatabase.unicateKey + " = " + Integer.toString(element.key);
         PreparedStatement statement = null;
-        
+        int key = element.key;
         while(true){
         try {
             statement = conection.prepareStatement(sql);
             statement.execute(); 
             database.Data.remove(element);
+            WorkerDatabase.printedHashMap.remove(key);
             return;
         } catch (SQLException ex) {
             connect();
@@ -248,8 +251,6 @@ public class WorkDatabaseOnline extends WorkDatabase{
     
     
     public void connect(){
-        boolean bb = true;
-        while(bb){    
         JOptionPane  frame = new JOptionPane();
            Object[] options = {"Ukončit program",
                     "Obnovit spojení",};
@@ -261,10 +262,17 @@ public class WorkDatabaseOnline extends WorkDatabase{
              null,
             options,
             options[1]);
-            if (n==0)
-                System.exit(1);
-            bb = !WorkerDatabase.conectOnlineDatabase();
-        }
+            if (n==0){
+                
+            try {
+            conection.close();
+            } catch (SQLException ex) {
+            //Logger.getLogger(WorkDatabaseOnline.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+               
+               System.exit(1); 
+            }
+            }         
     }
     
 

@@ -31,14 +31,8 @@ public final class JFrameMenu extends JFrame{
         
         JPanelMenu menu  = new JPanelMenu(database);
         add(menu);
-        
-        
-       
-        
         setVisible(true);
         
-        
-
         setSize(1000,1000);
         
          setExtendedState(JFrame.MAXIMIZED_BOTH);

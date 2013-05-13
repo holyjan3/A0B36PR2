@@ -11,6 +11,9 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -93,9 +96,11 @@ setLocation(x, y);
         public void windowClosing(WindowEvent e) {
             GlobalSave.FOOTER = menuTop.getFooter();
             GlobalSave.HEADING = menuTop.getHeading();
+            boolean bb =true;
             try {
                  GlobalSave.saveText();
-                  System.exit(0);
+                 close(0);
+                 
             } catch  (IOException | NullPointerException ee){
                 JOptionPane  frame = new JOptionPane();
              Object[] options = {"zahodit ",
@@ -109,10 +114,24 @@ setLocation(x, y);
                 options,
                 options[1]);
                 if(n==0){
-                System.exit(0);
-            }
+                    close(1);
                 
-            }    
+                }
+                else bb = false;
+            }
+            if(bb){
+               
+            }
+        }
+        
+        public void close(int i){
+             try {
+                    WorkerDatabase.conection.close();
+                } catch (SQLException ex) {
+                   i = 2;
+                } finally {
+                   System.exit(i);
+                }
         }
 
         @Override
