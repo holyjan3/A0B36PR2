@@ -64,7 +64,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
 
         jButton4.setText("jButton1");
 
-        selectCancel.setBackground(new java.awt.Color(102, 255, 102));
+        selectCancel.setBackground(new java.awt.Color(102, 255, 204));
         selectCancel.setForeground(new java.awt.Color(255, 0, 0));
         selectCancel.setText("zrušit výběr");
         selectCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        selectAll.setBackground(new java.awt.Color(102, 255, 102));
+        selectAll.setBackground(new java.awt.Color(102, 255, 204));
         selectAll.setText("vybrat vše");
         selectAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        selectToNotPrinted.setBackground(new java.awt.Color(102, 255, 102));
+        selectToNotPrinted.setBackground(new java.awt.Color(102, 255, 204));
         selectToNotPrinted.setText("<html>vybrat </br> k nevytištění</html>");
         selectToNotPrinted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,7 +106,7 @@ public class JPanelMenulButtonBottom extends javax.swing.JPanel {
             }
         });
 
-        selectToPrinted.setBackground(new java.awt.Color(102, 255, 102));
+        selectToPrinted.setBackground(new java.awt.Color(102, 255, 204));
         selectToPrinted.setText("<html>vybrat</br> k vytištění</html>");
         selectToPrinted.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

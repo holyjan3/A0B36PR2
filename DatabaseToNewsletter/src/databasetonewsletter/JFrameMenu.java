@@ -40,6 +40,7 @@ public final class JFrameMenu extends JFrame{
         
 
         setSize(1000,1000);
+        
          setExtendedState(JFrame.MAXIMIZED_BOTH);
        
         

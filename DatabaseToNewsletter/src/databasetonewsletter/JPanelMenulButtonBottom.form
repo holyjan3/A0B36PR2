@@ -69,7 +69,7 @@
     <Component class="javax.swing.JButton" name="selectCancel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
+          <Color blue="cc" green="ff" red="66" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -83,7 +83,7 @@
     <Component class="javax.swing.JButton" name="selectAll">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
+          <Color blue="cc" green="ff" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="vybrat v&#x161;e"/>
       </Properties>
@@ -119,7 +119,7 @@
     <Component class="javax.swing.JButton" name="selectToNotPrinted">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
+          <Color blue="cc" green="ff" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat &lt;/br&gt; k nevyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
       </Properties>
@@ -130,7 +130,7 @@
     <Component class="javax.swing.JButton" name="selectToPrinted">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
+          <Color blue="cc" green="ff" red="66" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="&lt;html&gt;vybrat&lt;/br&gt; k vyti&#x161;t&#x11b;n&#xed;&lt;/html&gt;"/>
       </Properties>

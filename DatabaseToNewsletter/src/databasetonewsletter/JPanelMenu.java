@@ -30,7 +30,7 @@ public class JPanelMenu extends JPanel{
        
         this.database = database;
         
-        
+        conection = null;
         
         watch();
         menulButtonTop = new JPanelMenulButtonTop(this);
@@ -53,7 +53,11 @@ public class JPanelMenu extends JPanel{
         
         //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         JPanel pane = new JPanel(new BorderLayout());
-        conection = new JPanelCalendar(menuLines);
+
+        
+        
+       conection = new JPanelCalendar(menuLines,WorkerDatabase.date);
+ 
        
        
      

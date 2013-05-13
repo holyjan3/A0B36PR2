@@ -5,7 +5,9 @@
 package databasetonewsletter;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
@@ -40,7 +42,7 @@ public class JFrameMainMenu extends JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
        
-        jpc = new JPanelCalendar(null);
+        jpc = new JPanelCalendar(null,WorkerDatabase.date);
          
        
         
@@ -53,6 +55,18 @@ public class JFrameMainMenu extends JFrame {
         add(jpc,BorderLayout.SOUTH);
         setSize(900,600);
         setVisible(true); 
+        
+        // Get the size of the screen
+Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+// Determine the new location of the window
+int w = getSize().width;
+int h = getSize().height;
+int x = (dim.width-w)/2;
+int y = (dim.height-h)/2;
+ 
+// Move the window
+setLocation(x, y);
         
     
     

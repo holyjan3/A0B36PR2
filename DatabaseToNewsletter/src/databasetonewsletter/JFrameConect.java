@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -39,6 +41,18 @@ public class JFrameConect extends javax.swing.JFrame {
         this.jPasswordField1.setText(password);
         conect.setVisible(false);
         
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+// Determine the new location of the window
+int w = getSize().width;
+int h = getSize().height;
+int x = (dim.width-w)/2;
+int y = (dim.height-h)/2;
+ 
+// Move the window
+setLocation(x, y);
+     
+        
     }
 
     /**
@@ -61,6 +75,8 @@ public class JFrameConect extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Newsletter Maker");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         nameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +110,7 @@ public class JFrameConect extends javax.swing.JFrame {
 
         jLabel4.setText("heslo");
 
+        conect.setForeground(new java.awt.Color(204, 0, 0));
         conect.setText("Pripojeni se nepovedlo");
 
         jPasswordField1.setText("jPasswordField1");
@@ -239,6 +256,8 @@ public class JFrameConect extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
+                
                 new JFrameConect().setVisible(true);
             }
         });

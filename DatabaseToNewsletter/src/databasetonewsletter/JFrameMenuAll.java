@@ -68,7 +68,9 @@ Date date;
     add(jp);
     
        setSize(1000,1000);
+       
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
        
         this.setVisible(true);
     }

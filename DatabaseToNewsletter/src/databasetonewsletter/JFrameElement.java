@@ -55,6 +55,18 @@ public class JFrameElement extends JFrame{
         con.add(scrollPane, BorderLayout.CENTER);        
         con.add(jpanelW,BorderLayout.EAST);
         
+        
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+// Determine the new location of the window
+int w = getSize().width;
+int h = getSize().height;
+int x = (dim.width-w)/2;
+int y = (dim.height-h)/2;
+ 
+// Move the window
+setLocation(x, y);
+        
     } 
     
     public JFrameElement(JPanelMenuLines panelMenuLines) throws HeadlessException {

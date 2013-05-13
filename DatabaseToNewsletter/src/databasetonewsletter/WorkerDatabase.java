@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +28,7 @@ public class WorkerDatabase {
    public static String nameTable = "NEWSLETTERDATAS";
    public static String DateChanged = "DATECHANGED";
    public static Connection conection =null;
-   public static java.util.Date date =null;
+   public static java.util.Date date;
    public static String head = "";
    public static String foot = "";
    public static java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();
@@ -35,7 +37,18 @@ public class WorkerDatabase {
    public static String password;
   
    
-   
+   public static Date setDate(){
+    Calendar c = Calendar.getInstance(); 
+    c.setTime(new Date());
+    
+    c.add(Calendar.MONTH, -2);
+    Date date = c.getTime();  
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    return  date;
+       
+   }
    
     public static void WorkerDatabase() {
         dataDatabases  = new ArrayList<>(10);

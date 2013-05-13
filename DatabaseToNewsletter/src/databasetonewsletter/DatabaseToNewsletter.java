@@ -17,7 +17,8 @@ public class DatabaseToNewsletter {
     public static void main(String[] args)  {  
            Thread th= null;
            th= new Thread(new ControlConection(th));
-           th.start();        
+           th.start();
+           WorkerDatabase.date =WorkerDatabase.setDate();
            JFrameConect.main(null);
             
         
