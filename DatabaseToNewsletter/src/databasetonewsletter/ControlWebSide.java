@@ -11,19 +11,26 @@ import java.net.URL;
 import javax.swing.JLabel;
 
 
+
 /**
- *
+ * vlákno kontrolujíci existenci webových adres
  * @author Majitel
  */
 public class ControlWebSide implements Runnable{
-    String URLString ;
-    String ss2;
-    JLabel jLabel;
+    private String URLString ;
+    private String ss2;
+    private JLabel jLabel;
     
 
-    public ControlWebSide(String ss2, JLabel jLabel,String URLString) {
+    
+    /**
+     * 
+     * @param jLabel label který mění barvu důe výsdků testu exostence
+     * @param URLString webová adresa
+     */
+    public ControlWebSide(JLabel jLabel,String URLString) {
         this.URLString = URLString;
-        this.ss2 = ss2;
+        this.ss2 = "chyba ve vstupnim retezci";
         this.jLabel = jLabel;
     }
 

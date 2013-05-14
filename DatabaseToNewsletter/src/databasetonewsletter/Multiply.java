@@ -6,21 +6,31 @@ package databasetonewsletter;
 
 
 
-/**
- *
+
+ /**
+ * třídat která slouží k rozmnožení podřetězců daného emailu které jsou disjunktní
  * @author Majitel
  */
- public class Multiply implements Runnable{
-        Database database;
-        StringBuilder stringBuilder1;
-        int number;
-        int count;
-        int global_start = 0;
-        int global_end = 0;
+public class Multiply implements Runnable{
+        
+    private Database database;        
+    private StringBuilder stringBuilder;        
+    private int number;        
+    private int count;        
+    private int global_start = 0;        
+    private int global_end = 0;
 
-        public Multiply( Database database, CharSequence charSequence, int number,int count) {
+        
+    /**
+     * 
+     * @param database databáze
+     * @param charSequence podřetězec
+     * @param number číslo položky
+     * @param count
+     */
+    public Multiply( Database database, CharSequence charSequence, int number,int count) {
             this.database = database;
-            this.stringBuilder1 = new StringBuilder(charSequence);
+            this.stringBuilder = new StringBuilder(charSequence);
             this.number = number;
             this.count = count;
         }
@@ -30,8 +40,7 @@ package databasetonewsletter;
         public void run() {
             copyElement();
             insertElements();
-        }
-     
+        }  
         
         
       
@@ -39,7 +48,8 @@ package databasetonewsletter;
    
     
     
-  public  void copyElement(){
+    
+    private  void copyElement(){
         // rozmonožení předdefinovaných prvkú
         int start=0;
         int start_read =0;
@@ -47,15 +57,16 @@ package databasetonewsletter;
       
          
   
-                int addsubstring = stringBuilder1.length();
-                String copyString = stringBuilder1.substring(start_read, addsubstring);
+                int addsubstring = stringBuilder.length();
+                String copyString = stringBuilder.substring(start_read, addsubstring);
                 for (int j = 1; j <count; j++) {       
-                    stringBuilder1.insert(start, System.getProperty("line.separator") + copyString);
+                    stringBuilder.insert(start, System.getProperty("line.separator") + copyString);
                     addsubstring = addsubstring + System.getProperty("line.separator").length();
                 }                
 
                 
     }
+    
     
     
     private  void insertElements() {
@@ -87,9 +98,9 @@ package databasetonewsletter;
                             case URL:
                                 insertURL(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
                                 break;
-                            case TEXT:             
-                                insertText(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
-                                break;
+//                            case TEXT:             
+//                                insertText(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
+//                                break;
                             case VARCHAR:
                                 insertText(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
                                 break;
@@ -110,34 +121,35 @@ package databasetonewsletter;
     
 
     
+    
     private void getTarge(String target,int start) {
     
         int save_index=0;
         int i=start;
         StringBuilder sc = new StringBuilder(10);
         StringBuilder scn = new StringBuilder(2);
-        int length = stringBuilder1.length();
+        int length = stringBuilder.length();
         while(i<length){
-        if(stringBuilder1.charAt(i) == '<'){
+        if(stringBuilder.charAt(i) == '<'){
             i++;
-        if(i<length && stringBuilder1.charAt(i)  == '!') {
+        if(i<length && stringBuilder.charAt(i)  == '!') {
             save_index = i-1;
             i++;            
-              if(i<length && stringBuilder1.charAt(i)  == '-'){
+              if(i<length && stringBuilder.charAt(i)  == '-'){
                   i++;
-                  if(stringBuilder1.charAt(i)  == '-'){
+                  if(stringBuilder.charAt(i)  == '-'){
                       i++;
                        while(i<length){
-                         while(i<length && stringBuilder1.charAt(i) != '-') {
-                            sc.append(stringBuilder1.charAt(i));
+                         while(i<length && stringBuilder.charAt(i) != '-') {
+                            sc.append(stringBuilder.charAt(i));
                             i++;    
                          }
                          i++;
                          scn.append('-');
-                         if(i<length && stringBuilder1.charAt(i)== '-'){
+                         if(i<length && stringBuilder.charAt(i)== '-'){
                              i++;
                              scn.append('-');
-                             if(i<length && stringBuilder1.charAt(i)== '>'){
+                             if(i<length && stringBuilder.charAt(i)== '>'){
                                   if(sc.toString().equals(target)){
                                       global_start = save_index;
                                       global_end = i+1;
@@ -164,29 +176,42 @@ package databasetonewsletter;
             
      } 
     
-   public void insertNumber(String insertString,String name,int start){
+    
+    private void insertNumber(String insertString,String name,int start){
         getTarge(name,start);
-        stringBuilder1.delete(global_start, global_end);
-        stringBuilder1.insert(global_start,insertString);    
+        stringBuilder.delete(global_start, global_end);
+        stringBuilder.insert(global_start,insertString);    
     }
     
     
-   public  void insertText(String insertString,String name,int start){
+    
+   private  void insertText(String insertString,String name,int start){
         getTarge(name,start);
-        stringBuilder1.delete(global_start, global_end);
+        stringBuilder.delete(global_start, global_end);
         insertString = HtmlEscape.escape(insertString);
-        stringBuilder1.insert(global_start,insertString);
+        stringBuilder.insert(global_start,insertString);
        
     }
     
-    public void insertURL(String insertString,String name,int start){
+    
+   private void insertURL(String insertString,String name,int start){
         getTarge(name,start);
-        stringBuilder1.delete(global_start, global_end);
-        stringBuilder1.insert(global_start, "<a href="+ insertString + ">" );
+        stringBuilder.delete(global_start, global_end);
+        insertString = HtmlEscape.escapeTextArea(insertString);
+        stringBuilder.insert(global_start, "<a href="+ insertString + ">" );
         
         getTarge(name,start);
-        stringBuilder1.delete(global_start, global_end);
-        stringBuilder1.insert(global_start,"</a>");      
-    }    
-        
-  }      
+        stringBuilder.delete(global_start, global_end);
+        stringBuilder.insert(global_start,"</a>");      
+    }  
+
+    /**
+     * vrátí vytvořený řetězec
+     * @return
+     */
+    public StringBuilder getStringBuilder() {
+        return stringBuilder;
+    }
+    
+    
+ }      

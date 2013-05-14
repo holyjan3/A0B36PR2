@@ -11,63 +11,81 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
+
 /**
- *
+ * třída pro spracování emailu podle vstupníc dat
  * @author Majitel
  */
 public class PrintedElementsAdministration {
     
-    private StringBuilder stringBuilder;
-    private  int global_start;
-    private int global_end;
-    private  int[] count;
-    private Multiply[] multiply;
-    private Thread[] threads;
-    private ArrayList<Database> databases;
-    protected static String file_temp_name = "temp.html" ;
-    protected static String file_source = "newslettertemplate.txt";
+    
+    private StringBuilder stringBuilder;    
+    private  int global_start;    
+    private int global_end;    
+    private  int[] count;    
+    private Multiply[] multiply;    
+    private Thread[] threads;    
+    private ArrayList<Database> databases;    
+    private static String file_temp_name = "temp.html" ;    
+    private static String file_source = "newslettertemplate.txt";
     
     
-    public PrintedElementsAdministration(ArrayList<Database> databases) throws IOException, InterruptedException{
+    
+    /**
+     * 
+     * @param databases pole databází všech typů záznamů
+     */
+    public PrintedElementsAdministration(ArrayList<Database> databases) {
         this.databases = databases;
 
         multiply = new Multiply[databases.size()];
         threads = new Thread[databases.size()];
+    }
+    
+    /**
+     * rozmnoží jednotlivé záznamy podle jejich počtů s ohledem na maximální možný počet
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public void PrintElement()throws IOException, InterruptedException{
+        
         int start_read;
         int end_read;
         int start =0;
         boolean finshed = true;
         readFile();
         countElement();
-         ExecutorService es = Executors.newCachedThreadPool(); 
+        ExecutorService es = Executors.newCachedThreadPool();
+        int number;
         for (int i = 0; i < databases.size(); i++) {
+            number = databases.get(i).id_database;
             if(count[i]!= 0){
-            getTarge(Integer.toString(i),start);
+                getTarge(Integer.toString(number),start);
                 finshed = false;
                 start_read = global_start;
                 start = global_end;
-                getTarge(Integer.toString(i),start);
+                getTarge(Integer.toString(number),start);
                 end_read = global_end;                
-                multiply[i] = new  Multiply(databases.get(i), stringBuilder.subSequence(start_read, end_read), i, count[i]);
+                multiply[i] = new  Multiply(databases.get(i), stringBuilder.subSequence(start_read, end_read),number, count[i]);
                 es.execute(multiply[i]);
                    
                 stringBuilder.delete(start_read, end_read);
-                String ss = "<!--"+Integer.toString(i)+"-->"; 
+                String ss = "<!--"+Integer.toString(number)+"-->"; 
                 stringBuilder.insert(start_read, ss);
                 start = start_read;
                 
-                getTarge(Integer.toString(i),0);
+                getTarge(Integer.toString(number),0);
               
                 
             } else {
                   while(true){
                     start=0;
-                    getTarge(Integer.toString(i)+"D",start);
+                    getTarge(Integer.toString(number)+"D",start);
                     start_read = global_start;
                     start = global_end;
                     if(global_end == -1)
                         break;
-                    getTarge(Integer.toString(i)+"D",start);
+                    getTarge(Integer.toString(number)+"D",start);
                     end_read = global_end;
                     stringBuilder.delete(start_read, end_read);
                 }
@@ -87,7 +105,7 @@ public class PrintedElementsAdministration {
             if(count[i]!=0){
                  getTarge(Integer.toString(i),0);
                  int s =global_end;      
-            stringBuilder.insert(s,multiply[i].stringBuilder1);
+            stringBuilder.insert(s,multiply[i].getStringBuilder());
             }
             
         }
@@ -103,13 +121,19 @@ public class PrintedElementsAdministration {
         
         
     
-    public static void saveFile(String saveFile) throws IOException{
+    
+    /**
+     * uloží vztvořený Substring do dočasného souboru vytvořený email do souboru
+     * @param pathFile cesta k souboru
+     * @throws IOException
+     */
+    public static void saveFile(String pathFile) throws IOException{
         String s1= file_temp_name;
-        String s2= saveFile;
+        String s2= pathFile;
         BufferedReader inputRead= null;
         BufferedWriter outputRead= null;        
         inputRead = new BufferedReader(new FileReader(file_temp_name));
-        File f = new File(saveFile);
+        File f = new File(pathFile);
         outputRead = new BufferedWriter(new FileWriter(f,false));
         String line = null;
         while((line=inputRead.readLine()) != null){
@@ -120,6 +144,11 @@ public class PrintedElementsAdministration {
         
     }
     
+    
+    /**
+     * metoda složí k zobrazení emailu v {@link #file_temp_name} složce
+     * @throws IOException
+     */
     public static void previewCode() throws IOException {
         File f = new File(file_temp_name);
        
@@ -132,6 +161,11 @@ public class PrintedElementsAdministration {
     }
     
     
+    
+    /**
+     * metoda načte {@link #file_source} soubor s předpřipravenou šablonou
+     * @throws IOException
+     */
     public void readFile() throws IOException{
         String ss= file_source;
         BufferedReader input = new BufferedReader(new FileReader(ss));        
@@ -147,6 +181,11 @@ public class PrintedElementsAdministration {
     
     
     
+    
+    /**
+     * metoda uloží vytvořený soubor do dočasného souboru {@link #file_temp_name}
+     * @throws IOException
+     */
     public void saveTempfile() throws IOException{
         FileWriter fileWriter = new FileWriter(file_temp_name);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -155,28 +194,12 @@ public class PrintedElementsAdministration {
     }
     
 
-        
-        
-        
-        
-        
-        
-        
-   
     
-    
-    //////////////////////////////////////////////////////////////////////////////
-    
-   public void countElement(){
+    /**
+     * metoda spočítá počet záznamů každého druhu záznamu k vložení do emailu a uloží je podle druhu zvlášť do pole {@link #count}
+     */
+    public void countElement(){
         
-       /*
-       int max= 11;
-          
-        count = new int[11];
-        for (int i = 0; i < max; i++) {
-            count[i] = i;
-        }
-        /**/
         
         int c = 0;       
         count = new int[databases.size()]; 
@@ -192,7 +215,14 @@ public class PrintedElementsAdministration {
         /**/
     }
 
-    private void getTarge(String target,int start) {
+    
+    /**
+     * Najde začátek a konec požadovaného cíle spoléhá na to, že to není koncový znak protože v emailu body
+     * metoda uloží do globálních proměnných {@link #global_start} a {@link #global_end}  začátek a konec vyhledávaného řetězce 
+     * @param target řetězec který mám vyhledávat
+     * @param start od kterého místa mám vyhledávat
+     */
+    public void getTarge(String target,int start) {
     
         int save_index=0;
         int i=start;
@@ -246,14 +276,28 @@ public class PrintedElementsAdministration {
             
      } 
 //    
-   public void insertNumber(String insertString,String name,int start){
+    
+    /**
+     * vloží řetězec který nemusí být upraven do emailu (Datum, Čas)
+     * @param insertString vkládaný řetězec
+     * @param name jméno značky
+     * @param start odkud začne prohledávat
+     */
+    public void insertNumber(String insertString,String name,int start){
         getTarge(name,start);
         stringBuilder.delete(global_start, global_end);
         stringBuilder.insert(global_start,insertString);    
     }
 //    
 //     
-   public void insertText(String insertString,String name,int start){
+    
+    /**
+     * vloží Text do emailu
+     * @param insertString Text který má být vložena
+     * @param name jméno značky
+     * @param start odkud začne prohledávat
+     */
+    public void insertText(String insertString,String name,int start){
         getTarge(name,start);
         stringBuilder.delete(global_start, global_end);
         insertString = HtmlEscape.escape(insertString);
@@ -261,6 +305,13 @@ public class PrintedElementsAdministration {
        
     }
 //    
+    
+    /**
+     * vloží URL do emailu
+     * @param insertString URL která má být vložena
+     * @param name jméno značky
+     * @param start odkud začne prohledávat
+     */
     public void insertURL(String insertString,String name,int start){
         getTarge(name,start);
         stringBuilder.delete(global_start, global_end);

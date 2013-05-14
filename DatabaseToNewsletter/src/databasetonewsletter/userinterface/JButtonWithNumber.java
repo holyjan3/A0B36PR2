@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
 import javax.swing.JButton;
 
@@ -11,8 +11,16 @@ import javax.swing.JButton;
  * @author Majitel
  */
 public class JButtonWithNumber extends JButton{
-    final int number;
+    /**
+     *
+     */
+    public final int number;
 
+    /**
+     *
+     * @param number
+     * @param text
+     */
     public JButtonWithNumber(int number, String text) {
         super(text);
         this.number = number;

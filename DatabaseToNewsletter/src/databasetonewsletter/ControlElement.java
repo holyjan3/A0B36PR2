@@ -9,32 +9,20 @@ import java.io.IOException;
 import java.net.*;
 
 
+
 /**
  *
  * @author Majitel
  */
 public class ControlElement {
-
-       private static  InetAddress inetAddress;
-       public  static boolean conected = false; 
-       
-       public synchronized static boolean getInetAderes() {
-           
-           boolean bb;
-           try {
-               inetAddress = InetAddress.getLocalHost();
-               bb = inetAddress.isReachable(2000);
-               conected = bb;
-               return bb;
-           } catch (IOException ex) {
-               conected = false;
-               return false;
-           }
-       }
-       
-       
-       
-       public static boolean controlDatabaseElement(DataElement DE, String ss) {
+  
+    /**
+     * metoda konrolující vstupní data
+     * @param DE pro určení typu kontroly
+     * @param ss vstupní řetezec
+     * @return vrátí hodonu dle toho jestli vstupní řetězec odpovídá požadfovanému typu
+     */
+    public static boolean controlDatabaseElement(DataElement DE, String ss) {
         int i = 0;
         boolean b = false;
            switch ((DE.type)) {
@@ -47,9 +35,9 @@ public class ControlElement {
            case VARCHAR:
                     b = contolVarChar(ss, DE.date_size);
                break;
-           case TEXT:
-                    b = contolVarChar(ss, DE.date_size);
-               break;
+//           case TEXT:
+//                    b = contolVarChar(ss, DE.date_size);
+//               break;
            default:
                throw new AssertionError((DE.type).name());
 
@@ -58,6 +46,13 @@ public class ControlElement {
     }
        
 
+    
+    /**
+     * metoda konrolující vstupní data
+     * @param strings_of_element vstupní řetezec
+     * @param DE pro určení typu kontroly
+     * @return vrátí řetězec který zamezí strátě dat
+     */
     public static String contorlDatabaseElementAndReplece(String strings_of_element,DataElement DE) {
         int i = 0;
         String parse ="";
@@ -73,7 +68,7 @@ public class ControlElement {
                         else
                return "";
            case VARCHAR:
-           case TEXT:               
+                         
                 if(contolVarChar(strings_of_element,DE.date_size))
                     return strings_of_element;
                         else
@@ -88,7 +83,14 @@ public class ControlElement {
         }
     }
     
-   public static boolean contolVarChar(String ss, int MAX_SIZE){
+    
+    /**
+     * metoda kontrolující maximálí déku řetězce
+     * @param ss řetězec
+     * @param MAX_SIZE maximální délka řetězce
+     * @return
+     */
+    public static boolean contolVarChar(String ss, int MAX_SIZE){
        if(ss.length()<=MAX_SIZE) {
            return true;
        }else {
@@ -96,10 +98,15 @@ public class ControlElement {
        }
    }
    
-   public static boolean controlDate(String date){
+    
+    /**
+     * metoda kontrolující datum
+     * @param date datum ve formátu
+     * @return
+     */
+    public static boolean controlDate(String date){
        
       if (date.length()==10){
-       // odd2lovaccarkou
        String ss[] = date.split("[.]");
        int day = 0; 
        int month = 0;
@@ -129,7 +136,13 @@ public class ControlElement {
  
 
    
-   public static boolean controlTime (String time){
+    
+    /**
+     * metoda konrolující čas 
+     * @param time čas ve formátu hh:mi
+     * @return
+     */
+    public static boolean controlTime (String time){
        if (time.length()==5){
        String ss[] = time.split("[:]");
        int hour = 0;

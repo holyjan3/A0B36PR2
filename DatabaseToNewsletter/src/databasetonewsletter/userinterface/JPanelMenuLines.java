@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.Database;
+import databasetonewsletter.Element;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -25,17 +27,46 @@ import layout.TableLayout;
  * @author Majitel
  */
 public class JPanelMenuLines extends JPanel{
-    Database database;
+    /**
+     *
+     */
+    public Database database;
+    /**
+     *
+     */
     double height = 30;   
+    /**
+     *
+     */
     protected ArrayList<Integer> array;
+    /**
+     *
+     */
     TableLayout tableLayout;
+    /**
+     *
+     */
     double[][] ds;
+    /**
+     *
+     */
     JPanel jp;
+    /**
+     *
+     */
     ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
+    /**
+     *
+     */
     private int add;
       
 
 
+    /**
+     *
+     * @param database
+     * @param array
+     */
     public JPanelMenuLines(Database database, ArrayList<Integer> array) {
            
         this.database = database;
@@ -60,6 +91,9 @@ public class JPanelMenuLines extends JPanel{
            
         }
     
+    /**
+     *
+     */
     public void doubleAray(){
   
         int j = array.size();
@@ -73,6 +107,10 @@ public class JPanelMenuLines extends JPanel{
         doubleArayAdd(add);
     }
     
+    /**
+     *
+     * @param add
+     */
     public void doubleArayAdd(int add){
          int j = array.size();
          for (int i = add; i < j+add; i++) {
@@ -83,6 +121,9 @@ public class JPanelMenuLines extends JPanel{
         
   
     
+    /**
+     *
+     */
     public void overWritePanel(){
        this.jrb.clear();
        this.removeAll();
@@ -104,6 +145,10 @@ public class JPanelMenuLines extends JPanel{
  
       }
     
+    /**
+     *
+     * @param ss
+     */
     public void find(String ss){
        this.jrb.clear();
        this.removeAll();
@@ -131,7 +176,10 @@ public class JPanelMenuLines extends JPanel{
     
    */
     
-  public void JPanelDEScription(){
+    /**
+     *
+     */
+    public void JPanelDEScription(){
       
       tableLayout.insertRow (0, TableLayout.MINIMUM);
         
@@ -158,7 +206,11 @@ public class JPanelMenuLines extends JPanel{
   } 
     
     
-   public void JPanelMenuLine(int numberLine) 
+    /**
+     *
+     * @param numberLine
+     */
+    public void JPanelMenuLine(int numberLine) 
     {
         tableLayout.insertRow (0, TableLayout.MINIMUM);
         
@@ -194,7 +246,12 @@ public class JPanelMenuLines extends JPanel{
        
   }      
    
-   void addButton (int numberLine,Element element){
+    /**
+     *
+     * @param numberLine
+     * @param element
+     */
+    void addButton (int numberLine,Element element){
    JCheckBox checkBox;
         JButton jButton;
         JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,element);
@@ -224,7 +281,13 @@ public class JPanelMenuLines extends JPanel{
    
    
     
+    /**
+     *
+     */
     class ActionModify implements ActionListener{
+        /**
+         *
+         */
         Database database1= database;
         @Override
         public void actionPerformed(ActionEvent e) {

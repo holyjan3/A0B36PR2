@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -22,10 +23,26 @@ import javax.swing.border.Border;
  * @author Majitel
  */
 public class JFrameMenuAll extends JFrame{
-JPanelMenuPrinted[] menus;
-JPanel panel;
-JScrollPane scrollPane;
-Date date;
+    /**
+     *
+     */
+    JPanelMenuPrinted[] menus;
+    /**
+     *
+     */
+    JPanel panel;
+    /**
+     *
+     */
+    JScrollPane scrollPane;
+    /**
+     *
+     */
+    Date date;
+    /**
+     *
+     * @param date
+     */
     public JFrameMenuAll(Date date) {
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
@@ -64,7 +81,7 @@ Date date;
     scrollPane.setViewportView(panel);
     
     jp.add(scrollPane,BorderLayout.CENTER);
-    jp.add(new JPanelMenulRight(this),BorderLayout.EAST);
+    jp.add(new JPanelMenuAllRight(this),BorderLayout.EAST);
     add(jp);
     
        setSize(1000,1000);

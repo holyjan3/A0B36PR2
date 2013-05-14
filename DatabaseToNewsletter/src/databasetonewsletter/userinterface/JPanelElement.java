@@ -2,15 +2,21 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.ControlConection;
+import databasetonewsletter.ControlElement;
+import databasetonewsletter.ControlWebSide;
+import databasetonewsletter.DataControl;
+import databasetonewsletter.DataElement;
+import databasetonewsletter.Database;
+import databasetonewsletter.Element;
 import static databasetonewsletter.DataElement.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.BoxLayout;
@@ -31,31 +37,84 @@ import javax.swing.JTextArea;
         
    
 public class JPanelElement extends JPanel{    
-    JTextArea[] text;
+    /**
+     *
+     */
+    public JTextArea[] text;
+    /**
+     *
+     */
     JLabel [] jLabelsError;
+    /**
+     *
+     */
     Database database;    
    
+    /**
+     *
+     */
     protected int jtext_height;
+    /**
+     *
+     */
     protected int jtext_width;    
+    /**
+     *
+     */
     protected Insets Ins = new Insets(10, 10, 20, 10);    
-    Element element;
+    /**
+     *
+     */
+    public Element element;
     
+    /**
+     *
+     */
     private ActionSave save = new ActionSave();
+    /**
+     *
+     */
     private IfChanged ifChanged = new IfChanged();    
+    /**
+     *
+     */
     private ActionButtonDelete buttonDelete = new ActionButtonDelete();
+    /**
+     *
+     */
     private ActionButtonRestore buttonRestore = new ActionButtonRestore();
+    /**
+     *
+     */
     private boolean changed;
+    /**
+     *
+     */
     private boolean conected;
+    /**
+     *
+     */
     protected boolean wrong;
+    /**
+     *
+     */
     protected String ss1= "chyba ve vstupnim retezci";
+    /**
+     *
+     */
     private String ss2= "nepodařilo se připojit k intenetu adresa nebyla ověřena";
     
 
+    /**
+     *
+     * @param database
+     * @param element
+     */
     JPanelElement(Database database,Element element) {
         this.database = database;
         this.element = element;
         this.changed = false;
-        conected = ControlElement.conected;
+        conected = ControlConection.conected;
         wrong = false;
         
         final int minwidth = 20;
@@ -221,10 +280,19 @@ public class JPanelElement extends JPanel{
  
   }
 
+    /**
+     *
+     * @return
+     */
     public boolean isChanged() {
         return changed;
     }
     
+    /**
+     * 
+     * @param i
+     * @return
+     */
     public JPanel addButton(int i){
         JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));   
          
@@ -250,6 +318,11 @@ public class JPanelElement extends JPanel{
         
     }
     
+    /**
+     *
+     * @param SS
+     * @param width
+     */
     public void numberLine(String SS, int width){
         if(SS.length() < width) {
             
@@ -262,11 +335,16 @@ public class JPanelElement extends JPanel{
         }        
     }
     
+    /**
+     *
+     * @param area
+     * @param i
+     */
     public void controlUrl(JTextArea area,int i){
         jLabelsError[i].setVisible(false);
        if(ControlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
         if(conected){
-            Thread thread = new Thread(new ControlWebSide(ss1,jLabelsError[i],area.getText()));
+            Thread thread = new Thread(new ControlWebSide(jLabelsError[i],area.getText()));
             thread.start();
         } else {
           jLabelsError[i].setBackground(Color.orange);
@@ -283,7 +361,10 @@ public class JPanelElement extends JPanel{
     }
 
     
-        class ActionSave implements FocusListener {
+        /**
+     *
+     */
+    class ActionSave implements FocusListener {
 
         @Override
         public void focusGained(FocusEvent e) {
@@ -308,7 +389,10 @@ public class JPanelElement extends JPanel{
         }       
             
         
-        class ActionButtonDelete implements ActionListener {
+        /**
+     *
+     */
+    class ActionButtonDelete implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -319,7 +403,10 @@ public class JPanelElement extends JPanel{
             
         }
         
-        class ActionButtonRestore implements ActionListener {
+        /**
+     *
+     */
+    class ActionButtonRestore implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -332,7 +419,10 @@ public class JPanelElement extends JPanel{
         
             
      }
-class ActionDate implements KeyListener {
+    /**
+     *
+     */
+    class ActionDate implements KeyListener {
 
         @Override
         public void keyTyped(KeyEvent e) {
@@ -381,7 +471,10 @@ class ActionDate implements KeyListener {
            
             
         }
-        class ActionTime implements KeyListener {
+        /**
+     *
+     */
+    class ActionTime implements KeyListener {
 
         @Override
         public void keyTyped(KeyEvent e) {
@@ -432,7 +525,10 @@ class ActionDate implements KeyListener {
             
         
         
-        class IfChanged implements KeyListener {
+        /**
+     *
+     */
+    class IfChanged implements KeyListener {
 
         @Override
         public void keyTyped(KeyEvent e) {

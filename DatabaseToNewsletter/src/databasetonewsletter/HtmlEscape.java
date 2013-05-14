@@ -17,7 +17,8 @@ package databasetonewsletter;
 
 public class HtmlEscape { 
 
-  private static char[] hex={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'}; 
+    
+    private static char[] hex={'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f'}; 
 
   /** 
    * Method for html escaping a String, for use in a textarea 
@@ -39,7 +40,8 @@ public class HtmlEscape {
     return escapeSpecial(escapeBr(escapeTags(original))); 
   } 
    
-  public static String escapeTags(String original) 
+    
+    public static String escapeTags(String original) 
   { 
     if(original==null) return ""; 
     StringBuffer out=new StringBuffer(""); 
@@ -61,7 +63,8 @@ public class HtmlEscape {
      
   } 
 
-  public static String escapeBr(String original) 
+    
+    public static String escapeBr(String original) 
   { 
     if(original==null) return ""; 
     StringBuffer out=new StringBuffer(""); 
@@ -81,7 +84,8 @@ public class HtmlEscape {
     return out.toString(); 
   } 
    
-  public static String escapeSpecial(String original) 
+    
+    public static String escapeSpecial(String original) 
   { 
     if(original==null) return ""; 
     StringBuffer out=new StringBuffer(""); 

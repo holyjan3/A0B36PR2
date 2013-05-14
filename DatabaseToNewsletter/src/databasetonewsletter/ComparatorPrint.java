@@ -6,8 +6,9 @@ package databasetonewsletter;
 
 import java.util.Comparator;
 
+
 /**
- *
+ * porovnání dvou prvků třídy element podle toho májíli být vytištěny
  * @author Majitel
  */
 public class ComparatorPrint implements Comparator<Element>{

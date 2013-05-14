@@ -4,20 +4,21 @@
  */
 package databasetonewsletter;
 
+import databasetonewsletter.userinterface.JFrameConect;
 
-/**
- *
- * @author Majitel
- */
+
+
 public class DatabaseToNewsletter {
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args)  {  
+        
+           // spouští vlákno které se zajímá o to zda je aplikace připojena k internetu
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
+           
+           // spuštění prvního okna přhlášení se do aplikace
            WorkerDatabase.date =WorkerDatabase.setDate();
            JFrameConect.main(null);
             

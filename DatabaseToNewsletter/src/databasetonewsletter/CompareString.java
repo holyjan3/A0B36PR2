@@ -6,14 +6,20 @@ package databasetonewsletter;
 
 import java.util.Comparator;
 
+
 /**
- *
- * @author Majitel
+ * komarátor třídy element v lexikografickém pořadí, porovnávání je stabilí
+ * 
  */
 public class CompareString implements  Comparator<Element>{
 
     int order;
 
+    
+    /**
+     * 
+     * @param order pořadí v poli pole stringů 
+     */
     public CompareString(int order) {
         super();
         this.order = order;

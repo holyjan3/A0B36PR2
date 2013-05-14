@@ -8,51 +8,119 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 /**
- *
+ * uložitě pro data do textového souboru
  * @author Majitel
  */
 public class GlobalSave {
-    static String HEADING = "";
-    static String FOOTER = "";
-    static String separator = "###################";
-    private static String nameFile ="globalsave.txt";
-    public static void getText() {
+    
+    private static String HEADING = "";    
+    private static String FOOTER = "";
+    private final static String separator = "####################";
+    private final static String nameFile ="globalsave.txt";
+
+    /**
+     * nastaví zápatí
+     * @param FOOTER zápatí
+     * @return false v případě že se název rovná separátoru
+     */
+    public static boolean setFOOTER(String FOOTER) {
+         if(FOOTER == null || !FOOTER.equals(separator)){
+            GlobalSave.FOOTER= FOOTER;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * nastaví záhlaví
+     * @param HEADING záhlaví
+     * @return false v případě že se název rovná separátoru
+     */
+    public static boolean setHEADING(String HEADING) {
+        if(HEADING == null || !HEADING.equals(separator)){
+            GlobalSave.HEADING = HEADING;
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
+    
+    
+    
+
+    /**
+     * získá záhlaví
+     * @return
+     */
+    public static String getHEADING() {
+        return HEADING;
+    }
+
+    /**
+     * získá zápatí
+     * @return
+     */
+    public static String getFOOTER() {
+        return FOOTER;
+    }
+    
+    
+    /**
+     * nahraje text ze souboru
+     * @throws FileNotFoundException 
+     * @throws IOException
+     */
+    public static void getText() throws FileNotFoundException, IOException {
         BufferedReader bis = null;
         File f = new File(nameFile);
         if(f.exists()){
-        try {
+       
             bis = new BufferedReader(new FileReader(nameFile));
             HEADING = read(bis);
             FOOTER = read(bis);
-             bis.close();
-        } catch (IOException ex) {
-            Logger.getLogger(GlobalSave.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-       }
+            bis.close();
+        
+      } else {
+       HEADING="";
+       FOOTER ="";
+      }
         
         
     }
     
-    public static String read(BufferedReader br) throws IOException{
+    private static String read(BufferedReader br) throws IOException{
         String line = "";
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder("");
+        boolean bb = false;
         while((line = br.readLine())!= null && (!line.equals(separator))){
             sb.append(line);
             sb.append("\n");
+            bb = true;
         }
-        
+        if(bb)
         sb.deleteCharAt(sb.length()-1);
         return sb.toString();
     }
     
-    public static void save(BufferedWriter bw,String ss) throws IOException{
+    
+
+    private static void save(BufferedWriter bw,String ss) throws IOException{
         bw.write(ss);
         bw.write(System.getProperty("line.separator"));
         bw.write(separator);
         bw.write(System.getProperty("line.separator"));
         
     }
+    
+    /**
+     *  uloží text do souboru
+     * @throws IOException
+     */
     public static void saveText() throws IOException{
        File f = null;
        boolean bb = true;

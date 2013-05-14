@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="selectAll" min="-2" pref="94" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -32,14 +32,14 @@
               <Component id="selectToPrinted" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="selectCancel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="eneblePrint" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="disablePrint" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               <Component id="comboBox" min="-2" pref="101" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="arrange" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-              <Component id="eneblePrint" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="disablePrint" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -54,13 +54,13 @@
                       <Component id="selectToNotPrinted" alignment="3" max="32767" attributes="0"/>
                       <Component id="selectToPrinted" alignment="3" max="32767" attributes="0"/>
                       <Component id="selectCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="eneblePrint" alignment="3" max="32767" attributes="0"/>
-                      <Component id="disablePrint" alignment="3" max="32767" attributes="0"/>
+                      <Component id="eneblePrint" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="disablePrint" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="comboBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="arrange" alignment="3" max="32767" attributes="0"/>
+                      <Component id="arrange" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

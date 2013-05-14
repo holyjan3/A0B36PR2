@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.GlobalSave;
+import databasetonewsletter.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -25,8 +27,17 @@ import javax.swing.JOptionPane;
  */
 public class JFrameMainMenu extends JFrame {
    
-     JPanelCalendar jpc;
-     JPanelMainMenuTop menuTop;
+     /**
+     *
+     */
+    JPanelCalendar jpc;
+     /**
+     *
+     */
+    JPanelMainMenuTop menuTop;
+    /**
+     *
+     */
     public JFrameMainMenu() {   
         super("Newsletter maker");
          
@@ -50,7 +61,7 @@ public class JFrameMainMenu extends JFrame {
        
         
         this.addWindowListener(new Action());
-         menuTop = new JPanelMainMenuTop(jpc);
+        menuTop = new JPanelMainMenuTop(jpc);
         add(menuTop,BorderLayout.NORTH);
         add(new JPanelDatabases(WorkerDatabase.dataDatabases,this),BorderLayout.CENTER);
         jpc.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -84,6 +95,9 @@ setLocation(x, y);
     
      }
     
+    /**
+     *
+     */
     class Action implements WindowListener {
         
         
@@ -94,8 +108,8 @@ setLocation(x, y);
 
         @Override
         public void windowClosing(WindowEvent e) {
-            GlobalSave.FOOTER = menuTop.getFooter();
-            GlobalSave.HEADING = menuTop.getHeading();
+            GlobalSave.setFOOTER(menuTop.getFooter());
+            GlobalSave.setHEADING(menuTop.getHeading());
             boolean bb =true;
             try {
                  GlobalSave.saveText();
@@ -124,6 +138,10 @@ setLocation(x, y);
             }
         }
         
+        /**
+         *
+         * @param i
+         */
         public void close(int i){
              try {
                     WorkerDatabase.conection.close();

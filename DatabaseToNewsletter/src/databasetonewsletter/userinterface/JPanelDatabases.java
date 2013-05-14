@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.Database;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,10 +18,21 @@ import javax.swing.JPanel;
  * @author Majitel
  */
 public class JPanelDatabases extends JPanel implements ActionListener{
+    /**
+     *
+     */
     ArrayList<Database> databases;
+    /**
+     *
+     */
     JFrameMainMenu frameMainMenu;
     
     
+    /**
+     *
+     * @param databases
+     * @param frameMainMenu
+     */
     public JPanelDatabases(ArrayList<Database> databases,JFrameMainMenu frameMainMenu) {
         this.databases = databases;
         this.frameMainMenu = frameMainMenu;

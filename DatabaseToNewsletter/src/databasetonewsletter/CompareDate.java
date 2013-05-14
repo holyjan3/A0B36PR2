@@ -6,13 +6,19 @@ package databasetonewsletter;
 
 import java.util.Comparator;
 
+
 /**
- *
+ * porovnánní podle datumu  a času který musí být hned za ním 
  * @author Majitel
  */
 public class CompareDate implements Comparator<Element>{
     int compare;
 
+    
+    /**
+     * 
+     * @param compare pořadí porovnávaného stringu v pořadí
+     */
     public CompareDate(int compare) {
         this.compare = compare;
     }

@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+import databasetonewsletter.Database;
+import databasetonewsletter.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -17,15 +19,43 @@ import javax.swing.JScrollPane;
  * @author Majitel
  */
 public class JPanelMenu extends JPanel{
+    /**
+     *
+     */
     Database database;
-    JPanelMenulButtonTop menulButtonTop;
-    JPanelMenulButtonBottom menulButtonBottom;
+    /**
+     *
+     */
+    JPanelMenuButtonTop menulButtonTop;
+    /**
+     *
+     */
+    JPanelMenuButtonBottom menulButtonBottom;
+    /**
+     *
+     */
     JPanelMenuLines menuLines;
+    /**
+     *
+     */
     JScrollPane scrollPane;
+    /**
+     *
+     */
     JPanelCalendar conection;
+    /**
+     *
+     */
     JFrameMainMenu frameMainMenu;
+    /**
+     *
+     */
     protected ArrayList<Integer> array;
     
+    /**
+     *
+     * @param database
+     */
     public JPanelMenu(Database database){
        
         this.database = database;
@@ -33,9 +63,9 @@ public class JPanelMenu extends JPanel{
         conection = null;
         
         watch();
-        menulButtonTop = new JPanelMenulButtonTop(this);
+        menulButtonTop = new JPanelMenuButtonTop(this);
         menuLines = new JPanelMenuLines(database,array);
-        menulButtonBottom = new JPanelMenulButtonBottom(this);
+        menulButtonBottom = new JPanelMenuButtonBottom(this);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         
@@ -73,10 +103,16 @@ public class JPanelMenu extends JPanel{
        
     }
     
+    /**
+     *
+     */
     public void JpanelTop(){
         add(menulButtonTop, BorderLayout.NORTH);
     }
     
+    /**
+     *
+     */
     public void watch(){
         int j = 0;
         array = new ArrayList(8);

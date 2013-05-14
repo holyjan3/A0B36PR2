@@ -5,36 +5,100 @@
 package databasetonewsletter;
 
 
+
 /**
- *
+ * Typy položek v záznamech
  * @author Majitel
  */
 public enum DataElement{
-    
+    /**
+     * Nadpis
+     */
     HEAD        (700,DataControl.VARCHAR,Constants.MaxVarChar),
+    /**
+     * Datum
+     */
     DATE        (100,DataControl.DATE, 10),
+    /**
+     * Čas
+     */
     TIME        (0,DataControl.TIME,  8),   
+    /**
+     * Odkaz nadpisu
+     */
     HEAD_LINK   (0,DataControl.URL,Constants.MaxVarChar),
+    /**
+     * Město/Vesnice
+     */
     TOWN        (200,DataControl.VARCHAR,35),
+    /**
+     * Místo
+     */
     PLACE       (0,DataControl.VARCHAR,100),
+    /**
+     * Popis
+     */
     TEXT        (800,DataControl.VARCHAR,Constants.MaxVarChar),
+    /**
+     * Popis Odkaz
+     */
     TEXT_LINK   (0,DataControl.URL,Constants.MaxVarChar),
+    /**
+     * Popis odkazu 1
+     */
     LINK1_TEXT  (0,DataControl.VARCHAR,30),
+    /**
+     * Popis odkazu 2
+     */
     LINK2_TEXT  (0,DataControl.VARCHAR, 30),
+    /**
+     * Popis odkazu 3
+     */
     LINK3_TEXT  (0,DataControl.VARCHAR, 30),
+    /**
+     * Odkaz 1
+     */
     LINK1       (0,DataControl.URL, Constants.MaxVarChar),
+    /**
+     * Odkaz 2
+     */
     LINK2       (0,DataControl.URL, Constants.MaxVarChar),
+    /**
+     * Odkaz 3
+     */
     LINK3       (0,DataControl.URL, Constants.MaxVarChar),
+    /**
+     * Jméno osoby
+     */
     NAME        (200,DataControl.VARCHAR, 30),
+    /**
+     * Médium
+     */
     MEDIUM      (200,DataControl.VARCHAR, 30),
+    /**
+     * Typ události
+     */
     TYPE        (200,DataControl.VARCHAR, 30);    
     
 
 
-    final int LINE_SIZE;
-    final int date_size;
-    DataControl type;
     
+    /**
+     * určuje velikost buňky ve které se zobrazuje
+     */
+    final public int LINE_SIZE;
+    
+    /**
+     * typ kontroly dané položky
+     */
+    final public DataControl type;
+    
+    /**
+     * maximální počet znaků
+     */
+    final public int date_size;
+    
+  
     private DataElement(int LINE_SIZE, DataControl type,int date_size) {
   
         this.LINE_SIZE = LINE_SIZE;
@@ -61,7 +125,7 @@ public enum DataElement{
             case TEXT:
                 return "Popis";                
             case TEXT_LINK:
-                return "Popis Odkazu";
+                return "Popis Odkaz";
             case LINK1_TEXT:
                return "Popis odkazu 1";
             case LINK2_TEXT:
@@ -69,13 +133,13 @@ public enum DataElement{
             case LINK3_TEXT:
                 return "Popis odkazu 3";
             case LINK1:
-                return "odkaz 1";
+                return "Odkaz 1";
             case LINK2:
-                return "odkaz 2";
+                return "Odkaz 2";
             case LINK3:
-                return "odkaz 3";
+                return "Odkaz 3";
             case NAME:
-                return "Jméno";
+                return "Jméno osoby";
             case MEDIUM:
                 return "Médium";
             case TYPE:
@@ -85,6 +149,11 @@ public enum DataElement{
         }
     }
     
+    
+    /**
+     * metoda vrátí jméno pro řazení
+     * @return
+     */
     public String toStringSort() {        
      switch (this) {               
             case DATE:
@@ -108,6 +177,11 @@ public enum DataElement{
      
      
     
+    
+    /**
+     * metoda vrátí zda se to má přidat k možností řazení
+     * @return
+     */
     public boolean sort(){
         switch (this) {
             //case PRINTED:   
@@ -122,18 +196,12 @@ public enum DataElement{
             }
     }
     
-    public boolean controlLinks(){
-        switch (this) {
-            case LINK1:
-            case LINK2:
-            case LINK3:
-            case HEAD_LINK: 
-                return true;
-            default:
-                return false;
-        }
-    }
-    static class  Constants {
+    
+    
+    
+   
+    private static class  Constants {
+        
         static int MaxVarChar = 32700;
         
         

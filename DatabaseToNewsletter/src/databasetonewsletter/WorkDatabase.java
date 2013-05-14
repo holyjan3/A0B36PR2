@@ -4,6 +4,7 @@
  */
 package databasetonewsletter;
 
+import databasetonewsletter.userinterface.JPanelElement;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
@@ -16,21 +17,22 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Majitel
- */
+
 public abstract class WorkDatabase {
+    
     Database database;
+    
     ReadFromDatabase rfd;
+    
     
     
     public WorkDatabase(Database database) {
         this.database = database;
-        rfd = new ReadFromDatabase();
-        
+        rfd = new ReadFromDatabase();        
 
     }
+    
+    
     public class ReadFromDatabase implements Runnable{        
         @Override
         public void run() {
@@ -41,13 +43,18 @@ public abstract class WorkDatabase {
     }
     
     
-    abstract void readFromDatabase(Date d); 
+    
+    public  abstract void readFromDatabase(Date d); 
     
     
     
-    abstract void removeElement(Element element);
-    abstract void addElementt(Element element);
-    abstract void modifyElement(JPanelElement element);
+    
+    public abstract void removeElement(Element element);
+    
+    public abstract void addElementt(Element element);
+    
+    public abstract void modifyElement(JPanelElement element);
+    
     
     public Element openElement(int number_element){
         return database.Data.get(number_element);

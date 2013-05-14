@@ -4,42 +4,92 @@
  */
 package databasetonewsletter;
 
+
 /**
- *
+ * jsou zde uložena jaké typa dat obsahují jednotlivé typy záznamů metoda name() vraci jmeno typu záznamu v databázi
  * @author Majitel
  */
 public enum DataDatabase {    
-        HeadAdvertisement("Záhlaví reklama",0,1,false,new DataElement[]{ DataElement.HEAD, DataElement.HEAD_LINK }),
-        Introduction ("Úvod",1,1,false,new DataElement[]{DataElement.TEXT}),
-        EventsFuture("Chystá se",2,0,true, new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK, DataElement.DATE,
+        
+    /**
+     * Záhlaví reklama
+     */
+    HeadAdvertisement("Záhlaví reklama",1,new DataElement[]{ DataElement.HEAD, DataElement.HEAD_LINK }),
+        
+    /**
+     * Úvod
+     */
+    Introduction ("Úvod",1,new DataElement[]{DataElement.TEXT}),
+        
+    /**
+     * Chystá se
+     */
+    EventsFuture("Chystá se",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK, DataElement.DATE,
         DataElement.TIME,DataElement.TOWN,DataElement.PLACE,DataElement.TEXT,DataElement.LINK1_TEXT, DataElement.LINK1, DataElement.LINK2_TEXT,
         DataElement.LINK2, DataElement.LINK3_TEXT, DataElement.LINK3}),
-        EventsPast("Proběhlo",3,0,true, new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT, DataElement.LINK1_TEXT,
+        
+    /**
+     * Proběhlo
+     */
+    EventsPast("Proběhlo",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT, DataElement.LINK1_TEXT,
         DataElement.LINK1,DataElement.LINK2_TEXT,DataElement.LINK2,DataElement.LINK3_TEXT,DataElement.LINK3}),
-        EventPastAdvertisements ("Proběhlo reklama",4,0,true, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK, DataElement.TEXT}),
-        Declarations("Prohlášeni",5,0,true,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TYPE}),
-        Petitions("Petični stánky",6,3,true,new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
-        Plans("Plánuje se",7,3,true,new DataElement[] {DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
-        PlanAdvertisement("Na čem se pracuje",8,1,false, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
-        PlansInRegion("Na čem se pracuje v regionech",9,4,true, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
-        Articles("Členove napsali",10,0,true,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.NAME,DataElement.MEDIUM});
+        
+    /**
+     * Proběhlo reklama
+     */
+    EventPastAdvertisements ("Proběhlo reklama",0, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK, DataElement.TEXT}),
+        
+    /**
+     * Prohlášeni
+     */
+    Declarations("Prohlášeni",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TYPE}),
+        
+    /**
+     * Petični stánky
+     */
+    Petitions("Petični stánky",3,new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+        
+    /**
+     * Na čem se pracuje
+     */
+    Plans("Na čem se pracuje",3,new DataElement[] {DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+        
+    /**
+     * Na čem se pracuje Reklama
+     */
+    PlanAdvertisement("Na čem se pracuje Reklama",1, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+        
+    /**
+     * Na čem se pracuje v regionech
+     */
+    PlansInRegion("Na čem se pracuje v regionech",4, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
+        
+    /**
+     * Členove napsali
+     */
+    Articles("Členove napsali",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.NAME,DataElement.MEDIUM});
                 
                 
         
-        protected String name;
-        protected int number;
-        protected int max;
-        protected DataElement[] dataElemen;
-        boolean moreInsert;
+        
+    /**
+     * název databáze určena pro styk s uživatelem
+     */
+    final public String name;               
+    /**
+     * maximální počet záznamů vložitelné do tabulky
+     */
+    final public int max;        
+    /**
+     *  typy záznamů použitelné v tabulce
+     */
+    final public DataElement[] dataElemen;
 
-    private DataDatabase(String name, int number,int max,boolean moreInsert, DataElement[] dataElemen) {
+    private DataDatabase(String name,int max, DataElement[] dataElemen) {
         this.name = name;
         this.max = max;
-        this.moreInsert = moreInsert;
-        this.number = number;
         this.dataElemen = dataElemen;
     }
-        
         
         
         

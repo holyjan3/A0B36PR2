@@ -2,28 +2,57 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasetonewsletter;
+package databasetonewsletter.userinterface;
 
+
+import databasetonewsletter.Database;
+import databasetonewsletter.Element;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.*;
-
 /**
  *
  * @author Majitel
  */
 public class JFrameElement extends JFrame{
     
+    /**
+     *
+     */
     JPanelElement jpanel;
+    /**
+     *
+     */
     JScrollPane scrollPane;
+    /**
+     *
+     */
     JPanel jpanelW;
+    /**
+     *
+     */
     int number_of_element;
+    /**
+     *
+     */
     Database database;
+    /**
+     *
+     */
     Element element;
+    /**
+     *
+     */
     boolean new_element;
     
     
+    /**
+     *
+     * @param panelMenuLines
+     * @param element
+     * @throws HeadlessException
+     */
     public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
         super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[0].toString());
         database = panelMenuLines.database;
@@ -69,6 +98,11 @@ setLocation(x, y);
         
     } 
     
+    /**
+     *
+     * @param panelMenuLines
+     * @throws HeadlessException
+     */
     public JFrameElement(JPanelMenuLines panelMenuLines) throws HeadlessException {
         super("Nový záznam");
         this.database = panelMenuLines.database;
@@ -99,8 +133,14 @@ setLocation(x, y);
         con.add(jpanelW,BorderLayout.EAST);
         
     }
+    /**
+     *
+     */
     class Action implements WindowListener{
-       JPanelElementGlobaBottom globaBottom = (JPanelElementGlobaBottom) jpanelW;
+        /**
+         *
+         */
+        JPanelElementGlobaBottom globaBottom = (JPanelElementGlobaBottom) jpanelW;
         
 
         @Override
