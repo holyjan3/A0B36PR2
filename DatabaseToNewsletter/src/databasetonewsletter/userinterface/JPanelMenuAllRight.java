@@ -9,14 +9,19 @@ import databasetonewsletter.PrintedElementsAdministration;
 import databasetonewsletter.WorkerDatabase;
 import javax.swing.JOptionPane;
 
+/**
+ * tlačítko pro vytvoření nového emailu
+ * @author Jan Holý
+ */
 public class JPanelMenuAllRight extends javax.swing.JPanel {
-
+    
 
     JFrameMenuAll frameMenuAll;
 
     public JPanelMenuAllRight( JFrameMenuAll frameMenuAll) {
         initComponents();
          this.frameMenuAll = frameMenuAll;
+         
     }
 
 
@@ -62,6 +67,7 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
             pea.insertText(GlobalSave.getHEADING(), "HEADING", 0);
             pea.insertText(GlobalSave.getFOOTER(), "FOOTER", 0);
             pea.saveTempfile();
+            GlobalSave.setTEMPLATE(PrintedElementsAdministration.getFile_source());
             frameMenuAll.dispose();
         } catch (Exception e) {
             //System.out.println(e.getCause());   

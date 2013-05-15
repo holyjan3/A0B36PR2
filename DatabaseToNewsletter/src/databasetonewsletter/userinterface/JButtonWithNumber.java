@@ -7,7 +7,7 @@ package databasetonewsletter.userinterface;
 import javax.swing.JButton;
 
 /**
- *
+ * tlačítko s číslem
  * @author Jan Holý
  */
 public class JButtonWithNumber extends JButton{

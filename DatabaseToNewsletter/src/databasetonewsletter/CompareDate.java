@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 
 /**
- * Comparator třídy Element podle datumu  a času,  čas musí být hned za datumem jinak se porovná pouze podle data porovnání je stabilní
+ * Comparator třídy Element podle data a času,  čas musí být hned za datem jinak se porovná pouze podle data porovnání je stabilní
  * @author Jan Holý
  */
 public class CompareDate implements Comparator<Element>{

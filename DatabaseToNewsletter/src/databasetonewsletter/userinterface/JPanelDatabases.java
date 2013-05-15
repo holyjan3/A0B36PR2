@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 
 /**
- *
+ * Panel tlačítek pro vstup do jednotlivých druhů záznamů umíctěn v JFrameMaiMenu
  * @author Jan Holý
  */
 public class JPanelDatabases extends JPanel implements ActionListener{

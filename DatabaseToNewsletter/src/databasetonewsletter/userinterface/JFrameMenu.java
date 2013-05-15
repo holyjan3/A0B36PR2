@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 /**
- *
+ * okno se záznamy jednoho druhu
  * @author Jan Holý
  */
 public final class JFrameMenu extends JFrame{
@@ -33,6 +33,7 @@ public final class JFrameMenu extends JFrame{
         this.frameMainMenu = frameMainMenu;
         
         JPanelMenu menu  = new JPanelMenu(database);
+        menu.AddPanel();
         add(menu);
         setVisible(true);
         

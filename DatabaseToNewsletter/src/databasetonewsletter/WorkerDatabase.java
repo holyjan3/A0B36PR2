@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * metoda pro nahrání všech druhú záznamů a připojení k databázím
+ * třída pro nahrání všech druhú záznamů a připojení k databázím
  * @author Jan Holý
  */
 public class WorkerDatabase {
@@ -117,7 +117,7 @@ public class WorkerDatabase {
     }
     
     /**
-     *
+     * metoda pro změnu hesla
      * @param newpassword
      * @return
      */
@@ -199,7 +199,7 @@ public class WorkerDatabase {
     }
 
     /**
-     * vrátí výchzí heslo
+     * vrátí výchozí heslo
      * @return
      */
     public static String getDefoultePassword() {

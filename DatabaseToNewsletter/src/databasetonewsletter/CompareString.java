@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 /**
  * Comparator třídy Element v lexikografickém pořadí, porovnávání je stabilí
- * 
+ * @author Jan Holý
  */
 public class CompareString implements  Comparator<Element>{
 

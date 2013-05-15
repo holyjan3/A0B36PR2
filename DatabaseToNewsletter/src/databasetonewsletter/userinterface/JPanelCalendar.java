@@ -18,14 +18,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
 
 
+/**
+ * Kalendář pro výběr výběru záznamů podle stáří obsahující okno kalendáře DATE
+ * @author Jan Holý
+ */
 public class JPanelCalendar extends javax.swing.JPanel {
 
  

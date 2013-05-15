@@ -4,15 +4,12 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.WorkDatabaseOffline;
 import databasetonewsletter.WorkerDatabase;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * varovná hláška jestliže se přeruší spojení s databází
  * @author Jan Holý
  */
 public class ErrorConectToDatabase {

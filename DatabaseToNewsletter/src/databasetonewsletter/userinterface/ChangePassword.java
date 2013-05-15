@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Okno pro změna hesla
  * @author Majitel
  */
 public class ChangePassword extends javax.swing.JFrame {

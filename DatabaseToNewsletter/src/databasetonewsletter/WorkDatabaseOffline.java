@@ -8,9 +8,7 @@ import databasetonewsletter.userinterface.ErrorConectToDatabase;
 import databasetonewsletter.userinterface.JPanelElement;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 public class WorkDatabaseOffline extends WorkDatabase{
         

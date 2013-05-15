@@ -7,7 +7,6 @@ package databasetonewsletter.userinterface;
 import databasetonewsletter.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Date;
@@ -19,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 
 /**
- *
+ * okno se záznamy všech druhů
  * @author Jan Holý
  */
 public class JFrameMenuAll extends JFrame{
@@ -36,6 +35,7 @@ public class JFrameMenuAll extends JFrame{
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
         menus = new JPanelMenuPrinted[WorkerDatabase.dataDatabases.size()];
+        
        
         
          panel =new JPanel(new GridBagLayout());
@@ -56,6 +56,7 @@ public class JFrameMenuAll extends JFrame{
             
             WorkerDatabase.dataDatabases.get(i).nowWorkDatabase.readFromDatabase(date);
             menus[i]= new JPanelMenuPrinted(WorkerDatabase.dataDatabases.get(i));
+            menus[i].AddPanel();
             panel.setBackground(Color.black);
             l.setForeground(Color.white);
             panel.setOpaque(true);

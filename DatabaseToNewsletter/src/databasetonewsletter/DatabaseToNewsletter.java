@@ -8,6 +8,10 @@ import databasetonewsletter.userinterface.JFrameConect;
 
 
 
+/**
+ * spuštěná třída
+ * @author Majitel
+ */
 public class DatabaseToNewsletter {
 
     

@@ -7,19 +7,25 @@ package databasetonewsletter.userinterface;
 
 import databasetonewsletter.Database;
 import databasetonewsletter.Element;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.WindowConstants;
 /**
- *
+ * okno jednotlivého záznamu
  * @author Jan Holý
  */
 public class JFrameElement extends JFrame{
     
-    /**
-     *
-     */
+ 
     JPanelElement jpanel;
     JScrollPane scrollPane;
     JPanel jpanelW;
@@ -75,11 +81,6 @@ setLocation(x, y);
         
     } 
     
-    /**
-     *
-     * @param panelMenuLines
-     * @throws HeadlessException
-     */
     public JFrameElement(JPanelMenuLines panelMenuLines) throws HeadlessException {
         super("Nový záznam");
         this.database = panelMenuLines.database;

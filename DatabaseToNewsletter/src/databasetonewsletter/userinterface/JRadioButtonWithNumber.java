@@ -8,7 +8,7 @@ import databasetonewsletter.Element;
 import javax.swing.JRadioButton;
 
 /**
- *
+ * Radian buom obahující třídu element a číslo
  * @author Jan Holý
  */
 public class JRadioButtonWithNumber extends JRadioButton{

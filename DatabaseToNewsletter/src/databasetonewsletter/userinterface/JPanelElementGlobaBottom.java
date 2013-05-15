@@ -8,6 +8,10 @@ import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 
+/**
+ * Panel s tlačítky pro úpravu jendnoho záznamu
+ * @author Jan Holý
+ */
 public class JPanelElementGlobaBottom extends javax.swing.JPanel {
 
     JPanelElement panelElement;

@@ -14,15 +14,13 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
 
 /**
- *
+ * okno s tlačítyk pro zobrazení záznamů s upravou záhaví a zápati plus talčítka pro zpracování emailu
  * @author Jan Holý
  */
 public class JFrameMainMenu extends JFrame {

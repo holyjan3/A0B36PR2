@@ -5,10 +5,10 @@
 package databasetonewsletter.userinterface;
 
 import databasetonewsletter.Database;
-import javax.swing.JLabel;
+import java.awt.BorderLayout;
 
 /**
- *
+ * třída odvozená od JpanelMenu nemá horní panel s tlačíty
  * @author Jan Holý
  */
 public class JPanelMenuPrinted extends JPanelMenu{
@@ -20,10 +20,13 @@ public class JPanelMenuPrinted extends JPanelMenu{
     
     }    
 
- 
     @Override
-    public void JpanelTop() {
-        
+    public void AddPanel() {
+        add(scrollPane,BorderLayout.CENTER);
+        add(pane,BorderLayout.SOUTH);  //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
+   
     
 }

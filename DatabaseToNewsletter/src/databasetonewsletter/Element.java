@@ -10,7 +10,7 @@ import java.util.Date;
 
 
 /**
- * reprezentace jednotlivých záznamů v programu
+ * reprezentace  záznamu v programu
  * @author Jan Holý
  */
 final public class Element{

@@ -27,7 +27,15 @@ public class PrintedElementsAdministration {
     private Thread[] threads;    
     private ArrayList<Database> databases;    
     private static String file_temp_name = "temp.html" ;    
-    private static String file_source = "newslettertemplate.txt";
+    private static String file_source = "";
+
+    public static void setFile_source(String file_source) {
+        PrintedElementsAdministration.file_source = file_source;
+    }
+
+    public static String getFile_source() {
+        return file_source;
+    }
     
     
     

@@ -17,13 +17,12 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import layout.TableLayout;
 
 
 
 /**
- *
+ * třída přidává a aktualizuje řádky záznamů
  * @author Jan Holý
  */
 public class JPanelMenuLines extends JPanel{
@@ -50,28 +49,27 @@ public class JPanelMenuLines extends JPanel{
         this.database = database;
         this.array = array;
         this.add = 3;        
-        doubleAray();
         
-       jp = new JPanel();
-        
-       tableLayout = new TableLayout(ds);        
-       jp.setLayout(tableLayout);
-       this.setLayout(new FlowLayout(FlowLayout.LEFT) );
+       
+       this.setLayout(new FlowLayout(FlowLayout.LEFT) );            
+       
+           
+     }
     
-            
-        
+    public void addLine(){
+        jp = new JPanel();
+         doubleAray();
+         tableLayout = new TableLayout(ds);
+         jp.setLayout(tableLayout);
          for (int i = 0; i < database.Data.size();i++) {
             
             JPanelMenuLine(i);
          } 
          JPanelDEScription();
            add(jp);
-           
-        }
+    }
     
-    /**
-     *
-     */
+
     public void doubleAray(){
   
         int j = array.size();
@@ -85,10 +83,7 @@ public class JPanelMenuLines extends JPanel{
         doubleArayAdd(add);
     }
     
-    /**
-     *
-     * @param add
-     */
+
     public void doubleArayAdd(int add){
          int j = array.size();
          for (int i = add; i < j+add; i++) {
@@ -97,11 +92,7 @@ public class JPanelMenuLines extends JPanel{
         }        
     }
         
-  
-    
-    /**
-     *
-     */
+
     public void overWritePanel(){
        this.jrb.clear();
        this.removeAll();

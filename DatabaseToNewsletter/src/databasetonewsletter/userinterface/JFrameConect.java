@@ -7,15 +7,15 @@ package databasetonewsletter.userinterface;
 import databasetonewsletter.WorkerDatabase;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+/**
+ * okno pro přihlašení do datatbáze
+ * @author Jan Holý
+ */
 public class JFrameConect extends javax.swing.JFrame {
 
   

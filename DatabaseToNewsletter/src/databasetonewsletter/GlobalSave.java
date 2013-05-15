@@ -15,8 +15,9 @@ import java.util.logging.Logger;
  */
 public class GlobalSave {
     
-    private static String HEADING = "";    
-    private static String FOOTER = "";
+    private static String HEADING;    
+    private static String FOOTER;
+    private static String TEMPLATE;
     private final static String separator = "####################";
     private final static String nameFile ="globalsave.txt";
 
@@ -48,11 +49,26 @@ public class GlobalSave {
         }
         
     }
-    
-    
-    
-    
 
+    public static String getTEMPLATE() {
+        return TEMPLATE;
+    }
+
+   
+
+    public static boolean setTEMPLATE(String TEMPLATE) {     
+            
+         if(TEMPLATE == null || !TEMPLATE.equals(separator)){
+            GlobalSave.TEMPLATE = TEMPLATE;
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
+    
+    
     /**
      * získá záhlaví
      * @return
@@ -83,11 +99,13 @@ public class GlobalSave {
             bis = new BufferedReader(new FileReader(nameFile));
             HEADING = read(bis);
             FOOTER = read(bis);
+            TEMPLATE = read(bis);
             bis.close();
         
       } else {
        HEADING="";
        FOOTER ="";
+       TEMPLATE = "";
       }
         
         
@@ -132,6 +150,7 @@ public class GlobalSave {
                 bw = new BufferedWriter(new FileWriter(nameFile, true));
             save(bw,HEADING);
             save(bw,FOOTER);
+            save(bw,TEMPLATE);
         } catch (IOException ex) {
             bb = false;
         }       

@@ -5,16 +5,16 @@
 package databasetonewsletter.userinterface;
 
 import databasetonewsletter.Database;
-import java.util.ArrayList;
-import java.util.Date;
 
+
+/**
+ * Horní tlačítka pro práci s jedním typem záznamů 
+ * @author Jan Holý
+ */
 public class JPanelMenuButtonTop extends javax.swing.JPanel {
 
-    private String findInText="Vyhledat v Názvech";
-  
- 
-    Database database;
- 
+    private String findInText="Vyhledat v Názvech"; 
+    Database database; 
     JPanelMenu jFrameMenu;
   
     

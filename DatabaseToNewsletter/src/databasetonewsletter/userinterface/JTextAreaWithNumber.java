@@ -8,7 +8,7 @@ import javax.swing.JTextArea;
 import javax.swing.text.Document;
 
 /**
- *
+ * Textová Area s číslem
  * @author Jan Holý
  */
 public class JTextAreaWithNumber extends JTextArea{

@@ -9,7 +9,7 @@ import java.net.InetAddress;
 
 
 /**
- * metoda která zkouší připojení na internet v pravidelných intervalech
+ * třída která zkouší připojení na internet v pravidelných intervalech
  * @author Jan Holý
  */
 public class ControlConection implements Runnable{

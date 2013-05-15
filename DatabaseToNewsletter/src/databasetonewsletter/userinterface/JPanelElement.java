@@ -29,7 +29,7 @@ import javax.swing.JTextArea;
 
 
 /**
- *
+ * Panel s položkamy
  * @author Jan Holý
  */    
     

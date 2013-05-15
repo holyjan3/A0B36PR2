@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import javax.swing.JRadioButton;
 
 
+/**
+ * Dolní tlačítka pro práci s jedním typem záznamů 
+ * @author Jan Holý
+ */
 public class JPanelMenuButtonBottom extends javax.swing.JPanel {
 
     ArrayList<Integer> array;

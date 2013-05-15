@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 
 
 /**
- *
+ * panel s tlačítky pro práci s jedním typem záznamů a s tabulkou jednoho typu záznamu
  * @author Jan Holý
  */
 public class JPanelMenu extends JPanel{
@@ -33,6 +33,8 @@ public class JPanelMenu extends JPanel{
     JPanelCalendar conection;
   
     JFrameMainMenu frameMainMenu;
+    
+    JPanel pane;
 
     protected ArrayList<Integer> array;
  
@@ -45,6 +47,7 @@ public class JPanelMenu extends JPanel{
         watch();
         menulButtonTop = new JPanelMenuButtonTop(this);
         menuLines = new JPanelMenuLines(database,array);
+        menuLines.addLine();
         menulButtonBottom = new JPanelMenuButtonBottom(this);
         
         
@@ -55,8 +58,7 @@ public class JPanelMenu extends JPanel{
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(menuLines);
         
-        //setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        JPanel pane = new JPanel(new BorderLayout());
+        pane = new JPanel(new BorderLayout());
 
         
         
@@ -65,28 +67,24 @@ public class JPanelMenu extends JPanel{
        
        
      
-        JpanelTop();
+        
         pane.add(menulButtonBottom,BorderLayout.WEST);
         pane.add(conection,BorderLayout.CENTER);     
         
         
-        add(scrollPane,BorderLayout.CENTER);
-        add(pane,BorderLayout.SOUTH);        
+             
 
         
        
     }
-    
-    /**
-     *
-     */
-    public void JpanelTop(){
+
+    public void AddPanel(){
         add(menulButtonTop, BorderLayout.NORTH);
+         add(scrollPane,BorderLayout.CENTER);
+        add(pane,BorderLayout.SOUTH);  
+        
     }
-    
-    /**
-     *
-     */
+
     public void watch(){
         int j = 0;
         array = new ArrayList(8);
@@ -102,16 +100,7 @@ public class JPanelMenu extends JPanel{
         }
     }
     
-   
-        
-//      @Override
-//        public void revalidate(){
-//            conection.revalidate();
-//            super.revalidate();
-//            frameMainMenu.revalidate();
-//
-//        }    
-
+  
  
 
 }
