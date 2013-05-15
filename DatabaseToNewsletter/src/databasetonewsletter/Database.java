@@ -16,25 +16,24 @@ import java.util.logging.Logger;
 
 /**
  * třída obsahující záznami jednoho typu
- * @author Majitel
+ * @author Jan Holý
  */
 public class Database{
     
     /**
-     * všechny typy položek záznamu
+     *  záznamy
      */
     public List<Element> Data;    
     /**
-     *  určené typy záznamu
+     *  typ záznamu
      */
     public DataDatabase database;
-    /**
-     * ukláda záznami do trvalého úložiště
+    /**práce se záznamy v trvalém úložiští
      */
     public WorkDatabase nowWorkDatabase;  
     
     /**
-     * jméno databáze pro uživatele
+     * jméno druhu záznamů pro uživatele
      */
     public final String name_database;    
     /**
@@ -42,61 +41,41 @@ public class Database{
      */
     public final DataElement[] DE;      
     /**
-     * jméno databáze pro ukládání
+     * jméno druhu záznamů pro ukládání
      */
     protected final String name_file;    
     /**
-     * idenitifikáto databáze
+     * idenitifikáto druhu záznamu
      */
     protected int id_database;
     
     
     /**
-     *
+     *  nahrání správce záznamů {@link #nowWorkDatabase} třídy WorkDatabase
      * @param database určena typy záznamu
+     * @param id_database přiřazje identtifikátor druhu záznamu
      */
-    public Database(DataDatabase database) {        
+    public Database(DataDatabase database,int id_database) {        
         this.name_database = database.name;
         this.name_file = database.name();
         this.database = database;
         this.DE = database.dataElemen;
-        this.id_database = getKeyDatabases(name_file);        
+        this.id_database = id_database;        
         this.Data  = new LinkedList<Element>();
         nowWorkDatabase = new WorkDatabaseOffline(this);
         
         
          
     }
-    
-    
-     /**
-     *
-     * @param name
-     * @return
-     */
-    public final int getKeyDatabases(String name) {
-       try {           
-           String sRead =  "SELECT APP.NEWSLETTERDATABASES.ID_DATABASES FROM APP.NEWSLETTERDATABASES WHERE NAME_DATABASES ='"+ name +"'";
-           Statement stm = conection.createStatement();
-           ResultSet rs = stm.executeQuery(sRead);
-           rs.next();
-           return rs.getInt("ID_DATABASES");
-           
-           
-       } catch (SQLException ex) {
-           Logger.getLogger(WorkerDatabase.class.getName()).log(Level.SEVERE, null, ex);
-       }
-         
-       return -1;
-    }
+
    
     
     
     
     /**
-     *
-     * @param i
-     * @param j
+     * prohodí prvky 
+     * @param i a 
+     * @param j, zatím nepoužito
      */
     public void replaceElements(int i, int j){
         Element ob = Data.get(i);
@@ -107,7 +86,7 @@ public class Database{
     
     
     /**
-     * řadí položky záznamu podle data
+     * řadí záznamy podle data
      * @param number pořadí stringu podle kterého se porovnává
      */
     public void sortDate(int number){
@@ -117,7 +96,7 @@ public class Database{
     
     
     /**
-     * řadí položky záznamu podle lexikografického pořadí
+     * řadí záznamy lexikograficky
      * @param number pořadí stringu podle kterého se porovnává
      */
     public void sortString(int number) {
@@ -126,7 +105,7 @@ public class Database{
     
     
     /**
-     * řadí podle toho zdali je prvek určen k vložení do emailu
+     * řadí záznami podle toho zdali je záznam určen k vložení do emailu
      */
     public void sortPrint(){
         Collections.sort(Data,new ComparatorPrint());

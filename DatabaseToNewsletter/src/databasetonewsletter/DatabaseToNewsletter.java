@@ -11,14 +11,17 @@ import databasetonewsletter.userinterface.JFrameConect;
 public class DatabaseToNewsletter {
 
     
+    /**
+     * spouští vlákno které se zajímá o to zda je aplikace připojena k internetu a spuštění prvního okna přhlášení se do aplikace
+     * @param args nic nedělají
+     */
     public static void main(String[] args)  {  
         
-           // spouští vlákno které se zajímá o to zda je aplikace připojena k internetu
+
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
            
-           // spuštění prvního okna přhlášení se do aplikace
            WorkerDatabase.date =WorkerDatabase.setDate();
            JFrameConect.main(null);
             

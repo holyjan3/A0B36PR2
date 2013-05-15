@@ -8,7 +8,7 @@ import java.util.Comparator;
 
 
 /**
- * komarátor třídy element v lexikografickém pořadí, porovnávání je stabilí
+ * Comparator třídy Element v lexikografickém pořadí, porovnávání je stabilí
  * 
  */
 public class CompareString implements  Comparator<Element>{

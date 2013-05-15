@@ -4,6 +4,7 @@
  */
 package databasetonewsletter;
 
+import databasetonewsletter.userinterface.ErrorConectToDatabase;
 import databasetonewsletter.userinterface.JPanelElement;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -12,23 +13,20 @@ import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class WorkDatabaseOffline extends WorkDatabase{
-    
-    
-    int numberDatabase;
-    
-    public Connection conection =null;
-    
-    java.util.Date date;
-    
+        
+    private Connection conection =null;    
+    java.util.Date date;    
     private boolean read;
    
     
+   private final String unicateKey = "KEYPRIMARY";
+   private static String nameTable = "NEWSLETTERDATAS";
+   private static String DateChanged = "DATECHANGED";
+    
     
     public WorkDatabaseOffline(Database database) {
-        super(database);
-       
+        super(database);       
         conection = WorkerDatabase.conection;
-        numberDatabase = database.database.ordinal();
         this.read = true;
         date = null;
     }
@@ -53,9 +51,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
         }
         
         database.Data.clear();
-//        if(date != null) System.out.println(date.toString());
-//        else 
-//            System.out.println("null");
+
         read = false;
         
         SimpleDateFormat chooseDate = new SimpleDateFormat("yyyy-MM-dd 00:00:00.000");
@@ -63,7 +59,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
         Statement stmt = null;
         StringBuilder sb = new StringBuilder();
         String sRead = "";        
-        sb.append(WorkerDatabase.unicateKey);
+        sb.append(this.unicateKey);
         for (int i = 0; i < database.DE.length; i++) {
             sb.append(database.DE[i]+",");
             
@@ -71,10 +67,10 @@ public class WorkDatabaseOffline extends WorkDatabase{
         sb.delete(sb.length()-1, sb.length()-1);
         
         if( date != null){
-           sRead = "SELECT APP."+WorkerDatabase.nameTable+".* FROM "+ "APP."+WorkerDatabase.nameTable+" WHERE ID_DATABASES="
+           sRead = "SELECT APP."+this.nameTable+".* FROM "+ "APP."+this.nameTable+" WHERE ID_DATABASES="
                    +Integer.toString(database.id_database) + " AND TIME_LAST_CHANGED >= '" + chooseDate.format(d).toString()+"'"; 
         }else {
-            sRead = "SELECT APP."+WorkerDatabase.nameTable+".* FROM "+ "APP."+WorkerDatabase.nameTable+" WHERE ID_DATABASES="+Integer.toString(database.id_database); 
+            sRead = "SELECT APP."+this.nameTable+".* FROM "+ "APP."+this.nameTable+" WHERE ID_DATABASES="+Integer.toString(database.id_database); 
         }
         String[] ss;   
         int key = 0;
@@ -89,7 +85,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
             ResultSet rs = stmt.executeQuery(sRead); 
             
            while(rs.next()){
-                key = rs.getInt(WorkerDatabase.unicateKey);
+                key = rs.getInt(this.unicateKey);
                 ss = new String[database.DE.length];
                 //printed = rs.getBoolean(WorkerDatabase.printed);
    
@@ -119,15 +115,20 @@ public class WorkDatabaseOffline extends WorkDatabase{
             return;
        }
      catch(SQLException ex) {
-        connect();
-        conection = WorkerDatabase.conection;
+         ErrorConectToDatabase er= new ErrorConectToDatabase();
+        if(er.ErrorConectToDatabase()){
+             conection = WorkerDatabase.conection;
+        } else {
+            return;
+        }
+       
     }
    }
  
   }
     
     
-    public boolean equalsDates(java.util.Date d1, java.util.Date  d2){
+    private boolean equalsDates(java.util.Date d1, java.util.Date  d2){
         if((d1 == null && d2 == null )){
             return true;            
         }else {
@@ -152,7 +153,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
          StringBuilder sb1 = new StringBuilder();
          StringBuilder sb2 = new StringBuilder();
          sb1.append("\"APP\" . ");
-         sb1.append("\""+WorkerDatabase.nameTable+"\" ");
+         sb1.append("\""+this.nameTable+"\" ");
          
          sb1.append('(');
          sb2.append('(');
@@ -189,8 +190,12 @@ public class WorkDatabaseOffline extends WorkDatabase{
            database.Data.add(element);
            return;
         } catch (SQLException ex) {
-           connect();
-           conection = WorkerDatabase.conection;
+           ErrorConectToDatabase er= new ErrorConectToDatabase();
+        if(er.ErrorConectToDatabase()){
+             conection = WorkerDatabase.conection;
+        } else {
+            return;
+        }
            
         }
       } 
@@ -203,8 +208,8 @@ public class WorkDatabaseOffline extends WorkDatabase{
     @Override
     public void removeElement(Element element) {
         
-        String sql = "DELETE FROM APP."+  WorkerDatabase.nameTable + " WHERE "+
-                    WorkerDatabase.unicateKey + " = " + Integer.toString(element.getKey());
+        String sql = "DELETE FROM APP."+  this.nameTable + " WHERE "+
+                    this.unicateKey + " = " + Integer.toString(element.getKey());
         PreparedStatement statement = null;
         int key = element.getKey();
         while(true){
@@ -215,8 +220,12 @@ public class WorkDatabaseOffline extends WorkDatabase{
             WorkerDatabase.printedHashMap.remove(key);
             return;
         } catch (SQLException ex) {
-            connect();
-            conection = WorkerDatabase.conection;
+             ErrorConectToDatabase er= new ErrorConectToDatabase();
+        if(er.ErrorConectToDatabase()){
+             conection = WorkerDatabase.conection;
+        } else {
+            return;
+        }
         }
         }
     }
@@ -241,47 +250,26 @@ public class WorkDatabaseOffline extends WorkDatabase{
             }
         }      
         sb.append("TIME_LAST_CHANGED=CURRENT_TIMESTAMP");
-        String sql = "UPDATE APP."+  WorkerDatabase.nameTable +" SET "+ sb.toString()+" WHERE "+
-                    WorkerDatabase.unicateKey + "=" + Integer.toString(element.getKey());
+        String sql = "UPDATE APP."+  this.nameTable +" SET "+ sb.toString()+" WHERE "+
+                    this.unicateKey + "=" + Integer.toString(element.getKey());
        while(true){
         try {
             PreparedStatement statement = conection.prepareStatement(sql);
             statement.execute();
             return;
         } catch (SQLException ex) {
-            connect();
-            conection = WorkerDatabase.conection;
+             ErrorConectToDatabase er= new ErrorConectToDatabase();
+        if(er.ErrorConectToDatabase()){
+             conection = WorkerDatabase.conection;
+        } else {
+            return;
+        }
         }
        }
     }   
     
     
-    
-    public void connect(){
-        JOptionPane  frame = new JOptionPane();
-           Object[] options = {"Ukončit program",
-                    "Obnovit spojení",};
-            int n = JOptionPane.showOptionDialog(frame,
-                 "Spadlo připojení s databází",
-                    "",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.ERROR_MESSAGE,
-             null,
-            options,
-            options[1]);
-            if (n==0){
-                
-            try {
-            conection.close();
-            } catch (SQLException ex) {
-            //Logger.getLogger(WorkDatabaseOffline.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-               
-               System.exit(1); 
-            }
-            }         
-    }
-    
+
 
 
 

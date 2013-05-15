@@ -9,23 +9,18 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JPanelMenuPrinted extends JPanelMenu{
 
-    /**
-     *
-     * @param database
-     */
+
     public JPanelMenuPrinted(Database database) {
         super(database);  
     
     
     }    
 
-    /**
-     *
-     */
+ 
     @Override
     public void JpanelTop() {
         

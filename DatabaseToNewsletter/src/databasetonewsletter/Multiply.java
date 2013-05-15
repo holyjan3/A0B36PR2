@@ -8,8 +8,8 @@ package databasetonewsletter;
 
 
  /**
- * třídat která slouží k rozmnožení podřetězců daného emailu které jsou disjunktní
- * @author Majitel
+ * třída která slouží k rozmnožení disjunktních podřetězců daného emailu a vloží do nich přepřipravená dat
+ * @author Jan Holý
  */
 public class Multiply implements Runnable{
         
@@ -26,7 +26,7 @@ public class Multiply implements Runnable{
      * @param database databáze
      * @param charSequence podřetězec
      * @param number číslo položky
-     * @param count
+     * @param count počet záznamů
      */
     public Multiply( Database database, CharSequence charSequence, int number,int count) {
             this.database = database;
@@ -206,8 +206,8 @@ public class Multiply implements Runnable{
     }  
 
     /**
-     * vrátí vytvořený řetězec
-     * @return
+     * 
+     * @return vrátí vytvořený řetězec
      */
     public StringBuilder getStringBuilder() {
         return stringBuilder;

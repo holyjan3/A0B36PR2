@@ -3,8 +3,8 @@ package databasetonewsletter;
 
 
 /**
- * enum pro kontrolu vstupních dat pro kontrolu shodnosti typu položek s typem buněk datází a jiné kontroly
- * @author Majitel
+ * enum pro odlišení různých typů vstupních/výstupní položek, s pološkama různého typu se různě zachází , enum je vložen v enumu DateElement
+ * @author Jan Holý
  */
 public enum DataControl {    
 

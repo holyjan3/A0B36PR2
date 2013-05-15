@@ -15,24 +15,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JPanelDatabases extends JPanel implements ActionListener{
-    /**
-     *
-     */
+
     ArrayList<Database> databases;
-    /**
-     *
-     */
+
+    
     JFrameMainMenu frameMainMenu;
     
     
-    /**
-     *
-     * @param databases
-     * @param frameMainMenu
-     */
     public JPanelDatabases(ArrayList<Database> databases,JFrameMainMenu frameMainMenu) {
         this.databases = databases;
         this.frameMainMenu = frameMainMenu;

@@ -9,17 +9,16 @@ import java.net.InetAddress;
 
 
 /**
- * metoda která skoučí připojení na internet v pravidelných intervalech
- * @author Majitel
+ * metoda která zkouší připojení na internet v pravidelných intervalech
+ * @author Jan Holý
  */
 public class ControlConection implements Runnable{
 Thread thread;
     /**
      * @param conected statická proměná je pravdivá podařilo se metodě připojit na internet
      */
-    public  static boolean conected = false;
-    private InetAddress inetAddress;
-          
+    private static boolean conected = false;
+    private InetAddress inetAddress;    
    
     
     /**
@@ -42,6 +41,25 @@ Thread thread;
             }
        } 
     }
+
+    /**
+     * metoda vrátí true jestliže je nalezeno připojení k internetu jinak vrací false
+     * @return
+     */
+    public synchronized static boolean isConected() {
+        return conected;
+    }
+
+    /**
+     * nastavení hodnoty true proměnné {@link #ControlConection.conected}jestliže je nalezno připojení k internetu janak vrací hodnotu false
+     * @param conected
+     */
+    public synchronized static void setConected(boolean conected) {
+        ControlConection.conected = conected;
+    }
+    
+    
+    
     
     private synchronized  boolean getInetAderes() {
            
@@ -49,10 +67,10 @@ Thread thread;
            try {
                inetAddress = InetAddress.getLocalHost();
                bb = inetAddress.isReachable(2000);
-               conected = bb;
+               setConected(bb);
                return bb;
            } catch (IOException ex) {
-               conected = false;
+               setConected(false);
                return false;
            }
        }

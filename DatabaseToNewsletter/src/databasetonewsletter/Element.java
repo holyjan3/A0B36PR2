@@ -4,17 +4,16 @@
  */
 package databasetonewsletter;
 
-import java.io.Serializable;
 import java.util.Date;
 
 
 
 
 /**
- * záznam
- * @author Majitel
+ * reprezentace jednotlivých záznamů v programu
+ * @author Jan Holý
  */
-final public class Element implements  Serializable{
+final public class Element{
     
     
     public DataElement[] DE;    
@@ -69,7 +68,7 @@ final public class Element implements  Serializable{
     
     
     /**
-     * nastaví záznam k vložení do emailu
+     *  nastaví zda se má záznam vložit do emailu
      * @param b true - vložit / false nevložit
      */
     public void setPrinted(boolean b){
@@ -78,7 +77,7 @@ final public class Element implements  Serializable{
     
     
     /**
-     * nastaví záznam k vložení do emailu a uloží to do WorkerDatabase.printedHashMap 
+     * nastaví zda se má záznam vložit do emailu a uloží identifikační key číslo s hodonout(false / true ) podle parametru b do WorkerDatabase.printedHashMap 
      * @param b true - vložit / false nevložit
      * @param key unikátní klíč
      */
@@ -89,7 +88,7 @@ final public class Element implements  Serializable{
 
     
     /**
-     * vrátí jestli je záznam určen k vytištění
+     * vrátí true jestli je záznam určen k vložení jinak vrátí false
      * @return
      */
     public boolean isPrinted() {        
@@ -99,8 +98,8 @@ final public class Element implements  Serializable{
     
     /**
      * nastaví položku záznamu
-     * @param ss da položky záznamu 
-     * @param i pořadí v  strings_of_elements
+     * @param ss řetězec záznamu
+     * @param i pořadí v  {@link #strings_of_elements} 
      */
     public void setString_of_element(String ss,int i) {
            this.strings_of_elements[i] = ss;
@@ -116,7 +115,7 @@ final public class Element implements  Serializable{
     }
 
     /** 
-     * zjistí unikátní klíč
+     * zjistí unikátní klíč záznamu
      * @return
      */
     public int getKey() {

@@ -13,7 +13,7 @@ import java.awt.event.WindowListener;
 import javax.swing.*;
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JFrameElement extends JFrame{
     
@@ -21,38 +21,15 @@ public class JFrameElement extends JFrame{
      *
      */
     JPanelElement jpanel;
-    /**
-     *
-     */
     JScrollPane scrollPane;
-    /**
-     *
-     */
     JPanel jpanelW;
-    /**
-     *
-     */
     int number_of_element;
-    /**
-     *
-     */
     Database database;
-    /**
-     *
-     */
+
     Element element;
-    /**
-     *
-     */
+
     boolean new_element;
     
-    
-    /**
-     *
-     * @param panelMenuLines
-     * @param element
-     * @throws HeadlessException
-     */
     public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
         super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[0].toString());
         database = panelMenuLines.database;

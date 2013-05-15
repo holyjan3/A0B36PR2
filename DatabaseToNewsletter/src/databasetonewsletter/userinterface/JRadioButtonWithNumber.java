@@ -9,22 +9,14 @@ import javax.swing.JRadioButton;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JRadioButtonWithNumber extends JRadioButton{
-    /**
-     *
-     */
+  
     public final int number;
-    /**
-     *
-     */
+  
     public Element element;
-    /**
-     *
-     * @param number
-     * @param element
-     */
+ 
     public JRadioButtonWithNumber(int number,Element element) {
         this.element = element;
         this.number = number;

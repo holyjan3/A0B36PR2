@@ -5,27 +5,24 @@
 package databasetonewsletter;
 
 import databasetonewsletter.userinterface.JPanelElement;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 
+/**
+ * třída pro práci s databází
+ * @author Jan Holý
+ */
 public abstract class WorkDatabase {
     
-    Database database;
-    
-    ReadFromDatabase rfd;
-    
+    protected Database database;    
+    private ReadFromDatabase rfd;
     
     
+    
+    /**
+     * 
+     * @param database dabtabaáze se kterou budu pracovar
+     */
     public WorkDatabase(Database database) {
         this.database = database;
         rfd = new ReadFromDatabase();        
@@ -33,6 +30,9 @@ public abstract class WorkDatabase {
     }
     
     
+    /**
+     *  načteníz databáze pomocí vláken
+     */
     public class ReadFromDatabase implements Runnable{        
         @Override
         public void run() {
@@ -40,22 +40,39 @@ public abstract class WorkDatabase {
         }
         
     
-    }
+    }    
     
     
+    /**
+     * načtení záznamů od určitého data
+     * @param d pokud je null pak se načtou všechny záznamy
+     */
+    public  abstract void readFromDatabase(Date d);   
     
-    public  abstract void readFromDatabase(Date d); 
-    
-    
-    
-    
+    /**
+     * odstranění záznamu z databáze
+     * @param element
+     */
     public abstract void removeElement(Element element);
     
+    /**
+     * přidání záznamu do databáze
+     * @param element
+     */
     public abstract void addElementt(Element element);
     
+    /**
+     * upravení záznamu z databáze
+     * @param element
+     */
     public abstract void modifyElement(JPanelElement element);
     
     
+    /**
+     * načtení prvku z databáze
+     * @param number_element číslo záznamu
+     * @return
+     */
     public Element openElement(int number_element){
         return database.Data.get(number_element);
     }

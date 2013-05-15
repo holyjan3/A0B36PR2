@@ -20,29 +20,18 @@ import javax.swing.border.Border;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JFrameMenuAll extends JFrame{
-    /**
-     *
-     */
+
     JPanelMenuPrinted[] menus;
-    /**
-     *
-     */
+
     JPanel panel;
-    /**
-     *
-     */
+
     JScrollPane scrollPane;
-    /**
-     *
-     */
+
     Date date;
-    /**
-     *
-     * @param date
-     */
+
     public JFrameMenuAll(Date date) {
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());

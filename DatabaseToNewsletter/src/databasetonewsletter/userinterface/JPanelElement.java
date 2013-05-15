@@ -30,91 +30,53 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */    
     
         
         
    
 public class JPanelElement extends JPanel{    
-    /**
-     *
-     */
+ 
     public JTextArea[] text;
-    /**
-     *
-     */
+   
     JLabel [] jLabelsError;
-    /**
-     *
-     */
+
     Database database;    
    
-    /**
-     *
-     */
+
     protected int jtext_height;
-    /**
-     *
-     */
+
     protected int jtext_width;    
-    /**
-     *
-     */
+
     protected Insets Ins = new Insets(10, 10, 20, 10);    
-    /**
-     *
-     */
+
     public Element element;
     
-    /**
-     *
-     */
+
     private ActionSave save = new ActionSave();
-    /**
-     *
-     */
+
     private IfChanged ifChanged = new IfChanged();    
-    /**
-     *
-     */
+   
     private ActionButtonDelete buttonDelete = new ActionButtonDelete();
-    /**
-     *
-     */
+ 
     private ActionButtonRestore buttonRestore = new ActionButtonRestore();
-    /**
-     *
-     */
+  
     private boolean changed;
-    /**
-     *
-     */
+
     private boolean conected;
-    /**
-     *
-     */
+
     protected boolean wrong;
-    /**
-     *
-     */
+
     protected String ss1= "chyba ve vstupnim retezci";
-    /**
-     *
-     */
+
     private String ss2= "nepodařilo se připojit k intenetu adresa nebyla ověřena";
     
-
-    /**
-     *
-     * @param database
-     * @param element
-     */
     JPanelElement(Database database,Element element) {
         this.database = database;
         this.element = element;
         this.changed = false;
-        conected = ControlConection.conected;
+        conected = ControlConection.isConected();
         wrong = false;
         
         final int minwidth = 20;
@@ -280,19 +242,10 @@ public class JPanelElement extends JPanel{
  
   }
 
-    /**
-     *
-     * @return
-     */
     public boolean isChanged() {
         return changed;
     }
     
-    /**
-     * 
-     * @param i
-     * @return
-     */
     public JPanel addButton(int i){
         JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));   
          
@@ -318,11 +271,6 @@ public class JPanelElement extends JPanel{
         
     }
     
-    /**
-     *
-     * @param SS
-     * @param width
-     */
     public void numberLine(String SS, int width){
         if(SS.length() < width) {
             
@@ -335,11 +283,7 @@ public class JPanelElement extends JPanel{
         }        
     }
     
-    /**
-     *
-     * @param area
-     * @param i
-     */
+
     public void controlUrl(JTextArea area,int i){
         jLabelsError[i].setVisible(false);
        if(ControlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
@@ -374,8 +318,9 @@ public class JPanelElement extends JPanel{
         public void focusLost(FocusEvent e) {
               
                JTextAreaWithNumber jtf = (JTextAreaWithNumber) e.getSource();
+                int i = jtf.number;
                if(!jtf.getText().equals("")) {
-                   int i = jtf.number;
+                  
                     if(element.DE[i].type == DataControl.URL){
                         controlUrl(jtf,i);
                      } else {
@@ -384,6 +329,8 @@ public class JPanelElement extends JPanel{
                         
                     }
                     
+               } else {
+                   jLabelsError[i].setVisible(false);
                } 
            }
         }       

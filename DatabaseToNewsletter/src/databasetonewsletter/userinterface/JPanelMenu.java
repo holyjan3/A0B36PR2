@@ -16,46 +16,26 @@ import javax.swing.JScrollPane;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JPanelMenu extends JPanel{
-    /**
-     *
-     */
+
     Database database;
-    /**
-     *
-     */
+
     JPanelMenuButtonTop menulButtonTop;
-    /**
-     *
-     */
+
     JPanelMenuButtonBottom menulButtonBottom;
-    /**
-     *
-     */
+
     JPanelMenuLines menuLines;
-    /**
-     *
-     */
+
     JScrollPane scrollPane;
-    /**
-     *
-     */
+
     JPanelCalendar conection;
-    /**
-     *
-     */
+  
     JFrameMainMenu frameMainMenu;
-    /**
-     *
-     */
+
     protected ArrayList<Integer> array;
-    
-    /**
-     *
-     * @param database
-     */
+ 
     public JPanelMenu(Database database){
        
         this.database = database;
@@ -66,13 +46,7 @@ public class JPanelMenu extends JPanel{
         menulButtonTop = new JPanelMenuButtonTop(this);
         menuLines = new JPanelMenuLines(database,array);
         menulButtonBottom = new JPanelMenuButtonBottom(this);
-        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-
         
-        
-
-        //setSize(1000,1000);
-        //setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         BorderLayout bl = new BorderLayout();          
         setLayout(bl);

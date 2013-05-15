@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 
 
 /**
- * vlákno kontrolujíci existenci webových adres
- * @author Majitel
+ * vlákno kontrolujíci existenci webové adresy
+ * @author Jan Holý
  */
 public class ControlWebSide implements Runnable{
     private String URLString ;
@@ -24,8 +24,8 @@ public class ControlWebSide implements Runnable{
 
     
     /**
-     * 
-     * @param jLabel label který mění barvu důe výsdků testu exostence
+     *  konrola adresy 
+     * @param jLabel label který mění barvu podle výsledků testu červená = neuspěla adresa/ zelená  = uspěla adresa
      * @param URLString webová adresa
      */
     public ControlWebSide(JLabel jLabel,String URLString) {

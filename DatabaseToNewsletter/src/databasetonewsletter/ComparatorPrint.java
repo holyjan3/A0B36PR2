@@ -8,8 +8,8 @@ import java.util.Comparator;
 
 
 /**
- * porovnání dvou prvků třídy element podle toho májíli být vytištěny
- * @author Majitel
+ * Comparator tříy Element podle toho zda má být záznam vloženy do emailu porovnání je stabilní
+ * @author Jan Holý
  */
 public class ComparatorPrint implements Comparator<Element>{
 

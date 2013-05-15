@@ -23,21 +23,14 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JFrameMainMenu extends JFrame {
-   
-     /**
-     *
-     */
+
     JPanelCalendar jpc;
-     /**
-     *
-     */
+
     JPanelMainMenuTop menuTop;
-    /**
-     *
-     */
+
     public JFrameMainMenu() {   
         super("Newsletter maker");
          
@@ -49,7 +42,7 @@ public class JFrameMainMenu extends JFrame {
                 }
             }
         } catch ( ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameStart.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JFrameMainMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         
        
@@ -94,10 +87,7 @@ setLocation(x, y);
     
     
      }
-    
-    /**
-     *
-     */
+
     class Action implements WindowListener {
         
         
@@ -138,10 +128,7 @@ setLocation(x, y);
             }
         }
         
-        /**
-         *
-         * @param i
-         */
+
         public void close(int i){
              try {
                     WorkerDatabase.conection.close();

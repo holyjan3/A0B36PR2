@@ -6,8 +6,8 @@ package databasetonewsletter;
 
 
 /**
- * jsou zde uložena jaké typa dat obsahují jednotlivé typy záznamů metoda name() vraci jmeno typu záznamu v databázi
- * @author Majitel
+ * jsou zde uložena jaké položky obsahují jednotlivé typy záznamů metoda name() vraci jmeno typu záznamu v databázi
+ * @author Jan Holý
  */
 public enum DataDatabase {    
         
@@ -77,11 +77,11 @@ public enum DataDatabase {
      */
     final public String name;               
     /**
-     * maximální počet záznamů vložitelné do tabulky
+     * maximální počet záznamů vložitelné do html tabulky
      */
     final public int max;        
     /**
-     *  typy záznamů použitelné v tabulce
+     *  typy položek DateElement uložené  v záznamech
      */
     final public DataElement[] dataElemen;
 

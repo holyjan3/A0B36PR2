@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 
 /**
- * třída pro spracování emailu podle vstupníc dat
- * @author Majitel
+ * třída pro spracování emailu podle vstupních dat
+ * @author Jan Holý
  */
 public class PrintedElementsAdministration {
     
@@ -115,16 +115,10 @@ public class PrintedElementsAdministration {
           saveTempfile();
     }
         
-        
-        
-        
-        
-        
-    
     
     /**
-     * uloží vztvořený Substring do dočasného souboru vytvořený email do souboru
-     * @param pathFile cesta k souboru
+     * uloží vytvořený  dočasný soubor ve kterém je vytvořený email do požadovaného souboru
+     * @param pathFile cesta k souboru do nějž má být soubor uložen
      * @throws IOException
      */
     public static void saveFile(String pathFile) throws IOException{
@@ -146,7 +140,7 @@ public class PrintedElementsAdministration {
     
     
     /**
-     * metoda složí k zobrazení emailu v {@link #file_temp_name} složce
+     * metoda složí k zobrazení emailu z {@link #file_temp_name} souboru
      * @throws IOException
      */
     public static void previewCode() throws IOException {
@@ -196,7 +190,7 @@ public class PrintedElementsAdministration {
 
     
     /**
-     * metoda spočítá počet záznamů každého druhu záznamu k vložení do emailu a uloží je podle druhu zvlášť do pole {@link #count}
+     * metoda spočítá počet záznamů označené k vložení do emailu a uloží příslušný počet každého druhu záznamu  do zvláštního pole {@link #count}
      */
     public void countElement(){
         
@@ -217,8 +211,8 @@ public class PrintedElementsAdministration {
 
     
     /**
-     * Najde začátek a konec požadovaného cíle spoléhá na to, že to není koncový znak protože v emailu body
-     * metoda uloží do globálních proměnných {@link #global_start} a {@link #global_end}  začátek a konec vyhledávaného řetězce 
+     * Najde začátek a konec požadovaného cíle spoléhá na to, že to není koncový znak protože v emailu je koncová značka body
+     * metoda uloží do globálních proměnných {@link #global_start} a {@link #global_end}  začátek a konec vyhledávaného řetězce pokud nenajde požadované řetězce uloží do globálních proměnných -1
      * @param target řetězec který mám vyhledávat
      * @param start od kterého místa mám vyhledávat
      */
@@ -278,7 +272,7 @@ public class PrintedElementsAdministration {
 //    
     
     /**
-     * vloží řetězec který nemusí být upraven do emailu (Datum, Čas)
+     * vloží řetězec jenž neobsahuje znakové entity html kódu do emailu (Datum, Čas)
      * @param insertString vkládaný řetězec
      * @param name jméno značky
      * @param start odkud začne prohledávat
@@ -292,7 +286,7 @@ public class PrintedElementsAdministration {
 //     
     
     /**
-     * vloží Text do emailu
+     * vloží Text do emailu a změní zankové entity html hódu
      * @param insertString Text který má být vložena
      * @param name jméno značky
      * @param start odkud začne prohledávat
@@ -307,7 +301,7 @@ public class PrintedElementsAdministration {
 //    
     
     /**
-     * vloží URL do emailu
+     * vloží URL do emailu změní znakové entity html kódu ovšem nezmění entity býlích znaků
      * @param insertString URL která má být vložena
      * @param name jméno značky
      * @param start odkud začne prohledávat

@@ -11,8 +11,8 @@ import java.net.*;
 
 
 /**
- *
- * @author Majitel
+ * kontrola vstupních dat
+ * @author Jan Holý
  */
 public class ControlElement {
   
@@ -100,8 +100,8 @@ public class ControlElement {
    
     
     /**
-     * metoda kontrolující datum
-     * @param date datum ve formátu
+     * metoda kontrolující datum 
+     * @param date datum ve formátu dd.mm.yyyy
      * @return
      */
     public static boolean controlDate(String date){
@@ -138,7 +138,7 @@ public class ControlElement {
    
     
     /**
-     * metoda konrolující čas 
+     * metoda konrolující čas
      * @param time čas ve formátu hh:mi
      * @return
      */

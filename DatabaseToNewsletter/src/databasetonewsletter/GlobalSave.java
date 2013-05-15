@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 
 
 /**
- * uložitě pro data do textového souboru
- * @author Majitel
+ * uloží vybraná data do textového souboru (Záhlaví a Zápatí)
+ * @author Jan Holý
  */
 public class GlobalSave {
     
@@ -71,7 +71,7 @@ public class GlobalSave {
     
     
     /**
-     * nahraje text ze souboru
+     * nahraje data ze souboru
      * @throws FileNotFoundException 
      * @throws IOException
      */

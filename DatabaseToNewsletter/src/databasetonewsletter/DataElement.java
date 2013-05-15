@@ -8,7 +8,7 @@ package databasetonewsletter;
 
 /**
  * Typy položek v záznamech
- * @author Majitel
+ * @author Jan Holý
  */
 public enum DataElement{
     /**
@@ -89,12 +89,12 @@ public enum DataElement{
     final public int LINE_SIZE;
     
     /**
-     * typ kontroly dané položky
+     * typ kontroly dané položky union DataControl
      */
     final public DataControl type;
     
     /**
-     * maximální počet znaků
+     * maximální počet znaků položky
      */
     final public int date_size;
     

@@ -8,8 +8,8 @@ import java.util.Comparator;
 
 
 /**
- * porovnánní podle datumu  a času který musí být hned za ním 
- * @author Majitel
+ * Comparator třídy Element podle datumu  a času,  čas musí být hned za datumem jinak se porovná pouze podle data porovnání je stabilní
+ * @author Jan Holý
  */
 public class CompareDate implements Comparator<Element>{
     int compare;
@@ -60,7 +60,7 @@ public class CompareDate implements Comparator<Element>{
         
         
        
-        
+        if(o1.DE[compare+1] == DataElement.TIME){
         if(ssD1.length == 3){
             day1 = Integer.parseInt(ssD1[0]);
             month1 = Integer.parseInt(ssD1[1]);
@@ -125,7 +125,9 @@ public class CompareDate implements Comparator<Element>{
                    
                 }
             }
+        }else {
+        return 0;
         }
-       
     }
     
+}

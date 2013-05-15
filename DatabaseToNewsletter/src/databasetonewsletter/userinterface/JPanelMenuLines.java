@@ -24,49 +24,27 @@ import layout.TableLayout;
 
 /**
  *
- * @author Majitel
+ * @author Jan Holý
  */
 public class JPanelMenuLines extends JPanel{
-    /**
-     *
-     */
+
     public Database database;
-    /**
-     *
-     */
+
     double height = 30;   
-    /**
-     *
-     */
+
     protected ArrayList<Integer> array;
-    /**
-     *
-     */
+
     TableLayout tableLayout;
-    /**
-     *
-     */
+
     double[][] ds;
-    /**
-     *
-     */
+
     JPanel jp;
-    /**
-     *
-     */
+
     ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
-    /**
-     *
-     */
+ 
     private int add;
       
 
-
-    /**
-     *
-     * @param database
-     * @param array
-     */
     public JPanelMenuLines(Database database, ArrayList<Integer> array) {
            
         this.database = database;
@@ -144,11 +122,7 @@ public class JPanelMenuLines extends JPanel{
        this.repaint();
  
       }
-    
-    /**
-     *
-     * @param ss
-     */
+
     public void find(String ss){
        this.jrb.clear();
        this.removeAll();
@@ -167,18 +141,7 @@ public class JPanelMenuLines extends JPanel{
        this.revalidate();
        this.repaint();
     }
-   /* 
-    public void addLine(){
-        int i = database.Data.size();
-        System.out.println(i);
-       JPanelMenuLine(i,i);
-    }
-    
-   */
-    
-    /**
-     *
-     */
+
     public void JPanelDEScription(){
       
       tableLayout.insertRow (0, TableLayout.MINIMUM);
@@ -206,10 +169,7 @@ public class JPanelMenuLines extends JPanel{
   } 
     
     
-    /**
-     *
-     * @param numberLine
-     */
+
     public void JPanelMenuLine(int numberLine) 
     {
         tableLayout.insertRow (0, TableLayout.MINIMUM);
@@ -246,11 +206,7 @@ public class JPanelMenuLines extends JPanel{
        
   }      
    
-    /**
-     *
-     * @param numberLine
-     * @param element
-     */
+
     void addButton (int numberLine,Element element){
    JCheckBox checkBox;
         JButton jButton;
@@ -280,14 +236,9 @@ public class JPanelMenuLines extends JPanel{
    }
    
    
-    
-    /**
-     *
-     */
+
     class ActionModify implements ActionListener{
-        /**
-         *
-         */
+    
         Database database1= database;
         @Override
         public void actionPerformed(ActionEvent e) {
