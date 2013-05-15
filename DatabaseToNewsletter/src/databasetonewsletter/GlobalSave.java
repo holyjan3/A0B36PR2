@@ -18,14 +18,32 @@ public class GlobalSave {
     private static String HEADING;    
     private static String FOOTER;
     private static String TEMPLATE;
+    private static String CONECTIONURL;
     private final static String separator = "####################";
     private final static String nameFile ="globalsave.txt";
 
+    public static String getCONECTIONURL() {
+        return CONECTIONURL;
+    }
+
+    public static boolean setCONECTIONURL(String CONECTIONURL) {
+       if(CONECTIONURL == null || !CONECTIONURL.equals(separator)){
+            GlobalSave.CONECTIONURL= CONECTIONURL;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    
+    
+    
     /**
      * nastaví zápatí
      * @param FOOTER zápatí
      * @return false v případě že se název rovná separátoru
-     */
+     */  
+    
     public static boolean setFOOTER(String FOOTER) {
          if(FOOTER == null || !FOOTER.equals(separator)){
             GlobalSave.FOOTER= FOOTER;
@@ -100,12 +118,14 @@ public class GlobalSave {
             HEADING = read(bis);
             FOOTER = read(bis);
             TEMPLATE = read(bis);
+            CONECTIONURL = read(bis);
             bis.close();
         
       } else {
        HEADING="";
        FOOTER ="";
        TEMPLATE = "";
+       CONECTIONURL = "";
       }
         
         
@@ -151,6 +171,7 @@ public class GlobalSave {
             save(bw,HEADING);
             save(bw,FOOTER);
             save(bw,TEMPLATE);
+            save(bw,CONECTIONURL);
         } catch (IOException ex) {
             bb = false;
         }       

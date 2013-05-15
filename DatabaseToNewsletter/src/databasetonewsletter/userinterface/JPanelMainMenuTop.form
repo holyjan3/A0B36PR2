@@ -89,12 +89,11 @@
                                   <Component id="label2" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="printer" min="-2" pref="146" max="-2" attributes="0"/>
-                                  <Component id="preview" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
-                                  <Component id="make" min="-2" pref="146" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="printer" pref="164" max="32767" attributes="0"/>
+                                  <Component id="preview" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="make" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                           </Group>
                           <Component id="placeTemplate" max="32767" attributes="0"/>
                       </Group>
@@ -128,12 +127,12 @@
                   <Component id="label1" min="-2" max="-2" attributes="0"/>
                   <Component id="preview" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
-                  <Component id="make" alignment="1" min="-2" pref="55" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
+                  <Component id="make" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -142,6 +141,7 @@
     <Component class="javax.swing.JButton" name="preview">
       <Properties>
         <Property name="text" type="java.lang.String" value="n&#xe1;hled"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previewActionPerformed"/>
@@ -150,6 +150,7 @@
     <Component class="javax.swing.JButton" name="printer">
       <Properties>
         <Property name="text" type="java.lang.String" value="ulo&#x17e;it do html souboru"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="printerActionPerformed"/>
@@ -158,12 +159,16 @@
     <Component class="javax.swing.JButton" name="make">
       <Properties>
         <Property name="text" type="java.lang.String" value="spracuj newsletter"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="makeActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="heading">
+      <Properties>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="headingActionPerformed"/>
         <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="headingFocusLost"/>
@@ -182,6 +187,7 @@
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="2"/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
+            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="footerFocusLost"/>
@@ -202,6 +208,7 @@
     <Component class="javax.swing.JTextField" name="placeTemplate">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeTemplateActionPerformed"/>
@@ -210,6 +217,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="text" type="java.lang.String" value="vybrat m&#xed;sto &#x161;ablony"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

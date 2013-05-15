@@ -111,6 +111,7 @@ public class JPanelMenuButtonTop extends javax.swing.JPanel {
 
         delete.setBackground(new java.awt.Color(255, 153, 153));
         delete.setText("smazat");
+        delete.setFocusable(false);
         delete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteMouseClicked(evt);

@@ -8,8 +8,12 @@ import databasetonewsletter.Database;
 import databasetonewsletter.Element;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -197,11 +201,13 @@ public class JPanelMenuLines extends JPanel{
        
   }      
    
-
+  SelectJRB selectJRB = new SelectJRB();
+  
     void addButton (int numberLine,Element element){
    JCheckBox checkBox;
         JButton jButton;
         JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,element);
+        jr.addActionListener(selectJRB);
         jrb.add(jr);       
         JPanelMenuLines.ActionModify acl = new JPanelMenuLines.ActionModify();
         checkBox = new JCheckBox();
@@ -230,18 +236,72 @@ public class JPanelMenuLines extends JPanel{
 
     class ActionModify implements ActionListener{
     
-        Database database1= database;
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbw = (JButtonWithNumber) e.getSource();
           
             int a = 0;
             
-            Element el = database1.nowWorkDatabase.openElement(jbw.number);
+            Element el = database.nowWorkDatabase.openElement(jbw.number);
             new JFrameElement(JPanelMenuLines.this, el);
             
         }
         
     }
+     class SelectJRB implements ActionListener{
+    
+        
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JRadioButtonWithNumber jr = (JRadioButtonWithNumber) e.getSource();
+            JRadioButtonWithNumber jrbd = null;
+            
+          boolean bb =false;
+          
+          
+           if(e.getModifiers()!=0 && InputEvent.SHIFT_MASK !=0){
+          if(jr.isSelected()){
+             
+          
+               for (int i = jrb.size()-1; i >=0; i--) {
+                   if(jrb.get(i).isSelected()) {
+                       if(jrb.get(i) != jr){
+                           
+                           jrbd = jrb.get(i);
+                           if(bb)
+                               break;
+                       } else {
+                           bb = true;
+                           if(jrbd != null) {
+                               break;
+                           }
+                       }
+                   }                   
+               }
+              if(jrbd!= null){
+                  if(jrbd.number < jr.number){
+                      for (int i = jrbd.number; i < jr.number; i++) {
+                          jrb.get(i).setSelected(true);
+                      }
+                      
+                  }else {
+                      for (int i = jr.number; i < jrbd.number; i++) {
+                          jrb.get(i).setSelected(true);
+                      }
+                      
+                  }                 
+              }
+           
+            
+              
+          }           
+        }
+      }
+   }   
+ 
+   
+       
+    
    
 }
