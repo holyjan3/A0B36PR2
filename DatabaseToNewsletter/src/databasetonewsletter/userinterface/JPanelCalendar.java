@@ -47,8 +47,11 @@ public class JPanelCalendar extends javax.swing.JPanel {
         this.date =date;
    
        SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
+       if(date != null){
        jLabel1.setText( "Záznamy od data "+formatDate.format(date).toString());
-
+       } else {
+           jLabel1.setText(ss);
+       }
     jLabel1.setOpaque(true);
     
     
@@ -63,18 +66,16 @@ public class JPanelCalendar extends javax.swing.JPanel {
         JButton choose_date;
        
         JButton rest_default;
-        
-        
-        
+        JButton today;
         
       
         DATE(){
            
         close = new JButton("zavřít");
         every_time = new JButton("všechny záznami");
-        rest_default = new JButton("mladší 3 měsícu");
+        rest_default = new JButton("mladší 2 měsíce");
         choose_date = new JButton("vyber datum");
-        
+        today = new JButton("Dnes");
         
         close.setForeground(Color.white);
         choose_date.setBackground(Color.green);
@@ -85,10 +86,12 @@ public class JPanelCalendar extends javax.swing.JPanel {
         
         close.setBackground(Color.red);
         close.setOpaque(true);
-        
-        
+     
         rest_default.setBackground(Color.MAGENTA);
+        rest_default.setOpaque(true);
         
+        today.setBackground(Color.orange);
+        today.setOpaque(true);
         
         setLayout(new BorderLayout());
          
@@ -103,7 +106,15 @@ public class JPanelCalendar extends javax.swing.JPanel {
         
         cal= new JCalendar();       
         cal.setSize(dim);
+        
+        if(date!= null){
+            
+        
         cal.setDate(date);
+        
+        } else {
+            cal.setDate(new Date());
+        }
         setAlwaysOnTop( true );
        
         
@@ -215,26 +226,20 @@ public class JPanelCalendar extends javax.swing.JPanel {
             });
          
          rest_default.addActionListener(new ActionListener() {
-             
-             
-             
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 Date d = WorkerDatabase.setDate();                
-                if(jPanelMenuLines != null){
-                 
-                    jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(d);
-                    jPanelMenuLines.overWritePanel();
-                } else {
-                    WorkerDatabase.date = d;                    
-                }
-                date = d;
-                jLabel1.setText(d.toString());
-                SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
-                jLabel1.setText( "Od data "+formatDate.format(d).toString());
-                dispose();
-                jButton1.setEnabled(true);
+                cal.setDate(d);
+            }
+        });
+         
+         today.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();                
+                cal.setDate(d);
             }
         });
          
@@ -255,8 +260,9 @@ public class JPanelCalendar extends javax.swing.JPanel {
         
         add(cal,BorderLayout.CENTER);
         jPanel.add(choose_date);
-        jPanel.add(rest_default);
         jPanel.add(every_time);
+        jPanel.add(rest_default);
+        jPanel.add(today);
         jPanel.add(close);
         add(jPanel,BorderLayout.SOUTH);
 

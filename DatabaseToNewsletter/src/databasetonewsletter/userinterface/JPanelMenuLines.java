@@ -8,12 +8,10 @@ import databasetonewsletter.Database;
 import databasetonewsletter.Element;
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.KeyEventDispatcher;
-import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -25,15 +23,17 @@ import layout.TableLayout;
 
 
 
+
 /**
  * třída přidává a aktualizuje řádky záznamů
  * @author Jan Holý
  */
-public class JPanelMenuLines extends JPanel{
+public class JPanelMenuLines extends JPanel {
 
     public Database database;
-
-    double height = 30;   
+    protected boolean shiftIsDown = false;
+    double height = 30;
+    ShiftDown shiftDown;
 
     protected ArrayList<Integer> array;
 
@@ -53,7 +53,7 @@ public class JPanelMenuLines extends JPanel{
         this.database = database;
         this.array = array;
         this.add = 3;        
-        
+        shiftDown = new ShiftDown();
        
        this.setLayout(new FlowLayout(FlowLayout.LEFT) );            
        
@@ -208,7 +208,12 @@ public class JPanelMenuLines extends JPanel{
         JButton jButton;
         JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,element);
         jr.addActionListener(selectJRB);
-        jrb.add(jr);       
+        jrb.add(jr); 
+        
+
+        jr.addKeyListener(shiftDown);
+        
+        
         JPanelMenuLines.ActionModify acl = new JPanelMenuLines.ActionModify();
         checkBox = new JCheckBox();
         checkBox.setFocusable(true);
@@ -258,9 +263,9 @@ public class JPanelMenuLines extends JPanel{
             JRadioButtonWithNumber jrbd = null;
             
           boolean bb =false;
+    
           
-          
-           if(e.getModifiers()!=0 && InputEvent.SHIFT_MASK !=0){
+           if(shiftIsDown){
           if(jr.isSelected()){
              
           
@@ -295,10 +300,34 @@ public class JPanelMenuLines extends JPanel{
            
             
               
+          } else {
+              for (int i = jr.number-1;i >=0 && jrb.get(i).isSelected(); i--) {
+                  jrb.get(i).setSelected(false);
+              }
           }           
         }
       }
-   }   
+   }
+     
+     class ShiftDown implements KeyListener
+        {
+            public void keyPressed(KeyEvent e)
+            {
+                if (e.getKeyCode()== e.VK_SHIFT) shiftIsDown = true; 
+            }
+
+            public void keyReleased(KeyEvent e)
+            {
+                 if (e.getKeyCode() == e.VK_SHIFT && 
+                     shiftIsDown == true) shiftIsDown = false;
+            }
+
+            public void keyTyped(KeyEvent e)
+            {
+                // nothing
+            }
+
+     }
  
    
        

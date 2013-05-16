@@ -82,7 +82,7 @@ public class JPanelElement extends JPanel{
         final int minwidth = 20;
         final int maxwidth = 60;
         
-        text = new JTextArea[element.DE.length];  
+        text =new JTextAreaWithNumber[element.DE.length];  
         jLabelsError = new JLabel[element.DE.length];
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -304,10 +304,22 @@ public class JPanelElement extends JPanel{
        }
     }
 
+    public void save(int i){
+        if(!text[i].getText().equals("")) {
+                  
+                    if(element.DE[i].type == DataControl.URL){
+                        controlUrl(text[i],i);
+                     } else {
+                         boolean bb = ControlElement.controlDatabaseElement(element.DE[i], text[i].getText());
+                         jLabelsError[i].setVisible(!bb);
+                        
+                    }
+                    
+               } else {
+                   jLabelsError[i].setVisible(false);
+               } 
+           }
     
-        /**
-     *
-     */
     class ActionSave implements FocusListener {
 
         @Override
@@ -319,48 +331,45 @@ public class JPanelElement extends JPanel{
               
                JTextAreaWithNumber jtf = (JTextAreaWithNumber) e.getSource();
                 int i = jtf.number;
-               if(!jtf.getText().equals("")) {
-                  
-                    if(element.DE[i].type == DataControl.URL){
-                        controlUrl(jtf,i);
-                     } else {
-                         boolean bb = ControlElement.controlDatabaseElement(element.DE[i], jtf.getText());
-                         jLabelsError[i].setVisible(!bb);
-                        
-                    }
-                    
-               } else {
-                   jLabelsError[i].setVisible(false);
-               } 
-           }
-        }       
-            
+                 save(i);
+               
+        } 
         
-        /**
-     *
-     */
+    }    
+            
+    public void delete(int i){
+        
+            text[i].setText("");
+            jLabelsError[i].setVisible(false);
+    }   
+   
     class ActionButtonDelete implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();
-            text[jbwn.number].setText(""); 
-            
+            delete(jbwn.number);
         }
             
-        }
+    }
         
         /**
      *
      */
+    public void restore(int i){
+         if(element.strings_of_elements[i]!=null && !element.strings_of_elements[i].equals("")){
+            text[i].setText(element.strings_of_elements[i]);
+            save(i);
+       }
+    }
+    
     class ActionButtonRestore implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             JButtonWithNumber jbwn =(JButtonWithNumber) e.getSource();           
-            if(!element.strings_of_elements[jbwn.number].equals("")){
-            text[jbwn.number].setText(element.strings_of_elements[jbwn.number]);
-            }
+            restore(jbwn.number);
         }
         
         
@@ -497,5 +506,5 @@ public class JPanelElement extends JPanel{
 
         }       
                  
-   }
-       
+   
+}

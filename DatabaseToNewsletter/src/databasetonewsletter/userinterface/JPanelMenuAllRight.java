@@ -71,7 +71,7 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
             frameMenuAll.dispose();
         } catch (Exception e) {
             //System.out.println(e.getCause());   
-            JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím zdrojové soubory", "", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Email se nepodařilo vytisknout zkontrolujte prosím šablonu", "", JOptionPane.ERROR_MESSAGE);
             
         }
     }//GEN-LAST:event_jButton1ActionPerformed

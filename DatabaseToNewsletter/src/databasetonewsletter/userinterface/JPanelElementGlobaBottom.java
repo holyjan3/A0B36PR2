@@ -39,7 +39,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
 
         scrollbar1 = new java.awt.Scrollbar();
         saveExit = new javax.swing.JButton();
-        replaceAll = new javax.swing.JButton();
+        restoreAll = new javax.swing.JButton();
         deleteAll = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         remove1 = new javax.swing.JButton();
@@ -58,10 +58,15 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
             }
         });
 
-        replaceAll.setText("Obnovi vše");
-        replaceAll.addMouseListener(new java.awt.event.MouseAdapter() {
+        restoreAll.setText("Obnovi vše");
+        restoreAll.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                replaceAllMouseClicked(evt);
+                restoreAllMouseClicked(evt);
+            }
+        });
+        restoreAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restoreAllActionPerformed(evt);
             }
         });
 
@@ -112,7 +117,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
                     .addComponent(saveExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(saveNot, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(replaceAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(restoreAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(deleteAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(25, 25, 25))
         );
@@ -128,7 +133,7 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 174, Short.MAX_VALUE)
-                .addComponent(replaceAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(restoreAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deleteAll, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
@@ -147,18 +152,18 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
      
         for (int i = 0; i < panelElement.text.length; i++) {
             
-            panelElement.text[i].setText("");
+            panelElement.delete(i);
         }
   
     }//GEN-LAST:event_deleteAllMouseClicked
 
-    private void replaceAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_replaceAllMouseClicked
+    private void restoreAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_restoreAllMouseClicked
        
         for (int i = 0; i < panelElement.text.length; i++) {
-            panelElement.text[i].setText(panelElement.element.strings_of_elements[i]);
+            panelElement.restore(i);
  
         }
-    }//GEN-LAST:event_replaceAllMouseClicked
+    }//GEN-LAST:event_restoreAllMouseClicked
 
     private void saveExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveExitActionPerformed
       
@@ -256,11 +261,15 @@ public class JPanelElementGlobaBottom extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_remove1ActionPerformed
 
+    private void restoreAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restoreAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_restoreAllActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton deleteAll;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JButton remove1;
-    private javax.swing.JButton replaceAll;
+    private javax.swing.JButton restoreAll;
     private javax.swing.JButton saveExit;
     private javax.swing.JButton saveNot;
     private java.awt.Scrollbar scrollbar1;

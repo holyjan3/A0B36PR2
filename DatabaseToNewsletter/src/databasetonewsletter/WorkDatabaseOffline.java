@@ -75,7 +75,8 @@ public class WorkDatabaseOffline extends WorkDatabase{
         boolean printed = false;
          SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
          SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm");
-        
+        String s;
+         
          while(true){
          try{
             
@@ -88,18 +89,25 @@ public class WorkDatabaseOffline extends WorkDatabase{
                 //printed = rs.getBoolean(WorkerDatabase.printed);
    
                 for (int i = 0; i < database.DE.length; i++) {
-                    
+                   
                     switch (database.DE[i].type) {
                         case DATE:
                              if((date = rs.getDate(database.DE[i].name()))!=null)
                             ss[i] = formatDate.format(date);
+                             else 
+                                ss[i] ="";
                             break;
                         case TIME:
                             if((date = rs.getTime(database.DE[i].name()))!=null)
                             ss[i] = formatTime.format(date);
+                            else
+                                ss[i] ="";
                             break;         
                         default:
-                             ss[i] = rs.getString(database.DE[i].name());
+                            if((s=rs.getString(database.DE[i].name()))!=null)
+                             ss[i] = s;
+                            else 
+                                ss[i] = "";
                            
                     }
                    
