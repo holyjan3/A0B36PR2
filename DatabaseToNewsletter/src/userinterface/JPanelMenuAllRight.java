@@ -63,10 +63,10 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
         try {          
             
             frameMenuAll.pea.PrintElement();
-            frameMenuAll.pea.insertText(GlobalSave.getHEADING(), "HEADING", 0);
-            frameMenuAll.pea.insertText(GlobalSave.getFOOTER(), "FOOTER", 0);
+            frameMenuAll.pea.insertText(GlobalSave.saveData.getHEADING(), "HEADING", 0);
+            frameMenuAll.pea.insertText(GlobalSave.saveData.getFOOTER(), "FOOTER", 0);
             frameMenuAll.pea.saveTempfile();
-            GlobalSave.setTEMPLATE(frameMenuAll.pea.getFile_source());
+            GlobalSave.saveData.setTEMPLATE(frameMenuAll.pea.getFile_source());
             frameMenuAll.dispose();
         } catch (Exception e) {
             //System.out.println(e.getCause());   

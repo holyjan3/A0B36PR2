@@ -96,11 +96,11 @@ setLocation(x, y);
 
         @Override
         public void windowClosing(WindowEvent e) {
-            GlobalSave.setFOOTER(menuTop.getFooter());
-            GlobalSave.setHEADING(menuTop.getHeading());
+            GlobalSave.saveData.setFOOTER(menuTop.getFooter());
+            GlobalSave.saveData.setHEADING(menuTop.getHeading());
             boolean bb =true;
             try {
-                 GlobalSave.saveText();
+                 GlobalSave.saveData.saveText();
                  close(0);
                  
             } catch  (IOException | NullPointerException ee){

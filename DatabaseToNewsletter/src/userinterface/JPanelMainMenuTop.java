@@ -36,14 +36,14 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         printedElement = new PrintedElementsAdministration(WorkerDatabase.conectDatabeses.getDataDatabases());
          
         try{
-            GlobalSave.getText();
+            GlobalSave.saveData.getText();
             
         } catch (Exception e){
             JOptionPane.showMessageDialog(null, "Nepodařilo se nahrát záhlaví nebo zápatí ", "", JOptionPane.ERROR_MESSAGE);
         }
-        this.heading.setText(GlobalSave.getHEADING());
-        this.footer.setText(GlobalSave.getFOOTER());
-        f = new File(GlobalSave.getTEMPLATE());
+        this.heading.setText(GlobalSave.saveData.getHEADING());
+        this.footer.setText(GlobalSave.saveData.getFOOTER());
+        f = new File(GlobalSave.saveData.getTEMPLATE());
         this.defoleteTemlateNotFound.setVisible(false);
         if(f != null && f.exists()){
             if(ff.getAbsolutePath() == f.getAbsolutePath() || !ff.exists()){
@@ -339,8 +339,8 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
        
             
-            GlobalSave.setFOOTER(this.footer.getText());
-            GlobalSave.setHEADING(this.heading.getText());
+            GlobalSave.saveData.setFOOTER(this.footer.getText());
+            GlobalSave.saveData.setHEADING(this.heading.getText());
             
             printedElement.setFile_source(this.sourceTemplate.getText());
             if(calendar.cal == null){

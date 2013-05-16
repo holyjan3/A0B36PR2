@@ -5,6 +5,7 @@
 package databasetonewsletter;
 
 import StaticClass.ControlConection;
+import StaticClass.GlobalSave;
 import StaticClass.WorkerDatabase;
 import userinterface.JFrameConect;
 
@@ -27,7 +28,8 @@ public class DatabaseToNewsletter {
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
-           WorkerDatabase workerDatabase = new WorkerDatabase();
+           new WorkerDatabase();
+           new GlobalSave();
            WorkerDatabase.dateControl.setDate(WorkerDatabase.dateControl.getDefolteDate());
            JFrameConect.main(null);
             
