@@ -47,14 +47,14 @@ public class JFrameMainMenu extends JFrame {
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE); 
         BorderLayout bl = new BorderLayout();
        
-        jpc = new JPanelCalendar(null,WorkerDatabase.date);
+        jpc = new JPanelCalendar(null,WorkerDatabase.dateControl.getDate());
          
        
         
         this.addWindowListener(new Action());
         menuTop = new JPanelMainMenuTop(jpc);
         add(menuTop,BorderLayout.NORTH);
-        add(new JPanelDatabases(WorkerDatabase.dataDatabases,this),BorderLayout.CENTER);
+        add(new JPanelDatabases(WorkerDatabase.conectDatabeses.getDataDatabases(),this),BorderLayout.CENTER);
         jpc.setLayout(new FlowLayout(FlowLayout.RIGHT));
        
         add(jpc,BorderLayout.SOUTH);
@@ -129,7 +129,7 @@ setLocation(x, y);
 
         public void close(int i){
              try {
-                    WorkerDatabase.conection.close();
+                    WorkerDatabase.conectDatabeses.conectionClose();
                 } catch (SQLException ex) {
                    i = 2;
                 } finally {

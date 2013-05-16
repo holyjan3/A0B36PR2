@@ -5,13 +5,15 @@
 package userinterface;
 
 import StaticClass.ControlConection;
-import StaticClass.ControlElement;
+import StaticClass.WorkerDatabase;
+import databasetonewsletter.ControlElement;
 import databasetonewsletter.ControlWebSide;
 import databasetonewsletter.DataControl;
 import databasetonewsletter.DataElement;
 import databasetonewsletter.Database;
 import databasetonewsletter.Element;
 import static databasetonewsletter.DataElement.*;
+import databasetonewsletter.WorkDatabase;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -286,7 +288,7 @@ public class JPanelElement extends JPanel{
 
     public void controlUrl(JTextArea area,int i){
         jLabelsError[i].setVisible(false);
-       if(ControlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
+       if(WorkerDatabase.controlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
         if(conected){
             Thread thread = new Thread(new ControlWebSide(jLabelsError[i],area.getText()));
             thread.start();
@@ -310,7 +312,7 @@ public class JPanelElement extends JPanel{
                     if(element.DE[i].type == DataControl.URL){
                         controlUrl(text[i],i);
                      } else {
-                         boolean bb = ControlElement.controlDatabaseElement(element.DE[i], text[i].getText());
+                         boolean bb = WorkerDatabase.controlElement.controlDatabaseElement(element.DE[i], text[i].getText());
                          jLabelsError[i].setVisible(!bb);
                         
                     }

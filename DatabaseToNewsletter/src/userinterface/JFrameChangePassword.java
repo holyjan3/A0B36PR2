@@ -38,8 +38,8 @@ setLocation(x, y);
         
         
         
-        this.URL.setText(WorkerDatabase.getDefoulteUrl());
-        this.userName.setText(WorkerDatabase.getDefoulteName());
+        this.URL.setText(WorkerDatabase.conectDatabeses.getDefoulteUrl());
+        this.userName.setText(WorkerDatabase.conectDatabeses.getDefoulteName());
         this.frameConect = frameConect;
         this.result.setForeground(Color.white);
         
@@ -219,12 +219,12 @@ setLocation(x, y);
         String new2 = newPassword2.getText();
         
         if(new1 != null && new2 != null && !new1.equals("") && new1.equals(new2)) {
-        WorkerDatabase.setUrl(url);
-        WorkerDatabase.setName(name);
-        WorkerDatabase.setPassword(old);
+        WorkerDatabase.conectDatabeses.setUrl(url);
+        WorkerDatabase.conectDatabeses.setName(name);
+        WorkerDatabase.conectDatabeses.setPassword(old);
         try {
-            WorkerDatabase.conectOnlineDatabase();
-            if(WorkerDatabase.changePassword(new1)){
+            WorkerDatabase.conectDatabeses.conectOnlineDatabase();
+            if(WorkerDatabase.conectDatabeses.changePassword(new1)){
                 this.result.setBackground(Color.green);
                 this.result.setVisible(true);
                 this.result.setText("heslo změněno");
@@ -237,7 +237,7 @@ setLocation(x, y);
                 removePassword();
             }
             try {
-               WorkerDatabase.conection.close();
+               WorkerDatabase.conectDatabeses.conectionClose();
             } catch (SQLException ex) {
                     
           }

@@ -62,7 +62,7 @@ public class JPanelMenu extends JPanel{
 
         
         
-       conection = new JPanelCalendar(menuLines,WorkerDatabase.date);
+       conection = new JPanelCalendar(menuLines,WorkerDatabase.dateControl.getDate());
  
        
        

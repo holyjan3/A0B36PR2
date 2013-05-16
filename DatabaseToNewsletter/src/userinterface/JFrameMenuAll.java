@@ -36,7 +36,7 @@ public class JFrameMenuAll extends JFrame{
     public JFrameMenuAll(Date date,PrintedElementsAdministration pea) {
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
-        menus = new JPanelMenuPrinted[WorkerDatabase.dataDatabases.size()];
+        menus = new JPanelMenuPrinted[WorkerDatabase.conectDatabeses.getDataDatabases().size()];
         this.pea = pea;
        
         
@@ -51,13 +51,13 @@ public class JFrameMenuAll extends JFrame{
         
         
         
-        for (int i = 0; i < WorkerDatabase.dataDatabases.size(); i++) {
+        for (int i = 0; i < WorkerDatabase.conectDatabeses.getDataDatabases().size(); i++) {
       
-            JLabel l= new JLabel(WorkerDatabase.dataDatabases.get(i).name_database);
+            JLabel l= new JLabel(WorkerDatabase.conectDatabeses.getDataDatabases().get(i).name_database);
             panel.add(l,c);
             
-            WorkerDatabase.dataDatabases.get(i).nowWorkDatabase.readFromDatabase(date);
-            menus[i]= new JPanelMenuPrinted(WorkerDatabase.dataDatabases.get(i));
+            WorkerDatabase.conectDatabeses.getDataDatabases().get(i).nowWorkDatabase.readFromDatabase(date);
+            menus[i]= new JPanelMenuPrinted(WorkerDatabase.conectDatabeses.getDataDatabases().get(i));
             menus[i].AddPanel();
             panel.setBackground(Color.black);
             l.setForeground(Color.white);

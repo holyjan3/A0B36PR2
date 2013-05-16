@@ -31,9 +31,9 @@ public class JFrameConect extends javax.swing.JFrame {
         setVisible(true);
         setResizable(false);
         
-        this.urlText.setText(WorkerDatabase.getDefoulteUrl());
-        this.nameText.setText(WorkerDatabase.getDefoulteName());
-        this.jPasswordField1.setText(WorkerDatabase.getDefoultePassword());
+        this.urlText.setText(WorkerDatabase.conectDatabeses.getDefoulteUrl());
+        this.nameText.setText(WorkerDatabase.conectDatabeses.getDefoulteName());
+        this.jPasswordField1.setText(WorkerDatabase.conectDatabeses.getDefoultePassword());
         
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -207,15 +207,15 @@ setLocation(x, y);
           
           
           
-            WorkerDatabase.setUrl(url);
-            WorkerDatabase.setName(name);
-            WorkerDatabase.setPassword(password);
-            WorkerDatabase.conectOnlineDatabase();
+            WorkerDatabase.conectDatabeses.setUrl(url);
+            WorkerDatabase.conectDatabeses.setName(name);
+            WorkerDatabase.conectDatabeses.setPassword(password);
+            WorkerDatabase.conectDatabeses.conectOnlineDatabase();
             
              
             
             try {
-                WorkerDatabase.WorkerDatabase();
+                WorkerDatabase.conectDatabeses.conectWorkerDatabase();
                 new JFrameMainMenu();
                 this.dispose();
                 
@@ -226,7 +226,7 @@ setLocation(x, y);
                 JOptionPane.ERROR_MESSAGE);
                 
                  try {
-                        WorkerDatabase.conection.close();
+                        WorkerDatabase.conectDatabeses.conectionClose();
                         
                     } catch (SQLException ex2) {
                    
@@ -239,7 +239,7 @@ setLocation(x, y);
             ErrorConectToDatabase er = new ErrorConectToDatabase();
              if(er.ErrorConectToDatabase()){
                 try {
-                    WorkerDatabase.WorkerDatabase();
+                    WorkerDatabase.conectDatabeses.conectWorkerDatabase();
                     new JFrameMainMenu(); 
                 } catch (SQLException ex1) {
                     
@@ -248,7 +248,7 @@ setLocation(x, y);
                     "",
                      JOptionPane.ERROR_MESSAGE);
                     try {
-                        WorkerDatabase.conection.close();
+                        WorkerDatabase.conectDatabeses.conectionClose();
                     } catch (SQLException ex2) {
                         
                     }
@@ -264,9 +264,9 @@ setLocation(x, y);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       this.urlText.setText(WorkerDatabase.getDefoulteUrl());
-       this.nameText.setText(WorkerDatabase.getDefoulteName());
-       this.jPasswordField1.setText(WorkerDatabase.getDefoultePassword());
+       this.urlText.setText(WorkerDatabase.conectDatabeses.getDefoulteUrl());
+       this.nameText.setText(WorkerDatabase.conectDatabeses.getDefoulteName());
+       this.jPasswordField1.setText(WorkerDatabase.conectDatabeses.getDefoultePassword());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void changePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePasswordActionPerformed

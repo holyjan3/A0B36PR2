@@ -34,10 +34,10 @@ public class ErrorConectToDatabase {
             if (n==1){
            
             try {
-            WorkerDatabase.conectOnlineDatabase();
+            WorkerDatabase.conectDatabeses.conectOnlineDatabase();
                 return true;
             
-            } catch (    SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {           
+            } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException ex) {           
                return false;        
                 
             }

@@ -4,7 +4,6 @@
  */
 package databasetonewsletter;
 
-import StaticClass.ControlElement;
 import StaticClass.WorkerDatabase;
 import userinterface.ErrorConectToDatabase;
 import userinterface.JPanelElement;
@@ -26,7 +25,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
     
     public WorkDatabaseOffline(Database database) {
         super(database);       
-        conection = WorkerDatabase.conection;
+        conection = WorkerDatabase.conectDatabeses.getConection();
         this.read = true;
         date = null;
     }
@@ -125,7 +124,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
      catch(SQLException ex) {
          ErrorConectToDatabase er= new ErrorConectToDatabase();
         if(er.ErrorConectToDatabase()){
-             conection = WorkerDatabase.conection;
+             conection = WorkerDatabase.conectDatabeses.getConection();
         } else {
             return;
         }
@@ -200,7 +199,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
         } catch (SQLException ex) {
            ErrorConectToDatabase er= new ErrorConectToDatabase();
         if(er.ErrorConectToDatabase()){
-             conection = WorkerDatabase.conection;
+             conection = WorkerDatabase.conectDatabeses.getConection();
         } else {
             return;
         }
@@ -225,12 +224,12 @@ public class WorkDatabaseOffline extends WorkDatabase{
             statement = conection.prepareStatement(sql);
             statement.execute(); 
             database.Data.remove(element);
-            WorkerDatabase.printedHashMap.remove(key);
+            WorkerDatabase.conectDatabeses.removeKey(key);
             return;
         } catch (SQLException ex) {
              ErrorConectToDatabase er= new ErrorConectToDatabase();
         if(er.ErrorConectToDatabase()){
-             conection = WorkerDatabase.conection;
+             conection = WorkerDatabase.conectDatabeses.getConection();
         } else {
             return;
         }
@@ -243,7 +242,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
     public void modifyElement(JPanelElement panelElement) {
         Element element = panelElement.element;
         for (int i = 0; i < panelElement.text.length; i++) {
-            element.strings_of_elements[i] = ControlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
+            element.strings_of_elements[i] = WorkerDatabase.controlElement.contorlDatabaseElementAndReplece(panelElement.element.strings_of_elements[i], panelElement.element.DE[i]);
         }      
         
         
@@ -268,7 +267,7 @@ public class WorkDatabaseOffline extends WorkDatabase{
         } catch (SQLException ex) {
              ErrorConectToDatabase er= new ErrorConectToDatabase();
         if(er.ErrorConectToDatabase()){
-             conection = WorkerDatabase.conection;
+             conection = WorkerDatabase.conectDatabeses.getConection();
         } else {
             return;
         }

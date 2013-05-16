@@ -27,8 +27,8 @@ public class DatabaseToNewsletter {
            Thread th= null;
            th= new Thread(new ControlConection(th));
            th.start();
-           
-           WorkerDatabase.date =WorkerDatabase.setDate();
+           WorkerDatabase workerDatabase = new WorkerDatabase();
+           WorkerDatabase.dateControl.setDate(WorkerDatabase.dateControl.getDefolteDate());
            JFrameConect.main(null);
             
         

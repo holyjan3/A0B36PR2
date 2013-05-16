@@ -33,7 +33,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     public JPanelMainMenuTop(JPanelCalendar calendar) {
         initComponents();
         this.calendar = calendar;
-        printedElement = new PrintedElementsAdministration(WorkerDatabase.dataDatabases);
+        printedElement = new PrintedElementsAdministration(WorkerDatabase.conectDatabeses.getDataDatabases());
          
         try{
             GlobalSave.getText();
@@ -59,7 +59,16 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
             
         }else {
+            if(ff.exists()){                
+                this.defaulteAdress.setSelected(true);
+                 this.defoleteTemlateNotFound.setVisible(false);
+                this.jButton1.setEnabled(false);
+                this.sourceTemplate.setText(ff.getAbsolutePath());                
+                this.sourceTemplate.setEnabled(false);
+                
+            } else {
              this.sourceTemplate.setText("");
+            }
         }
         
    
@@ -235,10 +244,10 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(defaulteAdress)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(defoleteTemlateNotFound)))
+                        .addComponent(defoleteTemlateNotFound, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,10 +263,10 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                         .addComponent(preview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(355, Short.MAX_VALUE)
+                    .addContainerGap(409, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(21, 21, 21)))
         );
@@ -364,6 +373,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
               String zipname = chooser.getSelectedFile().getPath();
               this.sourceTemplate.setText(zipname);
               printedElement.setFile_source(zipname);
+              this.defoleteTemlateNotFound.setVisible(false);
           }
     }//GEN-LAST:event_jButton1ActionPerformed
 

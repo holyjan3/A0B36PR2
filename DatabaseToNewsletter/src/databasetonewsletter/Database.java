@@ -4,13 +4,11 @@
  */
 package databasetonewsletter;
 
-import static StaticClass.WorkerDatabase.conection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
+
 
 
 

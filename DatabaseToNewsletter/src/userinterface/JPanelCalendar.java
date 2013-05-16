@@ -60,11 +60,8 @@ public class JPanelCalendar extends javax.swing.JPanel {
     class DATE extends JFrame{
 
         JButton close;
-
         JButton every_time;
-
         JButton choose_date;
-       
         JButton rest_default;
         JButton today;
         
@@ -184,7 +181,7 @@ public class JPanelCalendar extends javax.swing.JPanel {
                     
                     
                 } else {
-                    WorkerDatabase.date = null;
+                    WorkerDatabase.dateControl.setDate(null);
                 }
                  jLabel1.setText(ss);
                  jButton1.setEnabled(true);
@@ -210,7 +207,7 @@ public class JPanelCalendar extends javax.swing.JPanel {
                     jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(d);
                     jPanelMenuLines.overWritePanel();
                 } else {
-                    WorkerDatabase.date = d;                    
+                    WorkerDatabase.dateControl.setDate(d);                    
                 }
                 
                 
@@ -229,7 +226,7 @@ public class JPanelCalendar extends javax.swing.JPanel {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Date d = WorkerDatabase.setDate();                
+                Date d = WorkerDatabase.dateControl.getDefolteDate();
                 cal.setDate(d);
             }
         });

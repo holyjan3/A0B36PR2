@@ -2,26 +2,32 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package StaticClass;
+package databasetonewsletter;
 
-import databasetonewsletter.DataElement;
+import static databasetonewsletter.DataControl.DATE;
+import static databasetonewsletter.DataControl.TIME;
 import static databasetonewsletter.DataControl.URL;
-
-
+import static databasetonewsletter.DataControl.VARCHAR;
 
 /**
- * kontrola vstupních dat
- * @author Jan Holý
+ *
+ * @author Majitel
  */
-public class ControlElement {
-  
+public class ControlElementDerby extends ControlElement{
+
+   
+    
+    
+    
+    
+    
     /**
      * metoda konrolující vstupní data
      * @param DE pro určení typu kontroly
      * @param ss vstupní řetezec
      * @return vrátí hodonu dle toho jestli vstupní řetězec odpovídá požadfovanému typu
      */
-    public static boolean controlDatabaseElement(DataElement DE, String ss) {
+    public boolean controlDatabaseElement(DataElement DE, String ss) {
         int i = 0;
         boolean b = false;
            switch ((DE.type)) {
@@ -52,7 +58,7 @@ public class ControlElement {
      * @param DE pro určení typu kontroly
      * @return vrátí řetězec který zamezí strátě dat
      */
-    public static String contorlDatabaseElementAndReplece(String strings_of_element,DataElement DE) {
+    public String contorlDatabaseElementAndReplece(String strings_of_element,DataElement DE) {
         int i = 0;
         String parse ="";
         switch (DE.type) {
@@ -89,7 +95,7 @@ public class ControlElement {
      * @param MAX_SIZE maximální délka řetězce
      * @return
      */
-    public static boolean contolVarChar(String ss, int MAX_SIZE){
+  public boolean contolVarChar(String ss, int MAX_SIZE){
        if(ss.length()<=MAX_SIZE) {
            return true;
        }else {
@@ -103,7 +109,7 @@ public class ControlElement {
      * @param date datum ve formátu dd.mm.yyyy
      * @return
      */
-    public static boolean controlDate(String date){
+    public boolean controlDate(String date){
        
       if (date.length()==10){
        String ss[] = date.split("[.]");
@@ -141,7 +147,7 @@ public class ControlElement {
      * @param time čas ve formátu hh:mi
      * @return
      */
-    public static boolean controlTime (String time){
+    public  boolean controlTime (String time){
        if (time.length()==5){
        String ss[] = time.split("[:]");
        int hour = 0;
@@ -163,4 +169,5 @@ public class ControlElement {
           return false;
       }
    }
+    
 }

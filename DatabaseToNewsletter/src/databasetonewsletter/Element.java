@@ -40,10 +40,10 @@ final public class Element{
         
         this.strings_of_elements = strings_of_elements;
         
-        if(WorkerDatabase.printedHashMap.containsKey(this.key)){
-            printed = WorkerDatabase.printedHashMap.get(this.key);
+        if(WorkerDatabase.conectDatabeses.conteinsPrintedHashMap(key)){
+            printed = WorkerDatabase.conectDatabeses.getPrintedHashMap(this.key);
         }else {
-            WorkerDatabase.printedHashMap.put(this.key, false);
+            WorkerDatabase.conectDatabeses.setPrintedHashMap(this.key, false);
             
         }
     }
@@ -84,7 +84,7 @@ final public class Element{
      */
     public void setPrinted(boolean b,int key){
         this.printed = b;
-        WorkerDatabase.printedHashMap.put(key, b);        
+        WorkerDatabase.conectDatabeses.setPrintedHashMap(key, b);        
     }
 
     
