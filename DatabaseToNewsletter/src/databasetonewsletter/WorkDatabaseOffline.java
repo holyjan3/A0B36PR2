@@ -6,8 +6,8 @@ package databasetonewsletter;
 
 import StaticClass.ControlElement;
 import StaticClass.WorkerDatabase;
-import databasetonewsletter.userinterface.ErrorConectToDatabase;
-import databasetonewsletter.userinterface.JPanelElement;
+import userinterface.ErrorConectToDatabase;
+import userinterface.JPanelElement;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 

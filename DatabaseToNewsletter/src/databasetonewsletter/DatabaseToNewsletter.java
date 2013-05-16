@@ -6,7 +6,7 @@ package databasetonewsletter;
 
 import StaticClass.ControlConection;
 import StaticClass.WorkerDatabase;
-import databasetonewsletter.userinterface.JFrameConect;
+import userinterface.JFrameConect;
 
 
 

@@ -4,7 +4,7 @@
  */
 package databasetonewsletter;
 
-import databasetonewsletter.userinterface.JPanelElement;
+import userinterface.JPanelElement;
 import java.util.Date;
 
 
