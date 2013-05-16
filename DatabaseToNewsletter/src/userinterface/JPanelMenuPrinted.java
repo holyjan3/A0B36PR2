@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasetonewsletter.Database;
+import databasedata.Database;
 import java.awt.BorderLayout;
 
 /**

@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasetonewsletter.PrintedElementsAdministration;
-import StaticClass.WorkerDatabase;
+import createemail.PrintedElementsAdministration;
+import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;

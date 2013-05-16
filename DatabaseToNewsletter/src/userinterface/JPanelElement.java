@@ -4,16 +4,16 @@
  */
 package userinterface;
 
-import StaticClass.ControlConection;
-import StaticClass.WorkerDatabase;
-import databasetonewsletter.ControlElement;
-import databasetonewsletter.ControlWebSide;
-import databasetonewsletter.DataControl;
-import databasetonewsletter.DataElement;
-import databasetonewsletter.Database;
-import databasetonewsletter.Element;
-import static databasetonewsletter.DataElement.*;
-import databasetonewsletter.WorkDatabase;
+import other.ControlConection;
+import databasework.WorkerDatabase;
+import databasework.ControlElement;
+import other.ControlWebSide;
+import databasedata.DataControl;
+import databasedata.DataElement;
+import databasedata.Database;
+import databasedata.Element;
+import static databasedata.DataElement.*;
+import databasework.WorkDatabase;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

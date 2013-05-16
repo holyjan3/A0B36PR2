@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasetonewsletter.Database;
-import StaticClass.WorkerDatabase;
+import databasedata.Database;
+import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;

@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import StaticClass.GlobalSave;
-import StaticClass.WorkerDatabase;
+import databasedata.GlobalSave;
+import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import StaticClass.WorkerDatabase;
+import databasework.WorkerDatabase;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 /**
  * Okno pro změna hesla
- * @author Majitel
+ * @author Jan Holýl
  */
 public class JFrameChangePassword extends javax.swing.JFrame {
 

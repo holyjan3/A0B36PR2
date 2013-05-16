@@ -5,7 +5,7 @@
 package userinterface;
 
 
-import databasetonewsletter.Database;
+import databasedata.Database;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JFrame;

@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import StaticClass.WorkerDatabase;
+import databasework.WorkerDatabase;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

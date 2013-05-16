@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import StaticClass.WorkerDatabase;
+import databasework.WorkerDatabase;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;
@@ -215,7 +215,7 @@ setLocation(x, y);
              
             
             try {
-                WorkerDatabase.conectDatabeses.conectWorkerDatabase();
+                WorkerDatabase.conectDatabeses.conectWorkerDatabases();
                 new JFrameMainMenu();
                 this.dispose();
                 
@@ -239,7 +239,7 @@ setLocation(x, y);
             ErrorConectToDatabase er = new ErrorConectToDatabase();
              if(er.ErrorConectToDatabase()){
                 try {
-                    WorkerDatabase.conectDatabeses.conectWorkerDatabase();
+                    WorkerDatabase.conectDatabeses.conectWorkerDatabases();
                     new JFrameMainMenu(); 
                 } catch (SQLException ex1) {
                     

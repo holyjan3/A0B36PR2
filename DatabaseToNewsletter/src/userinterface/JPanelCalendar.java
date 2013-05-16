@@ -5,7 +5,7 @@
 package userinterface;
 
 import com.toedter.calendar.JCalendar;
-import StaticClass.WorkerDatabase;
+import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

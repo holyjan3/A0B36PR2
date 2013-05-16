@@ -4,9 +4,9 @@
  */
 package userinterface;
 
-import StaticClass.GlobalSave;
-import databasetonewsletter.PrintedElementsAdministration;
-import StaticClass.WorkerDatabase;
+import databasedata.GlobalSave;
+import createemail.PrintedElementsAdministration;
+import databasework.WorkerDatabase;
 import javax.swing.JOptionPane;
 
 /**

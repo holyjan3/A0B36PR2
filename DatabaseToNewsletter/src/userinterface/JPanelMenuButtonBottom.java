@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasetonewsletter.DataElement;
+import databasedata.DataElement;
 import java.util.ArrayList;
 import javax.swing.JRadioButton;
 

@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasetonewsletter.Database;
-import databasetonewsletter.Element;
+import databasedata.Database;
+import databasedata.Element;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
