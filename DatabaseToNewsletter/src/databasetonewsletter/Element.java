@@ -4,6 +4,7 @@
  */
 package databasetonewsletter;
 
+import StaticClass.WorkerDatabase;
 import java.util.Date;
 
 

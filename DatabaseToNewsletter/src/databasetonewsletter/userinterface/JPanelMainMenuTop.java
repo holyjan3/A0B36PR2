@@ -5,9 +5,9 @@
 package databasetonewsletter.userinterface;
 
 import com.toedter.calendar.JCalendar;
-import databasetonewsletter.GlobalSave;
+import StaticClass.GlobalSave;
 import databasetonewsletter.PrintedElementsAdministration;
-import databasetonewsletter.WorkerDatabase;
+import StaticClass.WorkerDatabase;
 import java.awt.Dimension;
 import java.io.*;
 import java.nio.file.Path;
@@ -33,7 +33,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     public JPanelMainMenuTop(JPanelCalendar calendar) {
         initComponents();
         this.calendar = calendar;
-        
+        printedElement = new PrintedElementsAdministration(WorkerDatabase.dataDatabases);
          
         try{
             GlobalSave.getText();
@@ -45,10 +45,10 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         this.footer.setText(GlobalSave.getFOOTER());
         f = new File(GlobalSave.getTEMPLATE());
         if(f.exists()){
-            this.placeTemplate.setText(f.getAbsolutePath());
+            this.sourceTemplate.setText(f.getAbsolutePath());
             
         }else {
-             this.placeTemplate.setText("");
+             this.sourceTemplate.setText("");
         }
         
    
@@ -88,10 +88,11 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
         footer = new javax.swing.JTextArea();
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
-        placeTemplate = new javax.swing.JTextField();
+        sourceTemplate = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         jMenu1.setText("jMenu1");
 
@@ -133,39 +134,20 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             }
         });
 
-        heading.setFocusable(false);
-        heading.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                headingActionPerformed(evt);
-            }
-        });
-        heading.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                headingFocusLost(evt);
-            }
-        });
-
         footer.setColumns(15);
         footer.setLineWrap(true);
         footer.setRows(2);
         footer.setWrapStyleWord(true);
-        footer.setFocusable(false);
-        footer.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                footerFocusLost(evt);
-            }
-        });
         jScrollPane1.setViewportView(footer);
 
         label1.setText("záhlaví");
 
         label2.setText("zápatí");
 
-        placeTemplate.setText("jTextField1");
-        placeTemplate.setFocusable(false);
-        placeTemplate.addActionListener(new java.awt.event.ActionListener() {
+        sourceTemplate.setText("jTextField1");
+        sourceTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                placeTemplateActionPerformed(evt);
+                sourceTemplateActionPerformed(evt);
             }
         });
 
@@ -192,26 +174,30 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(placeTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
+                                .addComponent(sourceTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(heading)
-                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 522, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE))
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(printer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                                    .addComponent(preview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(make, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(make, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(printer, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))))
                         .addContainerGap())))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jSeparator1)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 856, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,36 +206,41 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(placeTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sourceTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGap(29, 29, 29)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(printer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(preview, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(printer, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(preview, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(8, 8, 8)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(make, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(52, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(355, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(21, 21, 21)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void previewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewActionPerformed
        try {
-           PrintedElementsAdministration.previewCode();
+           printedElement.previewCode();
        }
        catch (java.io.IOException e) {
             JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -286,7 +277,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
             if(n == 0){ 
                 try {
-                    PrintedElementsAdministration.saveFile(zipname);
+                    printedElement.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -299,7 +290,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
         }else {    
              try {
-                    PrintedElementsAdministration.saveFile(zipname);
+                    printedElement.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -314,37 +305,23 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private void makeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeActionPerformed
        
             
-            GlobalSave.setFOOTER(this.heading.getText());
-            GlobalSave.setHEADING(this.footer.getText());
-             
+            GlobalSave.setFOOTER(this.footer.getText());
+            GlobalSave.setHEADING(this.heading.getText());
+            
+            printedElement.setFile_source(this.sourceTemplate.getText());
             if(calendar.cal == null){
-                
-               
-            new JFrameMenuAll(null);
+            new JFrameMenuAll(null,printedElement);
             } else {
                 
-                new JFrameMenuAll(calendar.cal.getDate());
+                new JFrameMenuAll(calendar.cal.getDate(),printedElement);
             }
                     
       
     }//GEN-LAST:event_makeActionPerformed
 
-    private void headingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_headingActionPerformed
+    private void sourceTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sourceTemplateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_headingActionPerformed
-
-    private void headingFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_headingFocusLost
-        GlobalSave.setHEADING(this.heading.getText());
-    }//GEN-LAST:event_headingFocusLost
-
-    private void footerFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_footerFocusLost
-         GlobalSave.setFOOTER(this.footer.getText());
-        
-    }//GEN-LAST:event_footerFocusLost
-
-    private void placeTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeTemplateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_placeTemplateActionPerformed
+    }//GEN-LAST:event_sourceTemplateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
              JFileChooser chooser;   
@@ -360,8 +337,8 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
           int i =chooser.showOpenDialog(null);
           if(i == 0){
               String zipname = chooser.getSelectedFile().getPath();
-              this.placeTemplate.setText(zipname);
-              PrintedElementsAdministration.setFile_source(zipname);
+              this.sourceTemplate.setText(zipname);
+              printedElement.setFile_source(zipname);
           }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -380,11 +357,12 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JButton make;
-    private javax.swing.JTextField placeTemplate;
     private javax.swing.JButton preview;
     private javax.swing.JButton printer;
+    private javax.swing.JTextField sourceTemplate;
     // End of variables declaration//GEN-END:variables
 }

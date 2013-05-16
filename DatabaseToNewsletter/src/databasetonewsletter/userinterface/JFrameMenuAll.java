@@ -4,7 +4,8 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.WorkerDatabase;
+import databasetonewsletter.PrintedElementsAdministration;
+import StaticClass.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -30,12 +31,13 @@ public class JFrameMenuAll extends JFrame{
     JScrollPane scrollPane;
 
     Date date;
+    PrintedElementsAdministration pea;
 
-    public JFrameMenuAll(Date date) {
+    public JFrameMenuAll(Date date,PrintedElementsAdministration pea) {
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
         menus = new JPanelMenuPrinted[WorkerDatabase.dataDatabases.size()];
-        
+        this.pea = pea;
        
         
          panel =new JPanel(new GridBagLayout());

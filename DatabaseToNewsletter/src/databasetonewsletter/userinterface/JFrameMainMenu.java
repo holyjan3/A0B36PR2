@@ -4,8 +4,8 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.GlobalSave;
-import databasetonewsletter.WorkerDatabase;
+import StaticClass.GlobalSave;
+import StaticClass.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

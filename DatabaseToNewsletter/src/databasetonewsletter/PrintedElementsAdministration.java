@@ -4,6 +4,7 @@
  */
 package databasetonewsletter;
 
+import StaticClass.HtmlEscape;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -26,18 +27,18 @@ public class PrintedElementsAdministration {
     private Multiply[] multiply;    
     private Thread[] threads;    
     private ArrayList<Database> databases;    
-    private static String file_temp_name = "temp.html" ;    
-    private static String file_source = "";
+    private String file_temp_name = "temp.html" ;    
+    private String file_source;
 
-    public static void setFile_source(String file_source) {
-        PrintedElementsAdministration.file_source = file_source;
+    public void setFile_source(String file_source) {
+        this.file_source = file_source;
     }
 
-    public static String getFile_source() {
+    public String getFile_source() {
         return file_source;
     }
-    
-    
+
+  
     
     /**
      * 
@@ -45,7 +46,7 @@ public class PrintedElementsAdministration {
      */
     public PrintedElementsAdministration(ArrayList<Database> databases) {
         this.databases = databases;
-
+       
         multiply = new Multiply[databases.size()];
         threads = new Thread[databases.size()];
     }
@@ -129,7 +130,7 @@ public class PrintedElementsAdministration {
      * @param pathFile cesta k souboru do nějž má být soubor uložen
      * @throws IOException
      */
-    public static void saveFile(String pathFile) throws IOException{
+    public void saveFile(String pathFile) throws IOException{
         String s1= file_temp_name;
         String s2= pathFile;
         BufferedReader inputRead= null;
@@ -151,7 +152,7 @@ public class PrintedElementsAdministration {
      * metoda složí k zobrazení emailu z {@link #file_temp_name} souboru
      * @throws IOException
      */
-    public static void previewCode() throws IOException {
+    public void previewCode() throws IOException {
         File f = new File(file_temp_name);
        
         String url = "file://localhost/"+ f.getAbsolutePath().replace(File.separatorChar, '/');

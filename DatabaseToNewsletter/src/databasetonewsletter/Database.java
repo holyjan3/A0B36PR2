@@ -4,7 +4,7 @@
  */
 package databasetonewsletter;
 
-import static databasetonewsletter.WorkerDatabase.conection;
+import static StaticClass.WorkerDatabase.conection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

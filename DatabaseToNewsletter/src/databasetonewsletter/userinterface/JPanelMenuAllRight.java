@@ -4,9 +4,9 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.GlobalSave;
+import StaticClass.GlobalSave;
 import databasetonewsletter.PrintedElementsAdministration;
-import databasetonewsletter.WorkerDatabase;
+import StaticClass.WorkerDatabase;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +17,6 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
     
 
     JFrameMenuAll frameMenuAll;
-
     public JPanelMenuAllRight( JFrameMenuAll frameMenuAll) {
         initComponents();
          this.frameMenuAll = frameMenuAll;
@@ -61,13 +60,13 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           boolean b = true;
-        try {            
-            PrintedElementsAdministration pea = new PrintedElementsAdministration(WorkerDatabase.dataDatabases);
-            pea.PrintElement();
-            pea.insertText(GlobalSave.getHEADING(), "HEADING", 0);
-            pea.insertText(GlobalSave.getFOOTER(), "FOOTER", 0);
-            pea.saveTempfile();
-            GlobalSave.setTEMPLATE(PrintedElementsAdministration.getFile_source());
+        try {          
+            
+            frameMenuAll.pea.PrintElement();
+            frameMenuAll.pea.insertText(GlobalSave.getHEADING(), "HEADING", 0);
+            frameMenuAll.pea.insertText(GlobalSave.getFOOTER(), "FOOTER", 0);
+            frameMenuAll.pea.saveTempfile();
+            GlobalSave.setTEMPLATE(frameMenuAll.pea.getFile_source());
             frameMenuAll.dispose();
         } catch (Exception e) {
             //System.out.println(e.getCause());   

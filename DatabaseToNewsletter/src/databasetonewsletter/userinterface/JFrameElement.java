@@ -36,8 +36,13 @@ public class JFrameElement extends JFrame{
 
     boolean new_element;
     
-    public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {        
-        super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).DE[0].toString());
+    public JFrameElement(JPanelMenuLines panelMenuLines,Element element) throws HeadlessException {
+         super(panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).strings_of_elements[0]!=null ? 
+                 panelMenuLines.database.Data.get(panelMenuLines.database.Data.indexOf(element)).strings_of_elements[0].toString()
+                 :"");
+        
+      
+       
         database = panelMenuLines.database;
         this.element = element;
         new_element = false;

@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import StaticClass.HtmlEscape;
+
 
 
 

@@ -4,8 +4,8 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.ControlConection;
-import databasetonewsletter.ControlElement;
+import StaticClass.ControlConection;
+import StaticClass.ControlElement;
 import databasetonewsletter.ControlWebSide;
 import databasetonewsletter.DataControl;
 import databasetonewsletter.DataElement;

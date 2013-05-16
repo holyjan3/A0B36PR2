@@ -4,7 +4,7 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.WorkerDatabase;
+import StaticClass.WorkerDatabase;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -16,13 +16,13 @@ import java.util.logging.Logger;
  * Okno pro změna hesla
  * @author Majitel
  */
-public class ChangePassword extends javax.swing.JFrame {
+public class JFrameChangePassword extends javax.swing.JFrame {
 
     /**
-     * Creates new form ChangePassword
+     * Creates new form JFrameChangePassword
      */
     JFrameConect frameConect;
-    public ChangePassword(JFrameConect frameConect) {
+    public JFrameChangePassword(JFrameConect frameConect) {
         initComponents();
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
       

@@ -82,23 +82,22 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="placeTemplate" pref="704" max="32767" attributes="0"/>
+                              <Component id="sourceTemplate" pref="704" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="heading" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="label2" alignment="0" min="-2" pref="116" max="-2" attributes="0"/>
-                                  <Component id="label1" alignment="0" min="-2" pref="113" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" pref="522" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="heading" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" min="-2" pref="522" max="-2" attributes="0"/>
+                                  <Component id="label1" min="-2" pref="113" max="-2" attributes="0"/>
+                                  <Component id="label2" min="-2" pref="116" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="printer" alignment="1" pref="174" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="make" max="32767" attributes="0"/>
                                   <Component id="preview" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="make" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="printer" alignment="1" pref="209" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -111,6 +110,13 @@
               <Component id="jSeparator1" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jSeparator2" pref="856" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -120,22 +126,22 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="placeTemplate" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="sourceTemplate" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="jButton1" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="label1" min="-2" max="-2" attributes="0"/>
+                  <Component id="printer" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="preview" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="label2" min="-2" pref="21" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="heading" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="label1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="printer" min="-2" pref="36" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="preview" min="-2" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -143,14 +149,21 @@
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="make" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="label2" min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="92" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="52" max="32767" attributes="0"/>
+          </Group>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="355" max="32767" attributes="0"/>
+                  <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -184,13 +197,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="heading">
-      <Properties>
-        <Property name="focusable" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="headingActionPerformed"/>
-        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="headingFocusLost"/>
-      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -205,11 +211,7 @@
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="2"/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
-            <Property name="focusable" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="footerFocusLost"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -223,13 +225,12 @@
         <Property name="text" type="java.lang.String" value="z&#xe1;pat&#xed;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="placeTemplate">
+    <Component class="javax.swing.JTextField" name="sourceTemplate">
       <Properties>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
-        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="placeTemplateActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sourceTemplateActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButton1">
@@ -247,6 +248,8 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator1">
+    </Component>
+    <Component class="javax.swing.JSeparator" name="jSeparator2">
     </Component>
   </SubComponents>
 </Form>

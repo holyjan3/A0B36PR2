@@ -4,7 +4,7 @@
  */
 package databasetonewsletter.userinterface;
 
-import databasetonewsletter.WorkerDatabase;
+import StaticClass.WorkerDatabase;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

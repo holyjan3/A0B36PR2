@@ -4,6 +4,8 @@
  */
 package databasetonewsletter;
 
+import StaticClass.ControlElement;
+import StaticClass.WorkerDatabase;
 import databasetonewsletter.userinterface.ErrorConectToDatabase;
 import databasetonewsletter.userinterface.JPanelElement;
 import java.sql.*;
@@ -18,8 +20,8 @@ public class WorkDatabaseOffline extends WorkDatabase{
    
     
    private final String unicateKey = "KEYPRIMARY";
-   private static String nameTable = "NEWSLETTERDATAS";
-   private static String DateChanged = "DATECHANGED";
+   private final String nameTable = "NEWSLETTERDATAS";
+   //private final String DateChanged = "DATECHANGED";
     
     
     public WorkDatabaseOffline(Database database) {
