@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import createemail.PrintedElementsAdministration;
+import createemail.CreateEmail;
 import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,13 +31,13 @@ public class JFrameMenuAll extends JFrame{
     JScrollPane scrollPane;
 
     Date date;
-    PrintedElementsAdministration pea;
+    
 
-    public JFrameMenuAll(Date date,PrintedElementsAdministration pea) {
+    public JFrameMenuAll(Date date) {
         this.date = date;
         JPanel jp = new JPanel(new BorderLayout());
         menus = new JPanelMenuPrinted[WorkerDatabase.conectDatabeses.getDataDatabases().size()];
-        this.pea = pea;
+        
        
         
          panel =new JPanel(new GridBagLayout());

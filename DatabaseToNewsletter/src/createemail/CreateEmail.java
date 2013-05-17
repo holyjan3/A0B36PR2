@@ -7,6 +7,7 @@ package createemail;
 import createemail.Multiply;
 import databasework.DataDatabase;
 import databasefinal.Database;
+import databasework.WorkerDatabase;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
  * třída pro spracování emailu podle vstupních dat
  * @author Jan Holý
  */
-public class PrintedElementsAdministration {
+public class CreateEmail {
     
     
     private StringBuilder stringBuilder;    
@@ -28,7 +29,7 @@ public class PrintedElementsAdministration {
     private  int[] count;    
     private Multiply[] multiply;    
     private Thread[] threads;    
-    private ArrayList<Database> databases;    
+    private ArrayList<Database> databases;  
     private String file_temp_name = "temp.html" ;    
     private String file_source;
 
@@ -40,17 +41,19 @@ public class PrintedElementsAdministration {
         return file_source;
     }
 
+    public void setDatabases(ArrayList<Database> databases) {
+        this.databases = databases;
+    }
+
   
     
     /**
      * 
      * @param databases pole databází všech typů záznamů
      */
-    public PrintedElementsAdministration(ArrayList<Database> databases) {
-        this.databases = databases;
+    public CreateEmail() {
+        
        
-        multiply = new Multiply[databases.size()];
-        threads = new Thread[databases.size()];
     }
     
     /**
@@ -58,8 +61,9 @@ public class PrintedElementsAdministration {
      * @throws IOException
      * @throws InterruptedException
      */
-    public void PrintElement()throws IOException, InterruptedException{
-        
+    public void PrintElement()throws IOException, InterruptedException{        
+        multiply = new Multiply[databases.size()];
+        threads = new Thread[databases.size()];        
         int start_read;
         int end_read;
         int start =0;

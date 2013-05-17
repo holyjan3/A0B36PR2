@@ -5,8 +5,8 @@
 package userinterface;
 
 import com.toedter.calendar.JCalendar;
-import databasework.GlobalSave;
-import createemail.PrintedElementsAdministration;
+import createemail.GlobalSave;
+import createemail.CreateEmail;
 import databasework.WorkerDatabase;
 import java.awt.Dimension;
 import java.io.*;
@@ -28,12 +28,12 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
     File f;
     File ff = new File("newslettertemplate.txt");//defolní šablony
 
-    PrintedElementsAdministration printedElement;
+  
 
     public JPanelMainMenuTop(JPanelCalendar calendar) {
         initComponents();
         this.calendar = calendar;
-        printedElement = new PrintedElementsAdministration(WorkerDatabase.conectDatabeses.getDataDatabases());
+        
          
         try{
             GlobalSave.saveData.getText();
@@ -274,7 +274,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
 
     private void previewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewActionPerformed
        try {
-           printedElement.previewCode();
+           GlobalSave.printedElement.previewCode();
        }
        catch (java.io.IOException e) {
             JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -311,7 +311,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
             if(n == 0){ 
                 try {
-                    printedElement.saveFile(zipname);
+                    GlobalSave.printedElement.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -324,7 +324,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             
         }else {    
              try {
-                    printedElement.saveFile(zipname);
+                    GlobalSave.printedElement.saveFile(zipname);
                     break;
                 } catch (IOException ex) {
                    JOptionPane.showMessageDialog(null, "Nepodařilo se otevřít soubor ", "", JOptionPane.ERROR_MESSAGE);
@@ -342,12 +342,12 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
             GlobalSave.saveData.setFOOTER(this.footer.getText());
             GlobalSave.saveData.setHEADING(this.heading.getText());
             
-            printedElement.setFile_source(this.sourceTemplate.getText());
+            GlobalSave.printedElement.setFile_source(this.sourceTemplate.getText());
             if(calendar.cal == null){
-            new JFrameMenuAll(null,printedElement);
+            new JFrameMenuAll(null);
             } else {
                 
-                new JFrameMenuAll(calendar.cal.getDate(),printedElement);
+                new JFrameMenuAll(calendar.cal.getDate());
             }
                     
       
@@ -372,7 +372,7 @@ public class JPanelMainMenuTop extends javax.swing.JPanel {
           if(i == 0){
               String zipname = chooser.getSelectedFile().getPath();
               this.sourceTemplate.setText(zipname);
-              printedElement.setFile_source(zipname);
+              GlobalSave.printedElement.setFile_source(zipname);
               this.defoleteTemlateNotFound.setVisible(false);
           }
     }//GEN-LAST:event_jButton1ActionPerformed

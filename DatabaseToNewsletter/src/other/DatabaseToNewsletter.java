@@ -4,14 +4,15 @@
  */
 package other;
 
+import createemail.CreateEmail;
 import databasework.GlobalDate;
 import databasework.DataDatabase;
-import databasework.SaveData;
+import createemail.SaveData;
 import databasework.ConectDatabasesDerby;
 import databasework.ConectDatabasesDerby;
 import databasework.ControlElementDerby;
-import databasework.GlobalSave;
-import databasework.SaveDataToFile;
+import createemail.GlobalSave;
+import createemail.SaveDataToFile;
 import databasework.WorkerDatabase;
 import databasework.WorkerDatabase;
 import userinterface.JFrameConect;
@@ -36,7 +37,7 @@ public class DatabaseToNewsletter {
            th= new Thread(new ControlConection(th));
            th.start();
            new WorkerDatabase(new ControlElementDerby(), new ConectDatabasesDerby(), new GlobalDate());
-           new GlobalSave(new SaveDataToFile());
+           new GlobalSave(new SaveDataToFile(),new CreateEmail());
            WorkerDatabase.dateControl.setDate(WorkerDatabase.dateControl.getDefolteDate());
            JFrameConect.main(null);
             

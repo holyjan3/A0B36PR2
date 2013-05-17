@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasework.GlobalSave;
+import createemail.GlobalSave;
 import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

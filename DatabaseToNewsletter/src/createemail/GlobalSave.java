@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasework;
+package createemail;
 
-import databasework.SaveData;
+import createemail.CreateEmail;
 
 
 /**
@@ -13,8 +13,9 @@ import databasework.SaveData;
  */
 public class GlobalSave {
     public static SaveData saveData;
-
-    public GlobalSave(SaveData saveData) {
+    public static CreateEmail printedElement;
+    public GlobalSave(SaveData saveData,CreateEmail printedElement) {
         GlobalSave.saveData = saveData;
+        GlobalSave.printedElement = printedElement;
     } 
 }

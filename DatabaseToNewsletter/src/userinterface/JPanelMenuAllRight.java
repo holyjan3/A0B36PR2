@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasework.GlobalSave;
-import createemail.PrintedElementsAdministration;
+import createemail.GlobalSave;
+import createemail.CreateEmail;
 import databasework.WorkerDatabase;
 import javax.swing.JOptionPane;
 
@@ -61,12 +61,12 @@ public class JPanelMenuAllRight extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
           boolean b = true;
         try {          
-            
-            frameMenuAll.pea.PrintElement();
-            frameMenuAll.pea.insertText(GlobalSave.saveData.getHEADING(), "HEADING", 0);
-            frameMenuAll.pea.insertText(GlobalSave.saveData.getFOOTER(), "FOOTER", 0);
-            frameMenuAll.pea.saveTempfile();
-            GlobalSave.saveData.setTEMPLATE(frameMenuAll.pea.getFile_source());
+            GlobalSave.printedElement.setDatabases(WorkerDatabase.conectDatabeses.getDataDatabases());
+            GlobalSave.printedElement.PrintElement();
+            GlobalSave.printedElement.insertText(GlobalSave.saveData.getHEADING(), "HEADING", 0);
+            GlobalSave.printedElement.insertText(GlobalSave.saveData.getFOOTER(), "FOOTER", 0);
+            GlobalSave.printedElement.saveTempfile();
+            GlobalSave.saveData.setTEMPLATE( GlobalSave.printedElement.getFile_source());
             frameMenuAll.dispose();
         } catch (Exception e) {
             //System.out.println(e.getCause());   
