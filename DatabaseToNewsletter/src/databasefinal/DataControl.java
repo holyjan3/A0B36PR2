@@ -1,5 +1,5 @@
 
-package databasedata;
+package databasefinal;
 
 
 /**
@@ -11,25 +11,20 @@ public enum DataControl {
     /**
      * vstupní data je datum
      */
-    DATE("DATE"),
+    DATE,
     /**
      * vstupní data je čas
      */
-    TIME("TIME"),
+    TIME,
     /**
      * vstupní data je skupina znaků
      */
-    VARCHAR("VARCHAR"),
+    VARCHAR,
     /**
      * vstupní data je skupina znaků ovšem je to webová adresa a program ověřuje  i existenci
      */
-    URL("VARCHAR");
+    URL;
     //TEXT("TEXT");
-    
-    final public String databaseType;
 
-    private DataControl(String databaseType) {
-        this.databaseType = databaseType;
-    }
     
 }

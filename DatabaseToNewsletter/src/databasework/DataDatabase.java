@@ -2,19 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasedata;
+package databasework;
+
+import databasework.DataElement;
+import databasework.DataElementInterface;
+import databasework.DataDatabaseInteraface;
 
 
 /**
  * jsou zde uložena jaké položky obsahují jednotlivé typy záznamů metoda name() vraci jmeno typu záznamu v databázi
  * @author Jan Holý
  */
-public enum DataDatabase {    
+public enum DataDatabase implements DataDatabaseInteraface{    
         
     /**
      * Záhlaví reklama
      */
-    HeadAdvertisement("Záhlaví reklama",1,new DataElement[]{ DataElement.HEAD, DataElement.HEAD_LINK }),
+    HeadAdvertisement("Záhlaví reklama",1,new DataElement []{ DataElement.HEAD, DataElement.HEAD_LINK }),
         
     /**
      * Úvod
@@ -75,22 +79,40 @@ public enum DataDatabase {
     /**
      * název databáze určena pro styk s uživatelem
      */
-    final public String name;               
+    final private String name;               
     /**
      * maximální počet záznamů vložitelné do html tabulky
      */
-    final public int max;        
+    final private int max;        
     /**
      *  typy položek DateElement uložené  v záznamech
      */
-    final public DataElement[] dataElemen;
+    final private DataElementInterface[] dataElemen;
 
     private DataDatabase(String name,int max, DataElement[] dataElemen) {
         this.name = name;
         this.max = max;
         this.dataElemen = dataElemen;
+       
     }
-        
-        
-        
+    
+    public String getName(){
+        return name;
+    }
+
+    public DataElementInterface[] getDataElemen() {
+        return dataElemen;
+    }
+
+    public int getMax() {
+        return max;
+       
+       
+    }
+
+   
+    @Override
+    public DataDatabaseInteraface[] valuesReturn() {
+        return null;
+    }
 }

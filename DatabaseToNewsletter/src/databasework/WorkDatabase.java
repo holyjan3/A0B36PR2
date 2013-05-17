@@ -4,8 +4,8 @@
  */
 package databasework;
 
-import databasedata.Database;
-import databasedata.Element;
+import databasefinal.Database;
+import databasefinal.Element;
 import userinterface.JPanelElement;
 import java.util.Date;
 
@@ -16,24 +16,19 @@ import java.util.Date;
  */
 public abstract class WorkDatabase {
     
-    protected Database database;    
+    Database database;    
     private ReadFromDatabase rfd;
-    
-    
     
     /**
      * 
      * @param database dabtabaáze se kterou budu pracovar
      */
-    public WorkDatabase() {
-                
-
-    }
-    
-    public void readDatabase(Database database){
+    public WorkDatabase(Database database) {
         this.database = database;
         rfd = new ReadFromDatabase();
     }
+    
+   
     
     
     /**

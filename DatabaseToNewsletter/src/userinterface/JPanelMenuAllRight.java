@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasedata.GlobalSave;
+import databasework.GlobalSave;
 import createemail.PrintedElementsAdministration;
 import databasework.WorkerDatabase;
 import javax.swing.JOptionPane;

@@ -4,9 +4,9 @@
  */
 package databasework;
 
-import databasedata.DataDatabase;
-import databasedata.Database;
+import databasefinal.Database;
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,16 +25,16 @@ public class ConectDatabasesDerby extends ConectDatabases{
 /**
      * pole všech databází
      */
-    public ArrayList<Database> dataDatabases ;      
+    private ArrayList<Database> dataDatabases ;      
     /**
      * globální připojení
      */
-    public Connection conection =null;    
+   private Connection conection =null;    
     
     /**
      *  správce záznamů k vložení do emailu
      */
-    public  java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();    
+    private  java.util.HashMap<Integer,Boolean> printedHashMap = new HashMap<>();    
     /**
      * adresa pro přihlášení do databáze
      */
@@ -90,13 +92,17 @@ public class ConectDatabasesDerby extends ConectDatabases{
     public void conectWorkerDatabases() throws SQLException {
         dataDatabases  = new ArrayList<>(10);
         int id = -1;
-        for (DataDatabase dataDatabase : DataDatabase.values()) {
+         Database db = null;
+        for (DataDatabaseInteraface dataDatabase : DataDatabase.values()) {
             id = getIdDatabases(dataDatabase.name());
-            if(id != -1){
-                WorkDatabaseDerby workDatabaseOffline = new WorkDatabaseDerby();
-                Database db = new Database(dataDatabase,id,workDatabaseOffline);
-                workDatabaseOffline.readDatabase(db);
-                dataDatabases.add(db);
+            if(id != -1){               
+                try {
+                    db = new Database(dataDatabase,id,WorkDatabaseDerby.class);
+                    dataDatabases.add(db);
+                } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | IllegalArgumentException | InvocationTargetException ex) {
+                    
+                }
+                
                
             }
         }

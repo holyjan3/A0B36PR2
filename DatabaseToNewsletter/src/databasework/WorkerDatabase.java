@@ -12,11 +12,14 @@ package databasework;
 public class WorkerDatabase {    
    public static ControlElement controlElement;   
    public static ConectDatabases conectDatabeses;
-   public static DateControl dateControl;
+   public static GlobalDateAb dateControl;
    
-   public WorkerDatabase(ControlElement controlElement,ConectDatabases conectDatabeses,DateControl dateControl) {
+   
+   public WorkerDatabase(ControlElement controlElement,ConectDatabases conectDatabeses,GlobalDateAb dateControl) {
        WorkerDatabase.controlElement = controlElement;    
        WorkerDatabase.conectDatabeses = conectDatabeses;
        WorkerDatabase.dateControl =  dateControl;
+       //WorkerDatabase.dataDatabasesInterface = dataDatabasesInterface;
+       
    }  
 }

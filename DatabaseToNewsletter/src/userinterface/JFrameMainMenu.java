@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasedata.GlobalSave;
+import databasework.GlobalSave;
 import databasework.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

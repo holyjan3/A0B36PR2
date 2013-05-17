@@ -11,12 +11,12 @@ import java.util.Date;
  *
  * @author Jan Holýl
  */
-public class DateControlDerby extends DateControl{
+public class GlobalDate extends GlobalDateAb{
 
          /**
      * globální datum pro výběr záznamů
      */
-    public java.util.Date date;
+    private java.util.Date date;
     public Date getDate() {
             return date;
         }

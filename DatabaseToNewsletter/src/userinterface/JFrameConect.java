@@ -4,6 +4,8 @@
  */
 package userinterface;
 
+import databasework.DataDatabase;
+import databasework.DataDatabaseInteraface;
 import databasework.WorkerDatabase;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -212,7 +214,7 @@ setLocation(x, y);
             WorkerDatabase.conectDatabeses.setPassword(password);
             WorkerDatabase.conectDatabeses.conectOnlineDatabase();
             
-             
+           
             
             try {
                 WorkerDatabase.conectDatabeses.conectWorkerDatabases();

@@ -4,9 +4,10 @@
  */
 package databasework;
 
+import databasefinal.Database;
 import databasework.WorkDatabase;
 import databasework.WorkerDatabase;
-import databasedata.Element;
+import databasefinal.Element;
 import userinterface.ErrorConectToDatabase;
 import userinterface.JPanelElement;
 import java.sql.*;
@@ -22,15 +23,17 @@ public class WorkDatabaseDerby extends WorkDatabase{
     
    private final String unicateKey = "KEYPRIMARY";
    private final String nameTable = "NEWSLETTERDATAS";
-   //private final String DateChanged = "DATECHANGED";
-    
-    
-    public WorkDatabaseDerby() {
-        super();
+
+    //private final String DateChanged = "DATECHANGED";
+    public WorkDatabaseDerby(Database database) {
+        super(database);
         conection = WorkerDatabase.conectDatabeses.getConection();
         this.read = true;
         date = null;
     }
+    
+    
+   
     
     
     
@@ -93,7 +96,7 @@ public class WorkDatabaseDerby extends WorkDatabase{
    
                 for (int i = 0; i < database.DE.length; i++) {
                    
-                    switch (database.DE[i].type) {
+                    switch (database.DE[i].getType()) {
                         case DATE:
                              if((date = rs.getDate(database.DE[i].name()))!=null)
                             ss[i] = formatDate.format(date);

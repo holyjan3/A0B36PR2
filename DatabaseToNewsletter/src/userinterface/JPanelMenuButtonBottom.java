@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasedata.DataElement;
+import databasework.DataElement;
 import java.util.ArrayList;
 import javax.swing.JRadioButton;
 
@@ -233,7 +233,7 @@ public class JPanelMenuButtonBottom extends javax.swing.JPanel {
         if(i==0){
             frameMenu.database.sortPrint();
         } else {
-            if(frameMenu.database.DE[array.get(i)] == DataElement.DATE){
+            if(frameMenu.database.DE[array.get(i)].name() == null ? DataElement.DATE.name() == null : frameMenu.database.DE[array.get(i)].name().equals(DataElement.DATE.name())){
                 frameMenu.database.sortDate(array.get(i));
             } else {
                 frameMenu.database.sortString(array.get(i));

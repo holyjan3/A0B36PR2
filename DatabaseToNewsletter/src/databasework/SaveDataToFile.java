@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasedata;
+package databasework;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

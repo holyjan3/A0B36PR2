@@ -4,7 +4,7 @@
  */
 package createemail;
 
-import databasedata.Database;
+import databasefinal.Database;
 
 
 
@@ -86,7 +86,7 @@ public class Multiply implements Runnable{
                     start = global_end;
                     for (int k = 0; k < database.DE.length; k++) {
                         if((!"".equals(database.Data.get(j).strings_of_elements[k]))&&database.Data.get(j).strings_of_elements[k]!=null ){
-                            switch (database.DE[k].type) {
+                            switch (database.DE[k].getType()) {
                                 case DATE:                
                                 ss = database.Data.get(j).strings_of_elements[k].split("[.]");
                                 write = Integer.toString(Integer.parseInt(ss[0])) + "." + Integer.toString(Integer.parseInt(ss[1]));                            

@@ -8,11 +8,11 @@ import other.ControlConection;
 import databasework.WorkerDatabase;
 import databasework.ControlElement;
 import other.ControlWebSide;
-import databasedata.DataControl;
-import databasedata.DataElement;
-import databasedata.Database;
-import databasedata.Element;
-import static databasedata.DataElement.*;
+import databasefinal.DataControl;
+import databasework.DataElement;
+import databasefinal.Database;
+import databasefinal.Element;
+import static databasework.DataElement.*;
 import databasework.WorkDatabase;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +55,7 @@ public class JPanelElement extends JPanel{
 
     public Element element;
     
+    int maxwidth = 70;
 
     private ActionSave save = new ActionSave();
 
@@ -81,8 +82,10 @@ public class JPanelElement extends JPanel{
         conected = ControlConection.isConected();
         wrong = false;
         
-        final int minwidth = 20;
-        final int maxwidth = 60;
+        
+        
+        
+        
         
         text =new JTextAreaWithNumber[element.DE.length];  
         jLabelsError = new JLabel[element.DE.length];
@@ -99,118 +102,18 @@ public class JPanelElement extends JPanel{
            
             
             
-            switch (element.DE[i]) {
-         
-                case DATE:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
+                    if(element.DE[i].dataSize()<maxwidth)
+                        jtext_width = element.DE[i].dataSize();
+                    else
+                       jtext_width = maxwidth;
+                        
+                    jtext_height = element.DE[i].numberLine();
+                   
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
                     text[i].addKeyListener(new ActionDate());
-                    break;
-                case TIME:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    text[i].addKeyListener(new ActionTime());
-                    break;
-                case HEAD:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case HEAD_LINK:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                   // url(text[i],element.strings_of_elements[i]);
-                    break;
-                case TOWN:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case PLACE:
-                    jtext_height = 3;
-                     jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case TEXT:
-                    jtext_height =10;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case LINK1_TEXT:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case LINK2_TEXT:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case LINK3_TEXT:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case LINK1:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    //url(text[i],element.strings_of_elements[i]);
-                    break;
-                case LINK2:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                     text[i].setText(element.strings_of_elements[i]);
-                    //url(text[i],element.strings_of_elements[i]);
-                    break;
-                case LINK3:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    //url(text[i],element.strings_of_elements[i]);
-                    break;
-                case NAME:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-                case MEDIUM:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-               case TEXT_LINK:
-                    jtext_height = 1;
-                    jtext_width = maxwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    //url(text[i],element.strings_of_elements[i]);
-                    break;
-                case TYPE:
-                    jtext_height = 1;
-                    jtext_width = minwidth;
-                    text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
-                    text[i].setText(element.strings_of_elements[i]);
-                    break;
-            }
+                    
+                
             JPanel item0 = new JPanel(new FlowLayout(FlowLayout.LEFT));
             JPanel item1 = new JPanel(new FlowLayout(FlowLayout.LEFT));            
             JPanel item2 = new JPanel(new FlowLayout(FlowLayout.LEFT));     
@@ -261,7 +164,7 @@ public class JPanelElement extends JPanel{
          jLabelsError[i].setOpaque(true);
          jLabelsError[i].setForeground(Color.white);  
          
-         if( (element.DE[i].type == DataControl.URL)&& (element.strings_of_elements[i]!= null && !"".equals(element.strings_of_elements[i]) )){
+         if( (element.DE[i].getType() == DataControl.URL)&& (element.strings_of_elements[i]!= null && !"".equals(element.strings_of_elements[i]) )){
                this.controlUrl(text[i], i);
          }
          text[i].addFocusListener(save);
@@ -288,7 +191,7 @@ public class JPanelElement extends JPanel{
 
     public void controlUrl(JTextArea area,int i){
         jLabelsError[i].setVisible(false);
-       if(WorkerDatabase.controlElement.contolVarChar(area.getText(),DataElement.HEAD_LINK.date_size)){
+       if(WorkerDatabase.controlElement.controlDatabaseElement(database.DE[i],area.getText())){
         if(conected){
             Thread thread = new Thread(new ControlWebSide(jLabelsError[i],area.getText()));
             thread.start();
@@ -309,7 +212,9 @@ public class JPanelElement extends JPanel{
     public void save(int i){
         if(!text[i].getText().equals("")) {
                   
-                    if(element.DE[i].type == DataControl.URL){
+            
+                   
+                    if(element.DE[i].getType() == DataControl.URL){
                         controlUrl(text[i],i);
                      } else {
                          boolean bb = WorkerDatabase.controlElement.controlDatabaseElement(element.DE[i], text[i].getText());

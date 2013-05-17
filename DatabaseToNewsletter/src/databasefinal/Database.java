@@ -2,9 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasedata;
+package databasefinal;
 
+import databasework.DataElementInterface;
+import databasework.DataDatabaseInteraface;
 import databasework.WorkDatabase;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +20,7 @@ import java.util.List;
  * třída obsahující záznami jednoho typu
  * @author Jan Holý
  */
-public class Database{
-    
+public class Database  {
     /**
      *  záznamy
      */
@@ -26,7 +28,7 @@ public class Database{
     /**
      *  typ záznamu
      */
-    public DataDatabase database;
+    public final DataDatabaseInteraface datadatabase;
     /**práce se záznamy v trvalém úložiští
      */
     public WorkDatabase nowWorkDatabase;  
@@ -38,7 +40,7 @@ public class Database{
     /**
      * typy položek
      */
-    public final DataElement[] DE;      
+    public final DataElementInterface[] DE;      
     /**
      * jméno druhu záznamů pro ukládání
      */
@@ -46,7 +48,7 @@ public class Database{
     /**
      * idenitifikáto druhu záznamu
      */
-    public int id_database;
+    public final int id_database;
     
     
     /**
@@ -54,17 +56,14 @@ public class Database{
      * @param database určena typy záznamu
      * @param id_database přiřazje identtifikátor druhu záznamu
      */
-    public Database(DataDatabase database,int id_database,WorkDatabase workDatabase) {        
-        this.name_database = database.name;
+    public Database(DataDatabaseInteraface database,int id_database, Class <? extends WorkDatabase> workdatabase) throws InstantiationException, IllegalAccessException, NoSuchMethodException, IllegalArgumentException, InvocationTargetException{        
+        this.name_database = database.getName();
         this.name_file = database.name();
-        this.database = database;
-        this.DE = database.dataElemen;
+        this.datadatabase = database;
+        this.DE = database.getDataElemen();
         this.id_database = id_database;        
-        this.Data  = new LinkedList<Element>();
-        nowWorkDatabase = workDatabase;
-        
-        
-         
+        this.Data  = new LinkedList<>();
+        nowWorkDatabase = workdatabase.getConstructor(Database.class).newInstance(this);
     }
 
    

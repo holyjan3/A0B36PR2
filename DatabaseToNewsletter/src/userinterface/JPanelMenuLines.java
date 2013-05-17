@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasedata.Database;
-import databasedata.Element;
+import databasefinal.Database;
+import databasefinal.Element;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -91,7 +91,7 @@ public class JPanelMenuLines extends JPanel {
     public void doubleArayAdd(int add){
          int j = array.size();
          for (int i = add; i < j+add; i++) {
-          ds[0][i]= (double)database.DE[array.get(i-add)].LINE_SIZE;
+          ds[0][i]= (double)database.DE[array.get(i-add)].getLINE_SIZE();
           ds[1][i]= height;   
         }        
     }

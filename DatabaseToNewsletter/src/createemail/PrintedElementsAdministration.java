@@ -5,8 +5,8 @@
 package createemail;
 
 import createemail.Multiply;
-import databasedata.DataDatabase;
-import databasedata.Database;
+import databasework.DataDatabase;
+import databasefinal.Database;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
@@ -210,7 +210,7 @@ public class PrintedElementsAdministration {
         count = new int[databases.size()]; 
         for (int i = 0; i < databases.size(); i++) {
             c=0;
-             for (int j = 0; j < databases.get(i).Data.size() && ((j < DataDatabase.values()[i].max)|| (DataDatabase.values()[i].max ==0)); j++) {
+             for (int j = 0; j < databases.get(i).Data.size() && ((j < DataDatabase.values()[i].getMax())|| (DataDatabase.values()[i].getMax() ==0)); j++) {
                  if(databases.get(i).Data.get(j).isPrinted()){
                     c++; 
                  }

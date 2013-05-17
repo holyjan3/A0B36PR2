@@ -4,9 +4,9 @@
  */
 package databasework;
 
-import databasedata.Database;
-import databasedata.Database;
-import databasedata.Database;
+import databasefinal.Database;
+import databasefinal.Database;
+import databasefinal.Database;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -77,5 +77,7 @@ abstract public class ConectDatabases {
 
     
     abstract public void conectionClose() throws SQLException ;
+    
+    
     
 }

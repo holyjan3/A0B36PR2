@@ -4,11 +4,10 @@
  */
 package databasework;
 
-import databasedata.DataElement;
-import static databasedata.DataControl.DATE;
-import static databasedata.DataControl.TIME;
-import static databasedata.DataControl.URL;
-import static databasedata.DataControl.VARCHAR;
+import static databasefinal.DataControl.DATE;
+import static databasefinal.DataControl.TIME;
+import static databasefinal.DataControl.URL;
+import static databasefinal.DataControl.VARCHAR;
 
 /**
  *
@@ -28,24 +27,18 @@ public class ControlElementDerby extends ControlElement{
      * @param ss vstupní řetezec
      * @return vrátí hodonu dle toho jestli vstupní řetězec odpovídá požadfovanému typu
      */
-    public boolean controlDatabaseElement(DataElement DE, String ss) {
+    public boolean controlDatabaseElement(DataElementInterface DE, String ss) {
         int i = 0;
         boolean b = false;
-           switch ((DE.type)) {
+           switch ((DE.getType())) {
            case DATE:
                     b = controlDate(ss);
                break;
            case TIME:
                     b = controlTime(ss);
                break;
-           case VARCHAR:
-                    b = contolVarChar(ss, DE.date_size);
-               break;
-//           case TEXT:
-//                    b = contolVarChar(ss, DE.date_size);
-//               break;
            default:
-               throw new AssertionError((DE.type).name());
+               b = contolVarChar(ss, this.dataSize(DE));
 
         }
         return b;           
@@ -59,10 +52,10 @@ public class ControlElementDerby extends ControlElement{
      * @param DE pro určení typu kontroly
      * @return vrátí řetězec který zamezí strátě dat
      */
-    public String contorlDatabaseElementAndReplece(String strings_of_element,DataElement DE) {
+    public String contorlDatabaseElementAndReplece(String strings_of_element,DataElementInterface DE) {
         int i = 0;
         String parse ="";
-        switch (DE.type) {
+        switch (DE.getType()) {
            case DATE:
                if(controlDate(strings_of_element))
                     return strings_of_element;
@@ -75,17 +68,17 @@ public class ControlElementDerby extends ControlElement{
                return "";
            case VARCHAR:
                          
-                if(contolVarChar(strings_of_element,DE.date_size))
+                if(contolVarChar(strings_of_element,this.dataSize(DE)))
                     return strings_of_element;
                         else
-                return strings_of_element.substring(0, DE.date_size);
+                return strings_of_element.substring(0,this.dataSize(DE));
            case URL:
-               if(contolVarChar(strings_of_element,DE.date_size))
+               if(contolVarChar(strings_of_element,this.dataSize(DE)))
                     return strings_of_element;
                         else
                     return "";
            default:
-               throw new AssertionError(DE.type.name());
+               throw new AssertionError(DE.getType().name());
         }
     }
     
@@ -170,5 +163,9 @@ public class ControlElementDerby extends ControlElement{
           return false;
       }
    }
-    
+
+    @Override
+    public int dataSize(DataElementInterface de) {
+        return de.dataSize();
+    }    
 }

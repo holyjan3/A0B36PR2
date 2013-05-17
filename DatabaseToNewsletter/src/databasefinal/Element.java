@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package databasedata;
+package databasefinal;
 
+import databasework.DataElementInterface;
 import databasework.WorkerDatabase;
 import java.util.Date;
 
@@ -17,23 +18,17 @@ import java.util.Date;
 final public class Element{
     
     
-    public DataElement[] DE;    
+    public DataElementInterface[] DE;    
     public String[] strings_of_elements;
     private boolean printed;
-    private int key;   
-
-
-  
-    
-   
-    
+    private int key; 
     /**
      * Vytvoří a vyplní nový záznam
      * @param DE určení typu položek záznamu
      * @param strings_of_elements pole všech typů záznamů
      * @param key unikátní klíč
      */
-    public Element(DataElement[] DE,String[] strings_of_elements , int key) {
+    public Element(DataElementInterface[] DE,String[] strings_of_elements , int key) {
         this.DE = DE;
         printed = false;
         this.key = key;
@@ -54,7 +49,7 @@ final public class Element{
      * Vytvoří prázdný nový záznam
      * @param DE určení typu položek záznamu
      */
-    public Element(DataElement[] DE) {
+    public Element(DataElementInterface[] DE) {
         this.DE = DE;        
         printed = false;
         this.key = -1;

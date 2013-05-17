@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Jan Holýl
  */
-public abstract class DateControl {
+public abstract class GlobalDateAb {
   
    
     abstract public Date getDate();
