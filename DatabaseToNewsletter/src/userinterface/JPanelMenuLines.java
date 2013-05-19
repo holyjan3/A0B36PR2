@@ -7,7 +7,9 @@ package userinterface;
 import databasefinal.Database;
 import databasefinal.Element;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -19,7 +21,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
-import layout.TableLayout;
 
 
 
@@ -28,90 +29,54 @@ import layout.TableLayout;
  * třída přidává a aktualizuje řádky záznamů
  * @author Jan Holý
  */
+
+
 public class JPanelMenuLines extends JPanel {
 
     public Database database;
-    protected boolean shiftIsDown = false;
-    double height = 30;
-    ShiftDown shiftDown;
+    boolean shiftIsDown = false;
 
+    int Y = 25;
     protected ArrayList<Integer> array;
-
-    TableLayout tableLayout;
-
-    double[][] ds;
-
-    JPanel jp;
 
     ArrayList<JRadioButtonWithNumber> jrb = new ArrayList<JRadioButtonWithNumber>(20);
  
-    private int add;
       
 
     public JPanelMenuLines(Database database, ArrayList<Integer> array) {
-           
+        this.setBackground(Color.LIGHT_GRAY);
+        this.setOpaque(true);
+        
         this.database = database;
         this.array = array;
-        this.add = 3;        
-        shiftDown = new ShiftDown();
-       
-       this.setLayout(new FlowLayout(FlowLayout.LEFT) );            
-       
+        setPreferredSize(new Dimension(400,(database.Data.size()+1)*30) );
+
+        this.setLayout(null);
            
      }
     
     public void addLine(){
-        jp = new JPanel();
-         doubleAray();
-         tableLayout = new TableLayout(ds);
-         jp.setLayout(tableLayout);
+
          for (int i = 0; i < database.Data.size();i++) {
             
-            JPanelMenuLine(i);
+            JPanelMenuLine(i,i);
          } 
          JPanelDEScription();
-           add(jp);
     }
-    
 
-    public void doubleAray(){
-  
-        int j = array.size();
-        ds =  new double[2][j+add];        
-        ds[0][0]= 30;
-        ds[1][0]= height;
-        ds[0][1]= 30;
-        ds[1][1]= height;
-        ds[0][2]= 100;
-        ds[1][2]= height;
-        doubleArayAdd(add);
-    }
-    
 
-    public void doubleArayAdd(int add){
-         int j = array.size();
-         for (int i = add; i < j+add; i++) {
-          ds[0][i]= (double)database.DE[array.get(i-add)].getLINE_SIZE();
-          ds[1][i]= height;   
-        }        
-    }
+
         
 
     public void overWritePanel(){
        this.jrb.clear();
        this.removeAll();
-       jp = new JPanel();
-        
-       tableLayout = new TableLayout(ds);     
-        
-       jp.setLayout(tableLayout);
-        
-       //tableLayout = new TableLayout(ds);
+       setPreferredSize(new Dimension(400,(database.Data.size()+1)*30) );
        for (int i = 0; i < database.Data.size(); i++) {
        
-           JPanelMenuLine(i);
+           JPanelMenuLine(i,i);
         }
-       add(jp);
+      // add(jp);
        JPanelDEScription();
        this.revalidate();
        this.repaint();
@@ -121,17 +86,15 @@ public class JPanelMenuLines extends JPanel {
     public void find(String ss){
        this.jrb.clear();
        this.removeAll();
-       jp = new JPanel();        
-       tableLayout = new TableLayout(ds);       
-       jp.setLayout(tableLayout);
        int j = 0;
         for (int i = 0; i < database.Data.size(); i++) {
-            if(database.Data.get(i).strings_of_elements[0].toLowerCase().contains(ss)){
-               JPanelMenuLine(i);
+           
+            if(database.Data.get(i).strings_of_elements[0]!=null && database.Data.get(i).strings_of_elements[0].toLowerCase().contains(ss)){
+               JPanelMenuLine(i,j);
                 j++;     
             }
         }
-       add(jp);
+        setPreferredSize(new Dimension(400,(j+1)*30) );
         JPanelDEScription();
        this.revalidate();
        this.repaint();
@@ -139,25 +102,22 @@ public class JPanelMenuLines extends JPanel {
 
     public void JPanelDEScription(){
       
-      tableLayout.insertRow (0, TableLayout.MINIMUM);
         
         Element element;
         JLabel label;
         Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
+        Insets insets = this.getInsets();
         
-      ;
         
+     int x=170;
         
      for (int i = 0; i < array.size(); i++) {
-           //System.out.println("nnn"+element.strings_of_elements[array.get(i)]+array.get(i));
            label= new JLabel(database.DE[array.get(i)].toString());
-                   
-           
-              
-           jp.add(label,Integer.toString(i+3)+", 1");
+           label.setBounds(x, insets.top+5,database.DE[array.get(i)].getLINE_SIZE(),20);
+           x = x +database.DE[array.get(i)].getLINE_SIZE();
+           add(label);
 
-           
      } 
      int i = 0;
       
@@ -165,18 +125,20 @@ public class JPanelMenuLines extends JPanel {
     
     
 
-    public void JPanelMenuLine(int numberLine) 
-    {
-        tableLayout.insertRow (0, TableLayout.MINIMUM);
+    
+   public void JPanelMenuLine(int numberLine,int postion) {
+           
         
-        Element element;
+        
+    
+          Element element;
         JLabel label;
         Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        
+//        
         element = database.Data.get(numberLine);
-        
-        addButton (numberLine,element);
+        Insets insets = this.getInsets();
+        int X = addButton (postion,element,insets.left+10);
         
      for (int i = 0; i < array.size(); i++) {
            //System.out.println("nnn"+element.strings_of_elements[array.get(i)]+array.get(i));
@@ -192,26 +154,31 @@ public class JPanelMenuLines extends JPanel {
            label.setOpaque(true);
            
            
-           label.setBorder(BorderFactory.createCompoundBorder(border,paddingBorder));          
-           jp.add(label,Integer.toString(i+3)+", 1");
+           label.setBorder(BorderFactory.createCompoundBorder(border,paddingBorder));
+           label.setBounds(X, height(postion), element.DE[array.get(i)].getLINE_SIZE(), Y);
+           X=X+ element.DE[array.get(i)].getLINE_SIZE();
+           
+           add(label);
 
            
      } 
-     int i = 0;
+//     int i = 0;
        
   }      
-   
+       ShiftDown shiftDown = new ShiftDown();
   SelectJRB selectJRB = new SelectJRB();
-  
-    void addButton (int numberLine,Element element){
+   
+  int addButton (int numberLine,Element element,int X){
    JCheckBox checkBox;
         JButton jButton;
         JRadioButtonWithNumber jr=new JRadioButtonWithNumber(numberLine,element);
+        
+        jr.addKeyListener(shiftDown);
         jr.addActionListener(selectJRB);
         jrb.add(jr); 
         
 
-        jr.addKeyListener(shiftDown);
+        
         
         
         JPanelMenuLines.ActionModify acl = new JPanelMenuLines.ActionModify();
@@ -231,12 +198,25 @@ public class JPanelMenuLines extends JPanel {
         }
         
         checkBox.setEnabled(false);
-        jp.add(jr,"0, 1");       
-        jp.add(checkBox,"1, 1");
-        jp.add(jButton,"2, 1");
+        
+        jr.setBounds(X, height(numberLine),20, Y);
+        X = X+30;
+        checkBox.setBounds(X, height(numberLine), 20, Y); 
+        X = X+30;
+        
+        jButton.setBounds(X,height(numberLine),80, Y);
+        X = X + 100;
+        add(jr);       
+        add(checkBox);
+        add(jButton);
+        return X;
    
    }
-   
+   int height(int numberLine){
+       Insets insets = this.getInsets();
+       return (30 + insets.top)*(numberLine+1);
+   }
+
    
 
     class ActionModify implements ActionListener{
@@ -269,7 +249,7 @@ public class JPanelMenuLines extends JPanel {
           if(jr.isSelected()){
              
           
-               for (int i = jrb.size()-1; i >=0; i--) {
+               for (int i = 0; i<jrb.size(); i++) {
                    if(jrb.get(i).isSelected()) {
                        if(jrb.get(i) != jr){
                            
@@ -301,7 +281,7 @@ public class JPanelMenuLines extends JPanel {
             
               
           } else {
-              for (int i = jr.number-1;i >=0 && jrb.get(i).isSelected(); i--) {
+              for (int i = jr.number+1 ; i <jrb.size() && jrb.get(i).isSelected(); i++) {
                   jrb.get(i).setSelected(false);
               }
           }           
@@ -313,13 +293,12 @@ public class JPanelMenuLines extends JPanel {
         {
             public void keyPressed(KeyEvent e)
             {
-                if (e.getKeyCode()== e.VK_SHIFT) shiftIsDown = true; 
+                if (e.getKeyCode()== KeyEvent.VK_SHIFT) shiftIsDown = true; 
             }
 
             public void keyReleased(KeyEvent e)
             {
-                 if (e.getKeyCode() == e.VK_SHIFT && 
-                     shiftIsDown == true) shiftIsDown = false;
+                 if (e.getKeyCode() == KeyEvent.VK_SHIFT && shiftIsDown == true) shiftIsDown = false;
             }
 
             public void keyTyped(KeyEvent e)

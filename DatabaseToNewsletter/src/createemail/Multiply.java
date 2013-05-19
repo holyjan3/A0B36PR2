@@ -79,7 +79,7 @@ public class Multiply implements Runnable{
         String write = "";
         //int i = number;
        c = 0;
-            for (int j = database.Data.size()-1; j >=0  && c<count; j--) {
+            for (int j =-0; j < database.Data.size()  && c<count; j++) {
                 if(database.Data.get(j).isPrinted()){
                     c++;
                     getTarge(Integer.toString(number), start);

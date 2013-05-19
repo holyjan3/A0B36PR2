@@ -41,11 +41,11 @@ public class WorkDatabaseDerby extends WorkDatabase{
     public void readFromDatabase(java.util.Date d) {
           
         
-       if(!read && equalsDates(date,d)){
-           
-          return; 
-       }
-       
+//       if(!read && equalsDates(date,d)){
+//           
+//          return; 
+//       }
+//       
        
         if(d!= null){
             date = (java.util.Date) d.clone();
@@ -54,7 +54,6 @@ public class WorkDatabaseDerby extends WorkDatabase{
             date = null;
         }
         
-        database.Data.clear();
 
         read = false;
         

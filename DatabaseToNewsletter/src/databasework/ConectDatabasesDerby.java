@@ -72,7 +72,7 @@ public class ConectDatabasesDerby extends ConectDatabases{
         }
 
         public boolean getPrintedHashMap(Integer i) {
-            return printedHashMap.containsKey(i);
+            return printedHashMap.get(i);
         }
         
         public boolean conteinsPrintedHashMap(Integer i){

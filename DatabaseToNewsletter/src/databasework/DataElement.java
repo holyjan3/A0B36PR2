@@ -211,21 +211,21 @@ public enum DataElement implements DataElementInterface{
         int MaxVarChar = 32700;
         switch (this) {            
             case HEAD:
-                return MaxVarChar;
+                return 1000;
             case DATE:
                 return 10;
             case TIME:
                 return 8;
             case HEAD_LINK:
-                return MaxVarChar;
+                return 2000;
             case TOWN:
                 return 35;
             case PLACE:
                return 100;
             case TEXT:
-                return MaxVarChar;
+                return 4000;
             case TEXT_LINK:
-                return MaxVarChar;
+                return 2000;
             case LINK1_TEXT:
                 return 30;
             case LINK2_TEXT:
@@ -233,11 +233,11 @@ public enum DataElement implements DataElementInterface{
             case LINK3_TEXT:
                return 30;
             case LINK1:
-                return MaxVarChar;
+                return 2000;
             case LINK2:
-                return MaxVarChar;
+                return 2000;
             case LINK3:
-                return MaxVarChar;
+                return 2000;
             case NAME:
                 return 30;
             case MEDIUM:

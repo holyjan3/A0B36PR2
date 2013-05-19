@@ -175,7 +175,7 @@ public class JPanelCalendar extends javax.swing.JPanel {
                 //date = c.getD
                 cal = null;
                 if(jPanelMenuLines != null){
-                   
+                    jPanelMenuLines.database.Data.clear();
                     jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(null);
                     jPanelMenuLines.overWritePanel();
                     
@@ -203,7 +203,7 @@ public class JPanelCalendar extends javax.swing.JPanel {
               
                 date = d;
                 if(jPanelMenuLines != null){
-                 
+                    jPanelMenuLines.database.Data.clear();
                     jPanelMenuLines.database.nowWorkDatabase.readFromDatabase(d);
                     jPanelMenuLines.overWritePanel();
                 } else {

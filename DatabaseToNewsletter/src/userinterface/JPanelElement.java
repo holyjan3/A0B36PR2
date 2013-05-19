@@ -111,7 +111,23 @@ public class JPanelElement extends JPanel{
                    
                     text[i] = new JTextAreaWithNumber(i,jtext_height,jtext_width);
                     text[i].setText(element.strings_of_elements[i]);
+                    
+                    switch (element.DE[i].getType()) {
+
+                case DATE:
                     text[i].addKeyListener(new ActionDate());
+                    break;
+                case TIME:
+                    text[i].addKeyListener(new ActionTime());
+                    break;
+                case VARCHAR:
+                    break;
+                case URL:
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+                    
                     
                 
             JPanel item0 = new JPanel(new FlowLayout(FlowLayout.LEFT));

@@ -53,15 +53,14 @@ public class JFrameMenuAll extends JFrame{
         
         for (int i = 0; i < WorkerDatabase.conectDatabeses.getDataDatabases().size(); i++) {
       
-            JLabel l= new JLabel(WorkerDatabase.conectDatabeses.getDataDatabases().get(i).name_database);
-            panel.add(l,c);
             
+            
+            WorkerDatabase.conectDatabeses.getDataDatabases().get(i).Data.clear();
             WorkerDatabase.conectDatabeses.getDataDatabases().get(i).nowWorkDatabase.readFromDatabase(date);
             menus[i]= new JPanelMenuPrinted(WorkerDatabase.conectDatabeses.getDataDatabases().get(i));
             menus[i].AddPanel();
-            panel.setBackground(Color.black);
-            l.setForeground(Color.white);
-            panel.setOpaque(true);
+            
+            
             
             panel.add(menus[i],c);
             Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
@@ -71,7 +70,8 @@ public class JFrameMenuAll extends JFrame{
         
         }  
     scrollPane.setViewportView(panel);
-    
+    scrollPane.setBackground(Color.black);
+    scrollPane.setOpaque(true);
     jp.add(scrollPane,BorderLayout.CENTER);
     jp.add(new JPanelMenuAllRight(this),BorderLayout.EAST);
     add(jp);

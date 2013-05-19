@@ -46,14 +46,7 @@ public class CreateEmail {
     }
 
   
-    
-    /**
-     * 
-     * @param databases pole databází všech typů záznamů
-     */
     public CreateEmail() {
-        
-       
     }
     
     /**
@@ -214,7 +207,7 @@ public class CreateEmail {
         count = new int[databases.size()]; 
         for (int i = 0; i < databases.size(); i++) {
             c=0;
-             for (int j = 0; j < databases.get(i).Data.size() && ((j < DataDatabase.values()[i].getMax())|| (DataDatabase.values()[i].getMax() ==0)); j++) {
+             for (int j = 0; j < databases.get(i).Data.size() && ((c < DataDatabase.values()[i].getMax())|| (DataDatabase.values()[i].getMax() ==0)); j++) {
                  if(databases.get(i).Data.get(j).isPrinted()){
                     c++; 
                  }

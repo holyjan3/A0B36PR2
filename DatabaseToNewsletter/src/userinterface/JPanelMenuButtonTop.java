@@ -117,6 +117,11 @@ public class JPanelMenuButtonTop extends javax.swing.JPanel {
                 deleteMouseClicked(evt);
             }
         });
+        delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -202,6 +207,10 @@ public class JPanelMenuButtonTop extends javax.swing.JPanel {
         }
            jFrameMenu.menuLines.overWritePanel();
     }//GEN-LAST:event_deleteMouseClicked
+
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addElement;
