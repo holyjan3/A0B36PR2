@@ -4,9 +4,9 @@
  */
 package databasework;
 
-import databasefinal.Database;
-import databasefinal.Database;
-import databasefinal.Database;
+import database.Database;
+import database.Database;
+import database.Database;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;

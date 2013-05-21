@@ -5,7 +5,7 @@
 package userinterface;
 
 import createemail.CreateEmail;
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;

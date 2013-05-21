@@ -4,9 +4,9 @@
  */
 package userinterface;
 
-import createemail.GlobalSave;
+import other.GlobalSave;
 import createemail.CreateEmail;
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import javax.swing.JOptionPane;
 
 /**

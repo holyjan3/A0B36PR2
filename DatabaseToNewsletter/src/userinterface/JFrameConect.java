@@ -6,7 +6,7 @@ package userinterface;
 
 import databasework.DataDatabase;
 import databasework.DataDatabaseInteraface;
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.Connection;

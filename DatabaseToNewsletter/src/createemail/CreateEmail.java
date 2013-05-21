@@ -6,8 +6,8 @@ package createemail;
 
 import createemail.Multiply;
 import databasework.DataDatabase;
-import databasefinal.Database;
-import databasework.WorkerDatabase;
+import database.Database;
+import other.WorkerDatabase;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;

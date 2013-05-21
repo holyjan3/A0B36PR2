@@ -5,13 +5,13 @@
 package userinterface;
 
 import other.ControlConection;
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import databasework.ControlElement;
 import other.ControlWebSide;
-import databasefinal.DataControl;
+import database.DataControl;
 import databasework.DataElement;
-import databasefinal.Database;
-import databasefinal.Element;
+import database.Database;
+import database.Element;
 import static databasework.DataElement.*;
 import databasework.WorkDatabase;
 import java.awt.*;

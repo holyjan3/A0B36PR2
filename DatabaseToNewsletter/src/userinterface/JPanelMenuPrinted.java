@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasefinal.Database;
-import databasework.WorkerDatabase;
+import database.Database;
+import other.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JLabel;

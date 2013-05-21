@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasefinal.Database;
+import database.Database;
 
 
 /**

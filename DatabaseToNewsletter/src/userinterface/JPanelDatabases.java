@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasefinal.Database;
+import database.Database;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

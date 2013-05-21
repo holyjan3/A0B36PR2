@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasefinal.Element;
+import database.Element;
 import javax.swing.JRadioButton;
 
 /**

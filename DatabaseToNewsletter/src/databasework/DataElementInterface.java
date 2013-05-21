@@ -4,7 +4,7 @@
  */
 package databasework;
 
-import databasefinal.DataControl;
+import database.DataControl;
 
 /**
  *

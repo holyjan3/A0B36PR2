@@ -5,9 +5,9 @@
 package userinterface;
 
 import com.toedter.calendar.JCalendar;
-import createemail.GlobalSave;
+import other.GlobalSave;
 import createemail.CreateEmail;
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import java.awt.Dimension;
 import java.io.*;
 import javax.swing.JFileChooser;

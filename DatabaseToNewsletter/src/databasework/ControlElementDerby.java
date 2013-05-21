@@ -4,10 +4,10 @@
  */
 package databasework;
 
-import static databasefinal.DataControl.DATE;
-import static databasefinal.DataControl.TIME;
-import static databasefinal.DataControl.URL;
-import static databasefinal.DataControl.VARCHAR;
+import static database.DataControl.DATE;
+import static database.DataControl.TIME;
+import static database.DataControl.URL;
+import static database.DataControl.VARCHAR;
 
 /**
  *

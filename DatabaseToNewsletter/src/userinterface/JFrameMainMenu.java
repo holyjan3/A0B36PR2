@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import createemail.GlobalSave;
-import databasework.WorkerDatabase;
+import other.GlobalSave;
+import other.WorkerDatabase;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

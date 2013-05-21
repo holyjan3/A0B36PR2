@@ -4,7 +4,7 @@
  */
 package createemail;
 
-import databasefinal.Database;
+import database.Database;
 
 
 

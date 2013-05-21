@@ -66,7 +66,7 @@ public enum DataDatabase implements DataDatabaseInteraface{
     /**
      * Na čem se pracuje v regionech
      */
-    PlansInRegion("Na čem se pracuje v regionech",4, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
+    PlansInRegion("Na čem se pracuje v regionech",3, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
         
     /**
      * Členove napsali

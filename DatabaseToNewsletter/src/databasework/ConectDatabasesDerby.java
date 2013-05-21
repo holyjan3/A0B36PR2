@@ -4,7 +4,7 @@
  */
 package databasework;
 
-import databasefinal.Database;
+import database.Database;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;

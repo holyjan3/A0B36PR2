@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 

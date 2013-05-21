@@ -5,7 +5,7 @@
 package userinterface;
 
 
-import databasefinal.Database;
+import database.Database;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import javax.swing.JFrame;

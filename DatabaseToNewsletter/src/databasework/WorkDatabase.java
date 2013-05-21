@@ -4,8 +4,8 @@
  */
 package databasework;
 
-import databasefinal.Database;
-import databasefinal.Element;
+import database.Database;
+import database.Element;
 import userinterface.JPanelElement;
 import java.util.Date;
 

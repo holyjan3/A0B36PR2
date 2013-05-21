@@ -4,10 +4,10 @@
  */
 package databasework;
 
-import databasefinal.Database;
+import database.Database;
 import databasework.WorkDatabase;
-import databasework.WorkerDatabase;
-import databasefinal.Element;
+import other.WorkerDatabase;
+import database.Element;
 import userinterface.ErrorConectToDatabase;
 import userinterface.JPanelElement;
 import java.sql.*;

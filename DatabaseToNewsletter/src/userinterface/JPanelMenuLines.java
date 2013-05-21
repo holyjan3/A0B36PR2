@@ -4,8 +4,8 @@
  */
 package userinterface;
 
-import databasefinal.Database;
-import databasefinal.Element;
+import database.Database;
+import database.Element;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

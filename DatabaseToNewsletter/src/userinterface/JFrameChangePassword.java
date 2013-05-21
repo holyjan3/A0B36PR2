@@ -4,7 +4,7 @@
  */
 package userinterface;
 
-import databasework.WorkerDatabase;
+import other.WorkerDatabase;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
