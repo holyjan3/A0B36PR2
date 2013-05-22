@@ -5,13 +5,14 @@
 package userinterface;
 
 import database.Element;
+import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 
 /**
  * Radian buom obahující třídu element a číslo
  * @author Jan Holý
  */
-public class JRadioButtonWithNumber extends JRadioButton{
+public class JRadioButtonWithNumber extends JCheckBox{
   
     public final int number;
   

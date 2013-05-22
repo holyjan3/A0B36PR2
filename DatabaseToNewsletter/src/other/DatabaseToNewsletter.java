@@ -38,7 +38,7 @@ public class DatabaseToNewsletter {
             
             th= new Thread(new ControlConection(th));
             th.start();
-            new WorkerDatabase(new ControlElementDerby(), new ConectDatabasesDerby(), new GlobalDate());
+            new WorkerDatabase(new ControlElementDerby(), new ConectDatabasesDerby(), new GlobalDate());//singleton
             new GlobalSave(new SaveDataToFile(),new CreateEmail());
             WorkerDatabase.dateControl.setDate(WorkerDatabase.dateControl.getDefolteDate());
             JFrameConect.main(null);

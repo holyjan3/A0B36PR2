@@ -7,7 +7,10 @@ package userinterface;
 import database.Database;
 import other.WorkerDatabase;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
@@ -58,19 +61,20 @@ public class JPanelMenu extends JPanel{
         scrollPane = new JScrollPane();
         scrollPane.setViewportView(menuLines);
         
-        pane = new JPanel(new BorderLayout());
+        pane = new JPanel(new FlowLayout());
 
-        
+       
+    pane.setLayout(new BoxLayout(pane, BoxLayout.LINE_AXIS));
+   
         
        conection = new JPanelCalendar(menuLines,WorkerDatabase.dateControl.getDate());
- 
        
+        pane.add(menulButtonBottom);
+        pane.add(Box.createHorizontalGlue());
+        pane.add(conection);
+        
        
-     
-        
-        pane.add(menulButtonBottom,BorderLayout.WEST);
-        pane.add(conection,BorderLayout.CENTER);     
-        
+
         
              
 
