@@ -5,6 +5,7 @@
 package createemail;
 
 import database.Database;
+import databasework.DataElement;
 
 
 
@@ -98,6 +99,7 @@ public class Multiply implements Runnable{
                                 insertNumber(write,database.DE[k].name(),start);
                                 break;
                             case URL:
+                             
                                 insertURL(database.Data.get(j).strings_of_elements[k],database.DE[k].name(),start);
                                 break;
 //                            case TEXT:             
@@ -197,6 +199,17 @@ public class Multiply implements Runnable{
     
     
    private void insertURL(String insertString,String name,int start){
+//        if(name.equalsIgnoreCase(DataElement.HEAD_LINK.name())) {
+//             getTarge(name,start);
+//            stringBuilder.delete(global_start, global_end);
+//            insertString = HtmlEscape.escapeTextArea(insertString);
+//            stringBuilder.insert(global_start, "<a style=\"color:blue;\" href="+ insertString + ">" );
+//        
+//            getTarge(name,start);
+//            stringBuilder.delete(global_start, global_end);
+//            stringBuilder.insert(global_start,"</a>"); 
+//            
+//        } else {
         getTarge(name,start);
         stringBuilder.delete(global_start, global_end);
         insertString = HtmlEscape.escapeTextArea(insertString);
@@ -204,8 +217,11 @@ public class Multiply implements Runnable{
         
         getTarge(name,start);
         stringBuilder.delete(global_start, global_end);
-        stringBuilder.insert(global_start,"</a>");      
+        stringBuilder.insert(global_start,"</a>");  
+//        } 
     }  
+   
+ 
 
     /**
      * 

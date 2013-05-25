@@ -29,7 +29,7 @@ public enum DataElement implements DataElementInterface{
     /**
      * Odkaz nadpisu
      */
-    HEAD_LINK   (0,DataControl.URL),
+
     /**
      * Město/Vesnice
      */
@@ -45,7 +45,9 @@ public enum DataElement implements DataElementInterface{
     /**
      * Popis Odkaz
      */
-    TEXT_LINK   (0,DataControl.URL),
+  
+    TEXT_LINK   (0,DataControl.VARCHAR),
+    HEAD_LINK   (0,DataControl.URL),
     /**
      * Popis odkazu 1
      */
@@ -127,7 +129,7 @@ public enum DataElement implements DataElementInterface{
             case TIME:
                 return "Čas";                
             case HEAD_LINK:
-               return "Odkaz nadpisu";
+               return "více odkaz";
             case TOWN:
                 return "Město/Vesnice";
             case PLACE:
@@ -135,7 +137,7 @@ public enum DataElement implements DataElementInterface{
             case TEXT:
                 return "Popis";                
             case TEXT_LINK:
-                return "Popis Odkaz";
+                return "více";
             case LINK1_TEXT:
                return "Popis odkazu 1";
             case LINK2_TEXT:

@@ -254,11 +254,8 @@ public class WorkDatabaseDerby extends WorkDatabase{
         boolean bb = false;
         //sb.append(WorkerDatabase.printed +"="+ Boolean.toString(element.printed)+",");
         for (int i = 0; i < database.DE.length; i++) {
-            if(!element.strings_of_elements[i].equals("")){
-
-            bb = true;
             sb.append(database.DE[i].name()+"='"+element.strings_of_elements[i]+"', ");
-            }
+           
         }      
         sb.append("TIME_LAST_CHANGED=CURRENT_TIMESTAMP");
         String sql = "UPDATE APP."+  this.nameTable +" SET "+ sb.toString()+" WHERE "+

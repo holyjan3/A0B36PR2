@@ -18,7 +18,7 @@ public enum DataDatabase implements DataDatabaseInteraface{
     /**
      * Záhlaví reklama
      */
-    HeadAdvertisement("Záhlaví reklama",1,new DataElement []{ DataElement.HEAD, DataElement.HEAD_LINK }),
+    HeadAdvertisement("Záhlaví reklama",1,new DataElement []{ DataElement.HEAD,DataElement.TEXT_LINK, DataElement.HEAD_LINK}),
         
     /**
      * Úvod
@@ -28,50 +28,50 @@ public enum DataDatabase implements DataDatabaseInteraface{
     /**
      * Chystá se
      */
-    EventsFuture("Chystá se",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK, DataElement.DATE,
+    EventsFuture("Chystá se",0,new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK,DataElement.HEAD_LINK,DataElement.DATE,
         DataElement.TIME,DataElement.TOWN,DataElement.PLACE,DataElement.TEXT,DataElement.LINK1_TEXT, DataElement.LINK1, DataElement.LINK2_TEXT,
         DataElement.LINK2, DataElement.LINK3_TEXT, DataElement.LINK3}),
         
     /**
      * Proběhlo
      */
-    EventsPast("Proběhlo",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT, DataElement.LINK1_TEXT,
+    EventsPast("Proběhlo",0,new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK,DataElement.HEAD_LINK,DataElement.TEXT, DataElement.LINK1_TEXT,
         DataElement.LINK1,DataElement.LINK2_TEXT,DataElement.LINK2,DataElement.LINK3_TEXT,DataElement.LINK3}),
         
     /**
      * Proběhlo reklama
      */
-    EventPastAdvertisements ("Proběhlo reklama",0, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK, DataElement.TEXT}),
+    EventPastAdvertisements ("Proběhlo reklama",0, new DataElement[]{DataElement.HEAD, DataElement.TEXT_LINK,DataElement.HEAD_LINK, DataElement.TEXT}),
         
     /**
      * Prohlášeni
      */
-    Declarations("Prohlášeni",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TYPE}),
+    Declarations("Prohlášeni",0,new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK,DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TYPE}),
         
     /**
      * Petični stánky
      */
-    Petitions("Petični stánky",3,new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+    Petitions("Petični stánky",3,new DataElement[]{DataElement.HEAD, DataElement.TEXT_LINK,DataElement.HEAD_LINK,DataElement.TEXT}),
         
     /**
      * Na čem se pracuje
      */
-    Plans("Na čem se pracuje",3,new DataElement[] {DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+    Plans("Na čem se pracuje",3,new DataElement[] {DataElement.HEAD,DataElement.TEXT_LINK, DataElement.HEAD_LINK,DataElement.TEXT}),
         
     /**
      * Na čem se pracuje Reklama
      */
-    PlanAdvertisement("Na čem se pracuje Reklama",1, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT}),
+    PlanAdvertisement("Na čem se pracuje Reklama",1, new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK, DataElement.HEAD_LINK,DataElement.TEXT}),
         
     /**
      * Na čem se pracuje v regionech
      */
-    PlansInRegion("Na čem se pracuje v regionech",3, new DataElement[]{DataElement.HEAD, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
+    PlansInRegion("Na čem se pracuje v regionech",3, new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK, DataElement.HEAD_LINK,DataElement.TEXT,DataElement.TOWN}),
         
     /**
      * Členove napsali
      */
-    Articles("Členove napsali",0,new DataElement[]{DataElement.HEAD,DataElement.HEAD_LINK,DataElement.NAME,DataElement.MEDIUM});
+    Articles("Členove napsali",0,new DataElement[]{DataElement.HEAD,DataElement.TEXT_LINK,DataElement.HEAD_LINK,DataElement.NAME,DataElement.MEDIUM});
                 
                 
         
